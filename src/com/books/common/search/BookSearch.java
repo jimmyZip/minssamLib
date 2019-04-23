@@ -1,4 +1,4 @@
-package com.test.search;
+package com.books.common.search;
 
 import java.io.BufferedReader;
 import java.io.IOException;

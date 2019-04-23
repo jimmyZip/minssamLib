@@ -19,8 +19,9 @@ $(function(){
 	$(".user-photo").css({
 		"background":"url('https://graph.facebook.com/"+obj.member.sns_id+"/picture?type=large')"	
 	});
-
  */	
+
+ //테스트용 주석!!
 });
 </script>
 </head>

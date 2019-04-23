@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <%@include file="/include/head.jsp" %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 
 <!-- 로그인 모달 창 -->
 

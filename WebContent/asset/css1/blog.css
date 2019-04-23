@@ -1,0 +1,86 @@
+@charset 'utf-8';
+
+
+.mobile .category-section {position: relative; height: 50px; padding: 0; margin-top: 10px;}
+.mobile .category-section h2 {padding: 0; font-size: 1em; width: 48%; height: 36px; line-height: 36px; background-color: #1b2d58; color: #FFF; text-align: center;}
+.mobile .category-section h2 i {font-size: 1.3em; margin-left: 5px; position: relative; top: 2px;}
+.mobile .category-section .category {position: absolute; left: 0; top: 36px;  width: 48%; height: 300px; overflow: scroll; border: 1px solid #DDD; border-top-width: 0; margin-top: 0; background-color: #fff; display: none;}
+.mobile .search-form {position: absolute; right: 0; top: 0; width: 48%; }
+.search-form {}
+.search-form div {border: 1px solid #DDD;}
+.search-form div input {display: inline-block;}
+#search-input {border: 0; width: 80%;}
+#search-submit { width: 11%; padding: 0; border: 0; background: url('/asset/images/search-solid.svg') center center no-repeat; -webkit-background-size: contain;
+background-size: contain; text-indent: -9999em; margin: 5px;}
+
+.category-section ol {margin: 1em 0; font-weight: 400; font-size: 0.85em;}
+.category-section ol a {color: #000;}
+.category-section ol>li {border-bottom: 1px solid #DDD;}
+.category-section ol>li>a>i {display: inline-block; margin: 5px;}
+.category-section ol>li>a {padding: 8px;}
+.category-section ul {display: none; padding-left: 28px;}
+.category-section ul>li {border-bottom: 1px solid #EEE; }
+.category-section ul>li:last-child {border: 0;}
+.category-section ul>li>a {padding: 5px; font-size: 0.9em;}
+
+.list-section {width: 100%;}
+.mo_h2, .content-section h2 {font-size: 2em; font-weight: 500; height: 98px; line-height: 92px; padding: 0;}
+.list-section h2 {display: none;}
+.list-section a {}
+
+.blog_list tr {border: 1px solid #EEE; margin-bottom: 5px; padding: 5px;}
+.blog_list th, .blog_list td {padding: 0.2em;}
+.blog_list td:first-of-type, .blog_list th:first-of-type {display: none;}
+.blog_list td:nth-of-type(2) {float: none; width: 100%; font-weight: 400; text-align: left; font-size: 1.1em;}
+.blog_list td:nth-of-type(3) {float: none; width: 100%; text-align: left;}
+
+
+
+
+.mo_total_count {float: right;}
+.mobile .category {float: left; width: 50%;}
+.mobile .category>li:first-child {display: none;}
+
+.view-header {display: none; border-bottom: 2px solid #1b2d58; }
+.view-header h2 {float: left;} 
+.mobile .view-content-header {border-top: 2px solid #1b2d58;}
+.view-content-header {border-bottom: 1px solid #DDD; padding: 1em; }
+
+.writer, .write-date {float: left; margin-right: 1em; font-weight: 400;}
+.topic-section {float: right; margin-right: 1.5em;}
+.topic-section span {display: inline-block; line-height: 92px;}
+.topic-section span a {display: inline; color: #000;}
+.topic-section span:after {display: inline-block; content: '>'; margin: 3px; color: #999;}
+.topic-section span:last-of-type:after {display: none;}
+
+.view-content {padding: 2em 1em; line-height: 2em;}
+.view-footer {padding: 2em; text-align: center;}
+
+@media screen and (min-width: 768px) {
+    
+    .mo_h2 {display: none;}
+    .category-section h2 i {display: none;}
+    .content-section h2 {display: block;}
+    .category-section {display: block; width: 150px; margin-right: 50px; float: left;}
+    .category-section h2 {border: 1px solid #1b2d58; border-width: 3px 0 1px 0 ; height: 100px; line-height: 100px; text-align: center; padding: 0;}
+ 
+
+    .content-section {width: calc(100% - 250px); float: left;}
+    .blog_list tr {border: 0; margin-bottom: 0; padding: 0;}
+    .blog_list th, .blog_list td {padding: 0.8em;}
+    .blog_list td:first-of-type, .blog_list th:first-of-type {display: table-cell; width: 60px;}
+    .blog_list td:nth-of-type(2) {width: calc(100% - 180px);}
+    .blog_list td:nth-of-type(3) {width: 120px; text-align: center;}
+    #search-input {border: 0; width: 78%;}
+    #search-submit { width: 13%; margin: 3px;}
+    
+    .view-header {display: block;}
+}
+@media screen and (min-width: 1024px) {
+    .category-section {width: 200px;}
+    .list-section {width: calc(100% - 250px);}
+    .category-section ol {font-size: 1em;}
+}
+@media screen and (min-width: 1280px) {
+    
+}

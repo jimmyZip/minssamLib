@@ -1,0 +1,181 @@
+@charset 'utf-8';
+.bg_cart {/*  background-image: url('../images/bg_cart.jpg'); */}
+.lecture-cart-header {padding: 2em 0;}
+.lecture-cart-header h2 {padding: 0; text-align: center;}
+.lecture-cart-header h2:after {display: block; content: ''; width: 1.3em; height: 2px; background-color: #db4c50; margin: 0 auto; margin-top: 10px;}
+.h2_subtitle {text-align: center; font-size: 0.9em; margin-top: 0.5em;}
+.lecture-cart-content, .lecture-pay-content, .lecture-result-content {padding: 3em 0; width: 96%; margin: 0 auto;}
+
+.cart-process {width: 100%; height: 44px; margin: 0 auto 1.5em;}
+.cart-process span:nth-of-type(odd) {width: 30%; height:100%; line-height: 40px; text-align: center; border: 1px solid #1b2d58; color: #1b2d58; float: left; position: relative; font-weight: 500;}
+.cart-process .active {background-color: #1b2d58; color: #fff !important;}
+/* .cart-process .active:after {display: block; content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background-color: #1b2d58; color: #1b2d58;} */
+.process_next {float: left; margin: 0 1.5%; width: 2%; height: 100%;  background: url('../images/next.svg') center center no-repeat;-webkit-background-size: contain; background-size: contain;}
+.lecture_name div:first-of-type {width: 20%; padding-right: 10px;}
+.lecture_name div:last-of-type {width: 80%; font-size: 0.9em;}
+.lecture_name div img {}
+.lecture_name div strong {display: inline-block; font-size: 1.2em; color: #1b2d58;}
+.lecture_name span>span {display: none;}
+
+.wrap_basic h1 {font-family: 'Noto Sans KR'; font-size: 1.5em; margin: 2.5em 0 0.4em; color: #1b2d58; font-weight: 500; position: relative;}
+.wrap_basic h1:before {display: inline-block; content: ''; width: 0.4em; height: 2px; background-color: #1b2d58; margin-right: 6px; position: relative; top: -6px;}
+/* .wrap_basic h1:first-of-type {margin-top: 0;} */
+.table_basic {width: 100%; border-collapse: collapse; font-size: 0.8em; margin: 0 auto;}
+.table_basic th, .table_basic td {border-bottom: 1px solid #f0f0f0; text-align: center; padding: 15px 0;}
+.table_basic thead {border-top: 2px solid #1b2d58;}
+.table_basic .lecture_name {text-align: left; font-weight: 400;}
+.table_basic img {display: inline; vertical-align: middle; width: 60px; margin-right: 10px;}
+.table_basic button, .btn_basic {background-color: transparent; border: 1px solid #DDD; padding: 0.5em 0.8em;}
+.table_basic tfoot td {border-bottom: 0;}
+.table_basic .btn_big, .btn_big {font-size: 1em; padding: 1em 1.5em; border: 0; background-color: #fff; border: 1px solid #DDD;}
+.table_basic .btn_submit, .btn_submit {background-color: #1b2d58; color: #fff; border: 1px solid #1b2d58;}
+.cart_total {font-size: 1.5em; font-weight: bold; color: #1b2d58; line-height: 3em; }
+.btns {text-align: center;}
+.btn_del {display: none;}
+
+.pay_method {display: inline-block; }
+.pay {display: block; text-align: left; width: 110px; margin: 0 auto;}
+.pay input {position: relative; top: 3px;}
+.pay_method:after {display: inline-block; content: ''; width: 20px; height: 22px; background-repeat: no-repeat; background-position: left center; position: relative; top: 5px; -webkit-background-size: contain;
+background-size: contain; margin-left: 5px;}
+.pay:nth-of-type(1) .pay_method:after {background-image: url('../images/kakao_pay.svg'); }
+.pay:nth-of-type(2) .pay_method:after {background-image: url('../images/bank.svg');}
+#deposit_wrapper {display: none; font-size: 1.2em; font-weight: 400; background-color: #f0f0f0;}
+#deposit_wrapper div {margin-bottom: 10px;}
+#deposit_wrapper span {display: block; }
+.deposit {width: 200px; height: 30px;}
+.read_only {color: #ccc;}
+.apply_point {text-align: right; border: 1px solid #DDD; width: 80%;}
+.point_saving {}
+.point_saving>div>h1 {margin-top: 2em !important;}
+.red_alert {display: block; font-size: 0.55em !important; width: 55%; float: right; text-align: right; padding-top: 5px;}
+
+/* ëª¨ë°”ì¼ ìž¥ë°”êµ¬ë‹ˆ */
+.mobile .table_basic {font-size: 0.85em;}
+.mobile .table_basic thead {border: 0;}
+.mobile .table_basic tr {display: block;}
+.mobile .table_basic tr:after {display: block; content: ''; clear: both;}
+.mobile .table_basic td, .mobile .lecture-cart-content .table_basic th {display: block; float: left; border: 0;}
+.mobile .table_basic thead {display: none;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(1) {width: 30px;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(2) {width: calc(100% - 30px); border: 1px solid #F0F0F0; padding: 0;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(3) {width: calc(100% - 30px); text-align: right; padding: 0.3em 1em; border: 1px solid #EEE; background-color: #f0f0f0;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(3) {margin-top: 10px; padding-right: 10%;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(4) {margin-top: 10px; margin-bottom: 30px; position: relative;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(4) button {display: none;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(4) .btn_del {cursor: pointer; display: block; position: absolute; left: 0; top: 5px; transform:translateX(-140%); padding: 0; width: 20px; height: 20px; line-height: 20px; background-color: #fff;}
+.mobile .lecture-cart-content .table_basic td:nth-of-type(3):before {content: 'ì •ê°€'; margin-right: 10px;}
+.mobile .lecture-cart-content .table_basic .total {width: 100% !important;} 
+.mobile .lecture-cart-content .table_basic strong {display: inline;}
+.mobile .table_basic img {width: 100%; margin-right: 10px;}
+.mobile .lecture-cart-content .lecture_name div:first-of-type {width: 95px;}
+.mobile .lecture-cart-content .lecture_name div:last-of-type {width: calc(100% - 125px);}
+.mobile .lecture_name span>span {display: inline;}
+.mobile .subtitle {display: none;}
+
+/* ëª¨ë°”ì¼ ê²°ì œí•˜ê¸° */
+.mobile .lecture-pay-content {}
+.mobile .mo-hide, .pc .pc-hide {display: none !important;}
+
+.mobile .lecture-pay-content tr {border: 1px solid #EEE; padding: 5px; margin: 10px 0;}
+.mobile .lecture-pay-content th, .mobile .lecture-pay-content td {padding: 0;}
+.mobile .lecture-pay-content .pay-item tbody td:nth-of-type(1), .mobile .lecture-pay-content .pay-item th:nth-of-type(1) {display: none;}
+.mobile .lecture-pay-content .pay-item td:nth-of-type(2), .mobile .lecture-pay-content .pay-item th:nth-of-type(2) {width: 80%; float: left;}
+.mobile .lecture-pay-content .pay-item td:nth-of-type(2) div:nth-of-type(1) {width: 30%;}
+.mobile .lecture-pay-content .pay-item td:nth-of-type(2) div:nth-of-type(2) {width: 70%;}
+.mobile .lecture-pay-content .pay-item td:nth-of-type(3), .mobile .lecture-pay-content .pay-item th:nth-of-type(3) {display: none;}
+.mobile .lecture-pay-content .pay-item td:nth-of-type(4), .mobile .lecture-pay-content .pay-item th:nth-of-type(4) {float: right; margin-top: 10px;}
+.mobile .lecture-pay-content .pay-item tfoot {background-color: #f0f0f0;}
+.mobile .lecture-pay-content .pay-item tfoot tr {padding: 0; margin: 0;}
+.mobile .lecture-pay-content .pay-item tfoot td {float: none; text-align: center !important;}
+.mobile .lecture-pay-content .pay-coupon td:nth-of-type(3) {display: none;}
+.mobile .lecture-pay-content .pay-coupon td:nth-of-type(1) {width: 50%; text-align: left; line-height: 33px; font-weight: bold;}
+.mobile .lecture-pay-content .pay-coupon td:nth-of-type(2) {width: 28%; text-align: left; line-height: 33px;}
+.mobile .lecture-pay-content .pay-coupon td:last-of-type {}
+.mobile .lecture-pay-content .pay-point td { line-height: 33px;}
+.mobile .lecture-pay-content .pay-point td:nth-of-type(1) {width: 25%; text-align: left; line-height: 33px; font-weight: bold;}
+.mobile .lecture-pay-content .pay-point td:nth-of-type(2) {width: 53%;}
+.mobile .lecture-pay-content .pay-point td:nth-of-type(2)>span {display: inline-block; text-align: center; line-height: 33px;}
+.mobile .lecture-pay-content .pay-point td input {width: 100px;}
+.mobile .lecture-pay-content .pay-point tr {margin-top: 0;}
+.mobile .lecture-pay-content .pay-payment tr {}
+.mobile .lecture-pay-content .pay-payment td {font-size: 1.3em; line-height: 2.4em !important;}
+.mobile .lecture-pay-content .pay-payment td:nth-of-type(odd) {width: 40%; text-align: left; font-weight: 400;}
+.mobile .lecture-pay-content .pay-payment td:nth-of-type(even) {width: 60%; text-align: right;}
+.mobile .lecture-pay-content .pay-payment td:nth-of-type(5) {width: 100%;}
+.mobile .lecture-pay-content .pay-payment td:nth-of-type(5)>span {width: 30%; float: left;}
+.mobile .lecture-pay-content .pay {font-size: 0.8em; width: 35%; float: left;}
+.mobile .lecture-pay-content .pay-payment #deposit_wrapper {font-size: 0.9em;}
+.mobile .lecture-pay-content .pay-payment #deposit_wrapper td {width: 100%; text-align: center; line-height: 1.6em !important; padding: 0.5em;}
+
+
+/* ê²°ì œê²°ê³¼ */ 
+.lecture-result-content {} 
+.pay_result {background-color: #ecedec; background: #ecedec url('/asset/images/complete.svg') center 30px no-repeat; -webkit-background-size: 100px auto;
+background-size: 100px auto; padding-top: 150px; text-align: center; font-size: 1.6em; font-weight: 400; padding-bottom: 30px;} 
+.pay_result span {display: inline;} 
+.pay_result div {font-size: 0.6em; margin-top: 10px;}
+.pay_result div button {display: block; background-color: #db4c50; color: #fff; border: 0; padding: 0.3em 1em; -webkit-border-radius: 3px; -moz-border-radius:  3px; border-radius:  3px; margin: 10px auto;}
+
+.pay_result_section {}
+.pay_result_section .pay_info {font-size: 0.9em;}
+.pay_result_section .pay_info div span {float: left; padding: 0.6em; border: 1px solid #DDD; margin-bottom: 5px;}
+.pay_result_section .pay_info div span:first-of-type {width: 30%; background-color: #f8f8f8; color: #1b2d58; font-weight: 500; border-right-width: 0;}
+.pay_result_section .pay_info div span:last-of-type {width: 70%; border-left-width: 0;}
+.pay_result_section button {margin: 2em 0.1em 1em; text-align: center;}
+.pay_result_section .pay_info strong {display: inline;}
+.pay_info span {display: inline;}
+.mobile .calc {width: 70%; border-left-width: 0 !important;}
+.mobile .calc_pc {display: none;}
+
+@media screen and (min-width: 768px) {
+	.lecture_name div img {display: inline-block; width: 100%;}
+	.discount-info {display: none;}	
+	.lecture-pay-content .pay-point td>span {display: none;}
+	.pay_result {background: #ecedec url('/asset/images/pay_result_head.jpg') right top no-repeat; height: 277px; font-size: 2.2em; padding: 60px; line-height: 130%; -webkit-background-size: contain; background-size: contain; margin: 1.5em auto; text-align: left;}
+	.pay_result:before { display: block; content: ''; width: 1.5em; height: 3px; background-color: #1b2d58; margin-bottom:0.3em;}
+	.pay_result div button {display: inline-block; }
+	
+    .pay_result_section .pay_info {border: 1px solid #E0E0E0; border-width: 0 0 1px 1px;}
+    .pay_result_section .pay_info div {width: 25%; float: left; border: 1px solid #E0E0E0; border-width: 1px 1px 0 0;}
+	.pay_result_section .pay_info div span {margin-bottom: 0; text-align: center; border: 0;}
+	.pay_result_section .pay_info div span:first-of-type {width: 100%; background-color: #F8F8F8; color: #1b2d58; padding-top: 0; padding-bottom: 15px;}
+	.pay_result_section .pay_info div:before {display: block; content: ''; width: 100%; padding-top: 60%; -webkit-background-size: 45%; background-size: 45%; background: #F8F8F8 url('/asset/images/result_card.svg') center center no-repeat}
+	.pay_result_section .pay_info div:nth-of-type(1):before {background-image: url('/asset/images/result_money_total2.svg'); -webkit-background-size: 40%; background-size: 40%; }
+	.pay_result_section .pay_info div:nth-of-type(2):before {background-image: url('/asset/images/result_pricetag2.svg'); -webkit-background-size: 35%; background-size: 35%; }
+	.pay_result_section .pay_info div:nth-of-type(3):before {background-image: url('/asset/images/result_point2.svg'); -webkit-background-size: 38%; background-size: 38%;}
+	
+	.pay_result_section .pay_info div:nth-of-type(4):before {background-image: url('/asset/images/result_money2.svg'); -webkit-background-size: 45%; background-size: 45%;}
+	.pay_result_section .pay_info div:nth-of-type(5):before {background-image: url('/asset/images/result_creditcard2.svg'); -webkit-background-size: 40%; background-size: 40%}
+	.pay_result_section .pay_info div:nth-of-type(6):before {background-image: url('/asset/images/result_time2.svg'); -webkit-background-size: 35%; background-size: 35%;}
+    .pay_result_section .pay_info div:nth-of-type(7):before {background-image: url('/asset/images/result_receipt2.svg'); -webkit-background-size: 17%; background-size: 17%; }
+    .pay_result_section .pay_info div:nth-of-type(7) {width: 50%; border: 3px solid #1b2d58;}
+    .pay_result_section .pay_info div:nth-of-type(7):before {padding-top: 30%;}
+	.pay_result_section .pay_info div span:last-of-type {width: 100%; }
+	.pay_result_section .pay_info div:last-of-type span {}
+	.pay_result_section button {}
+    
+    .pc .calc {display: none;}
+}
+@media screen and (min-width: 1024px) {
+	.wrap_basic {width: 1000px; margin: 0 auto;}
+	.table_basic {font-size: 0.9em;}
+	.table_basic img {width: 100px;}
+	.cart-process {width: 750px;}
+	.btns {text-align: right;}
+	.pay {display: inline-block; width: 140px;}
+	.pay_method {display: inline-block; }
+	#deposit_wrapper span {display: inline-block; padding-right: 30px;}
+	#deposit_wrapper span:after {display: inline-block; content: ''; width: 1px; height: 12px; background-color: #DDD; margin-left: 30px;}	
+	#deposit_wrapper span:last-of-type:after {display: none;}
+	.apply_point {width: 200px;}
+	.point_saving>div {float: left; width: 48%;}
+	.point_saving>div:last-of-type {float: right;}
+	.lecture_name span:first-of-type {margin-top: 10px;}
+}
+@media screen and (min-width: 1280px) {
+    .wrap_basic {width: 1200px; margin: 0 auto;}
+	.lecture_name span:first-of-type {margin-top: 15px;}
+	
+	.pay_result, .pay_result_section {width: 1000px !important;}
+}

@@ -1,0 +1,39 @@
+@charset 'utf-8';
+
+.mobile .cs_h2 {display: none;}
+.category_cs {}
+.mobile .category_cs li {width: 49%; margin-right: 2%; float: left; border: 1px solid #DDD; text-align: center; font-size: 1.2em; font-weight: 400;}
+.mobile .category_cs li.on {background-color: #1b2d58; border: 1px solid #1b2d58;}
+.mobile .category_cs li.on a {color: #fff;}
+.mobile .category_cs li:last-child {margin-right: 0;}
+#cs-mail-form {border-top: 2px solid #1b2d58; line-height: 2.8em; padding: 1em 0.5em;}
+#cs-mail-form label {display: block; width: 80px; float: left; font-size: 0.9em; font-weight: 400; color: #1b2d58;}
+#cs-mail-form div {width: calc(100% - 80px); float: left;}
+#cs-mail-form div:last-of-type {margin-left: 80px;}
+#cs-mail-form input {border: 1px solid #EEE; width: 100%; padding: 0.2em;}
+#cs-mail-form select {border: 1px solid #EEE; padding: 0.2em; width: 100%;}
+#cs-mail-form option {}
+#cs-mail-form #cs-mail-subject {width: 100%;}
+#cs-mail-form textarea {width:100%; border: 1px solid #EEE; height: 20em; margin-top: 0.5em;}
+#cs-mail-form .bt {
+    width: 100%;
+    margin: 15px auto;
+    font-size: 1em;}
+@media screen and (min-width: 768px) {
+	.category_cs li.on {background-color: #f0f0f0;}
+	.category_cs li.on a {color: #1b2d58; font-weight: 500;}
+	#cs-mail-form {line-height: 3.4em;}
+	#cs-mail-form label {width: 120px;}
+	#cs-mail-form div {width: calc(100% - 120px);}
+	#cs-mail-form div:last-of-type {margin-left: 120px;}
+	#cs-mail-form input {width: 150px; }
+	#cs-mail-form #cs-mail-email {width: 250px;}
+	#cs-mail-form select {width: 200px;}
+	#cs-mail-form .bt {width: 30%; min-width:250px;}
+}
+@media screen and (min-width: 1024px) {
+
+}
+@media screen and (min-width: 1280px) {
+    
+}

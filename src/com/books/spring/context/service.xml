@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- datasource -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="org.mariadb.jdbc.Driver"
+		p:url="jdbc:mariadb://localhost:3306/books"
+		p:username="root"
+		p:password="">
+	</bean>
+		
+	<!-- transactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"	
+		p:dataSource-ref="dataSource"/>
+	
+	<!-- factory bean -->
+	<bean id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:configLocation="classpath:com/books/mybatis/config/mybatis-config.xml"/>
+		
+	<!-- factory bean으로부터 만들어질 sessionTemplate등록  -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	<!-- db연동 관련 객체서비스, 자동등록, autowired -->
+	<context:component-scan base-package="com.books">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+	</context:component-scan>
+</beans>

@@ -1,0 +1,57 @@
+@charset 'utf-8';
+.shadow {text-shadow: 0 0 2px rgba(0,0,0,0.5);}
+.recent_offline {}
+.recent {border: 1px solid #EEE; padding: 20px; margin: 20px;}
+.recent img {width: 100%;}
+.applicant_off {position: relative;}
+.applicant_off:before {display: block; content: ''; position: absolute; left: 0; top: 0; width: 100%;  height: 100%; background-color: rgba(0,0,0,0.8);}
+.applicant_off:after {display: block; content: 'ì‹ ì²­ë§ˆê°'; position: absolute; left: 0; top: calc((100% - 50px) / 2); width: 100%; height: 50px; line-height: 100%; text-align: center; color: #FFF; font-weight: 500; font-size: 3em; }
+.offline-lecture-name {font-size: 1.4em; color: #db4c50; font-weight: 500; margin: 20px 0; line-height: 1.2em;}
+.button_on {background-color: #db4c50 !important; color: #fff !important; border-color: #db4c50 !important;}
+.offline-list span {display: inline-block; margin-right: 0.5em;}
+.offline-list td:nth-of-type(1) {font-weight: 500;}
+.offline-list th:nth-of-type(2) {width: 200px;}
+.offline-list th:nth-of-type(3) {width: 100px;}
+.offline-list th:nth-of-type(4) {width: 100px;}
+.mobile .offline .offline-list td:nth-of-type(3) {display: none;}
+.mobile .offline .offline-list tr {border: 1px solid #EEE; padding: 10px; margin: 10px 0;}
+.mobile .offline .offline-list td, .mobile .offline .offline-list th {
+    display: block;
+    float: none;
+    border: 0;
+    text-align: left;
+    padding: 0.3em;
+}
+.mobile .offline .offline-list td:nth-of-type(2):before {display: inline-block; content: 'êµìœ¡ì¼ì • :'; margin-right: 0.5em;}
+.offline .offline-detail th, .offline .offline-detail td {text-align: left; padding: 1em; vertical-align: top;}
+.mobile .offline .offline-detail {border-top: 2px solid #1b2d58; border-bottom: 1px solid #ddd; margin: 1em 0;}
+.mobile .offline .offline-detail th {width: 15%; min-width:80px; display: block; float: left; border-bottom: 0;}
+.mobile .offline .offline-detail td {width: 85%; max-width:calc(100% - 80px); display: block; float: left; }
+.mobile .offline .offline-detail .offline-title {width: 100% !important; max-width:100% !important; font-size: 1.5em; font-weight: 500; color: #1b2d58;}
+.mobile .offline .offline-detail .offline-title span {display: inline-block; margin-right: 0.5em;}
+.mobile .offline .offline-detail .offline-title-th {display: none;}
+
+.mobile .offline h2 {display: none;}
+
+@media screen and (min-width: 768px) {
+    .offline-list span {display: none;}
+    .recent {float: left; width: 30%; margin: 1.33%;}
+    .offline-lecture-name {font-size: 1.2em;}
+	.offline-btns {width: 40%; margin: 0 auto; margin-top: 30px;}
+    .offline-btns .bt {float: left; width: 48%; margin: 15px 1%; font-size: 1em;}
+
+	.offline .offline-detail {border-top: 2px solid #1b2d58; margin-top: 1em;}
+	.offline .offline-detail th, .offline .offline-detail td {text-align: left; padding: 1em; vertical-align: top;}
+	.offline .offline-detail th {background-color: #f8f8f8;}
+	.offline .offline-detail .offline-title span {display: none;}
+}
+@media screen and (min-width: 1024px) {
+    .offline-lecture-name {font-size: 1.4em;}
+}
+@media screen and (min-width: 1280px) {
+    .offline-lecture-name {font-size: 1.6em;}
+}
+@media screen and (min-width: 1420px) {
+    .offline-lecture-name {font-size: 2em;}
+
+}

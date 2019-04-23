@@ -1,0 +1,128 @@
+@charset 'utf-8';
+
+
+
+
+/*-----------------------------------
+ë©”ì¸ ë°°ë„ˆ ì˜ì—­
+-----------------------------------*/
+.main-banner{
+	font-size:1rem;
+	background:#404040;
+	color:#fff;
+	overflow:hidden;
+	position:relative;
+	padding-top:250px;
+}
+.description{
+	position:absolute;
+	left:50px;
+	top:50px;
+}
+.description h1{
+	color:#ffff00;
+	font-weight:bold;
+	font-size:2rem;	
+}
+/*-----------------------------------
+ë³¸ ê°•ì¢Œì—ì„œ ë°°ìš°ëŠ” ê²ƒ ë° ê²°ì œ ë°•ìŠ¤
+-----------------------------------*/
+.section{
+	padding:10px;	
+}
+.section:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.aside{
+	float:right;
+	position:relative;
+	top:-193px;
+}
+.to-learn{
+	width:65%;
+	float:left;
+}
+.to-learn h1 , .curri h1{
+	font-weight:bold;
+	font-size:1.2rem;
+}
+.to-learn ul{
+	background:#e6e6e6;
+	margin:10px 0px;
+	padding:5px;
+	list-style:none;
+}
+
+
+.payment-box{
+	width:300px;
+	height:340px;
+	background:yellow;
+	border:5px solid #fff;
+	float:right;
+}
+
+@media screen and (min-width: 768px) {
+    .bg {padding: 3em 0; text-align: left;}
+    .bg .wrap {padding-left: 3em;}
+    .main {padding: 50px 0;}
+	.lecture-detail-header .wrap, .lecture-detail-contents .wrap {width: 750px; padding: 2em 250px 2em 0;}
+
+	.lecture-detail-header {font-size: 1em;}
+	 {width: 750px; padding: 2em 0;}
+	.lecture-detail-header h1 {}
+	.lecture-hgroup {width: 500px;}
+	.lecture-name {}
+	.lecture-description {font-size: 1.5em;}
+	.lecture-time {}
+	.lecture-level {}
+	.lecture-headcount {}
+
+	/*ìŠ¤í¬ë¡¤ì‹œ ê³ ì • í—¤ë”, ì˜¤ë¥¸ìª½ ë°•ìŠ¤ ê³ ì •*/
+	.lecture-detail-header.fixed {position: fixed; left: 0; top: 0; width: 100%; background-color: rgba(0,34,51,0.7); z-index: 1;}
+	.lecture-detail-header.fixed .wrap {padding: 0.5em 0;}
+	.lecture-detail-header.fixed h1 {font-size: 1.8em;}
+	.lecture-detail-header.fixed .lecture-description {display: none;}
+	.lecture-detail-header.fixed .lecture-hgroup>div {float: left;}
+	.lecture-box-section.fixed {position: fixed; top: 20px; z-index: 2;}
+	.lecture-box-section.fixed .movie-preview {display: none;}
+
+	.lecture-box-section {position: absolute; left: calc(50% + 130px); top: 165px;  background-color: #fff; -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	box-shadow: 0 0 3px rgba(0,0,0,0.5); color: #000; border-radius: 8px; width: 260px; border:5px solid #fff; font-size: 0.9em;}
+
+	/*ê²°ì œ ì „*/
+	.lecture-buy-before {padding: 7%;}
+	.lecture-price {font-size: 2.4em; text-align: left;}
+	.lecture-benefit {font-size: 0.9em; }
+
+	/*ê²°ì œ í›„*/
+	.lecture-buy {padding: 7%;}
+
+	/*ê°•ì¢Œ ì„¸ë¶€ë‚´ìš© ì†Œê°œ*/
+
+    .lecture-detail-contents .wrap>div {margin: 5em 0;}
+    .lecture-detail-contents h2 {padding-top: 0.5em;}
+    .lecture-detail-contents h2:before {display: block; content: ''; position: absolute; left: 0; top: 0; width: 1.5em; height: 2px; background-color: #369; }
+	.lecture-unit-step td:first-of-type {width: 70%;}
+	.lecture-unit-step td:last-of-type {width: 30%;}
+
+	/*ê°•ì‚¬ ì†Œê°œ ì˜ì—­*/
+	.teacher-photo {float: left; margin-right: 40px;}
+	.teacher_intro {float: left; width: 500px; }
+
+	.roadmap>li>div {-webkit-background-size: 150px 85px; background-size: 150px 85px; min-height:85px; padding-left: 160px; background-position: left center;}
+}
+
+@media screen and (min-width: 1024px) {
+	.lecture-detail-header .wrap, .lecture-detail-contents .wrap {width: 1000px; padding: 2em 350px 2em 0;}
+    .lecture-detail-contents .wrap>div {}
+	.lecture-hgroup {width: 670px;}
+	.lecture-box-section {left: calc(50% + 200px); top: 165px; width: 300px; }
+}
+
+@media screen and (min-width: 1280px) {
+    .bg {padding: 4em 0;}
+}

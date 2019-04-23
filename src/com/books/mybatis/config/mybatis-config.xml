@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.books.model.domain.book.Book" alias="Book"/>
+		<typeAlias type="com.books.model.domain.book.BookComment" alias="BookComment"/>
+		<typeAlias type="com.books.model.domain.book.Ddabong" alias="Ddabong"/>
+		<typeAlias type="com.books.model.domain.book.Review" alias="Review"/>
+		<typeAlias type="com.books.model.domain.book.ReviewComment" alias="ReviewComment"/>
+		<typeAlias type="com.books.model.domain.book.Score" alias="Score"/>
+		<typeAlias type="com.books.model.domain.member.Member" alias="Member"/>
+		<typeAlias type="com.books.model.domain.member.Auth" alias="Auth"/>
+		<typeAlias type="com.books.model.domain.member.Bookmark" alias="Bookmark"/>
+		<typeAlias type="com.books.model.domain.member.Orderbook" alias="Orderbook"/>
+		<typeAlias type="com.books.model.domain.member.Searchbook" alias="Searchbook"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/books/mybatis/mapper/MemberMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/AuthMapper.xml"/>
+	</mappers>
+</configuration>

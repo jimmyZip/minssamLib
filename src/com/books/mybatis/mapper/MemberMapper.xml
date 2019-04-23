@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<sql id="sql_select">
+		select member_id,auth_id,id,pass,nickname,name,email,regdate,lastlogin from member
+	</sql>
+
+	<select id="selectAll" resultType="Member">
+		<include refid="sql_select"/> order by desc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Member">
+		<include refid="sql_select"/> where member_id=#{member_id}
+	</select>
+	
+	<!-- 로그인 체크 -->
+  	<select id="loginCheck" resultType="Member" parameterType="Member" >
+  		<include refid="sql_select"/> where id=#{id} and pass=#{pass}
+  	</select>
+	
+	<select id="selectByAuth">
+		<include refid="sql_select"/> where auth_id=#{auth_id}
+	</select>
+	
+	<insert id="insert" parameterType="Member">
+		insert into member(auth_id,id,pass,nickname,name,email)
+		values(1,#{id},#{pass},#{nickname},#{name},#{email})
+	</insert>
+
+
+</mapper>

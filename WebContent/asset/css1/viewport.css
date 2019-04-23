@@ -1,0 +1,265 @@
+@charset 'utf-8';
+.user-content {
+    display: none;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 62px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.user-content ul li {text-align: center; padding: 0.6em; border-bottom: 1px solid #EEE; font-weight: 400;}
+.user-content ul li a  {color: #000;}
+.mobile .cart-cnt {display: none;}
+.mobile .heart-cnt {display: none;}
+/* pc */
+@media screen and (min-width: 768px) {
+    body {margin-top: 0; color: #333;}
+    h1 {font-size: 2.4em;}
+    .main-menu, .wrap {width: 95%; margin: 0 auto;}
+    header {position: static; padding-bottom:0; background-color: #fff; -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1); box-shadow: 0 1px 1px rgba(0,0,0,0.1);}
+    .logo {float: left; }
+    .login-btn {font-size: 1.2em; line-height: 40px; margin-top: 5px;}
+    .login-btn:hover {}
+    .login-btn span {display: block;}
+    .menu-btn {display: none;}
+
+    
+    .icon-cnt {
+        position: absolute;
+        z-index: 3;
+        top: -0.6em;
+        left: 3em;
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        background: #db4c50;
+        color: white;
+        font-size: 0.5em;
+        text-align: center;
+        line-height: 2em;
+    }
+    .cart-cnt {left: 3em;}
+    .heart-cnt {left: 10em;}
+
+    .heart {
+        background-image: url('../images/heart.svg');
+    }
+    .cart {
+        background-image: url('../images/cart.svg');
+    }
+
+    .dropdown {
+        float: left;
+        margin: 0 0.7em;
+        width: 40px;
+        height: 40px;
+        box-sizing: border-box;
+        align-items: center;
+        border-radius: 20px;
+        border: 1px solid #e1e1e1;          
+        cursor: pointer;
+        box-shadow: 0 4px 16px -2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0);
+        transition: 200ms all;
+        background-color: #fafafa;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-background-size: 60% auto;
+        background-size: 60% auto;
+    }
+    .dropdown-heart {}
+    .user-content:before {display: block; content: ''; width: 0; height: 0; border: 12px solid transparent; border-width: 12px 8px; border-bottom-color:#f1f1f1; position: absolute; top: -24px; z-index: 5; right: 26px; }
+    .user-content {
+        padding: 15px;
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        border-radius: 7px;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+    }
+    .user-content ul li {padding: 0; border: 0; font-weight: 300;}
+ 
+    .cart-wrapper {padding: 5px 0; border-bottom: 1px solid #DDD;}
+    .cart-wrapper>a {color: #333;}
+    .cart-wrapper>a:hover {color: #369;}
+    .cart-img {float: left; text-indent: -9999em; margin-right: 8px; width: 60px; height: 40px; -webkit-background-size: cover;
+    background-size: cover; background-position: center center;}
+    .cart-info-box {float: left; width: 150px; font-size: 0.8em; line-height: 16px; padding-top: 5px;}
+    .cart-name {white-space: nowrap; overflow:hidden; text-overflow:ellipsis; font-weight: 500;}
+    .cart-price {font-size: 0.9em;}
+    .user-btn {width: 100%; color: #fff !important; background-color: #db4c50; text-align: center; padding: 0.4em; font-size: 0.8em; border-radius: 5px; margin: 0.4em 0;}
+    
+    #main-menu {
+        display: block;
+        margin-top: 10px;
+        border-top: 1px solid #F1F1F1;
+    }
+    .main-menu {
+        display: flex;
+        z-index: 1;
+        color: #eee;
+        position: static;
+        top: auto;
+        left: auto;
+        height: auto;
+        transition: none;
+        background: white;
+        margin:0 auto;
+        -webkit-box-shadow: 0 0 0 rgba(0,0,0,0.5);
+        box-shadow: 0 0 0 rgba(0,0,0,0.5);
+    }
+    .main-top {
+        display: none;
+    }
+    .menu-item {
+        flex:1;
+        margin: auto;
+        padding: 0;
+        border-top: none;
+        cursor: pointer;
+        color: black;
+        height: 100%;
+        text-align: center;
+        padding: 1em 0;
+        position: relative;
+    }
+    
+    .menu-item:after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 0;
+        background-color: #db4c50;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: height 0.3s;
+    }
+    .menu-item:hover {
+        background-color: transparent;
+        color: #000;
+    }
+    .menu-item:hover:after {
+        height: 3px;
+    }
+    .menu-item:last-child {
+        border-bottom-width: 0;
+    }
+
+    
+    .visual_wrap {padding-top: 0;}
+    .swiper-container {height: 500px;}
+    .swiper-button-next, .swiper-button-prev {display: block;}
+    .titleWrap {padding-top: 140px; }
+    .visualTitle {width: 500px; padding: 50px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.4); font-size: 1.3em; text-align: left; margin-left: 50px;}
+    .visualTitle:before {display: block; content: ''; position: absolute; right: 50px; top: 50px; width: 70px; height: 70px; background: url('../images/studying.svg') 0 0 no-repeat; -webkit-background-size: contain; background-size: contain;}
+    .notice-wrapper {width: 50%; float: left;}
+    .notice-type {text-indent: 0; color: #fff; width: 30%; font-weight: 500;}
+    .notice-type>i {width: 20px;}
+    .notice-type>span {display: inline-block;}
+    .notice-title {width: 70%; }
+
+    .courses-section .wrap{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .course-wrapper {
+        width: 18%;
+        margin: 1%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .course-wrapper>a {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding-top: 56.25%;
+        border-bottom: 1px solid #EEE;
+        position: relative;
+        color: #FFF;
+    }
+    .course-wrapper>a:after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: 0.3s;
+        -webkit-background-size: 20%;
+        background-size: 20%;
+        background: rgba(5,117,131,0) none center center no-repeat;
+        
+    }
+    .course-wrapper>a:hover:after {
+        background: rgba(5,117,131,0.9) url('../images/info-circle-solid.svg') center center no-repeat;
+        -webkit-background-size: 20%;
+        background-size: 20%;
+
+    }
+    .course-info-wrapper {font-size: 0.9em;}
+    .course-info-box {
+        display: block;
+        padding: 0.8em;
+    }
+    .course-price-wrapper {
+        
+    }
+    .course-price-wrapper span {
+        display: block;
+    }
+    .course-price {
+        text-decoration: line-through;
+    }
+
+    .course-discount {
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+
+    .like {
+        position: absolute;
+        right: 10px;
+        bottom: 12px;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #db4c50;
+        font-size: 1.5em;
+        font-weight: bold;
+        width: 30px;
+        height: 30px;
+        font-size: 1.3em;
+    }
+    
+    .footer-wrapper {}
+    .footer-wrapper dl {font-size: 0.9em;}
+    .footer-wrapper dt {clear: none;}
+    .footer-wrapper dd {padding-right: 3em; position: relative;}
+    .footer-wrapper dd:after {display: block; content: ''; position: absolute; top: 0.3em; right: 1.3em; width: 1px; height: 1em; background-color: #EEE;}
+    .footer-wrapper dt:nth-of-type(5), .footer-wrapper dt:nth-of-type(6), .footer-wrapper dt:last-of-type {clear: both;}
+    .footer-wrapper .bd0:after {display: none;}
+
+}
+@media screen and (min-width: 1024px) {
+    .course-info-wrapper {font-size: 1em;}
+    .course-discount {font-weight: bold; font-size: 1em;}
+    .like {font-size: 1.5em; right: 15px; bottom: 15px;}
+    .notice-type {width: 20%;}
+    .notice-title {width: 80%;}
+}
+
+@media screen and (min-width: 1640px) {
+    .main-menu, .wrap {width: 1600px;}
+/*    .visual_title {margin-left: 0;}*/
+}

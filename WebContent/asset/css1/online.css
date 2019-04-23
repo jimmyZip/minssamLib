@@ -1,0 +1,113 @@
+@charset 'utf-8';
+
+/*í—¤ë”*/
+.lecture-detail-header {background-color: #023; color: #fff; font-size: 0.9em;}
+.lecture-detail-header .wrap {padding: 1.4em 0.8em;}
+.lecture-detail-header h1 {color: #fff;}
+.lecture-hgroup {}
+.lecture-name {}
+.lecture-description {font-size: 1.3em; margin: 0.6em 0;}
+.lecture-time {}
+.lecture-level {}
+.lecture-headcount {}
+
+
+/* ë°•ìŠ¤ ì˜ì—­ */
+.lecture-box-section {border:5px solid #fff;}
+.bt {display: block; width: 100%; border: 1px solid #CCC; background-color: transparent; margin: 10px 0; padding: 0.8em 0; font-size: 1em; font-weight: 700; cursor: pointer; border-radius: 3px;}
+.lecture-box-section.fixed .movie-preview {display: none;}
+.movie-preview {width: 100%; position: relative;}
+.movie-preview:before {display: block; content: ''; width: 100%; padding-top: 56.25%;  }
+.movie-preview>div {position: absolute;left: 0; top: 0; width: 100%; height: 100%; -webkit-background-size: cover; background-size: cover;}
+.movie-preview-button {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); border: 0; font-size: 48px; text-align: center; color: #fff; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.8); box-shadow: inset 0 0 5px rgba(0,0,0,0.8); cursor: pointer;}
+.important-button {border: 0; background-color: #db4c50; color: #fff; border: 1px solid #db4c50;}
+
+/*ê²°ì œ ì „*/
+.lecture-buy-before {padding: 3%;}
+.lecture-price {font-size: 2.8em; font-weight: 400; font-family: 'Roboto'; text-align: right;}
+.lecture-benefit {}
+.lecture-benefit h3 {border-bottom: 1px solid #DDD; padding: 0.5em;}
+.lecture-benefit div {padding: 0.5em; line-height: 1.8em;}
+.lecture-benefit i {position: relative; animation:talkAni 1s infinite;}
+
+@keyframes talkAni {
+    from {top: 0;}
+    75% {top: 0;}
+    80% {top: -2px;}
+    85% {top: 0;}    
+    to {top: 0;}
+}
+
+/*ê²°ì œ í›„*/
+.lecture-buy {padding: 3%;}
+.lecture-buy-buttons {margin-top: 2em;}
+.lecture-period, .lecture-progress {color: #369;}
+.lecture-period-bar, .lecture-progress-bar {width: 100%; height: 15px; border: 2px solid #CCC; padding: 1px; border-radius: 11px; margin: 0.5em 0 1em;}
+.bar {height: 100%; border-radius: 8px; background-color: #db4c50; animation:barAni 1s forwards; transform-origin: left center;}
+
+@keyframes barAni {
+    from {transform:scaleX(0);} 
+    to {transform:scaleX(1);}
+}
+
+/*ê°•ì¢Œ ì„¸ë¶€ë‚´ìš© ì†Œê°œ*/
+.lecture-detail-contents {padding-bottom: 3em;}
+.lecture-detail-contents .wrap {width: 92%;}
+.mobile .lecture-detail-contents .wrap>div {width: 100%; border: 1px solid #EEE; background-color: #F8F8F8; padding: 0.8em; font-size: 0.9em; margin: 2em 0;}
+.lecture-detail-contents h2 {position: relative; padding: 0 0 1em; color: #369;}
+.lecture-summary {}
+.lecture-summary .summary {line-height: 1.8em;}
+
+.lecture-curriculum {}
+.movie-count {float: right; font-size: 0.7em; color: #000;}
+.movie-count>span {display: inline-block; color: #fff; width: 36px; height: 36px; line-height: 36px; background-color: #db4c50; text-align: center; border-radius: 50%;}
+.curriculum {}
+.lecture-unit {}
+.lecture-unit>li {margin: 0.2em 0;}
+.unit-title {cursor: pointer; border: 1px solid #DDD; padding: 0.8em;}
+.unit-title.on {background-color: #fcfcfc;}
+.unit-title.on:before {content: '-';}
+.unit-title:hover {background-color: #fcfcfc;}
+.unit-title:before {display: inline-block; content: '+'; margin-right: 0.3em; font-weight: bold; color: #369;}
+.lecture-unit-step {display: none; width: 100%; border-collapse: collapse; margin-bottom: 2em;}
+.lecture-unit-step tr:hover {background-color: #fcfcfc;}
+.lecture-unit-step td {height: 34px; margin: 0 2px; border-bottom: 1px solid #EEE;}
+.lecture-unit-step td:first-of-type {width: 60%; font-size: 0.9em; text-align: left; padding-left: 0.5em;}
+.lecture-unit-step td:last-of-type {width: 40%; text-align: right; padding-right: 0.5em;}
+.lecture-unit-step td button {cursor:pointer;}
+.preview-button {border: 0; background-color: #db4c50; color: #fff; font-size: 0.65em; width: 62px; height: 18px; border-radius: 9px; position: relative; top: -1px;}
+.play-time {display: inline-block; padding: 0 5px; font-size: 0.8em;}
+.play-button {border: 0; background-color: #fff;}
+.play-button i {font-size: 1.1em; line-height: 18px; text-align: center; color: #db4c50;}
+
+/*ê°•ì‚¬ ì†Œê°œ ì˜ì—­*/
+.lecture-teacher {}
+.teacher {}
+.teacher-photo {margin: 1em auto; width: 120px; height: 120px; border-radius: 50%; border: 4px solid #DDD; overflow: hidden;}
+.teacher-photo img {width: 100%;}
+.teacher_intro {float: left; width: 100%; }
+.teacher_intro h3 {color: #369; font-weight: 400; margin-top: 1em;}
+
+
+/* ë¡œë“œë§µ */
+.lecture-roadmap {}
+.lecture-roadmap p {margin: 0.8em;}
+.roadmap {position: relative;}
+.roadmap a {display: inline-block; font-size: 0.7em; font-weight: normal; background-color: #db4c50; color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; padding: 1px 5px;}
+.roadmap:before {display: block; content: ''; position: absolute; left: 25px; top: 0; width: 1px; height: 100%; border-left: 1px dashed #DDD;}
+.roadmap:after { display: block; content: ''; position: absolute; left: 20px; top: 0; width: 11px; height: 100%; border: 1px solid #DDD; border-width: 1px 0;}
+.roadmap>li {position: relative; margin-bottom: 20px; padding-left: 50px;}
+.roadmap>li>div {background-color: #fff; background-repeat: no-repeat; -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.1); -moz-box-shadow:  0 0 2px rgba(0,0,0,0.1); box-shadow:  0 0 2px rgba(0,0,0,0.1); padding: 5px;}
+.roadmap>li>div>span:first-of-type {color: #55C7D1; font-weight: bold;}
+.roadmap>li>div>span:last-of-type {font-size: 0.8em;}
+.roadmap>li:last-child {margin-bottom: 0;}	
+.roadmap>li:before {display: block; position: absolute; left: 10px; top: 50%; width: 30px; margin-top: -15px; height: 30px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; background-color: #55C7D1; color: #fff; text-align: center; line-height: 30px;}
+.roadmap>li:nth-child(1):before {content: '1';}
+.roadmap>li:nth-child(2):before {content: '2';}
+.roadmap>li:nth-child(3):before {content: '3';}
+.roadmap>li:nth-child(4):before {content: '4';}
+.roadmap>li:nth-child(5):before {content: '5';}
+.roadmap>li:nth-child(6):before {content: '6';}
+
+
+.mobile .roadmap>li>div {background-image: none !important;}

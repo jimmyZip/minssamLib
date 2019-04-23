@@ -5,7 +5,7 @@
 	} else {
 		System.out.print("세션없음");
 	}
-//진홍test
+
 %>
 <!DOCTYPE html>
 <html>

@@ -145,7 +145,14 @@ background-size: contain; margin-right: 10px; position: relative; top: 10px;}
     .my_lecture_list tr:hover {background-color: #fcfcfc;}
     .my_lecture_list thead tr:hover {background-color: transparent;}   
     .my_lecture_list td a {line-height: 100px; }
-    .my-lecture-img {float: left; width: 178px; height: 100px; margin-right: 20px; line-height: 100px; -webkit-background-size: cover; background-size: cover; background-repeat: no-repeat; padding-left: 190px; font-weight: 400;} 
+    .my-lecture-img {
+    	background-size:contain;
+    	float: left; width: 178px; 
+    	height: 100px; 
+    	margin-right: 20px;
+    	line-height: 100px;
+    	background-repeat: no-repeat; padding-left: 190px; font-weight: 400;
+    } 
     .wish-chk {position: absolute; right: 20px; bottom: 24px;}
     .wish-btns .bt {font-size: 1em;}
     .mypage .pay_result_section .pay_info div {width: 20%;}

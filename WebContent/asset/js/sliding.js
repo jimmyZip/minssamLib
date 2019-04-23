@@ -3,54 +3,59 @@
  */
 $(function(){
 
-			$(".slideScreen").prepend($(".slideFilm:last"));
-			$(".slideScreen").css({"marginLeft":"-100%"});
+			$(".film").prepend($(".scene:last"));
+			$(".film").css({"marginLeft":"-100%"});
 			$("#btn2 ul li:eq(0)").addClass("addBtn");
 			
 			$(".nextBtn").click(function(){
-				$(".slideScreen").animate({"marginLeft":"-=100%"},1000,"swing",function(){
-					$(".slideScreen").append($(".slideFlim:first"));
-					$(".slideScreen").css({"marginLeft":"-100%"});
-						var btnNum = $(".slideFilm img").attr("src").substring(lastIndexOf("."),-1);
-						
-						btnNum =Number(btnNum)+1;
-						if(btnNum==4){btnNum=0;}
+				//alert("next img come on");
+				$(".film").animate({"marginLeft":"-=100%"},1000,"swing",function(){
+					$(".film").append($(".scene:first"));
+					$(".film").css({"marginLeft":"-100%"});
+					var str = $(".scene img").attr("src");
+					var lastIndex = parseInt(str.lastIndexOf("."));
+					//console.log("lastIndex : ",lastIndex);
+					var btnNum = str.substr(lastIndex-1,1);
+					//console.log(btnNum);
 					
-						var newClass = $("#btn2 ul li:eq("+btnNum+")");
-						$("#btn2 ul li").removeClass();
-						newClass.addClass("addBtn");
+					//btnNum =Number(btnNum)+1;
+					btnNum =Number(btnNum);
+					if(btnNum==4){btnNum=0;}
+					$("#btn2 ul li").removeClass();
+					$("#btn2 ul li:eq("+Number(btnNum)+")").addClass("addBtn");
+					
 
-						// 동그라미 버튼들 없애기!
-						//$("#btn2").fadeOut();
+					// 동그라미 버튼들 없애기!
+					//$("#btn2").fadeOut();
 				});
 			});
 			$(".prevBtn").click(function(){
-				$(".slideScreen").animate({"marginLeft":"+=100%"},1000,"swing",function(){
-					$(".slideScreen").prepend($(".slideFilm:last"));
-					$(".slideScreen").css({"marginLeft":"-100%"});
-					var btnNum = $(".slideFilm img").attr("src").substring(lastIndexOf("."),-1);
-						
-						btnNum =Number(btnNum)+1;
-						if(btnNum==4){btnNum=0;}
+				//alert("prev img come on");
+				$(".film").animate({"marginLeft":"+=100%"},1000,"swing",function(){
+					$(".film").prepend($(".scene:last"));
+					$(".film").css({"marginLeft":"-100%"});
+					var str = $(".scene img").attr("src");
+					var lastIndex = parseInt(str.lastIndexOf("."));
+					var btnNum = str.substr(lastIndex-1,1);
 					
-						var newClass = $("#btn2 ul li:eq("+btnNum+")");
-						$("#btn2 ul li").removeClass();
-						newClass.addClass("addBtn");
+					btnNum =Number(btnNum);
+					if(btnNum==4){btnNum=0;}
+					$("#btn2 ul li").removeClass();
+					$("#btn2 ul li:eq("+Number(btnNum)+")").addClass("addBtn");
 						
-						//$("#btn2").fadeOut();
 				});
 			});
 
 			$("#btn2 ul li").click(function(){
 				var btnIndex = $(this).index();
-				width = $("#screen").width();
+				width = $(".screen").width();
 
 				$("#btn2 ul li").removeClass();
 				$("#btn2 ul li:eq("+btnIndex+")").addClass("addBtn");
 
 				for(var i=0; i<width; i++){
 					if(btnIndex== i ){
-						$("#film").animate({"marginLeft":"-"+width*btnIndex+"px"},500);
+						$(".film").animate({"marginLeft":"-"+width*btnIndex+"px"},500);
 					}
 				}
 

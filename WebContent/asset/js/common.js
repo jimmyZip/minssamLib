@@ -28,14 +28,7 @@ $(document).ready(function(){
         $("#wrapper").toggle();
     });
 
-    var swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-
-    $(".fa-user").click(function(){
+    $(".dropdown").click(function(){
         $(".user-content").toggle();
     });
     

@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 Tomcat : 
 <%=application.getServerInfo() %>
 <br>
-Servlet : 
+Servlet:
 <%=application.getMajorVersion() %>.<%=application.getMinorVersion() %>
 <br>
-JSP :
-<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %>
+JSP:
+<%=JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %>
 </body>
 </html>

@@ -2,8 +2,7 @@
 모달 팝업
 -----------------------------------*/
 /* The Modal (background) */
-.login-modal {
-	display: none; /* Hidden by default */
+#full {
 	position: fixed; /* Stay in place */
 	z-index: 10; /* Sit on top */
 	left: 0;
@@ -11,65 +10,112 @@
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
 	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.85); /* Black w/ opacity */
+	background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
 	font-size: 0.8em;
 	text-align: center;
 }
 
 /* Modal Content */
-.modal-content {
-	background-color: #fff;
-	margin: auto;	
+#view {
+	position:fixed;
+	width: 480px;
+	height:360px;
+	left:50%;
+	top:20%;
+	margin-left:-240px;
+	margin-top:-180px;
+	z-index:11;
+	background-color: #fff;	
 	margin-top: 100px;
 	border: 1px solid #888;
-	width: 90%;
 	border-radius:8px;
 	text-align: center;
-	padding: 0 0 2em;
-}
-.login-header {padding: 0.8em; border-bottom: 1px solid #DDD; color: #3B5998; font-weight: 300;}
-.login-content {} 
-.close {position: relative; width: 20px; height: 20px; float: right; text-indent: -9999em;}
-.close:after, .close:before {display: block; content: ''; position: absolute; left: 0; top: 50%; width: 20px; height: 2px; background-color: #ccc; transform:rotate(45deg); transform-origin:center center;}
-.close:after {transform:rotate(-45deg);}
-/*-----------------------------------
-ëª¨ë‹¬ì•ˆìª½ ë¡œê·¸ì¸ í¼
------------------------------------*/
-.sns-btn{
-	display:block;
-	width:80%;
-	text-align:center;
-	margin:10px auto;
-	color: white;
-	line-height: 50px;
-}
-.fa-facebook {font-size: 1.4em; margin-right: 3px; }
-.facebook{
-	background: #3B5998;
-}
-.google{
-  background: #dd4b39;
-}
-.login-header h3{
-
-}
-.login-header h3 span{
-
+	padding: 5%;
 }
 
+/*loaded login form##########################################################################*/
 
-.mail_service {width: 80%; margin: 20px auto;}
-.mail_service span {display: block; float: left; line-height: 1.2em;}
-.mail_chk {width: 10%;}
-.mail_txt {width: 90%; text-align: left;}
-.agree-section {padding: 10px;}
-.agree-section a {display: inline-block;}
-.login_regist {border-top: 1px solid #DDD; font-size: 1.2em; padding: 15px;}
-.login_regist a {display: inline-block; font-weight: bold;}
+.login_wrap {
+   width:100%;
+   height: 100%;
+   position: relative;
+}
+.login_wrap form {
+   width: 100%;
+   height: 100%;
+}
+fieldset {
+   border: none;
+}
+legend {
+   display:inline-block !important;
+   font-size: 24px;
+   font-weight: bold;
+   padding-bottom: 10px;
+}
+.login_area {
+   width: 100%;
+   height: 150px;
+}
+.input_info {
+   width: 100%;
+   overflow: hidden;
+}
+.id_area, .pass_area {
+   width: 80%;
+   height: 40px;
+   float: left;
+}
+.login_area input {
+   display: block;
+   width: 99%;
+   height: 99%;
+   text-indent: 10px;
+}
+.id_area {
+}
+.login_btn {
+   width: 20%;
+   height: 80px;
+   padding-left: 0;
+   float: right;
+}
+.login_btn a {
+   display: block;
+   width: 99%;
+   height: 99%;
+   background-color: #FF681B;
+   color: #fff;
+   text-align: center;
+   line-height: 68px;
+   border: 1px solid #B95304;
+}
+.search_id_pw {
+   font-size: 12px;
+   text-align: right;
+   padding: 20px 0;
+}
+.search_id_pw a,.search_id_pw span{
+	display:inline-block !important;
+}
+.sign_up_area {
+   width: 99%;
+   height: 35px;
+   border: 1px solid #ccc;
+   line-height: 35px;
+   text-align: center;
+}
+.sign_up_area a {
+   display:block;
+   width:100%;
+   height:100%;
+}
+
+
+/*loaded login form##########################################################################*/
 @media screen and (min-width: 768px) {
-	.login-modal {font-size: 0.9em;}
-	.modal-content {width: 500px;}
+	#full {font-size: 0.9em;}
+	#view {width: 500px;}
 }
 
 

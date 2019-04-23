@@ -12,24 +12,24 @@ div.visual_wrap{
 	overflow:hidden;
 	margin:0 auto;
 }
-div.slideWrap{
+div.screen{
 	width:100%;
 	margin:0 auto;
 	position:relative;
 	overflow:hidden;
 }
-ul.slideScreen{
+ul.film{
 	width:400%;
 }
-li.slideFilm{
+li.scene{
 	float:left;
 	width:25%;
 }
-li.slideFilm img{
+li.scene img{
 	width:100%;
 	transform:translateY(-10%);
 }
-ul.slideScreen:after{
+ul.film:after{
 	content:'';
 	display:block;
 	clear:both;
@@ -44,6 +44,7 @@ ul.slideScreen:after{
 	height:64px;
 	margin-top:-32px;
 	overflow:hidden;
+	z-index:5;
 }
 #btn1 p img{
 	width:100%;
@@ -58,6 +59,7 @@ ul.slideScreen:after{
 	width:240px;
 	height:30px;
 	position:absolute;
+	z-index:5;
 	left:50%;
 	top:400px;
 	margin-left:-120px;

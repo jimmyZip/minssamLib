@@ -9,7 +9,7 @@
 	<!-- header start -->
 	<%@include file="/include/header.jsp" %>
 	<!-- header end -->
-	<div class="bg bg_campus">
+	<div class="bg bg_review">
 		<div class="wrap">
 			<span class="red shadow">민쌤의 서재 리뷰 페이지입니다.</span>
 			<h2>Book Review</h2>
@@ -18,7 +18,7 @@
 	<!-- book review list start -->
 	<div class="wrap main cl">
 		<div class="content-section list-section campus-section">
-			<h2 style="display: block !important;">캠퍼스 Story</h2>
+			<h2 style="display: block !important;">민쌤의 서재 도서 Review</h2>
 			<div class="campus-wrap">
 				<div class="campus-list">
 					<a href="/campus/detail.jsp" class="cl"> 

@@ -1,5 +1,4 @@
 @charset 'utf-8';
-/*ì´ˆê¸°í™”*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -109,17 +108,6 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 }
 .login-btn {position: absolute; right: 0; top: 2px; font-size: 1.2em; line-height: 2em; cursor:pointer;}
 .login-btn span {display: none;}
-
-#wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    display: none;
-    z-index: 2;
-}
 
 .main-menu {
     display: none;
@@ -239,14 +227,11 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 
 /*ë©”ì¸ë¹„ì£¼ì–¼ ì˜ì—­*/
 .visual_wrap {}
-.swiper-container {position: relative; height: 50vh; }
-.swiper-slide {-webkit-background-size: cover;
-background-size: cover; background-position: center center;}
 .titleWrap {position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 5;}
 
 .visualTitle {position: relative; text-align: center; padding-top: 130px; color: #FFF; text-shadow: 1px 1px 1px rgba(0,0,0,0.8);}
 .visualTitle span {color: #FFF; font-size: 1.5em; font-weight: 700; line-height: 1em; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);}
-.swiper-button-next, .swiper-button-prev {display: none; z-index: 5;}
+
 
 /*ê³µì§€ì‚¬í•­,ë¸”ë¡œê·¸ ì„¹ì…˜*/
 .notice-section {
@@ -367,8 +352,17 @@ background-size: cover; background-position: center center;}
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 }
+.bg_review{
+	background-image: url('../images/subpage_bg/review_bg.jpg'); 
+	background-position: right center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
 .bg_offline { background-image: url('../images/bg_offline.jpg');}
-.bg_basic {background-image: url('../images/bg_basic.jpg');};
+.bg_basic {
+	background-image: url('../images/bg_basic.jpg');
+	background-attachment:fixed;
+};
 .bg:before {display: block; content: ''; width: 120%; height: 100%; position: absolute; left: -10%; top: 0; -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
 box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
 .bg .wrap {position: relative;}
@@ -410,3 +404,144 @@ box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
 .right {text-align: right !important;}
 .hand {cursor: pointer;}
 .mobile .mobile-hide {display: none !important;}
+
+/*########유저 메인페이지 리뷰왕, 최근리뷰내역 섹션################################################################################*/
+.announce-area-wrap{
+	width:100%;
+	background-color:#80C1CC;
+	overflow:hidden;
+}
+.announce-area{
+	width:95%;
+	margin:0 auto;	
+}
+.announce-area .announce-wrap{
+	width:50%;
+	float:left;
+	padding:1%;
+}
+.announce-wrap section{
+	width:100%;
+}
+.announce-wrap section h3{
+	width:100%;
+	font-size: 1.5rem;
+    padding: .5rem 0 .5rem;
+    font-weight: 400;
+    color:#fff;
+    text-shadow:1px 1px 4px rgba(0,0,0,0.5);
+}
+.announce-wrap section h3:after{
+	content:'';
+	display:block;
+	width:100%;
+	height:3px;
+	background-color:#ededed;
+	transform:translateY(10px);
+}
+
+/*#####monthly best reviewer 이 달의 리뷰왕 #####*/
+.best-reviewer-wrapper{
+	overflow:hidden;
+}
+.best-reviewer-inner{
+	float:left;
+	width:50%;
+	padding:30px 0;
+}
+.champ-reviewer{
+	width:100%;
+	overflow:hidden;
+	background-color:#fff;
+}
+.champ-reviewer p{
+	float:left;
+	text-align:center;
+}
+.reviewer-img{
+	width:150px;
+	height:150px;
+	padding:5px;
+	line-height:10rem;
+	overflow:hidden;
+	background-image:url('/asset/images/profile/girl.png');
+	background-repeat:no-repeat;
+	background-size:90%;
+	background-position:center center;
+	position:relative;
+}
+.reviewer-img img{
+	display:inline-block;
+	width:50px;
+	height:50px;
+	position:absolute;
+	left:0;
+	top:0;
+}
+.best-reviewer-info{
+	width:180px;
+	height:150px;
+	line-height:2rem;
+	padding:10% 0;
+}
+.best-reviewer-info span{
+	font-weight:700;
+}
+
+/*ranker-reviewer table*/
+.ranker-reviewer table{
+	width:100%;
+	color:#fff;
+	text-align:center;
+}
+
+.table-head{
+	color:#BD2934;
+}
+.table-head th{
+	padding:5px 0;
+	border-bottom:2px solid #fff;
+}
+.ranker-reviewer table td{
+	border-bottom:1px solid #ededed;
+	padding:12px 0;
+}
+
+/*########recent-review###########*/
+.recent-review-inner{
+	width:100%;
+	padding:30px 0 20px;
+}
+.recent-review-inner li{
+	width:100%;
+	line-height:2rem;
+	overflow:hidden;
+	border-bottom:1px solid #ededed;
+	color:#fff;
+}
+li.title-row{
+	border-bottom:3px solid #fff;
+	color:#BD2934;
+	font-weight:700;
+}
+.recent-review p{
+	float:left;
+	text-align:center;
+}
+.review-no{width:10%;}
+.review-title{width:60%;}
+.reviewer-info{width:30%;}
+
+.more-btn{
+	width:100%;
+	text-align:right;
+}
+.more-btn a{
+	color:#fff;
+	font-weight:900;
+	transition:color .3s;
+}
+
+.more-btn a:hover{
+	color:red;
+}

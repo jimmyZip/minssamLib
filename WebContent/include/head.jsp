@@ -18,11 +18,11 @@
 <link rel="stylesheet" type="text/css" href="/asset/css1/campus.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/mypage.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/viewport.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="/asset/js/common.js"></script>
 <script src="/asset/js/Lecture.js"></script>
 <script src="/asset/js/OnlineLecture.js"></script>
 <script src="/asset/js/mypage.js"></script>
 <script src="/asset/js/sliding.js"></script>
+<script src="/asset/js/login-modal.js" type="text/javascript"></script>
 

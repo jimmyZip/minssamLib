@@ -6,9 +6,6 @@
 <%@include file="/include/head.jsp" %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 
-<!-- 로그인 모달 창 -->
-
-
 <script>
 $(function(){
 	//var obj=JSON.parse(getCookie(uid));
@@ -25,7 +22,7 @@ $(function(){
 </script>
 </head>
 <body>
-    <!-- header start -->
+<!-- header start -->
     <header>
     
 <script>
@@ -106,64 +103,69 @@ $(function(){
 	
     </header>
     <!-- hedaer end -->
-
-    <div class="bg_basic lecture-cart-header">
+    
+     <div class="bg_basic lecture-cart-header">
 	    <div class="wrap">
 	        <h2 class="red">마이 페이지</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
 	    </div>
     </div>
-	<!-- blog list start -->
-	
-	<div class="wrap main cl mypage">
-	<!-- 사이드 메뉴 include -->
-	<%@include file="/include/side.jsp" %>
+     <div class="wrap main cl mypage">
+     <%@include file="/include/side.jsp" %>
+	   <!--category-section-->
 	   
-	   <div class="list-section">
-	       <h2>내 강좌</h2>
-	       <table class="table_basic my_lecture_list">
-	           <thead>
-	               <tr>
-                       <th>No</th>
-                       <th>이미지</th>
-                       <th>책 제목</th>
-                       <th>날짜</th>
-                       <th>비고</th>
-	               </tr>
-	           </thead>
-	           <tbody id="container">
-					           
-	               <tr>
-                       <td>
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div>곰돌이 푸</a>
-                       </td>
-                       <td>46강</td>    
-                       <td>60일</td>
-                       <td>30일 남음</td>
-                       <td>2019-02-24</td>
-                   </tr>
-                   
-                   <tr>
-                       <td>
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/06426567.jpg');"></div>안아프니까 청춘이다</a>
-                       </td>
-                       <td>46강</td>    
-                       <td>60일</td>
-                       <td>30일 남음</td>
-                       <td>2019-02-24</td>
-                   </tr>
- 					
-	           </tbody>
-	       </table>
-	   </div>
-	
-	</div>
-	
-	
-	
-	<!-- footer start -->
-	<%@include file="/include/footer.jsp" %>
+        <div class="list-section payment-section">
+	       <h2>결제 내역</h2>
+	       <form action="" class="payment-date-check">
+               <div class="cl">
+                   <div class="from-date"><input type="text" value="2018-12-01" maxlength="10"><button class="btn-calendar"><i class="far fa-calendar-alt"></i></button> 부터 </div>
+                   <div class="to-date"><input type="text" value="2019-03-01" maxlength="10"><button class="btn-calendar"><i class="far fa-calendar-alt"></i></button> 까지</div>
+                   <input type="submit" class="date-inquiry" value="조회">
+	           </div>
+	       </form>
+	       <div class="payment-content">
+	           <h3 class="pament-date">2018.12</h3>
+	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
+                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
+                        <span class="fl linebar">190,000원</span>
+                        <span class="fl">결제일 : 2018-12-01</span>
+                        <span class="br red">결제완료</span>
+                   </div>
+               </a>
+	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
+                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
+                        <span class="fl linebar">190,000원</span>
+                        <span class="fl">결제일 : 2018-12-01</span>
+                        <span class="br red">결제완료</span>
+                   </div>
+               </a>
+	       </div>
+	       <div class="payment-content">
+	           <h3 class="pament-date">2019.2</h3>
+	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
+                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
+                        <span class="fl linebar">190,000원</span>
+                        <span class="fl">결제일 : 2018-12-01</span>
+                        <span class="br red">결제완료</span>
+                   </div>
+               </a>
+	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
+                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
+                        <span class="fl linebar">190,000원</span>
+                        <span class="fl">결제일 : 2018-12-01</span>
+                        <span class="br red">결제완료</span>
+                   </div>
+               </a>
+	       </div>
+	    </div>
+	    <!-- payment list end -->
+    </div>
+     
+    
 
-	<!-- footer end -->
+
+
+
+<%@include file="/include/footer.jsp" %>
 
 </body>
-</html>       
+</html>

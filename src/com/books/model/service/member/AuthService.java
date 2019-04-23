@@ -10,4 +10,5 @@ public interface AuthService {
 	public void insert(Auth auth);
 	public void update(Auth auth);
 	public void delete(int auth_id);
+	//¤©¤¤¾î¤¿¤Ó¤±¤¤¤·¤©
 }

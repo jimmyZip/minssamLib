@@ -6,7 +6,7 @@ MyPage 용 js
 /*-----------------------------------------------
 찜한 강좌 배열을 전송한다
 -------------------------------------------------*/
-function getMyWish(){
+/*function getMyWish(){
 	var json=JSON.parse(getCookie(uid));
 	
 	var form = $("<form></form>");
@@ -27,3 +27,4 @@ $(function(){
 		alert("dd");
 	});
 });
+*/

@@ -1,6 +1,6 @@
 /*-----------------------------------------------
 index 와 온라인강좌에 사용되는 강좌 컴포넌트
------------------------------------------------*/
+-----------------------------------------------
 class OnlineLecture{
 	constructor(lecture_id, lecture_img, lecture_name,total_time,total_count,price, level){
 		this.lecture_id=lecture_id;
@@ -56,4 +56,4 @@ class OnlineLecture{
 		return this.str;
 	}
 }
-
+*/

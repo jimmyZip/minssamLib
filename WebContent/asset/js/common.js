@@ -37,18 +37,18 @@ $(document).ready(function(){
 /*---------------------------------------------------------------
 쿠기에 데이터 넣기:  cname : 키값 , cvalue : 데이터 , exdays : 유효기간
 ---------------------------------------------------------------*/
-function setCookie(cname, cvalue, exdays) {
+/*function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	var expires = "expires="+ d.toUTCString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+}*/
 
 
 /*---------------------------------------------------------------
 쿠기에서 데이터 가져오기
 ---------------------------------------------------------------*/
-function getCookie(cname) {
+/*function getCookie(cname) {
 	var name = cname + "=";
 	var decodedCookie = decodeURIComponent(document.cookie);
 
@@ -64,19 +64,19 @@ function getCookie(cname) {
 	}
 	return "";
 }
-
+*/
 /*---------------------------------------------------------------
 쿠키 삭제하기
 ---------------------------------------------------------------*/
-function deleteCookie(cname){
+/*function deleteCookie(cname){
 	document.cookie = cname+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
-
+*/
 
 /*---------------------------------------------------------------
 wish 처리하기
 ---------------------------------------------------------------*/
-function checkWish(obj,lecture_id){
+/*function checkWish(obj,lecture_id){
 
 	if($(obj).attr("class")=="far fa-heart"){ //비어있는 하트 이면 찜추가
 		addWish(obj,lecture_id);
@@ -84,16 +84,16 @@ function checkWish(obj,lecture_id){
 		removeWish(obj,lecture_id)
 	}		
 }
-
+*/
 
 /*---------------------------------------------------------------
 wish 리스트 넣기
 ---------------------------------------------------------------*/
-function addWish(obj,lecture_id){
+/*function addWish(obj,lecture_id){
 
-	/*------------------------------------------
+	------------------------------------------
 	 로그인 체크
-	------------------------------------------*/
+	------------------------------------------
 	if(getCookie(uid).length <=0){
 		alert("로그인이 필요한 서비스입니다");
 		return;
@@ -119,19 +119,19 @@ function addWish(obj,lecture_id){
 	//찜목록 뱃지 처리
 	getWishList();	
 }
-
+*/
 
 
 /*---------------------------------------------------------------
 찜목록 제거하기
 ---------------------------------------------------------------*/
-function removeWish(obj,lecture_id){	
+/*function removeWish(obj,lecture_id){	
 	
 	$(obj).attr("class","far fa-heart");
 	
-	/*------------------------------------------
+	------------------------------------------
 	 쿠기에 들어있는 wish 중 강좌 1개를 삭제
-	 ------------------------------------------*/
+	 ------------------------------------------
 	var json=JSON.parse(getCookie(uid));
 	
 	if(json.wish.length > 0){ //쿠키에 들어있다면
@@ -148,14 +148,14 @@ function removeWish(obj,lecture_id){
 	
 	getWishList(); //뱃지 갱신
 }
-
+*/
 /*---------------------------------------------------------------
 찜목록 가져오기
 1)쿠키가 있는 여부 판단
 2)찜목록의 갯수에 따라 뱃지 처리 
 3)찜목록 정보와 현재 강좌간 일치 여부 찾아서  찜목록 강좌들의 감좌담기,찜한강좌  처리
 ---------------------------------------------------------------*/
-function getWishList(){
+/*function getWishList(){
 	//로그인 했다면
 	if(getCookie(uid)!=undefined){
 		var json=JSON.parse(getCookie(uid));
@@ -176,6 +176,6 @@ function getWishList(){
 		
 	}
 }
-
+*/
 
 

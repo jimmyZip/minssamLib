@@ -20,11 +20,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="/rest/members",method=RequestMethod.POST)
-	@ResponseBody//응답시 ViewResolver가 관여되지 않음... 따라서 jsp로 조합되는일은 없다.. 반환값 자체가 곧 응답데이터이다
+	@RequestMapping(value="/member/regist",method=RequestMethod.POST)
 	public String regist(Member member) {
+		
 		memberService.insert(member);
-		return "{\"resultCode\":1,\"msg\":\"등록성공\"}";
+
+		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
@@ -38,12 +39,7 @@ public class MemberController {
 	}
 	
 	
-	@ExceptionHandler(RegistFailException.class)
-	@ResponseBody
-	public String handleRegistFail(RegistFailException e) {
-		
-		return "{\"resultCode\":0,\"msg\":\""+e+"\"}";
-	}
-	
 
+
+	
 }

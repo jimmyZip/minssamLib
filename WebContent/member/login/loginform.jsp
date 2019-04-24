@@ -34,7 +34,7 @@ function requestLogin(){
                      title="비밀번호 찾기">비밀번호 찾기</a>
                </p>
                <p class="sign_up_area">
-                  <a href="/regist/registform.jsp" title="회원가입 버튼">회원가입</a>
+                  <a href="/member/regist/registform.jsp" title="회원가입 버튼">회원가입</a>
                </p>
             </div>
          </fieldset>

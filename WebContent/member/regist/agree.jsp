@@ -49,8 +49,8 @@ input[type=text], select, textarea {
 		</div>
 		
 		<div class="row">
-			<input type="button" value="동의">
-			<input type="button" value="비동의">
+			<input type="button" value="동의" onclick="location.href='/member/regist/registform.jsp'">
+			<input type="button" value="비동의" onclick="location.href='/index.jsp'">
 		</div>
 	</form>
 </body>

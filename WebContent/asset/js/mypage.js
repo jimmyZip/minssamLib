@@ -22,8 +22,3 @@ function getMyWish(){
 	});
 	$(form).submit();
 }
-$(function(){
-	$(".mypage .cl ol li").click(function(){
-		alert("dd");
-	});
-});

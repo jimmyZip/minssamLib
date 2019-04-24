@@ -54,6 +54,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	public Member loginCheck(Member member) {
+		
 		return memberDAO.loginCheck(member);
 	}
 

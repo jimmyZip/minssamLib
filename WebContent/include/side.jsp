@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ include file="/include/head.jsp" %>
 
 <div class="category-section">
 <h2 class="category_h2">MY PAGE<i class="fas fa-angle-down"></i></h2>

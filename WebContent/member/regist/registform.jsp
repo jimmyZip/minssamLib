@@ -17,7 +17,7 @@ input[type=text], select, textarea {
 	resize: vertical;
 }
 
-input[type=password], select, textarea,input[type=email] {
+input[type=password], select, textarea, input[type=email] {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -62,17 +62,20 @@ input[type=button]:hover {
 	margin-top: 6px;
 }
 /*email 입력부분*/
-#emailArea{
-	overflow:hidden;
+#emailArea {
+	overflow: hidden;
 }
-input[type=email],select{
-	float:left;
+
+input[type=email], select {
+	float: left;
 }
-input[type=email]{
-	width:70%;
+
+input[type=email] {
+	width: 70%;
 }
-select{
-	width:30%;
+
+select {
+	width: 30%;
 }
 
 /* Clear floats after the columns */
@@ -90,7 +93,8 @@ select{
 	}
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(function() {
 	$("form[name='regist-form']").find("button").click(function() {
@@ -99,26 +103,15 @@ $(function() {
 
 });
 
-function regist() {
-	$.ajax({
-		url : "/rest/members",
-		type : "post",
-		data : {
-			id : $($("form[name='regist-form']").find("input[name='id']")).val(),
-			pass : $($("form[name='regist-form']").find("input[name='pass']")).val(),
-			name : $($("form[name='regist-form']").find("input[name='name']")).val(),
-			nickname : $($("form[name='regist-form']").find("input[name='nickname']")).val(),	
-			email : $($("form[name='regist-form']").find("input[name='email']")).val()													
-		},
-		success : function(resultCode) {
-			alert(resultCode);
-		},
-		error : function(resultCode) {
-			
-		}
 
-	});
-}
+	function regist(){
+		$("form").attr({
+			method:"post",
+			action:"/member/regist"
+		});
+		$("form").submit();
+	} 
+
 
 </script>
 </head>
@@ -171,7 +164,8 @@ function regist() {
 					<label for="name">Nickname</label>
 				</div>
 				<div class="col-75">
-					<input type="text" id="nickName" name="nickname" placeholder="사용하실 닉네임을 입력해주세요">
+					<input type="text" id="nickName" name="nickname"
+						placeholder="사용하실 닉네임을 입력해주세요">
 				</div>
 			</div>
 
@@ -181,19 +175,7 @@ function regist() {
 				</div>
 				<div class="col-75" id="emailArea">
 					<input type="email" id="email" name="email" placeholder="email 주소 입력">
-					 <select name="email">
-						<option value="-">선택</option>
-						<option value="hanmail.net">hanmail.net</option>
-						<option value="naver.com">naver.com</option>
-						<option value="nate.com">nate.com</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="hotmail.com">hotmail.com</option>
-						<option value="paran.com">paran.com</option>
-						<option value="empal.com">empal.com</option>
-						<option value="korea.com">korea.com</option>
-						<option value="freechal.com">freechal.com</option>
-						<option value="">직접등록</option>
-					</select>
+	
 				</div>
 			</div>
 

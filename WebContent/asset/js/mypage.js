@@ -22,9 +22,11 @@ MyPage 용 js
 	});
 	$(form).submit();
 }
-$(function(){
+<<<<<<< HEAD
+=======
 	$(".mypage .cl ol li").click(function(){
-		alert("dd");
+		
 	});
 });
 */
+>>>>>>> 3185ebbf1ba98dab90f7e78d1e11fb111ef64ad0

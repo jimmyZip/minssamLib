@@ -2,14 +2,14 @@
 $(function(){
 	$("#full,#view").hide();
 	$("#login-bt").click(function(){
-		alert(1);
+		//alert(1);
 		loginModalShow();
 	});
 });
 function loginModalShow(){
-	alert(2);
+	//alert(2);
 	$("#view").html("<div id='login-form'></div>");
-	$("#login-form").load("/member/loginform.jsp");
+	$("#login-form").load("/member/login/loginform.jsp");
 	$("#view,#full").show();
 	$("#full").click(function(){		
 		$("#full,#view").hide();

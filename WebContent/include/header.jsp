@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<script>
+// 검색 페이지로 이동
+function search(){
+	var data = $("#bookSearch").val();
+	location.href = "/books/search";	
+}
+
+</script>
 <header>
    <div class="title-bar wrap cl">
       <div class="menu-btn">
@@ -18,10 +26,10 @@
                      placeholder="찾는 도서명 입력" />
                </p>
                <p class="search-btn">
-                  <button>
-                     <img src="/asset/images/search.png" alt="검색버튼 이미지" />
-                  </button>
-               </p>
+						<button onclick="search()">
+							<img src="/asset/images/search.png" alt="검색버튼 이미지" />
+						</button>
+					</p>
             </fieldset>
          </form>
       </div>

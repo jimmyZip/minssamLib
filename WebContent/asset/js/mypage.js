@@ -24,6 +24,6 @@ function getMyWish(){
 }
 $(function(){
 	$(".mypage .cl ol li").click(function(){
-		alert("dd");
+		
 	});
 });

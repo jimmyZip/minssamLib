@@ -1,11 +1,9 @@
 package com.books.model.domain.member;
 
-import com.books.model.domain.book.Book;
-
 public class Searchbook {
 	private int searchbook_id;
 	private Member member;
-	private Book book;
+	private String isbn;
 	private String searchdate;
 
 	public int getSearchbook_id() {
@@ -24,12 +22,12 @@ public class Searchbook {
 		this.member = member;
 	}
 
-	public Book getBook() {
-		return book;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getSearchdate() {

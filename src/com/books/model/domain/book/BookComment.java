@@ -5,7 +5,7 @@ import com.books.model.domain.member.Member;
 public class BookComment {
 	private int bookComment_id;
 	private Member member;
-	private Book book;
+	private String isbn;
 	private String content;
 	private String regdate;
 	private String modidate;
@@ -26,12 +26,12 @@ public class BookComment {
 		this.member = member;
 	}
 
-	public Book getBook() {
-		return book;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getContent() {

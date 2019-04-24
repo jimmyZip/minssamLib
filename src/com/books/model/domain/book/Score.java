@@ -4,7 +4,7 @@ import com.books.model.domain.member.Member;
 
 public class Score {
 	private int score_id;
-	private Book book;
+	private String isbn;
 	private Member member;
 	private int score;
 	private String regdate;
@@ -17,12 +17,12 @@ public class Score {
 		this.score_id = score_id;
 	}
 
-	public Book getBook() {
-		return book;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public Member getMember() {

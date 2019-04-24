@@ -69,9 +69,9 @@
          </div>
          <!-- nav menus -->
          <div class="menu-item"
-            onclick="location.href='/user/books/bookSearchList.jsp'">도서 검색</div>
+            onclick="location.href='/books/bookSearchList.jsp'">도서 검색</div>
          <div class="menu-item"
-            onclick="location.href='/user/review/reviewlist.jsp'">평가/리뷰
+            onclick="location.href='/review/reviewlist.jsp'">평가/리뷰
             게시판</div>
          <div class="menu-item" onclick="location.href='#'">인기도서 목록</div>
          <div class="menu-item" onclick="location.href='/member/mypage.jsp'">MyPage</div>

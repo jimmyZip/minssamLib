@@ -30,10 +30,7 @@ $(document).ready(function(){
 
     $(".dropdown").click(function(){
         $(".user-content").toggle();
-    });
-    
-
-    
+    });    
 });
 
 

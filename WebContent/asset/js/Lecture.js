@@ -1,6 +1,6 @@
 /*-----------------------------------------------
  Mypage 에 사용되는 강좌 컴포넌트
------------------------------------------------*/
+-----------------------------------------------
 class Lecture{
 	constructor(container, lecture_id, lecture_img, lecture_name, total_time, total_count, price, level){
 		var str="<div class=\"cl\">";
@@ -23,3 +23,4 @@ class Lecture{
 	}
 }
 
+*/

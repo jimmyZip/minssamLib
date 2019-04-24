@@ -18,9 +18,10 @@ public class BookSearch {
 		apiURL.append("https://openapi.naver.com/v1/search/book.json?");
 		apiURL.append("query=");
 		apiURL.append(setEnc(query));
+
 		return searchProcess(apiURL.toString());
 	}
-	
+
 	// 출력건수 지정
 	public String search(String query, int display) {
 		StringBuffer apiURL = new StringBuffer();
@@ -29,9 +30,10 @@ public class BookSearch {
 		apiURL.append(setEnc(query));
 		apiURL.append("&display=");
 		apiURL.append(display);
+
 		return searchProcess(apiURL.toString());
 	}
-	
+
 	// 시작 위치 지정
 	public String search(String query, int display, int start) {
 		StringBuffer apiURL = new StringBuffer();
@@ -44,7 +46,7 @@ public class BookSearch {
 		apiURL.append(start);
 		return searchProcess(apiURL.toString());
 	}
-	
+
 	private String setEnc(String word) {
 		String result = null;
 		try {
@@ -54,7 +56,7 @@ public class BookSearch {
 		}
 		return result;
 	}
-	
+
 	// 검색 프로세스 진행
 	private String searchProcess(String apiURL) {
 		System.out.println(apiURL);

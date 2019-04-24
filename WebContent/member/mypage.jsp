@@ -25,8 +25,8 @@
 	        <h2 class="red">마이 페이지</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
 	    </div>
     </div>
-    <!-- page visual end-->
 	<!-- blog list start -->
+	
 	<div class="wrap main cl mypage">
 	<!-- 사이드 메뉴 include -->
 	<%@include file="/include/side.jsp" %>

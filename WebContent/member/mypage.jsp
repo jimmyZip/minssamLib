@@ -1,7 +1,12 @@
+<%@page import="com.books.model.domain.member.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	if (session.getAttribute("member") != null) {
+		System.out.println("마이페이지에서 찍은거"+session.getAttribute("member"));
+		Member member = (Member)session.getAttribute("member"); 
+		System.out.print("이름:"+member.getName());
 		System.out.print("세션있음");
+		
 	} else {
 		System.out.print("세션없음");
 	}

@@ -28,6 +28,10 @@
 		insert into member(auth_id,id,pass,nickname,name,email)
 		values(1,#{id},#{pass},#{nickname},#{name},#{email})
 	</insert>
+	
+	<update id="update" parameterType="Member">
+		update member set pass=#{pass},nickname=#{nickname},email=#{email} where member_id=#{member_id}
+	</update>
 
 
 </mapper>

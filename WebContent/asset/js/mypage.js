@@ -29,4 +29,3 @@ MyPage 용 js
 	});
 });
 */
->>>>>>> 3185ebbf1ba98dab90f7e78d1e11fb111ef64ad0

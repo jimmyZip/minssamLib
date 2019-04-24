@@ -3,7 +3,7 @@
 // 검색 페이지로 이동
 function search(){
 	var data = $("#bookSearch").val();
-	location.href = "/books/search";	
+	location.href = "/book/search";	
 }
 
 </script>

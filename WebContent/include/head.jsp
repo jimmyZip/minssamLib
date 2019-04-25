@@ -18,9 +18,13 @@
 <link rel="stylesheet" type="text/css" href="/asset/css1/campus.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/mypage.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/viewport.css">
+<link rel="stylesheet" type="text/css" href="/asset/css1/review_write.css"/>
+<link rel="stylesheet" type="text/css" href="/asset/css1/review_list.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="/asset/js/common.js"></script>
 <script src="/asset/js/mypage.js"></script>
 <script src="/asset/js/sliding.js"></script>
+<script src="/asset/js/sliding.js"></script>
 <script src="/asset/js/login-modal.js" type="text/javascript"></script>
-
+<script src="/asset/js/review_write.js" type="text/javascript"></script>
+<script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>

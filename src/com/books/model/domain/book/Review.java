@@ -6,6 +6,7 @@ public class Review {
 	private int review_id;
 	private Member member;
 	private String isbn;
+	private String title;
 	private String content;
 	private String regdate;
 	private String modidate;
@@ -25,6 +26,22 @@ public class Review {
 
 	public void setMember(Member member) {
 		this.member = member;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getContent() {

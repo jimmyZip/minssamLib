@@ -1,6 +1,7 @@
 package com.books.controller.book;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SearchController {
 	
-	@RequestMapping(value="/book/search", method=RequestMethod.GET)
-	public ModelAndView search() {
-		System.out.println("서치");
+	@RequestMapping(value="/book/search/{searchWord}", method=RequestMethod.GET)
+	public ModelAndView search(@PathVariable("searchWord") String searchWord) {
+		System.out.println("서치" + searchWord);
 		ModelAndView mav = new ModelAndView("books/bookSearchList");
 		mav.addObject("searchResult", null);
 		return mav;	

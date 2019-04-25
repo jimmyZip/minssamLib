@@ -3,12 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
+
+  <resultMap type="Member" id="membermap">
+  	<id column="member_id" property="member_id"/>
+  	<result column="id" property="id"/>
+  	<result column="pass" property="pass"/>
+  	<result column="nickname" property="nickname"/>
+  	<result column="name" property="name"/>
+  	<result column="email" property="email"/>
+  	<result column="regdate" property="regdate"/>
+  	<result column="lastlogin" property="lastlogin"/>
+  	<association column="auth_id" property="auth" javaType="Auth" select="Auth.select"/>
+  </resultMap>
+  
 	<sql id="sql_select">
 		select member_id,auth_id,id,pass,nickname,name,email,regdate,lastlogin from member
 	</sql>
 
 	<select id="selectAll" resultType="Member">
-		<include refid="sql_select"/> order by desc
+		<include refid="sql_select"/> order by member_id desc
 	</select>
 	
 	<select id="select" parameterType="int" resultType="Member">
@@ -25,9 +38,13 @@
 	</select>
 	
 	<insert id="insert" parameterType="Member">
-		insert into member(auth_id,id,pass,nickname,name,email)
-		values(1,#{id},#{pass},#{nickname},#{name},#{email})
+		insert into member(id,pass,nickname,name,email)
+		values(#{id},#{pass},#{nickname},#{name},#{email})
 	</insert>
+	
+	<update id="update" parameterType="Member">
+		update member set pass=#{pass},nickname=#{nickname},email=#{email} where member_id=#{member_id}
+	</update>
 
 
 </mapper>

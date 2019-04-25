@@ -1,4 +1,8 @@
+<%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+	//Member member = (Member)session.getAttribute("member");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +12,16 @@
 
 
 <script>
-$(function(){
-	$($("input[type='button']")).click(function(){
-		modify();
+$(function() {
+	$("form[name='edit-form']").find("button").click(function() {
+		edit();
 	});
+
 });
 
-function modify(){
+function edit(){
 	$("form").attr({
-		action:"/member/modify",
+		action:"/member/edit",
 		method:"post"
 	});
 	$("form").submit();
@@ -34,17 +39,18 @@ function modify(){
 	<%@include file="/include/side.jsp" %>
 	<div>
 	
-		<form name="edit">
-			<input type="test" name="id" value="DB에서 받아와야함" disabled><br>
-   			<input type="text" name="ori_pass" placeholder="비밀번호"><br>
-   			<input type="text" name="repl_pass" placeholder="변경할 비밀번호"><br>
-   			<input type="text" name="repl_pass2" placeholder="비밀번호 확인" ><br>
-   			<input type="text" name="name" value="DB에서 받아와야함" disabled><br>
-   			<input type="text" name="nickname" placeholder="닉네임"><br>
-   			<input type="text" name="email" placeholder="email"><br>
-   			<button type="button" onClick="editmember">수정</button>
+		<form name="edit-form">
+			<input type="hidden" name="member_id" value="<%=member.getMember_id() %>">
+			<input type="text" name="id" value="<%=member.getId() %>" disabled><br>
+   			<input type="text" placeholder="현재 비밀번호"><br>
+   			<input type="text" name="pass" placeholder="변경할 비밀번호"><br>
+   			<input type="text" placeholder="비밀번호 확인" ><br>
+   			<input type="text" value="<%=member.getName() %>" disabled><br>
+   			<input type="text" name="nickname" placeholder="변경할 닉네임"><br>
+   			<input type="text" name="email" placeholder="변경할 email"><br>
+   			<button type="button">수정</button>
 		</form>
-	</div>
+	</div> 
 </div>
 
 

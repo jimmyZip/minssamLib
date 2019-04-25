@@ -1,9 +1,15 @@
+<%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+	Member member = (Member)session.getAttribute("member");
+%>
+
 <script>
 // 검색 페이지로 이동
 function search(){
 	var data = $("#bookSearch").val();
-	location.href = "/book/search";	
+	//alert(data);
+	location.href = '/book/search/'+data;	
 }
 
 </script>
@@ -22,14 +28,13 @@ function search(){
          <form name="search-form">
             <fieldset>
                <p class="search-input">
-                  <input type="text" name="bookSearch" id="bookSearch"
-                     placeholder="찾는 도서명 입력" />
+                  <input type="text" name="bookSearch" id="bookSearch" placeholder="찾는 도서명 입력" />
                </p>
-               <p class="search-btn">
-						<button onclick="search()">
-							<img src="/asset/images/search.png" alt="검색버튼 이미지" />
-						</button>
-					</p>
+               <p class="search-btn" onclick="search()">
+					<button type="button">
+						<img src="/asset/images/search.png" alt="검색버튼 이미지"/>
+					</button>
+				</p>
             </fieldset>
          </form>
       </div>
@@ -43,12 +48,16 @@ function search(){
          <!-- login btn start -->
          <i class="far fa-user dropdown"></i>
          <div class="user-content">
+         	<%if (session.getAttribute("member") != null) { %>
             <ul>
                <li><a href="/member/mypage.jsp" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
-               <li><a href="#" class="user-btn" id="login-bt">로그인</a></li>
-            </ul>
+               <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>
+         <%}else{ %>
+               <li><a href="#" class="user-btn" id="login-bt">로그인</a></li>         		
+         <%} %>
+         	</ul>
          </div>
          <!-- login btn end -->
       </div>
@@ -63,10 +72,12 @@ function search(){
       <nav class="main-menu">
          <div class="main-top">
             <div class="regist1">
+            
                <div class="cl">
                   <span>로그인 해주세요.</span> <a href="#">로그인</a> <a href="#">회원가입</a>
                </div>
             </div>
+            
             <ol class="regist2 cl">
                <li onclick="location.href='../order/cart.html'"><i
                   class="cart"></i>장바구니</li>

@@ -4,6 +4,12 @@
 <head>
 <title>Book Search Result</title>
 <%@include file="/include/head.jsp" %>
+<script>
+function loginFailAlert(){
+	alert("로그인이 필요한 서비스 입니다.");
+}
+
+</script>
 </head>
 <!-- head end -->
 <body>
@@ -48,12 +54,23 @@
 								</span>
 							</p>
 						</dd>
-						<dd class="btnArea">
-							<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-							<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-							<p><a href="#none" title="리뷰 보기">리뷰 보기</a></p>
-							<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
-						</dd>
+						<!-- 로그인 안되어있을대 처리 -->
+						<%if(session.getAttribute("member") == null){ %>
+							<dd class="btnArea">
+								<p><a href="javascript:loginFailAlert()" title="북마크 추가">북마크 추가</a></p>
+								<p><a href="javascript:loginFailAlert()" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="javascript:loginFailAlert()" title="리뷰 보기">리뷰 보기</a></p>
+								<p><a href="javascript:loginFailAlert()" title="리뷰 쓰기">리뷰 쓰기</a></p>
+							</dd>
+						<!-- 로그인 되어 있을때 처리 -->
+						<%}else {%>
+							<dd class="btnArea">
+								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
+								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="#none" title="리뷰 보기">리뷰 보기</a></p>
+								<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
+							</dd>
+						<%} %>
 					</dl>
 				</div>
 				<!-- 도서 검색결과 1건 단위 끝-->

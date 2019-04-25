@@ -13,6 +13,7 @@ public class Book {
 	private String description; // ¼³¸í
 	private List<Review> review; // ¸®ºä
 	private List<BookComment> bookComment; // ´ñ±Û
+	private List<Score> score;
 
 	public String getTitle() {
 		return title;
@@ -92,6 +93,14 @@ public class Book {
 
 	public void setBookComment(List<BookComment> bookComment) {
 		this.bookComment = bookComment;
+	}
+
+	public List<Score> getScore() {
+		return score;
+	}
+
+	public void setScore(List<Score> score) {
+		this.score = score;
 	}
 
 }

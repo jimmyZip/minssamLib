@@ -1,4 +1,11 @@
+<%@page import="java.io.Console"%>
+<%@page import="com.books.model.domain.book.Book"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+	List<Book> searchList = (List)request.getAttribute("searchList");
+	System.out.println("겸색 결과 결과 사이즈" + searchList.size());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,21 +34,32 @@ function loginFailAlert(){
 		<div class="content-section list-section campus-section">
 			<h2 style="display: block !important;">도서 목록</h2>
 			<div class="book-result-wrap">
-				<h3><span>0000</span>검색결과</h3>
+				<h3><span><%=request.getAttribute("searchWord") %></span>검색결과</h3>
+				
+				<%for(int i=0; i<searchList.size(); i++){ %>
+				<%Book book = searchList.get(i); %>
+				<%// 평점 계산
+					int totalScore = 0;
+					int scoreCnt = 0;
+					for(int s=0; s<book.getScore().size(); s++){
+						
+					}
+				%>
 				<!-- 도서 검색결과 1건 단위 -->
 				<div class="book-list">
 					<dl class="book-list-inner">
 						<dt class="imgArea">
-							<img src="/asset/images/book_sample.jpg" alt="도서 이미지">
+							<img src="<%=book.getImage() %>" alt="도서 이미지">
 						</dt>
 						<dd class="descArea">
-							<p class="bTitle">책 제목</p>
+							<!-- detail 페이지로 넘어갈 링크 주소 필요!! -->
+							<a href="#<%=book.getIsbn()%>" ><p class="bTitle"><%=book.getTitle() %></p></a>
 							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span>
+								<span><%=book.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=book.getPubdate() %> </span>
 							</p>
 							<p class="bScore">
 								<span>평점</span>
-								<span class="repuStar">									
+								<span class="repuStar">								
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
 									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
@@ -50,7 +68,7 @@ function loginFailAlert(){
 								</span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>
-									리뷰<i>(리뷰 갯수)&nbsp;건</i>
+									리뷰<i><%=book.getReview().size() %>&nbsp;건</i>
 								</span>
 							</p>
 						</dd>
@@ -74,41 +92,7 @@ function loginFailAlert(){
 					</dl>
 				</div>
 				<!-- 도서 검색결과 1건 단위 끝-->
-				<!-- 도서 검색결과 1건 단위 -->
-				<div class="book-list">
-					<dl class="book-list-inner">
-						<dt class="imgArea">
-							<img src="/asset/images/book_sample.jpg" alt="도서 이미지">
-						</dt>
-						<dd class="descArea">
-							<p class="bTitle">책 제목</p>
-							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span>
-							</p>
-							<p class="bScore">
-								<span>평점</span>
-								<span class="repuStar">									
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
-								</span>
-								<i class="divider">&nbsp;|&nbsp;</i>
-								<span>
-									리뷰<i>(리뷰 갯수)&nbsp;건</i>
-								</span>
-							</p>
-						</dd>
-						<dd class="btnArea">
-							<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-							<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-							<p><a href="#none" title="리뷰 보기">리뷰 보기</a></p>
-							<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
-						</dd>
-					</dl>
-				</div>
-				<!-- 도서 검색결과 1건 단위 끝-->
+				<%} %>
 			</div>
 		</div>
 		<!-- floating side bar menus -->

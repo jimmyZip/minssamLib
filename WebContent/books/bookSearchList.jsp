@@ -1,9 +1,18 @@
+<%@page import="com.books.common.Pager"%>
 <%@page import="java.io.Console"%>
 <%@page import="com.books.model.domain.book.Book"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%!Pager pager = new Pager(); %>
 <%
 	List<Book> searchList = (List)request.getAttribute("searchList");
+	String searchWord = request.getAttribute("searchWord").toString();
+	String currentPage = request.getAttribute("currentPage").toString();
+	if(searchList.size()>0){
+		pager.searchInit(Integer.parseInt(currentPage), searchList.get(0).getTotal());
+	}else{
+		pager.searchInit(1,1);
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -33,8 +42,10 @@ function loginFailAlert(){
 		<div class="content-section list-section campus-section">
 			<h2 style="display: block !important;">도서 목록</h2>
 			<div class="book-result-wrap">
-				<h3><span><%=request.getAttribute("searchWord") %></span>검색결과</h3>
-				
+				<h3><span><%=searchWord %></span>검색결과</h3>
+				<%if(searchList.size()==0){ %>
+					<h4>검색 결과가 없습니다.</h4>
+				<%} %> 
 				<%for(int i=0; i<searchList.size(); i++){ %>
 				<%Book book = searchList.get(i); %>
 				<%// 평점 계산
@@ -103,27 +114,27 @@ function loginFailAlert(){
 				<%} %>
 			</div>
 		</div>
-		<!-- floating side bar menus -->
-		<!-- 
-		<div class="category-section cl">
-			<ol class="category_bookList cl">
-				<li class="on"><a href="/campus/">북마크 추가</a></li>
-				<li><a href="/campus/">구매한 도서 추가</a></li>
-				<li><a href="/campus/">리뷰 보기</a></li>
-				<li><a href="/campus/">리뷰 쓰기</a></li>
-			</ol>
-		</div>
-		 -->
-		<!-- floating side bar menus ends -->
 	</div>
  	<!--페이징-->
     <div class="page cl">
-        <a href="#">prev</a>
-        <a href="#" class="cnt">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">···</a>
-        <a href="#">next</a>
+    	<%if(pager.getFirstPage()-1>0) {%>
+        <a href="/book/search/<%=searchWord%>/<%=pager.getFirstPage()-1%>">prev</a>
+        <%}else{ %>
+        <a href="javascript:alert('첫페이지 입니다.')">prev</a>        
+        <%} %>
+        <%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
+        	<%if(i>pager.getTotalPage()) break; %>
+        	<%if(i==pager.getCurrentPage()){ %>
+        		<a href="/book/search/<%=searchWord %>/<%=i %>" class="cnt"><%=i %></a>
+        	<%}else{ %>
+        		<a href="/book/search/<%=searchWord %>/<%=i %>"><%=i %></a>
+        	<%} %>
+        <%} %>
+        <%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
+        <a href="/book/search/<%=searchWord%>/<%=pager.getLastPage()+1%>">next</a>
+        <%}else{ %>
+        <a href="javascript:alert('마지막 페이지입니다.')">next</a>
+        <%} %>
     </div>
 	<!-- book search result list end -->
 	<!-- footer start -->

@@ -26,6 +26,25 @@ public class Pager {
 		curPos = (currentPage - 1) * pageSize;// currentPo
 		num = totalRecord - curPos;
 	}
+	
+	// Search 페이지에서 사용하는 Pager 초기화 메서드
+	public void searchInit(int currentPage,int totalRecord) {
+		this.currentPage = currentPage;
+		if(totalRecord >1000) {
+			this.totalRecord = 1000;
+		}else {
+			this.totalRecord = totalRecord;
+		}
+		
+		pageSize = 10;
+		totalPage = (int) Math.ceil((float) totalRecord / pageSize);
+		blockSize = 10;
+		firstPage = currentPage - (currentPage - 1) % blockSize;
+		lastPage = firstPage + (blockSize - 1);
+		curPos = (currentPage - 1) * pageSize;// currentPo
+		num = totalRecord - curPos;
+	}
+	
 	public int getCurrentPage() {
 		return currentPage;
 	}

@@ -13,7 +13,9 @@ public class Book {
 	private String description; // 설명
 	private List<Review> review; // 리뷰
 	private List<BookComment> bookComment; // 댓글
-	private List<Score> score;
+	private List<Score> score;// 점수
+	private int start; // 시작 위치
+	private int total; // 전체 개수
 
 	public String getTitle() {
 		return title;
@@ -101,6 +103,22 @@ public class Book {
 
 	public void setScore(List<Score> score) {
 		this.score = score;
+	}
+
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 }

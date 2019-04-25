@@ -20,13 +20,13 @@ public class SearchController {
 	@Autowired
 	BookSearch bookSearch;
 
-	@RequestMapping(value = "/book/search/{searchWord}", method = RequestMethod.GET)
-	public ModelAndView search(@PathVariable("searchWord") String searchWord) {
-		System.out.println("¼­Ä¡" + searchWord);
+	@RequestMapping(value = "/book/search/{searchWord}/{currentPage}", method = RequestMethod.GET)
+	public ModelAndView searchPage(@PathVariable("searchWord") String searchWord, @PathVariable("currentPage") String currentPage) {
 		ModelAndView mav = new ModelAndView("books/bookSearchList");
-		List<Book> searchList = mapping.mapping((bookSearch.search(searchWord)));
+		List<Book> searchList = mapping.mapping((bookSearch.search(searchWord, 10, Integer.parseInt(currentPage)*10)));
 		mav.addObject("searchList", searchList);
 		mav.addObject("searchWord", searchWord);
+		mav.addObject("currentpage", currentPage);
 		return mav;
 	}
 }

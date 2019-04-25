@@ -53,6 +53,8 @@ public class BookSerachMapping {
 				book.setReview(reviewService.selectByIsbn(isbn));
 				book.setBookComment(bookCommentService.selectByIsbn(isbn));
 				book.setScore(scoreService.selectByIsbn(isbn));
+				book.setStart(Integer.parseInt(jsonObject.get("start").toString()));
+				book.setTotal(Integer.parseInt(jsonObject.get("total").toString()));
 				bookList.add(book);
 			}
 		} catch (ParseException e) {

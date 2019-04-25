@@ -20,16 +20,16 @@
 		select member_id,auth_id,id,pass,nickname,name,email,regdate,lastlogin from member
 	</sql>
 
-	<select id="selectAll" resultType="Member">
+	<select id="selectAll" resultMap="membermap">
 		<include refid="sql_select"/> order by member_id desc
 	</select>
 	
-	<select id="select" parameterType="int" resultType="Member">
+	<select id="select" parameterType="int" resultMap="membermap">
 		<include refid="sql_select"/> where member_id=#{member_id}
 	</select>
 	
 	<!-- 로그인 체크 -->
-  	<select id="loginCheck" resultType="Member" parameterType="Member" >
+  	<select id="loginCheck" resultMap="membermap" parameterType="Member" >
   		<include refid="sql_select"/> where id=#{id} and pass=#{pass}
   	</select>
 	

@@ -3,12 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Auth">
+
+
 	<sql id="sql_select">
 		select auth_id,auth_name,admin_assign,member_del,review_del,review_comment_del,book_comment_del from auth
 	</sql>
 
 	<select id="selectAll" resultType="Auth">
-		<include refid="sql_select"/> order by desc
+		<include refid="sql_select"/> order by auth_id desc
 	</select>
 	
 	<select id="select" parameterType="int" resultType="Auth">

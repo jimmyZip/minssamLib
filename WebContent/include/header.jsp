@@ -53,7 +53,7 @@ function search(){
                <li><a href="/member/mypage.jsp" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
-               <li><a href="session.invalidate();" class="user-btn" id="loginout-bt">로그아웃</a></li>
+               <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>
          <%}else{ %>
                <li><a href="#" class="user-btn" id="login-bt">로그인</a></li>         		
          <%} %>

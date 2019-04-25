@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
 	List<Book> searchList = (List)request.getAttribute("searchList");
-	System.out.println("겸색 결과 결과 사이즈" + searchList.size());
 %>
 <!DOCTYPE html>
 <html>

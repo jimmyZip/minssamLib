@@ -1,7 +1,7 @@
 <%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
-	Member member = (Member)session.getAttribute("member");
+	//Member member = (Member)session.getAttribute("member");
 %>
 <!DOCTYPE html>
 <html>

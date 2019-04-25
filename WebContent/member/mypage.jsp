@@ -1,39 +1,18 @@
 <%@page import="com.books.model.domain.member.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-	if (session.getAttribute("member") != null) {
-		System.out.println("마이페이지에서 찍은거"+session.getAttribute("member"));
-		Member member = (Member)session.getAttribute("member"); 
-		System.out.print("이름:"+member.getName());
-		System.out.print("세션있음");
-		
-	} else {
-		System.out.print("세션없음");
-	}
-//조장님 이 부분도 include로 빼야 하나요
-%>
+
 <!DOCTYPE html>
 <html>
 <!-- head start -->
 <head>
 <%@include file="/include/head.jsp" %>
-<<<<<<< HEAD
 <title>MyPage</title>
-=======
 <title>My Library, My Page</title>
->>>>>>> e53d758de3b3e04dea8e3fff9837764b463e7128
 </head>
-<!-- head end -->
 <body>
-    <!-- header start -->
-<<<<<<< HEAD
-        <%@ include file="/include/header.jsp" %>
-    <!-- hedaer end -->
-=======
 	<%@include file="/include/header.jsp"%>
 	<!-- header end -->
 	<!-- page visual -->
->>>>>>> e53d758de3b3e04dea8e3fff9837764b463e7128
     <div class="bg_basic lecture-cart-header">
 	    <div class="wrap">
 	        <h2 class="red">마이 페이지</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->

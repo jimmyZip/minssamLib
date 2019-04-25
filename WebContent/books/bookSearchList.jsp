@@ -39,10 +39,14 @@ function loginFailAlert(){
 				<%for(int i=0; i<searchList.size(); i++){ %>
 				<%Book book = searchList.get(i); %>
 				<%// 평점 계산
-					int totalScore = 0;
-					int scoreCnt = 0;
-					for(int s=0; s<book.getScore().size(); s++){
-						
+					int scoreCnt = book.getScore().size();
+					int avgScore = 0;
+					if(scoreCnt>0){	// score 평가 한거만 표시
+						int totalScore = 0;
+						for(int s=0; s<scoreCnt; s++){ // 점수 합계 계산
+							totalScore+=book.getScore().get(i).getScore();
+						}
+						avgScore = totalScore/scoreCnt;
 					}
 				%>
 				<!-- 도서 검색결과 1건 단위 -->
@@ -59,12 +63,17 @@ function loginFailAlert(){
 							</p>
 							<p class="bScore">
 								<span>평점</span>
-								<span class="repuStar">								
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
+								<span class="repuStar">	
+									<%for(int j=1; j<=5; j++){ %>
+										<%if(avgScore>=j){%>
+											<!-- 점수보다 현재 반복문 점수가 높으면 표시 -->
+											<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
+										<%}else{ %>
+											<!-- 아니면 빈 이미지 표시 -->
+											<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
+										<%} %>
+									<%} %>							
+
 								</span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>

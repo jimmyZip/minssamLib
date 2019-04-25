@@ -7,7 +7,7 @@ import com.books.model.domain.book.Review;
 public interface ReviewService {
 	public List<Review> selectAll();
 	public List<Review> selectByMember(int member_id);
-	public List<Review> selectByBook(int book);
+	public List<Review> selectByIsbn(String isbn);
 	public Review select(int review_id);
 	public void insert(Review review);
 	public void update(Review review);

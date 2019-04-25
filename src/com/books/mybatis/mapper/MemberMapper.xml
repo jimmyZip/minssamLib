@@ -8,7 +8,7 @@
 	</sql>
 
 	<select id="selectAll" resultType="Member">
-		<include refid="sql_select"/> order by desc
+		<include refid="sql_select"/> order by member_id desc
 	</select>
 	
 	<select id="select" parameterType="int" resultType="Member">

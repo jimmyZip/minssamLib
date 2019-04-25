@@ -20,7 +20,7 @@ function requestLogin(){
             <div class="login_area">
                <div class="input_info">
                   <div class="id_area">
-                     <input id="id" type="text" name="id" placeholder="아이디를 입력하세요"/>
+                     <input id="userid" type="text" name="id" placeholder="아이디를 입력하세요"/>
                   </div>
                   <p class="login_btn">
                      <a href="javascript:requestLogin()" title="로그인 버튼">로그인</a>

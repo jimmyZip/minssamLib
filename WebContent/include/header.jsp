@@ -3,7 +3,8 @@
 // 검색 페이지로 이동
 function search(){
 	var data = $("#bookSearch").val();
-	location.href = "/book/search";	
+	//alert(data);
+	location.href = '/book/search/'+data;	
 }
 
 </script>
@@ -22,14 +23,13 @@ function search(){
          <form name="search-form">
             <fieldset>
                <p class="search-input">
-                  <input type="text" name="bookSearch" id="bookSearch"
-                     placeholder="찾는 도서명 입력" />
+                  <input type="text" name="bookSearch" id="bookSearch" placeholder="찾는 도서명 입력" />
                </p>
-               <p class="search-btn">
-						<button onclick="search()">
-							<img src="/asset/images/search.png" alt="검색버튼 이미지" />
-						</button>
-					</p>
+               <p class="search-btn" onclick="search()">
+					<button type="button">
+						<img src="/asset/images/search.png" alt="검색버튼 이미지"/>
+					</button>
+				</p>
             </fieldset>
          </form>
       </div>

@@ -14,8 +14,8 @@ function init(){
 function send(){
 	var form=$("form");
 	form.attr({
-		"method":"post"
-		//,"action":"/books/regist"
+		"method":"post",
+		"action":"/reviews"
 	});
 	form.submit();
 }

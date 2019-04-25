@@ -1,4 +1,19 @@
+<%@page import="com.books.common.Pager"%>
+<%@page import="java.io.Console"%>
+<%@page import="com.books.model.domain.book.Book"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%!Pager pager = new Pager(); %>
+<%
+	List<Book> searchList = (List)request.getAttribute("searchList");
+	String searchWord = request.getAttribute("searchWord").toString();
+	String currentPage = request.getAttribute("currentPage").toString();
+	if(searchList.size()>0){
+		pager.searchInit(Integer.parseInt(currentPage), searchList.get(0).getTotal());
+	}else{
+		pager.searchInit(1,1);
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,30 +42,52 @@ function loginFailAlert(){
 		<div class="content-section list-section campus-section">
 			<h2 style="display: block !important;">도서 목록</h2>
 			<div class="book-result-wrap">
-				<h3><span>0000</span>검색결과</h3>
+				<h3><span><%=searchWord %></span>검색결과</h3>
+				<%if(searchList.size()==0){ %>
+					<h4>검색 결과가 없습니다.</h4>
+				<%} %> 
+				<%for(int i=0; i<searchList.size(); i++){ %>
+				<%Book book = searchList.get(i); %>
+				<%// 평점 계산
+					int scoreCnt = book.getScore().size();
+					int avgScore = 0;
+					if(scoreCnt>0){	// score 평가 한거만 표시
+						int totalScore = 0;
+						for(int s=0; s<scoreCnt; s++){ // 점수 합계 계산
+							totalScore+=book.getScore().get(i).getScore();
+						}
+						avgScore = totalScore/scoreCnt;
+					}
+				%>
 				<!-- 도서 검색결과 1건 단위 -->
 				<div class="book-list">
 					<dl class="book-list-inner">
 						<dt class="imgArea">
-							<img src="/asset/images/book_sample.jpg" alt="도서 이미지">
+							<img src="<%=book.getImage() %>" alt="도서 이미지">
 						</dt>
 						<dd class="descArea">
-							<p class="bTitle">책 제목</p>
+							<!-- detail 페이지로 넘어갈 링크 주소 필요!! -->
+							<a href="#<%=book.getIsbn()%>" ><p class="bTitle"><%=book.getTitle() %></p></a>
 							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span>
+								<span><%=book.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=book.getPubdate() %> </span>
 							</p>
 							<p class="bScore">
 								<span>평점</span>
-								<span class="repuStar">									
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
+								<span class="repuStar">	
+									<%for(int j=1; j<=5; j++){ %>
+										<%if(avgScore>=j){%>
+											<!-- 점수보다 현재 반복문 점수가 높으면 표시 -->
+											<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
+										<%}else{ %>
+											<!-- 아니면 빈 이미지 표시 -->
+											<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
+										<%} %>
+									<%} %>							
+
 								</span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>
-									리뷰<i>(리뷰 갯수)&nbsp;건</i>
+									리뷰<i><%=book.getReview().size() %>&nbsp;건</i>
 								</span>
 							</p>
 						</dd>
@@ -74,64 +111,30 @@ function loginFailAlert(){
 					</dl>
 				</div>
 				<!-- 도서 검색결과 1건 단위 끝-->
-				<!-- 도서 검색결과 1건 단위 -->
-				<div class="book-list">
-					<dl class="book-list-inner">
-						<dt class="imgArea">
-							<img src="/asset/images/book_sample.jpg" alt="도서 이미지">
-						</dt>
-						<dd class="descArea">
-							<p class="bTitle">책 제목</p>
-							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span>
-							</p>
-							<p class="bScore">
-								<span>평점</span>
-								<span class="repuStar">									
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
-								</span>
-								<i class="divider">&nbsp;|&nbsp;</i>
-								<span>
-									리뷰<i>(리뷰 갯수)&nbsp;건</i>
-								</span>
-							</p>
-						</dd>
-						<dd class="btnArea">
-							<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-							<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-							<p><a href="#none" title="리뷰 보기">리뷰 보기</a></p>
-							<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
-						</dd>
-					</dl>
-				</div>
-				<!-- 도서 검색결과 1건 단위 끝-->
+				<%} %>
 			</div>
 		</div>
-		<!-- floating side bar menus -->
-		<!-- 
-		<div class="category-section cl">
-			<ol class="category_bookList cl">
-				<li class="on"><a href="/campus/">북마크 추가</a></li>
-				<li><a href="/campus/">구매한 도서 추가</a></li>
-				<li><a href="/campus/">리뷰 보기</a></li>
-				<li><a href="/campus/">리뷰 쓰기</a></li>
-			</ol>
-		</div>
-		 -->
-		<!-- floating side bar menus ends -->
 	</div>
  	<!--페이징-->
     <div class="page cl">
-        <a href="#">prev</a>
-        <a href="#" class="cnt">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">···</a>
-        <a href="#">next</a>
+    	<%if(pager.getFirstPage()-1>0) {%>
+        <a href="/book/search/<%=searchWord%>/<%=pager.getFirstPage()-1%>">prev</a>
+        <%}else{ %>
+        <a href="javascript:alert('첫페이지 입니다.')">prev</a>        
+        <%} %>
+        <%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
+        	<%if(i>pager.getTotalPage()) break; %>
+        	<%if(i==pager.getCurrentPage()){ %>
+        		<a href="/book/search/<%=searchWord %>/<%=i %>" class="cnt"><%=i %></a>
+        	<%}else{ %>
+        		<a href="/book/search/<%=searchWord %>/<%=i %>"><%=i %></a>
+        	<%} %>
+        <%} %>
+        <%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
+        <a href="/book/search/<%=searchWord%>/<%=pager.getLastPage()+1%>">next</a>
+        <%}else{ %>
+        <a href="javascript:alert('마지막 페이지입니다.')">next</a>
+        <%} %>
     </div>
 	<!-- book search result list end -->
 	<!-- footer start -->

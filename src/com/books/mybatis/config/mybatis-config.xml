@@ -18,5 +18,7 @@
 	<mappers>
 		<mapper resource="com/books/mybatis/mapper/MemberMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/AuthMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/ReviewMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/ScoreMapper.xml"/>
 	</mappers>
 </configuration>

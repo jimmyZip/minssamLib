@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Review">
+	<resultMap type="Review" id="reviewMap">
+		<id column="review_id" property="review_id"/>
+		<result column="isbn" property="isbn"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="regdate" property="regdate"/>
+		<result column="modidate" property="modidate"/>
+		<result column="img" property="img"/>
+		<association column="member_id" property="member" javaType="Member" select="Member.select"/>
+	</resultMap>
+	
+	<sql id="sql_select">
+		select review_id, member_id, isbn, title, content, regdate, modidate, img from review
+	</sql>
+
+	<select id="selectAll" resultMap="reviewMap">
+		<include refid="sql_select"/> order by review_id desc
+	</select>
+	
+	<select id="select" parameterType="int" resultMap="reviewMap">
+		<include refid="sql_select"/> where review_id=#{review_id}
+	</select>
+	
+	<select id="selectByMember" parameterType="int" resultMap="reviewMap">
+		<include refid="sql_select"/> where member_id=#{member_id}
+	</select>
+	
+	<select id="selectByIsbn" parameterType="String" resultMap="reviewMap">
+		<include refid="sql_select"/> where isbn=#{isbn}
+	</select>
+	
+	<insert id="insert" parameterType="Review">
+		insert into review(member_id, isbn, title, content, regdate, modidate, img) 
+		values(#{member.member_id}, #{isbn}, #{title}, #{content}, #{regdate}, #{modidate}, #{img})
+	</insert>
+	
+	<update id="update" parameterType="Review">
+		update review set isbn=#{isbn}, title=#{title}, content=#{content}, modidate=#{modidate}
+		where review_id=#{review_id} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from review where review_id=#{review_id}
+	</delete>
+	
+	
+
+
+</mapper>

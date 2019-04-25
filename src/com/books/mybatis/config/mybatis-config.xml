@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.books.model.domain.book.Book" alias="Book"/>
 		<typeAlias type="com.books.model.domain.book.BookComment" alias="BookComment"/>
 		<typeAlias type="com.books.model.domain.book.Ddabong" alias="Ddabong"/>
 		<typeAlias type="com.books.model.domain.book.Review" alias="Review"/>

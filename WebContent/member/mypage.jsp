@@ -4,8 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%! Pager pager = new Pager(); %>
 <% 
-	List<Bookmark> markList=(List)request.getAttribute("markList");
-	pager.init(request, markList.size());
+	//List<Bookmark> markList=(List)request.getAttribute("markList");
+	//pager.init(request, markList.size());
+	
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -52,11 +53,11 @@
 	               </tr>
 	           </thead>
 	           <tbody id="container">
-				<%int num=pager.getNum(); %>          
+				<%-- <%int num=pager.getNum(); %>          
 				<%int curPos=pager.getCurPos(); %>
 				<%for(int i=0; i<pager.getPageSize();i++){ %>
 				<%if(num<1)break; %>
-				<%Bookmark bookmark=markList.get(curPos++); %>
+				<%Bookmark bookmark=markList.get(curPos++); %> --%>
 	       			<tr>
                        <td>																							<!-- 멤버 id 참조해서  -->
                            <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div></a>
@@ -66,7 +67,7 @@
                        <td>regdate 받아와서 넣기</td>
                        <td><button onClick="#">삭제</button></td>
                 	</tr>
-                   <%} %>
+                   <%-- <%} %> --%>
                    <tr>
                        <td>
                            <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/06426567.jpg');"></div></a>

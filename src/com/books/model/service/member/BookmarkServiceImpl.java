@@ -2,47 +2,57 @@ package com.books.model.service.member;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.books.exception.DeleteFailException;
+import com.books.exception.EditFailException;
+import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Bookmark;
+import com.books.model.repository.member.BookmarkDAO;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService{
-
-	@Override
+	
+	@Autowired
+	@Qualifier("mybatisBookmarkDAO")
+	BookmarkDAO bookmarkDAO;
+	
 	public List<Bookmark> selectAll() {
-		return null;
+		return bookmarkDAO.selectAll();
 	}
 
-	@Override
 	public List<Bookmark> selectByMember(int member_id) {
-		return null;
+		return bookmarkDAO.selectByMember(member_id);
 	}
 
-	@Override
 	public List<Bookmark> selectByIsbn(String isbn) {
-		return null;
+		return bookmarkDAO.selectByIsbn(isbn);
 	}
 
-	@Override
 	public Bookmark select(int bookmark_id) {
-		return null;
+		return bookmarkDAO.select(bookmark_id);
 	}
 
-	@Override
-	public void insert(Bookmark bookmark) {
-		
+	public void insert(Bookmark bookmark) throws RegistFailException{
+		int result = bookmarkDAO.insert(bookmark);
+		if(result==0) {
+			throw new RegistFailException("북마크 등록 실패");
+		}
 	}
 
-	@Override
-	public void update(Bookmark bookmark) {
-		// TODO Auto-generated method stub
-		
+	public void update(Bookmark bookmark) throws EditFailException{
+		int result= bookmarkDAO.update(bookmark);
+		if(result==0) {
+			throw new EditFailException("수정에 실패했습니다");
+		}
 	}
 
-	@Override
-	public void delete(int bookmark_id) {
-		
+	public void delete(int bookmark_id) throws DeleteFailException{
+		int result=bookmarkDAO.delete(bookmark_id);
+		if(result==0) {
+			throw new DeleteFailException("삭제 실패");
+		}
 	}
-
 }

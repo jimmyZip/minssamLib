@@ -2,8 +2,11 @@ package com.books.model.service.member;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.books.model.domain.member.Bookmark;
 
+@Service
 public class BookmarkServiceImpl implements BookmarkService{
 
 	@Override

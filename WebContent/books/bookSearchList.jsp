@@ -20,6 +20,44 @@ function loginFailAlert(){
 	alert("로그인이 필요한 서비스 입니다.");
 }
 
+// 북마크 추가하는 함수
+function addBookmark(isbn){
+	$.ajax({
+		url:"/bookmark/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			alertResultCode(result);
+		}
+	});
+}
+
+// 주문도서목록 추가 함수
+function addOrderbook(isbn){
+	$.ajax({
+		url:"/orderbook/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			alertResultCode(result);
+		}
+	});
+}
+
+// 리뷰 목록 보기
+function viewReview(isbn){
+	
+}
+
+// 리뷰 작성
+function writerReview(isbn){
+	
+}
+
+// 결과 코드 alert 창으로 보여주는 코드
+function alertResultCode(json){
+	var json = JSON.parse(json);
+	alert(json.msg);
+}
+
 </script>
 </head>
 <!-- head end -->
@@ -98,10 +136,10 @@ function loginFailAlert(){
 						<!-- 로그인 되어 있을때 처리 -->
 						<%}else {%>
 							<dd class="btnArea">
-								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-								<p><a href="#none" title="리뷰 보기">리뷰 보기</a></p>
-								<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:addBookmark(<%=book.getIsbn() %>)" title="북마크 추가">북마크 추가</a></p>
+								<p><a href="javascript:addorderbook(<%=book.getIsbn() %>)" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="javascript:viewReview(<%=book.getIsbn() %>)" title="리뷰 보기">리뷰 보기</a></p>
+								<p><a href="javascript:writerReview(<%=book.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
 							</dd>
 						<%} %>
 					</dl>

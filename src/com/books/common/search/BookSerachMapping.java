@@ -47,8 +47,13 @@ public class BookSerachMapping {
 				book.setPublisher(jsonBook.get("publisher").toString());
 				book.setPubdate(jsonBook.get("pubdate").toString());
 				book.setDescription(jsonBook.get("description").toString());
-				System.out.println("isbn: " +jsonBook.get("isbn").toString());
-				String isbn = jsonBook.get("isbn").toString().split(" ")[1];
+				String isbn;
+				try {
+					isbn = jsonBook.get("isbn").toString().split(" ")[1];
+				} catch (ArrayIndexOutOfBoundsException e) {// isbn 하나 있을때 에러 처리
+					isbn = jsonBook.get("isbn").toString();
+				}
+				
 				book.setIsbn(isbn);
 				book.setReview(reviewService.selectByIsbn(isbn));
 				book.setBookComment(bookCommentService.selectByIsbn(isbn));

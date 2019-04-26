@@ -3,17 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Auth">
-
+  <resultMap type="Auth" id="authmap">
+  	<id column="auth_id" property="auth_id"/>
+  	<result column="auth_name" property="auth_name"/>
+  	<result column="admin_assign" property="admin_assign"/>
+  	<result column="member_del" property="member_del"/>
+  	<result column="review_del" property="review_del"/>
+  	<result column="review_coment_del" property="review_comment_del"/>
+  	<result column="book_comment_del" property="book_comment_del"/>
+  </resultMap>
 
 	<sql id="sql_select">
 		select auth_id,auth_name,admin_assign,member_del,review_del,review_comment_del,book_comment_del from auth
 	</sql>
 
-	<select id="selectAll" resultType="Auth">
+	<select id="selectAll" resultMap="authmap">
 		<include refid="sql_select"/> order by auth_id desc
 	</select>
 	
-	<select id="select" parameterType="int" resultType="Auth">
+	<select id="select" parameterType="int" resultMap="authmap">
 		<include refid="sql_select"/> where Auth_id=#{Auth_id}
 	</select>
 	

@@ -136,10 +136,10 @@ function alertResultCode(json){
 						<!-- 로그인 되어 있을때 처리 -->
 						<%}else {%>
 							<dd class="btnArea">
-								<p><a href="javascript:addBookmark(<%=book.getIsbn() %>)" title="북마크 추가">북마크 추가</a></p>
-								<p><a href="javascript:addorderbook(<%=book.getIsbn() %>)" title="구매한 도서 추가">구매한 도서 추가</a></p>
-								<p><a href="javascript:viewReview(<%=book.getIsbn() %>)" title="리뷰 보기">리뷰 보기</a></p>
-								<p><a href="javascript:writerReview(<%=book.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:addBookmark('<%=book.getIsbn() %>')" title="북마크 추가">북마크 추가</a></p>
+								<p><a href="javascript:addOrderbook('<%=book.getIsbn() %>')" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="javascript:viewReview('<%=book.getIsbn() %>')" title="리뷰 보기">리뷰 보기</a></p>
+								<p><a href="javascript:writerReview('<%=book.getIsbn() %>')" title="리뷰 쓰기">리뷰 쓰기</a></p>
 							</dd>
 						<%} %>
 					</dl>

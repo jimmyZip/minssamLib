@@ -9,7 +9,7 @@
 function search(){
 	var data = $("#bookSearch").val();
 	//alert(data);
-	location.href = '/book/search/'+data;	
+	location.href = '/book/search/'+data+'/1';	
 }
 
 </script>

@@ -21,5 +21,6 @@
     	<mapper resource="com/books/mybatis/mapper/ReviewMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/ScoreMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/BookCommentMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/OrderbookMapper.xml"/>
 	</mappers>
 </configuration>

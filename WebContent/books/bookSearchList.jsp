@@ -3,16 +3,12 @@
 <%@page import="com.books.model.domain.book.Book"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%!Pager pager = new Pager(); %>
 <%
 	List<Book> searchList = (List)request.getAttribute("searchList");
 	String searchWord = request.getAttribute("searchWord").toString();
 	String currentPage = request.getAttribute("currentPage").toString();
-	if(searchList.size()>0){
-		pager.searchInit(Integer.parseInt(currentPage), searchList.get(0).getTotal());
-	}else{
-		pager.searchInit(1,1);
-	}
+	Pager pager = (Pager)request.getAttribute("pager");
+
 %>
 <!DOCTYPE html>
 <html>

@@ -9,7 +9,7 @@ public class BookSearchTestMain {
 		BookSearch bookSearch = new BookSearch();
 		BookSerachMapping mapping = new BookSerachMapping();
 		
-		String resultJSON = bookSearch.search("해리포터");
+		String resultJSON = bookSearch.search("무소유");
 		//System.out.println(bookSearch.search("해리포터"));
 		//System.out.println(bookSearch.search("양자역학", 15));
 		//System.out.println(bookSearch.search("양자역학", 20, 30));

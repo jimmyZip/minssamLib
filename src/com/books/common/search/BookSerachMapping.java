@@ -47,7 +47,7 @@ public class BookSerachMapping {
 				book.setPublisher(jsonBook.get("publisher").toString());
 				book.setPubdate(jsonBook.get("pubdate").toString());
 				book.setDescription(jsonBook.get("description").toString());
-				
+				System.out.println("isbn: " +jsonBook.get("isbn").toString());
 				String isbn = jsonBook.get("isbn").toString().split(" ")[1];
 				book.setIsbn(isbn);
 				book.setReview(reviewService.selectByIsbn(isbn));

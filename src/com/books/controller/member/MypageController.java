@@ -18,8 +18,9 @@ import com.books.model.service.member.MemberService;
 public class MypageController {
 	@Autowired
 	private BookmarkService bookmarkService;
-	@Autowired
-	private MemberService memberService;
+	/*
+	 * @Autowired private MemberService memberService;
+	 */
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request) {

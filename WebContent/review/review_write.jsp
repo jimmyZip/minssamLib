@@ -64,57 +64,23 @@
 							<p class="imgSelectZone">							
 								<label for="img">첨부할 이미지선택</label>
 								<!-- 실제 db에 들어갈 이미지 선택하는 input -->
-								<input type="file" id="img" name="img" />
+								<input type="file" id="img" name="img" multiple="multiple"/>
 							</p>
 							<!-- 리뷰 게시글에 등록할 목적으로 이미지를 선택했음을 보여주는 영역 -->
 							<div class="showImgZone">
 								<p>
 									<input type="checkbox" id="checkAll"/>
 									<label for="checkAll">이미지 전체 선택/해제</label>
-									<span>삭제</span>
+									<span onClick="imgRegistCancel()">삭제</span>
 								</p>
 								<hr>
 								<ul class="selectedImgList">
+									<!-- 
 									<li class="imgListUnit">									
 										<input type="checkbox" class="chk"/>
 										<img src="" alt="선택한 업로드 이미지"/>
 									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
-									<li class="imgListUnit">									
-										<input type="checkbox" class="chk"/>
-										<img src="" alt="선택한 업로드 이미지"/>
-									</li>
+									 -->
 								</ul>
 							</div>
 						</div>

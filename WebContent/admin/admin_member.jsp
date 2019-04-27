@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<!-- 어드민 들어올 시 보여지는 첫 페이지 -->
+
 <!DOCTYPE html>
 <html>
 <!-- head start -->
 <head>
 <%@include file="/include/head.jsp" %>
-<title>관리자용 페이지</title>
+<title>관리자용 페이지 - 멤버 관리</title>
 </head>
 <!-- head end -->
 <body>

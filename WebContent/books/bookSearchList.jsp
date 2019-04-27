@@ -149,7 +149,7 @@ function alertResultCode(json){
 			</div>
 		</div>
 	</div>
- 	<!--페이징-->
+ 	<!--paging start-->
     <div class="page cl">
     	<%if(pager.getFirstPage()-1>0) {%>
         <a href="/book/search/<%=searchWord%>/<%=pager.getFirstPage()-1%>">prev</a>
@@ -170,6 +170,7 @@ function alertResultCode(json){
         <a href="javascript:alert('마지막 페이지입니다.')">next</a>
         <%} %>
     </div>
+    <!-- paging end -->
 	<!-- book search result list end -->
 	<!-- footer start -->
     <%@ include file="/include/footer.jsp" %>

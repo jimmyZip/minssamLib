@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
 <!-- 회원가입 페이지임 -->
 <!DOCTYPE html>
 <html>
@@ -303,7 +304,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-60">
 					<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"
-					pattern="{3,20}" required>
+					 pattern="[A-Za-z0-9]{3,20}" required>
 				</div>
 			</div>
 			<div class="row">
@@ -313,8 +314,8 @@ $(document).ready(function() {
 				<div class="col-60">
 					<input type="password" id="pass" name="pass"
 						placeholder="비밀번호를 입력해주세요"
-						pattern="(?=.*\d).{3,20}" 
-						title="형식에 알맞게 입력해주세요" required>
+						pattern="(?=.*\d)(?=.*[a-z]).{3,20}" 
+						title="영문 숫자 혼합 3~20글자" required>
 				</div>
 			</div>
 
@@ -325,7 +326,7 @@ $(document).ready(function() {
 				<div class="col-60">
 					<input type="password" id="repeatpass" name="repeatpass"
 						placeholder="비밀번호를 다시 입력해주세요" 
-						pattern="(?=.*\d).{3,20}" 
+						maxlength="20"
 						required>
 				</div>
 			</div>
@@ -336,7 +337,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-60">
 					<input type="text" id="name" name="name" placeholder="이름을 입력해주세요" 
-						pattern="(?=.*\d).{3,20}" 
+						maxlength="20"
 						title="형식에 알맞게 입력해주세요" required>
 				</div>
 			</div>
@@ -348,7 +349,7 @@ $(document).ready(function() {
 				<div class="col-60">
 					<input type="text" id="nickname" name="nickname"
 						placeholder="사용하실 닉네임을 입력해주세요" 
-						pattern="(?=.*\d).{3,20}" required>
+						maxlength="20" required>
 				</div>
 			</div>
 			<div class="row">
@@ -371,7 +372,7 @@ $(document).ready(function() {
 		
 			<div id="row">
 				<p id="idMsg" class="valid">
-					<b>3글자에서 20자이내로 작성해주세요</b>
+					<b>3~20 영문숫자로 작성해주세요</b>
 				</p>
 			</div>
 			

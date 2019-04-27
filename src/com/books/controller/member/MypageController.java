@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.books.common.member.Admin;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
 import com.books.model.service.member.MemberService;
@@ -22,6 +23,9 @@ public class MypageController {
 	
 	@Autowired 
 	private MemberService memberService;
+	
+	@Autowired
+	private Admin commonAdmin;
 	
 	@RequestMapping(value="/member/mypage/{member_id}",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request, @PathVariable("member_id") String member_id) {
@@ -35,6 +39,21 @@ public class MypageController {
 		mav.addObject("markList", markList);
 		return mav;
 	}
+	
+	// 어드민 페이지 이동 용도
+	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
+	public ModelAndView showMain(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		Member member = (Member) request.getSession().getAttribute("member");
+		request.getSession().setAttribute("auth", member.getAuth());
+		if(commonAdmin.adminCheck(member.getAuth())) { // 어드민인지 한번 더 확인해서
+			mav.setViewName("admin/adminMain"); // 어드민이면 관리자 메인 페이지로
+		}else {
+			mav.setViewName("/"); // 아니면 인덱스로 이동
+		}
+		return mav;		
+	}
+	
 	
 }
 

@@ -40,8 +40,6 @@
 	<insert id="insert" parameterType="Member">
 		insert into member(id,pass,nickname,name,email)
 		values(#{id},#{pass},#{nickname},#{name},#{email})
-
-		
 	</insert>
 	
 	<update id="update" parameterType="Member">

@@ -153,6 +153,7 @@ input#writer{
 	height:100%;
 	line-height:30px;
 	vertical-align:middle;
+	cursor:pointer;
 }
 .showImgZone p span{
 	width:50px;

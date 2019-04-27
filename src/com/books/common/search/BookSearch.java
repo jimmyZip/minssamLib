@@ -8,9 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BookSearch {
 	final String clientId = "tNA_CKzvmWAdw015cOGE";// 애플리케이션 클라이언트 아이디값";
 	final String clientSecret = "ZAtvZgN9bu";// 애플리케이션 클라이언트 시크릿값";
@@ -62,7 +59,7 @@ public class BookSearch {
 
 	// 검색 프로세스 진행
 	private String searchProcess(String apiURL) {
-		//System.out.println(apiURL);
+		System.out.println(apiURL);
 		BufferedReader br = null;
 		StringBuffer result = new StringBuffer();
 

@@ -44,5 +44,8 @@
 	<delete id="delete" parameterType="int">
 		delete from score where score_id=#{score_id}
 	</delete>
+	
+	
+
 
 </mapper>

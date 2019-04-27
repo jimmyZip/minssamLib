@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AnnotationMemberSessionAspect {
 	//xml이 없기때문에 위치(pointcut)와 때(advice)를 자바코드에 지정
-	@Pointcut("execution(public * com.books.controller.member.MemberController..*(..))")
+	@Pointcut("execution(public * com.books.controller.member..*(..))")
 	public void checkMember() {}//아이디 역할
 	/*
 	 * @Pointcut("execution(public * com.books.controller.BoardController..*(..))")
@@ -22,6 +22,9 @@ public class AnnotationMemberSessionAspect {
 	String[] exceptList= {
 		"/member/login",
 		"/member/contact",//고객센터
+		"/book/search",//책검색
+		"/book/review",//리뷰게시판
+		"/book/popular"//인기도서목록
 	};
 	
 	//공통 로직코드

@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="/asset/css1/blog.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/cs.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/campus.css">
+<link rel="stylesheet" type="text/css" href="/asset/css1/book_detail.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/mypage.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/viewport.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/review_write.css"/>

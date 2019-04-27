@@ -1,21 +1,12 @@
-<%@page import="com.books.model.domain.member.Bookmark"%>
-<%@page import="java.util.List"%>
-<%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%! Pager pager = new Pager(); %>
-<% 
-	//List<Bookmark> markList=(List)request.getAttribute("markList");
-	//pager.init(request, markList.size());
-	
-%>
-<%-- <%
+<%
 	if (session.getAttribute("member") != null) {
 		System.out.print("세션있음");
 	} else {
 		System.out.print("세션없음");
 	}
 //조장님 이 부분도 include로 빼야 하나요
-%> --%>
+%>
 <!DOCTYPE html>
 <html>
 <!-- head start -->
@@ -25,7 +16,6 @@
 </head>
 <!-- head end -->
 <body>
-	
     <!-- header start -->
 	<%@include file="/include/header.jsp"%>
 	<!-- header end -->
@@ -53,13 +43,9 @@
 	               </tr>
 	           </thead>
 	           <tbody id="container">
-				<%-- <%int num=pager.getNum(); %>          
-				<%int curPos=pager.getCurPos(); %>
-				<%for(int i=0; i<pager.getPageSize();i++){ %>
-				<%if(num<1)break; %>
-				<%Bookmark bookmark=markList.get(curPos++); %> --%>
+					           
 	       			<tr>
-                       <td>																							<!-- 멤버 id 참조해서  -->
+                       <td>
                            <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div></a>
                        </td>
                        <td>곰돌이 푸</td>
@@ -67,7 +53,8 @@
                        <td>regdate 받아와서 넣기</td>
                        <td><button onClick="#">삭제</button></td>
                 	</tr>
-                   <%-- <%} %> --%>
+                   
+                   
                    <tr>
                        <td>
                            <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/06426567.jpg');"></div></a>

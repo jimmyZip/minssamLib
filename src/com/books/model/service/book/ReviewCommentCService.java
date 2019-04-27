@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.books.model.domain.book.ReviewComment;
 
-public interface ReviewCommentService {
+public interface ReviewCommentCService {
 	public List<ReviewComment> selectAll();
 	public List<ReviewComment> selectByReview(int review_id);
 	public List<ReviewComment> selectByMember(int member_id);

@@ -1,4 +1,4 @@
-package com.books.controller.member;
+package com.books.controller.admin;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -24,8 +24,35 @@
 	<div class="wrap main cl mypage">
 	<!-- 사이드 메뉴 include -->
 	<%@include file="/include/adminSide.jsp" %>
-	   
-	   <h2>관리자 페이지</h2>
+	   <div class="list-section">
+	       <table class="table_basic my_lecture_list">
+	           <thead>
+	               <tr>
+                       <th>이름</th>
+                       <th>권한 수정</th>
+                       <th>멤버 관리</th>
+                       <th>리뷰 관리</th>
+                       <th>리뷰 코멘트 관리</th>
+                       <th>책 코멘트 관리</th>
+                       <th>비고</th>
+	               </tr>
+	           </thead>
+	           <tbody id="container">
+	       			<tr>
+                       <td>권한 이름</td>
+                       <td><input type="checkbox"></td>
+                       <td><input type="checkbox"></td>
+                       <td><input type="checkbox"></td>
+                       <td><input type="checkbox"></td>
+                       <td><input type="checkbox"></td>
+                       <td>
+	                       	<button onClick="#">삭제</button>
+	                       	<button onClick="#">수정</button>
+                       </td>
+                	</tr>		
+	           </tbody>
+	       </table>
+	   </div>
 	
 	</div>
 	

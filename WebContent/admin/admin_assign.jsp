@@ -1,10 +1,22 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-
+<%
+	List<Auth> authList = (List)request.getAttribute("authList");
+%>
 <!DOCTYPE html>
 <html>
 <!-- head start -->
 <head>
 <%@include file="/include/head.jsp" %>
+<script>
+function authDelete(auth_id){
+	alert("삭제 : " + auth_id);
+}
+
+function authModi(auth_id){
+	alert("수정 : " + auth_id);
+}
+</script>
 <title>관리자용 페이지 - 권한관리</title>
 </head>
 <!-- head end -->
@@ -38,18 +50,21 @@
 	               </tr>
 	           </thead>
 	           <tbody id="container">
+	           		<%for(int i=0;i<authList.size();i++){ %>
+	           		<%Auth authOne = authList.get(i); %>
 	       			<tr>
-                       <td>권한 이름</td>
-                       <td><input type="checkbox"></td>
-                       <td><input type="checkbox"></td>
-                       <td><input type="checkbox"></td>
-                       <td><input type="checkbox"></td>
-                       <td><input type="checkbox"></td>
+                       <td><input type="text" value="<%=authOne.getAuth_name() %>"></td>
+                       <td><input type="checkbox" <%if(authOne.isAdmin_assign()) {%>checked="checked" <%}%>></td>
+                       <td><input type="checkbox" <%if(authOne.isMember_del()) {%>checked="checked" <%}%>></td>
+                       <td><input type="checkbox" <%if(authOne.isReview_del()) {%>checked="checked" <%}%>></td>
+                       <td><input type="checkbox" <%if(authOne.isReview_comment_del()) {%>checked="checked" <%}%>></td>
+                       <td><input type="checkbox" <%if(authOne.isBook_comment_del()) {%>checked="checked" <%}%>></td>
                        <td>
-	                       	<button onClick="#">삭제</button>
-	                       	<button onClick="#">수정</button>
+	                       	<button onClick="authDelete(<%=authOne.getAuth_id() %>)" <%if(i<2){ %>disabled="disabled"<%} %>>삭제</button>
+	                       	<button onClick="authModi(<%=authOne.getAuth_id() %>)" <%if(i<2){ %>disabled="disabled"<%} %>>수정</button>
                        </td>
-                	</tr>		
+                	</tr>
+                	<%} %>
 	           </tbody>
 	       </table>
 	   </div>
@@ -58,8 +73,6 @@
 	
 	<!-- footer start -->
 	<%@include file="/include/footer.jsp" %>
-
 	<!-- footer end -->
-
 </body>
 </html>       

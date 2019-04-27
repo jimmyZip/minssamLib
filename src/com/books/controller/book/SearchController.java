@@ -27,11 +27,12 @@ public class SearchController {
 	@RequestMapping(value = "/book/search/{searchWord}/{currentPage}", method = RequestMethod.GET)
 	public ModelAndView searchPage(@PathVariable("searchWord") String searchWord, @PathVariable("currentPage") String currentPage) {
 		logger.trace("검색 단어 : " + searchWord);
+		
 		ModelAndView mav = new ModelAndView("books/bookSearchList");
 		List<Book> searchList = mapping.mapping((bookSearch.search(searchWord, 10, Integer.parseInt(currentPage)*10)));
-		if(searchList.size()>0){
+		if(searchList.size()>0){ // 페이징 처리
 			pager.searchInit(Integer.parseInt(currentPage), searchList.get(0).getTotal());
-		}else{
+		}else{	// 검색 결과 없으면 그냥 하나만 있는것처럼 간주
 			pager.searchInit(1,1);
 		}
 		mav.addObject("searchList", searchList);

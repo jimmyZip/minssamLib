@@ -33,15 +33,13 @@
   		<include refid="sql_select"/> where id=#{id} and pass=#{pass}
   	</select>
 	
-	<select id="selectByAuth">
+	<select id="selectByAuth" resultMap="membermap">
 		<include refid="sql_select"/> where auth_id=#{auth_id}
 	</select>
 	
 	<insert id="insert" parameterType="Member">
 		insert into member(id,pass,nickname,name,email)
 		values(#{id},#{pass},#{nickname},#{name},#{email})
-
-		
 	</insert>
 	
 	<update id="update" parameterType="Member">

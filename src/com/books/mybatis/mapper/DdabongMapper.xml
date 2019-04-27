@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ddabong">
+
+  <resultMap type="Ddabong" id="ddabongmap">
+  	<id column="ddabong_id" property="ddabong_id"/>
+  	<result column="regdate" property="regdate"/>
+  	<association column="member_id" property="member" javaType="Member" select="Member.select"/>
+  	<association column="review_id" property="review" javaType="Review" select="Review.select"/>
+  </resultMap>
+  
+	<sql id="sql_select">
+		select ddabong_id, member_id, review_id, regdate from ddabong
+	</sql>
+
+	<select id="selectAll" resultMap="ddabongmap">
+		<include refid="sql_select"/> order by ddabong_id desc
+	</select>
+	
+	<select id="select" parameterType="int" resultMap="ddabongmap">
+		<include refid="sql_select"/> where member_id=#{member_id} 
+	</select>
+	
+	<select id="selectByMember" parameterType="int" resultMap="ddabongmap">
+		<include refid="sql_select"/> where member_id=#{member_id} order by ddabong_id desc
+	</select>
+	
+	<select id="selectByReview" parameterType="int" resultMap="ddabongmap">
+		<include refid="sql_select"/> where review_id=#{review_id} order by ddabong_id desc
+	</select>
+	
+	<insert id="insert" parameterType="Ddabong">
+		insert into ddabong(member_id, review_id)
+		values(#{member.member_id}, #{review.review_id})
+	</insert>
+	
+	<update id="update" parameterType="Ddabong">
+		update ddabong set member_id=#{member.member_id},review_id=#{review.review_id}, regdate=#{regdate} where ddabong_id=#{ddabong_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete ddabong where ddabong_id = #{ddabong_id}
+	</delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

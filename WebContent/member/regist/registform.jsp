@@ -196,8 +196,11 @@ $(document).ready(function() {
 		document.getElementById("idmessage").style.display = "none";
 	} */
 
+	
 	id.onkeyup = function() {
 		// Validate length
+
+		
 		if (id.value.length >= 3 && id.value.length <=20) {
 			idMsg.classList.remove("invalid");
 			idMsg.classList.add("valid");
@@ -271,7 +274,7 @@ $(document).ready(function() {
 
 	
 });
-	$(function() {
+/* 	$(function() {
 		$("form[name='regist-form']").find("button").click(function() {
 			regist();
 		});
@@ -285,10 +288,46 @@ $(document).ready(function() {
 			action : "/member/regist"
 		});
 		$("form").submit();
+	} */
+	
+	function idCheck() {
+		$.ajax({
+			url : "/rest/member/idCheck",
+			type : "post",
+			data : {
+				id : $($("form[name='regist-form']").find("input[name='id']")).val(),
+			},
+			success : function(data) {
+				if(data.cnt>0){
+					
+				}
+			},
+			error : function(data) {
+				
+			}
+
+		});
 	}
+	
+	function emailCheck() {
+		$.ajax({
+			url : "/rest/member/emailCheck",
+			type : "post",
+			data : {
+				email: $($("form[name='regist-form']").find("input[name='email']")).val(),
+			},
+			success : function(data) {
+				if(data.cnt>0){
+					
+				}
+			},
+			error : function(data) {
 
+			}
+
+		});
+	}
 </script>
-
 
 
 </head>
@@ -304,6 +343,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-60">
 					<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"
+					 onchange="idCheck()"
 					 pattern="[A-Za-z0-9]{3,20}" required>
 				</div>
 			</div>

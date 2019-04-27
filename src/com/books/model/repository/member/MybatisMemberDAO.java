@@ -42,4 +42,12 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.selectOne("Member.loginCheck", member);
 	}
 
+	public Member idCheck(String id) {
+		return sessionTemplate.selectOne("Member.idCheck", id);
+	}
+
+	public Member emailCheck(String email) {
+		return sessionTemplate.selectOne("Member.emailCheck", email);
+	}
+
 }

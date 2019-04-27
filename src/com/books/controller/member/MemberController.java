@@ -1,5 +1,8 @@
 package com.books.controller.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +46,9 @@ public class MemberController {
 		System.out.println("obj : "+obj.getName());
 		// 세션에 담기!
 		request.getSession().setAttribute("member", obj);
-		
-	
 		return "redirect:/index.jsp";
 	}
+	
 	@RequestMapping(value="/member/modify",method=RequestMethod.GET)
 	public ModelAndView select(int member_id) {
 		System.out.println("넘어온 member_id:" + member_id);
@@ -55,4 +57,31 @@ public class MemberController {
 		mav.addObject("board",member);
 		return mav;
 	}
+	
+	@RequestMapping(value="/rest/member/idCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> idCheck(String id) {
+		//회원가입할때 중복을 체크하자
+		int count=0;
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		count = memberService.idCheck(id);
+		map.put("cnt",count);
+		return map;
+	}
+	
+	@RequestMapping(value="/rest/member/emailCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> emailCheck(String email) {
+		//회원가입할때 중복을 체크하자
+		int count=0;
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		count = memberService.emailCheck(email);
+		map.put("cnt",count);
+		return map;
+	}	
+	
+	
 }
+
+
+

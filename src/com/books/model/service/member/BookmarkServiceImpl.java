@@ -45,14 +45,14 @@ public class BookmarkServiceImpl implements BookmarkService{
 	public void update(Bookmark bookmark) throws EditFailException{
 		int result= bookmarkDAO.update(bookmark);
 		if(result==0) {
-			throw new EditFailException("수정에 실패했습니다");
+			throw new EditFailException("북마크 수정 실패");
 		}
 	}
 
 	public void delete(int bookmark_id) throws DeleteFailException{
 		int result=bookmarkDAO.delete(bookmark_id);
 		if(result==0) {
-			throw new DeleteFailException("삭제 실패");
+			throw new DeleteFailException("북마크 삭제 실패");
 		}
 	}
 }

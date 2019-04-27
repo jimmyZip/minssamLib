@@ -1,0 +1,46 @@
+@charset "utf-8";
+/*########책 소개 section.bookIntro##########*/
+.bookIntro{
+	width:98%;
+	margin:0 1%;
+}
+.introInner{
+	width:100%;
+}
+.introInner h3,.reviewAreaWrap h3{
+	width:100%;
+}
+.introInner h4,.reviewArea h4{
+	width:100%;
+	background-color:#1bbc9b;
+	color:#fff;
+	text-indent:1%;
+	padding:.5rem 0;
+}
+.introInner p{
+	width:100%;
+	padding:3%;
+	line-height:2rem;
+	font-size:1.2rem;
+	word-wrap: break-word;
+}
+
+/*########리뷰 section.reviewAreaWrap##########*/
+.reviewAreaWrap{
+	width:98%;
+	margin:0 1%;
+	background-color:lightblue;
+}
+.reviewArea{
+	width:100%;
+}
+.reviewArea .writeBtn{
+	width:10%;
+	height:40px;
+	line-height:40px;
+	background-color:pink;
+}
+.writeBtn a{
+	display:inline-block;
+	width:100%;
+}

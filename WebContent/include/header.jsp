@@ -9,7 +9,7 @@
 function search(){
 	var data = $("#bookSearch").val();
 	//alert(data);
-	location.href = '/book/search/'+data;	
+	location.href = '/book/search/'+data+'/1';	
 }
 
 </script>
@@ -50,7 +50,7 @@ function search(){
          <div class="user-content">
          	<%if (session.getAttribute("member") != null) { %>
             <ul>
-               <li><a href="/member/mypage.jsp" class="user-btn">마이페이지</a></li>
+               <li><a href="/member/mypage/<%=member.getMember_id() %>" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
                <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>

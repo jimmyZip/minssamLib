@@ -124,7 +124,7 @@ function loginFailAlert(){
 		 -->
 		<!-- floating side bar menus ends -->
 	</div>
- 	<!--페이징-->
+ 	<!--paging start-->
     <div class="page cl">
         <a href="#">prev</a>
         <a href="#" class="cnt">1</a>
@@ -133,6 +133,7 @@ function loginFailAlert(){
         <a href="#">···</a>
         <a href="#">next</a>
     </div>
+    <!-- paging end -->
 	<!-- book search result list end -->
 	<!-- footer start -->
     <%@ include file="/include/footer.jsp" %>

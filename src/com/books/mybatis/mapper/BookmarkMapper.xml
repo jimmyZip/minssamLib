@@ -3,5 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Bookmark">
+	<resultMap type="Bookmark" id="bookmarkmap">
+		<id column="bookmark_id" property="bookmark_id"/>
+		<result column="isbn" property="isbn"/>		
+		<result column="bookmark_date" property="bookmark_date"/>
+		<association column="member_id" property="member" javaType="Member" select="Member.select"/>
+	</resultMap>
+	
+	<sql id="sql_select">
+		select bookmark_id,member_id,isbn,bookmark_date from bookmark
+	</sql>
+	
+	<select id="selectAll" resultMap="bookmarkmap">
+		<include refid="sql_select"/> order by bookmark_id desc
+	</select>
+	
+	<select id="select" parameterType="int" resultMap="bookmarkmap">
+		<include refid="sql_select"/> where bookmark_id=#{bookmark_id}
+	</select>
+	
+	<select id="selectByMember" parameterType="int" resultMap="bookmarkmap">
+		<include refid="sql_select"/> where member_id=#{member_id}
+	</select>
+	
+	<insert id="insert" parameterType="Bookmark">
+		insert into bookmark(member_id,isbn,bookmark_date)
+		values(#{member.member_id},#{isbn},#{bookmark_date})
+	</insert>
+	
+	<update id="update" parameterType="Bookmark">
+		update bookmark set isbn=#{isbn},bookmark_date=#{bookmark_date} where bookmark_id=#{bookmark_id}
+	</update>
+	
 	
 </mapper>

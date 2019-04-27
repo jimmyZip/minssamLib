@@ -27,10 +27,10 @@ function agree(){
 	var accessCheck =$('input:checkbox[name="access"]').is(":checked");	
 	var infoCheck = $('input:checkbox[name="info"]').is(":checked");
 	if(accessCheck==true && infoCheck==true){
-		alert("if동작함");
+		//alert("if동작함");
 		location.href="/member/regist/registform.jsp";
 	}else{
-		alert("동의해야지 가입 가능해요"+accessCheck+"/"+infoCheck);
+		alert("약관에 동의해야지 가입 가능해요");
 	}
 
 }

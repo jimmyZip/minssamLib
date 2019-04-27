@@ -2,16 +2,21 @@
  * 
  */
 $(document).ready(function(){
-	init();	
+	init();
 });
 function init(){
+<<<<<<< HEAD
 	//editor
+=======
+	//editor 사용
+>>>>>>> 2e25d6b82bf5b6cdedd59fc5184761448d06950d
 	CKEDITOR.replace('content');
 	$("input[type='button']").click(function(){
 		send();
 	});
 	
 	//리뷰어가 책에 대해 매긴 평점 카운트
+<<<<<<< HEAD
 	$($(".starImg").find("img")).click(function(event){
 		var i=$(this).index();
 		//var clicked=false;
@@ -26,18 +31,24 @@ function init(){
 	//업로드 대기 이미지 선택 체크박스
 	$("#checkAll").click(function(){
 		chkAll();
+=======
+	$($(".starImg").find("img")).click(function(){
+		scoreCount();
+>>>>>>> 2e25d6b82bf5b6cdedd59fc5184761448d06950d
 	});
 }
 
+//form 전송
 function send(){
 	var form=$("form");
 	form.attr({
-		"method":"post"
-		//,"action":"/books/regist"
+		"method":"post",
+		"action":"/reviews"
 	});
 	form.submit();
 }
 
+<<<<<<< HEAD
 //리뷰어가 책에 대해 매긴 점수 계산
 function scoring(i){
 	//몇 번째 별을 클릭했는가
@@ -87,4 +98,11 @@ function imgRegistCancel(){
 	if($(".chk").prop("checked")){
 		$(".imgListUnit").remove();
 	}
+=======
+//책의 평점 계산
+function scoreCount(){
+	alert(11);
+	//몇 번째 별인지 계산
+	
+>>>>>>> 2e25d6b82bf5b6cdedd59fc5184761448d06950d
 }

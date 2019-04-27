@@ -18,6 +18,7 @@ import com.books.model.service.member.MemberService;
 
 @Controller
 public class MypageController {
+
 	@Autowired
 	private BookmarkService bookmarkService;
 	
@@ -53,7 +54,6 @@ public class MypageController {
 		}
 		return mav;		
 	}
-	
 	
 }
 

@@ -1,6 +1,7 @@
 package com.books.controller.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,7 @@ public class MemberController {
 	public String login(Member member, HttpServletRequest request) {
 
 		Member obj = memberService.loginCheck(member);
-		System.out.println("obj : "+obj.getName());
+		//System.out.println("obj : "+obj.getName());
 		// 세션에 담기!
 		request.getSession().setAttribute("member", obj);
 		return "redirect:/index.jsp";
@@ -60,24 +61,20 @@ public class MemberController {
 	
 	@RequestMapping(value="/rest/member/idCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> idCheck(String id) {
+	public String idCheck(String id) {
 		//회원가입할때 중복을 체크하자
-		int count=0;
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		count = memberService.idCheck(id);
-		map.put("cnt",count);
-		return map;
+		Member member = memberService.idCheck(id);
+		System.out.println("id="+id);
+		System.out.println("member="+member);
+		return member.getId();
 	}
 	
 	@RequestMapping(value="/rest/member/emailCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> emailCheck(String email) {
-		//회원가입할때 중복을 체크하자
-		int count=0;
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		count = memberService.emailCheck(email);
-		map.put("cnt",count);
-		return map;
+	public String emailCheck(String email) {
+		Member member = memberService.emailCheck(email);
+		
+		return member.getEmail();
 	}	
 	
 	

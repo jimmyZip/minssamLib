@@ -10,8 +10,8 @@ public interface MemberDAO {
 	public List<Member> selectAll();
 	public List<Member> selectByAuth(int auth_id);
 	public Member select(int member_id);
-	public int idCheck(String id);
-	public int emailCheck(String email);
+	public Member idCheck(String id);
+	public Member emailCheck(String email);
 	public int insert(Member member);
 	public int update(Member member);
 	public int delete(int member_id);

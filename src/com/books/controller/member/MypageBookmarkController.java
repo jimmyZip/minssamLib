@@ -17,7 +17,7 @@ import com.books.model.service.member.BookmarkService;
 import com.books.model.service.member.MemberService;
 
 @Controller
-public class MypageController {
+public class MypageBookmarkController {
 
 	@Autowired
 	private BookmarkService bookmarkService;
@@ -28,13 +28,22 @@ public class MypageController {
 	@Autowired
 	private Admin commonAdmin;
 	
+	Member member;
+	List markList;
+	
 	@RequestMapping(value="/member/mypage/{member_id}",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request, @PathVariable("member_id") String member_id) {
 		System.out.println("markAll 호출했다개");
-		Member member = (Member) request.getAttribute("member");
+		member = (Member) request.getAttribute("member");
 		System.out.println(member+"받았다개");
-		List markList=bookmarkService.selectByMember(Integer.parseInt(member_id));
-		System.out.println(markList.size()+"리스트랭스\n"+member_id);
+		
+		try {
+			markList = bookmarkService.selectByMember(Integer.parseInt(member_id));
+			System.out.println(markList.size()+"리스트랭스\n"+member_id);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("member/mypage");
 		mav.addObject("markList", markList);

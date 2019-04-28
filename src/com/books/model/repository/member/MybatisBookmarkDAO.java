@@ -27,18 +27,18 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public Bookmark select(int bookmark_id) {
-		return null;
+		return sqlSessionTemplate.selectOne("Bookmark.select");
 	}
 
 	public int insert(Bookmark bookmark) {
-		return 0;
+		return sqlSessionTemplate.insert("Bookmark.insert");
 	}
 
 	public int update(Bookmark bookmark) {
-		return 0;
+		return sqlSessionTemplate.update("Bookmark.update", bookmark);
 	}
 
 	public int delete(int bookmark_id) {
-		return 0;
+		return sqlSessionTemplate.delete("Bookmark.delete");
 	}
 }

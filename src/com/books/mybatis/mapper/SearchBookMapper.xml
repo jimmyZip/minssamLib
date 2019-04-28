@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SearchBook">
+	<resultMap type="Searchbook" id="searchbookmap">
+	  	<id column="searchbook_id" property="searchbook_id"/>
+	  	<result column="isbn" property="isbn"/>
+	  	<result column="searchdate" property="searchdate"/>
+	  	<association column="member_id" property="member" javaType="Member" select="Member.select"/>
+  	</resultMap>
+
+	<sql id="sql_select">
+		select searchbook_id, member_id, isbn, searchdate from searchbook
+	</sql>
+
+	<select id="selectAll" resultMap="searchbookmap">
+		<include refid="sql_select"/> order by searchbook_id desc
+	</select>
+	
+	<select id="selectByMember" resultMap="searchbookmap" parameterType="int">
+		<include refid="sql_select"/> where member_id=#{Member.member} order by searchbook_id desc
+	</select>
+	
+	<select id="selectByIsbn" resultMap="searchbookmap">
+		<include refid="sql_select"/> where isbn=#{isbn} order by searchbook_id desc
+	</select>
+	
+	<select id="select" parameterType="int" resultMap="searchbookmap">
+		<include refid="sql_select"/> where searchbook_id=#{searchbook_id}
+	</select>
+	
+	<insert id="insert" parameterType="Searchbook">
+		insert into searchbook(member_id, isbn)  
+		values(#{Member.member_id}, #{isbn})
+	</insert>
+	
+	<update id="update" parameterType="Searchbook">
+		update searchbook set isbn=#{isbn}, searchdate=#{searchdate} where searchbook_id = #{searchbook_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from searchbook where searchbook_id=#{searchbook_id}
+	</delete>
+</mapper>

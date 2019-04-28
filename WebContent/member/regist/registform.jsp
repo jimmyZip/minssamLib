@@ -197,19 +197,13 @@ $(document).ready(function() {
 	} */
 
 	
-	id.onkeyup = function() {
+/* 	id.onkeyup = function() {
 		// Validate length
 
 		
-		if (id.value.length >= 3 && id.value.length <=20) {
-			idMsg.classList.remove("invalid");
-			idMsg.classList.add("valid");
-		} else {
-			idMsg.classList.remove("valid");
-			idMsg.classList.add("invalid");
-		}
-	}
 
+	}
+ */
 	pass.onkeyup = function() {
 		// Validate length
 		if (pass.value.length >= 3 && pass.value.length <=20) {
@@ -291,19 +285,30 @@ $(document).ready(function() {
 	} */
 	
 	function idCheck() {
+		//alert("idcheck");
 		$.ajax({
 			url : "/rest/member/idCheck",
 			type : "post",
 			data : {
-				id : $($("form[name='regist-form']").find("input[name='id']")).val(),
+				id : id.value,
 			},
 			success : function(data) {
-				if(data.cnt>0){
-					
-				}
+				alert("아이디 중복:"+data);
+				idMsg.classList.remove("valid");
+				idMsg.classList.add("invalid");
 			},
 			error : function(data) {
-				
+				alert("에러동작이지만 중복아이디 없다는뜻"+data);
+					if (id.value.length >= 3 && id.value.length <=20) {
+						alert(data+"에러에서 if동작함")
+						idMsg.classList.remove("invalid");
+						idMsg.classList.add("valid");
+					} else {
+						alert(data+"에러에서 else동작함")
+
+						idMsg.classList.remove("valid");
+						idMsg.classList.add("invalid");
+					}			
 			}
 
 		});
@@ -314,15 +319,24 @@ $(document).ready(function() {
 			url : "/rest/member/emailCheck",
 			type : "post",
 			data : {
-				email: $($("form[name='regist-form']").find("input[name='email']")).val(),
+				email: email.value,
 			},
 			success : function(data) {
-				if(data.cnt>0){
-					
-				}
+				alert("아이디 중복:"+data);
+				emailMsg.classList.remove("valid");
+				emailMsg.classList.add("invalid");
 			},
 			error : function(data) {
-
+				alert("에러동작이지만 중복아이디 없다는뜻"+data);
+					if (id.value.length >= 3 && id.value.length <=20) {
+						alert(data+"에러에서 if동작함")
+						emailMsg.classList.remove("invalid");
+						emailMsg.classList.add("valid");
+					} else {
+						alert(data+"에러에서 else동작함")
+						emailMsg.classList.remove("valid");
+						emailMsg.classList.add("invalid");
+					}			
 			}
 
 		});
@@ -412,7 +426,7 @@ $(document).ready(function() {
 		
 			<div id="row">
 				<p id="idMsg" class="valid">
-					<b>3~20 영문숫자로 작성해주세요</b>
+					<b>형식에맞지않거나 존재하는 아이디입니다.</b>
 				</p>
 			</div>
 			
@@ -442,7 +456,7 @@ $(document).ready(function() {
 
 			<div id="row">
 				<p id="emailMsg" class="valid">
-					<b>이메일 형식에 맞게 입력해 주세요</b>
+					<b>형식에 맞지않거나 존재하는 이메일입니다.</b>
 				</p>
 			</div>			
 					

@@ -16,12 +16,15 @@
 		<typeAlias type="com.books.model.domain.member.Searchbook" alias="Searchbook"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/books/mybatis/mapper/MemberMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/AuthMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/BookCommentMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/BookmarkMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/DdabongMapper.xml"/>
+		<mapper resource="com/books/mybatis/mapper/MemberMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/OrderbookMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/ReviewCommentMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/ReviewMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/ScoreMapper.xml"/>
-    	<mapper resource="com/books/mybatis/mapper/BookmarkMapper.xml"/>
-    	<mapper resource="com/books/mybatis/mapper/BookCommentMapper.xml"/>
-    	<mapper resource="com/books/mybatis/mapper/OrderbookMapper.xml"/>
+    	<mapper resource="com/books/mybatis/mapper/SearchBookMapper.xml"/>
 	</mappers>
 </configuration>

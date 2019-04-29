@@ -10,7 +10,11 @@
 .introInner h3,.reviewAreaWrap h3{
 	width:100%;
 }
-.introInner h4,.reviewArea h4{
+.introInner h4,
+.reviewArea h4,
+.reviewCommentWrap h4,
+.gmapArea h4,
+.orderArea h4{
 	width:100%;
 	background-color:#1bbc9b;
 	color:#fff;
@@ -29,7 +33,6 @@
 .reviewAreaWrap{
 	width:98%;
 	margin:0 1%;
-	background-color:lightblue;
 }
 .reviewArea{
 	width:100%;
@@ -38,9 +41,248 @@
 	width:10%;
 	height:40px;
 	line-height:40px;
-	background-color:pink;
+	margin-left:90%;
+	margin-top:10px;
 }
 .writeBtn a{
 	display:inline-block;
 	width:100%;
+	text-align:center;
+	color:#1bbc9b;
+	border:1px solid #1bbc9b;
+	font-weight:700;
+}
+.reviewInnerWrap{
+	width:100%;
+}
+.reviewUnit{
+	width:100%;
+	overflow:hidden;
+}
+.reviewImg,.reviewTitStat{
+	float:left;
+}
+.reviewImg{
+	width:30%;
+}
+.reviewImg .reviewThumb{
+	width:100%;
+}
+.reviewTitStat{
+	width:70%;
+	padding-left:1%;
+	overflow:hidden;
+}
+.reviewTitle,.reviewStat{
+	float:left;
+}
+.reviewContent{
+	float:right;
+}
+.reviewTitle{
+	width:85%;
+	height:80px;
+	line-height:80px;
+	font-size:1.5rem;
+	font-weight:700;
+}
+.reviewStat{
+	width:15%;
+	height:80px;
+	line-height:80px;
+	overflow:hidden;
+}
+.ddabong,.commentOnReview{
+	float:left;
+	width:50%;
+}
+.ddabong img{
+	display:inline-block;
+	width:32px;
+	height:32px;
+	line-height:50px;
+	vertical-align:middle;
+}
+.ddabongCnt,.commentCnt{
+	display:inline-block;
+	height:100%;
+	line-height:50px;
+	vertical-align:middle;
+	font-style:normal;
+	font-weight:700;
+	color:red;
+}
+.commentOnReview span{
+	display:inline-block;
+}
+.reviewStat:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.reviewUnit:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+.reviewContent{
+	color:dodgerblue;
+	line-height:2rem;
+	word-wrap:word-break;
+}
+/*댓글영역*/
+.showReply{
+	display:block;
+	width:100%;
+	background-color:#BE5452;
+	color:#fff;
+	border:none;
+	border:1px solid #BE5452;
+	border-radius:5px;
+	margin:20px 0;
+	height:2rem;
+	ling-height:2rem;
+	cursor:pointer;
+}
+.reviewCommentWrap{
+	width:100%;
+}
+
+.commentList{
+	width:100%;
+	padding:1%;
+}
+.commentUnit{
+	width:100%;
+	overflow:hidden;
+}
+.commentInfo,.replyListBtn{
+	float:left;
+}
+.commentInfo{
+	width:80%;
+	overflow:hidden;
+}
+.commentInfo p{
+	float:left;
+	height:2rem;
+	line-height:2rem;
+}
+.commentNum{
+	width:5%;
+}
+.commentNick{
+	width:10%;
+	text-indent:2%;
+}
+.commentContent{
+	width:85%;
+	text-indent:1%;
+}
+.replyListBtn{
+	width:20%;
+	overflow:hidden;
+}
+.replyListBtn a{
+	float:left;
+	width:50%;
+	text-align:center;
+	line-height:2rem;
+	font-size:0.75rem;
+	color:#000;
+	transition:.5s all;
+}
+.replyEdit{
+	position:relative;
+}
+.replyEdit:after{
+	content:'|';
+	color:#777;
+	position:absolute;
+	right:0;
+}
+.replyListBtn a:hover,.replyListBtn a:focus{
+	color:red;
+	text-decoration:underline;
+}
+
+
+/*댓글 등록 폼*/
+.postCommentWrap{
+	width:100%;
+	overflow:hidden;
+}
+.postCommentWrap form,.postCommentWrap button{
+	float:left;
+}
+.postCommentWrap form{
+	width:80%;
+}
+.postCommentWrap form p{
+	width:100%;
+	overflow:hidden;
+}
+.replycontent{
+	display:inline-block;
+	width:100%;
+}
+.postCommentWrap button{
+	display:inline-block;
+	width:20%;
+	margin:6px 0 16px;
+	padding:15px;
+	cursor:pointer;
+	background-color:transparent;
+	color:#1bbc9b;
+	border:none;
+	border:1px solid #1bbc9b;
+	border-radius:4px;
+	resize: vertical;
+	box-sizing:border-box;
+	transition:.5s all;
+}
+.postCommentWrap button:hover,.postCommentWrap button:focus{
+	background-color:#1bbc9b;
+	color:#fff;
+}
+/*############도서관 표시 구글맵#############*/
+.gmapAreaWrap{
+	width:98%;
+	margin:0 1%;
+}
+.gmapArea{
+	width:100%;
+}
+#googleMap{
+	width:100%;
+	height:400px;
+}
+
+/*구매하러가기*/
+.orderArea{
+	width:98%;
+	margin:0 1%;
+}
+.orderBtn{
+	width:20%;
+	margin-left:80%;
+	margin-top:1rem;
+	height:50px;
+}
+.orderBtn a{
+	display:inline-block;
+	width:100%;
+	height:100%;
+	line-height:50px;
+	text-align:center;
+	border:1px solid #1bbc9b;
+	border-radius:4px;
+	color:#1bbc9b;
+	transition:.3s all;
+}
+.orderBtn:hover a,
+.orderBtn:focus a{
+	color:#fff;
+	background-color:#1bbc9b;
 }

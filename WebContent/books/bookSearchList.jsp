@@ -101,7 +101,7 @@ function alertResultCode(json){
 						</dt>
 						<dd class="descArea">
 							<!-- detail 페이지로 넘어갈 링크 주소 필요!! -->
-							<a href="#<%=book.getIsbn()%>" ><p class="bTitle"><%=book.getTitle() %></p></a>
+							<a href="/asset/books/bookDetail.jsp?isbn=<%=book.getIsbn()%>" ><p class="bTitle"><%=book.getTitle() %></p></a>
 							<p class="bInfo">
 								<span><%=book.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=book.getPubdate() %> </span>
 							</p>

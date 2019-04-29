@@ -52,10 +52,10 @@ public class MemberController {
 
 		member.setPass(security.textToHash(member.getPass()));
 		Member obj = memberService.loginCheck(member);
-		//System.out.println("obj : "+obj.getName());
 		// 세션에 담기!
 		
 		request.getSession().setAttribute("member", obj);
+		
 		return "redirect:/index.jsp";
 	}
 	
@@ -72,18 +72,40 @@ public class MemberController {
 	@ResponseBody
 	public String idCheck(String id) {
 		//회원가입할때 중복을 체크하자
+		String result;
 		Member member = memberService.idCheck(id);
-		System.out.println("id="+id);
-		System.out.println("member="+member);
-		return member.getId();
+		//System.out.println("멤버아이디"+member.getId());
+		if(member==null) {
+			result="중복없음";
+			System.out.println(result);
+		}else {
+			result="중복있음";
+			System.out.println(result);
+		}
+		//System.out.println("id="+id);
+		//System.out.println("member="+member);
+		System.out.println("보내는거"+result);
+		return result;
 	}
 	
 	@RequestMapping(value="/rest/member/emailCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public String emailCheck(String email) {
-		Member member = memberService.emailCheck(email);
-		
-		return member.getEmail();
+		//회원가입할때 중복을 체크하자
+		String result;
+		Member member = memberService.idCheck(email);
+		//System.out.println("멤버아이디"+member.getId());
+		if(member==null) {
+			result="중복없음";
+			System.out.println(result);
+		}else {
+			result="중복있음";
+			System.out.println(result);
+		}
+		//System.out.println("id="+id);
+		//System.out.println("member="+member);
+		System.out.println("보내는거"+result);
+		return result;
 	}	
 	
 }

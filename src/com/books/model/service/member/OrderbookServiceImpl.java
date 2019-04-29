@@ -53,4 +53,8 @@ public class OrderbookServiceImpl implements OrderbookService {
 		}
 	}
 
+	public Orderbook check(Orderbook orderbook) {
+		return orderbookDAO.check(orderbook);
+	}
+
 }

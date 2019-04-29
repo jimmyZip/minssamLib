@@ -21,7 +21,7 @@ public class AdminAssignController {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	// 페이지 이동
-    @RequestMapping(value = "/admin/assign", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/assign/page", method = RequestMethod.GET)
     public ModelAndView showAuth() {
     	logger.trace("권한 관리 페이지로 이동");
         ModelAndView mav = new ModelAndView("admin/admin_assign");
@@ -30,7 +30,7 @@ public class AdminAssignController {
     }
     
     // 전체 리스트 반환(json)
-    @RequestMapping(value = "/admin/assign/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/assign", method = RequestMethod.GET)
     @ResponseBody
     public List showAuthList() {
     	logger.trace("권한 리스트 반환");
@@ -40,9 +40,8 @@ public class AdminAssignController {
     // 추가
     @RequestMapping(value="/admin/assign", method=RequestMethod.POST)
     @ResponseBody
-    public String insertAuth() {
+    public String insertAuth(Auth auth) {
     	logger.trace("권한 추가 ");
-    	Auth auth = new Auth();
     	auth.setAuth_name("신규 추가");
     	authService.insert(auth);
     	return null;

@@ -55,4 +55,8 @@ public class BookmarkServiceImpl implements BookmarkService{
 			throw new DeleteFailException("북마크 삭제 실패");
 		}
 	}
+
+	public Bookmark check(Bookmark bookmark) {
+		return bookmarkDAO.check(bookmark);
+	}
 }

@@ -12,4 +12,5 @@ public interface OrderbookService {
 	public void insert(Orderbook orderbook);
 	public void update(Orderbook orderbook);
 	public void delete(int orderbook_id);
+	public Orderbook check(Orderbook orderbook);
 }

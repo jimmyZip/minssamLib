@@ -29,7 +29,7 @@
 	    </div>
     </div>
      <div class="wrap main cl mypage">
-     <%@include file="/include/side.jsp" %>
+     <%@include file="/include/side.jsp"%>
 	   <!--category-section-->
 	   
         <div class="list-section payment-section">

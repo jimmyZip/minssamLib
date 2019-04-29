@@ -43,6 +43,10 @@
 	<delete id="delete" parameterType="int">
 		delete from orderbook where orderbook_id = #{orderbook_id}
 	</delete>
+	
+	<select id="check" parameterType="Orderbook" resultMap="orderbookmap">
+		<include refid="sql_select"/> where member_id=#{member.member_id} and isbn=#{isbn}
+	</select>
 
 
 </mapper>

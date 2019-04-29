@@ -1,6 +1,9 @@
 package com.books.controller.member;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.books.common.SecurityBean;
 import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.MemberService;
@@ -23,10 +27,14 @@ import com.books.model.service.member.MemberService;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	SecurityBean security;
 	
 	@RequestMapping(value="/member/regist",method=RequestMethod.POST)
 	public String regist(Member member) {
 		
+		member.setPass(security.textToHash(member.getPass()));
+		System.out.println(member.getPass());
 		memberService.insert(member);
 
 		return "redirect:/index.jsp";
@@ -42,9 +50,11 @@ public class MemberController {
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
 	public String login(Member member, HttpServletRequest request) {
 
+		member.setPass(security.textToHash(member.getPass()));
 		Member obj = memberService.loginCheck(member);
-		System.out.println("obj : "+obj.getName());
+		//System.out.println("obj : "+obj.getName());
 		// 세션에 담기!
+		
 		request.getSession().setAttribute("member", obj);
 		return "redirect:/index.jsp";
 	}
@@ -60,26 +70,21 @@ public class MemberController {
 	
 	@RequestMapping(value="/rest/member/idCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> idCheck(String id) {
+	public String idCheck(String id) {
 		//회원가입할때 중복을 체크하자
-		int count=0;
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		count = memberService.idCheck(id);
-		map.put("cnt",count);
-		return map;
+		Member member = memberService.idCheck(id);
+		System.out.println("id="+id);
+		System.out.println("member="+member);
+		return member.getId();
 	}
 	
 	@RequestMapping(value="/rest/member/emailCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<Object, Object> emailCheck(String email) {
-		//회원가입할때 중복을 체크하자
-		int count=0;
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		count = memberService.emailCheck(email);
-		map.put("cnt",count);
-		return map;
+	public String emailCheck(String email) {
+		Member member = memberService.emailCheck(email);
+		
+		return member.getEmail();
 	}	
-	
 	
 }
 

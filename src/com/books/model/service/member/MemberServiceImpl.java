@@ -58,11 +58,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.loginCheck(member);
 	}
 
-	public int idCheck(String id) {
+	public Member idCheck(String id) {
 		return memberDAO.idCheck(id);
 	}
 
-	public int emailCheck(String email) {
+	public Member emailCheck(String email) {
 		return memberDAO.emailCheck(email);
 	}
 

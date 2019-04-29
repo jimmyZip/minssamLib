@@ -8,6 +8,7 @@ public interface BookmarkService {
 	public List<Bookmark> selectAll();
 	public List<Bookmark> selectByMember(int member_id);
 	public List<Bookmark> selectByIsbn(String isbn);
+	public Bookmark bookmarkCheck(Bookmark bookmark);
 	public Bookmark select(int bookmark_id);
 	public void insert(Bookmark bookmark);
 	public void update(Bookmark bookmark);

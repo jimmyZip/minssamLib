@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminMemberController {
 
-	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/member/page", method = RequestMethod.GET)
 	public ModelAndView showMember(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/admin_member");
 		return mav;

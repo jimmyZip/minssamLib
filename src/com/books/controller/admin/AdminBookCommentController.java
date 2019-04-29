@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminBookCommentController {
 	
-	@RequestMapping(value = "/admin/book_comment", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/book_comment/page", method = RequestMethod.GET)
 	public ModelAndView showBookComment(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/admin_book_comment");
 		return mav;

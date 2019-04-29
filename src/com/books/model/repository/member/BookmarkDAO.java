@@ -9,6 +9,7 @@ public interface BookmarkDAO {
 	public List<Bookmark> selectByMember(int member_id);
 	public List<Bookmark> selectByIsbn(String isbn);
 	public Bookmark select(int bookmark_id);
+	public Bookmark bookmarkCheck(Bookmark bookmark);
 	public int insert(Bookmark bookmark);
 	public int update(Bookmark bookmark);
 	public int delete(int bookmark_id);

@@ -19,19 +19,19 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public List<Bookmark> selectByMember(int member_id) {
-		return sqlSessionTemplate.selectOne("Bookmark.selectByMember");
+		return sqlSessionTemplate.selectOne("Bookmark.selectByMember", member_id);
 	}
 
 	public List<Bookmark> selectByIsbn(String isbn) {
-		return sqlSessionTemplate.selectList("Bookmark.selectByIsbn");
+		return sqlSessionTemplate.selectList("Bookmark.selectByIsbn", isbn);
 	}
 
 	public Bookmark select(int bookmark_id) {
-		return sqlSessionTemplate.selectOne("Bookmark.select");
+		return sqlSessionTemplate.selectOne("Bookmark.select", bookmark_id);
 	}
 
 	public int insert(Bookmark bookmark) {
-		return sqlSessionTemplate.insert("Bookmark.insert");
+		return sqlSessionTemplate.insert("Bookmark.insert", bookmark);
 	}
 
 	public int update(Bookmark bookmark) {
@@ -39,6 +39,6 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public int delete(int bookmark_id) {
-		return sqlSessionTemplate.delete("Bookmark.delete");
+		return sqlSessionTemplate.delete("Bookmark.delete", bookmark_id);
 	}
 }

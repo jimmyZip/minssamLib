@@ -138,10 +138,10 @@ form {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	var id =	 document.getElementById("id");//아이디에러창
+	var id =	 document.getElementById("id");
 	var pass = document.getElementById("pass");//비밀번호
 	var repeatpass= document.getElementById("repeatpass");//비밀번호 확인
-	var name= document.getElementById("name");//이름확인
+	var name= document.getElementById("name");//이름
 	var nickname= document.getElementById("nickname");//
 	var email= document.getElementById("email");//
 
@@ -300,7 +300,7 @@ $(document).ready(function() {
 			error : function(data) {
 				alert("에러동작이지만 중복아이디 없다는뜻"+data);
 					if (id.value.length >= 3 && id.value.length <=20) {
-						alert(data+"에러에서 if동작함")
+						alert(data+"에러에서 if동작함");
 						idMsg.classList.remove("invalid");
 						idMsg.classList.add("valid");
 					} else {
@@ -414,6 +414,7 @@ $(document).ready(function() {
 					<input type="email" id="email" name="email"
 						placeholder="email 주소 입력" 
 						pattern="/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/"
+						onchange="emailCheck()"
 						title="형식에 맞게 입력해주세요"
 						required>
 				</div>

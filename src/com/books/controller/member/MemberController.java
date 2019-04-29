@@ -1,5 +1,7 @@
 package com.books.controller.member;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.books.common.SecurityBean;
 import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.MemberService;
@@ -24,10 +27,14 @@ import com.books.model.service.member.MemberService;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	SecurityBean security;
 	
 	@RequestMapping(value="/member/regist",method=RequestMethod.POST)
 	public String regist(Member member) {
 		
+		member.setPass(security.textToHash(member.getPass()));
+		System.out.println(member.getPass());
 		memberService.insert(member);
 
 		return "redirect:/index.jsp";
@@ -43,9 +50,11 @@ public class MemberController {
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
 	public String login(Member member, HttpServletRequest request) {
 
+		member.setPass(security.textToHash(member.getPass()));
 		Member obj = memberService.loginCheck(member);
 		//System.out.println("obj : "+obj.getName());
 		// 세션에 담기!
+		
 		request.getSession().setAttribute("member", obj);
 		return "redirect:/index.jsp";
 	}
@@ -76,7 +85,6 @@ public class MemberController {
 		
 		return member.getEmail();
 	}	
-	
 	
 }
 

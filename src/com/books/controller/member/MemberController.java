@@ -93,7 +93,8 @@ public class MemberController {
 	public String emailCheck(String email) {
 		//회원가입할때 중복을 체크하자
 		String result;
-		Member member = memberService.idCheck(email);
+		System.out.println("이메일:"+email);
+		Member member = memberService.emailCheck(email);
 		//System.out.println("멤버아이디"+member.getId());
 		if(member==null) {
 			result="중복없음";

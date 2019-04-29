@@ -36,19 +36,14 @@ function searchKeyDown(){
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >
-          <!-- <form> -->
-            <!-- <fieldset> -->
-               <p class="search-input">
-                  <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
-               </p>
-               <p class="search-btn" onclick="search()">
-               <button type="button">
-                  <img src="/asset/images/search.png" alt="검색버튼 이미지"/>
-               </button>
-            </p>
-            <!-- </fieldset>  -->
-         <!-- </form> -->
-         
+	      <p class="search-input">
+	         <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
+	      </p>
+          <p class="search-btn" onclick="search()">
+             <button type="button">
+                <img src="/asset/images/search.png" alt="검색버튼 이미지"/>
+             </button>
+          </p>
       </div>
       <!-- search box ends -->
       <!-- title-bar-con-menu -->

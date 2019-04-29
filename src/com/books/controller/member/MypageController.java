@@ -17,7 +17,7 @@ import com.books.model.service.member.BookmarkService;
 import com.books.model.service.member.MemberService;
 
 @Controller
-public class MypageBookmarkController {
+public class MypageController {
 
 	@Autowired
 	private BookmarkService bookmarkService;

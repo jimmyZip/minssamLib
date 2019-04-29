@@ -30,13 +30,12 @@ public class Pager {
 	// Search 초기화 용
 	public void searchInit(int currentPage, int totalRecord) {
 		this.currentPage = currentPage;
+		pageSize = 10;
 		if (totalRecord > 1000) {
 			this.totalRecord = 1000;
 		} else {
 			this.totalRecord = totalRecord;
 		}
-
-		pageSize = 10;
 		totalPage = (int) Math.ceil((float) totalRecord / pageSize);
 		blockSize = 10;
 		firstPage = currentPage - (currentPage - 1) % blockSize;

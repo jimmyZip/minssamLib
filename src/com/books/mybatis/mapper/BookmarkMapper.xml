@@ -23,7 +23,15 @@
 	</select>
 	
 	<select id="selectByMember" parameterType="int" resultMap="bookmarkmap">
-		<include refid="sql_select"/> where member_id=#{member_id}
+		<include refid="sql_select"/> where member_id=#{member.member_id}
+	</select>
+	
+	<select id="selectByIsbn" parameterType="String" resultMap="bookmarkmap">
+		<include refid="sql_select"/> where isbn = #{isbn}
+	</select>
+	
+	<select id="bookmarkCheck" parameterType="Bookmark" resultMap="bookmarkmap">
+		<include refid="sql_select"/> where isbn = #{isbn} and member_id =#{member.member_id}
 	</select>
 	
 	<insert id="insert" parameterType="Bookmark">
@@ -34,5 +42,9 @@
 	<update id="update" parameterType="Bookmark">
 		update bookmark set isbn=#{isbn},bookmark_date=#{bookmark_date} where bookmark_id=#{bookmark_id}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from bookmark where bookmark_id = #{bookmark_id}
+	</delete>
 	
 </mapper>

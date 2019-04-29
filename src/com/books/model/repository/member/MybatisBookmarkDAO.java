@@ -41,4 +41,8 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	public int delete(int bookmark_id) {
 		return sqlSessionTemplate.delete("Bookmark.delete", bookmark_id);
 	}
+
+	public Bookmark bookmarkCheck(Bookmark bookmark) {
+		return sqlSessionTemplate.selectOne("Bookmark.bookmarkCheck", bookmark);
+	}
 }

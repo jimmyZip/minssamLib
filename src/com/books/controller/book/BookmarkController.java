@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.books.exception.DeleteFailException;
 import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
@@ -47,12 +48,17 @@ public class BookmarkController {
 
 		bookmarkService.delete(result.getBookmark_id());
 		return "{\"resultCode\":1, \"msg\":\"合付农 昏力 己傍\"}";
-
 	}
 
 	@ExceptionHandler(RegistFailException.class)
 	@ResponseBody
 	public String insertFail(RegistFailException e) {
+		return "{\"resultCode\":0, \"msg\":\"" + e.getMessage() + "\"}";
+	}
+	
+	@ExceptionHandler(DeleteFailException.class)
+	@ResponseBody
+	public String insertFail(DeleteFailException e) {
 		return "{\"resultCode\":0, \"msg\":\"" + e.getMessage() + "\"}";
 	}
 }

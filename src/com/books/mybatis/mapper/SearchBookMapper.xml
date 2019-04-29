@@ -19,7 +19,7 @@
 	</select>
 	
 	<select id="selectByMember" resultMap="searchbookmap" parameterType="int">
-		<include refid="sql_select"/> where member_id=#{Member.member} order by searchbook_id desc
+		<include refid="sql_select"/> where member_id=#{member.member_id} order by searchbook_id desc
 	</select>
 	
 	<select id="selectByIsbn" resultMap="searchbookmap">
@@ -32,7 +32,7 @@
 	
 	<insert id="insert" parameterType="Searchbook">
 		insert into searchbook(member_id, isbn)  
-		values(#{Member.member_id}, #{isbn})
+		values(#{member.member_id}, #{isbn})
 	</insert>
 	
 	<update id="update" parameterType="Searchbook">
@@ -42,4 +42,8 @@
 	<delete id="delete" parameterType="int">
 		delete from searchbook where searchbook_id=#{searchbook_id}
 	</delete>
+	
+	<select id="check" parameterType="Searchbook" resultMap="searchbookmap">
+		<include refid="sql_select"/> where member_id=#{member.member_id} and isbn=#{isbn}
+	</select>
 </mapper>

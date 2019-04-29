@@ -53,4 +53,8 @@ public class SearchbookServiceImpl implements SearchbookService {
 		}
 	}
 
+	public Searchbook check(Searchbook searchbook) {
+		return searchbookDAO.check(searchbook);
+	}
+
 }

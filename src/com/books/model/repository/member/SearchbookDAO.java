@@ -12,4 +12,5 @@ public interface SearchbookDAO {
 	public int insert(Searchbook searchbook);
 	public int update(Searchbook searchbook);
 	public int delete(int searchbook_id);
+	public Searchbook check(Searchbook searchbook);
 }

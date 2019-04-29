@@ -12,4 +12,5 @@ public interface SearchbookService {
 	public void insert(Searchbook searchbook);
 	public void update(Searchbook searchbook);
 	public void delete(int searchbook_id);
+	public Searchbook check(Searchbook searchbook);
 }

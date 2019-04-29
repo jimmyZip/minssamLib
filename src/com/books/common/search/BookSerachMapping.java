@@ -37,30 +37,32 @@ public class BookSerachMapping {
 		try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(searchResult);
 			JSONArray searchBookList = (JSONArray) jsonObject.get("items"); // items에서 뽑아옴
-			for(int i=0; i<searchBookList.size(); i++) {
-				Book book = new Book();
-				JSONObject jsonBook = (JSONObject) searchBookList.get(i);
-				book.setTitle(jsonBook.get("title").toString());
-				book.setLink(jsonBook.get("link").toString());
-				book.setImage(jsonBook.get("image").toString());
-				book.setAuthor(jsonBook.get("author").toString());
-				book.setPublisher(jsonBook.get("publisher").toString());
-				book.setPubdate(jsonBook.get("pubdate").toString());
-				book.setDescription(jsonBook.get("description").toString());
-				String isbn;
-				try {
-					isbn = jsonBook.get("isbn").toString().split(" ")[1];
-				} catch (ArrayIndexOutOfBoundsException e) {// isbn 하나 있을때 에러 처리
-					isbn = jsonBook.get("isbn").toString();
+			if(searchBookList != null) { // null 아닐떄만 동작
+				for(int i=0; i<searchBookList.size(); i++) {
+					Book book = new Book();
+					JSONObject jsonBook = (JSONObject) searchBookList.get(i);
+					book.setTitle(jsonBook.get("title").toString());
+					book.setLink(jsonBook.get("link").toString());
+					book.setImage(jsonBook.get("image").toString());
+					book.setAuthor(jsonBook.get("author").toString());
+					book.setPublisher(jsonBook.get("publisher").toString());
+					book.setPubdate(jsonBook.get("pubdate").toString());
+					book.setDescription(jsonBook.get("description").toString());
+					String isbn;
+					try {
+						isbn = jsonBook.get("isbn").toString().split(" ")[1];
+					} catch (ArrayIndexOutOfBoundsException e) {// isbn 하나 있을때 에러 처리
+						isbn = jsonBook.get("isbn").toString();
+					}
+					
+					book.setIsbn(isbn);
+					book.setReview(reviewService.selectByIsbn(isbn));
+					book.setBookComment(bookCommentService.selectByIsbn(isbn));
+					book.setScore(scoreService.selectByIsbn(isbn));
+					book.setStart(Integer.parseInt(jsonObject.get("start").toString()));
+					book.setTotal(Integer.parseInt(jsonObject.get("total").toString()));
+					bookList.add(book);
 				}
-				
-				book.setIsbn(isbn);
-				book.setReview(reviewService.selectByIsbn(isbn));
-				book.setBookComment(bookCommentService.selectByIsbn(isbn));
-				book.setScore(scoreService.selectByIsbn(isbn));
-				book.setStart(Integer.parseInt(jsonObject.get("start").toString()));
-				book.setTotal(Integer.parseInt(jsonObject.get("total").toString()));
-				bookList.add(book);
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();

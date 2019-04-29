@@ -26,6 +26,24 @@ function addBookmark(isbn){
 		url:"/bookmark/insert/"+isbn,
 		type:"get",
 		success:function(result){
+			var json = JSON.parse(result)
+			if(json.resultCode==1){ // 추가 성공
+				alertResultCode(result);
+			}else{ // 이미 추가된 파일
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteBookmark(isbn);
+				}
+			}
+		}
+	});
+}
+
+// 북마크 삭제 함수
+function deleteBookmark(isbn){
+	$.ajax({
+		url:"/bookmark/delete/"+isbn,
+		type:"get",
+		success:function(result){
 			alertResultCode(result);
 		}
 	});
@@ -35,6 +53,23 @@ function addBookmark(isbn){
 function addOrderbook(isbn){
 	$.ajax({
 		url:"/orderbook/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			var json = JSON.parse(result)
+			if(json.resultCode==1){ // 추가 성공
+				alertResultCode(result);
+			}else{ // 이미 추가된 파일
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteBookmark(isbn);
+				}
+			}
+		}
+	});
+}
+
+function deleteOrderbook(isbn){
+	$.ajax({
+		url:"/orderbook/delete/"+isbn,
 		type:"get",
 		success:function(result){
 			alertResultCode(result);
@@ -164,10 +199,10 @@ function alertResultCode(json){
         		<a href="/book/search/<%=searchWord %>/<%=i %>"><%=i %></a>
         	<%} %>
         <%} %>
-        <%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
-        <a href="/book/search/<%=searchWord%>/<%=pager.getLastPage()+1%>">next</a>
+        <%if(pager.getLastPage()+1<pager.getTotalPage() && pager.getLastPage()+1<100) {%>
+        	<a href="/book/search/<%=searchWord%>/<%=pager.getLastPage()+1%>">next</a>
         <%}else{ %>
-        <a href="javascript:alert('마지막 페이지입니다.')">next</a>
+        	<a href="javascript:alert('마지막 페이지입니다.')">next</a>
         <%} %>
     </div>
     <!-- paging end -->

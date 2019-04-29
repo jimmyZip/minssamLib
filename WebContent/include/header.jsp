@@ -93,7 +93,9 @@ function search(){
             onclick="location.href='/review/reviewlist.jsp'">평가/리뷰
             게시판</div>
          <div class="menu-item" onclick="location.href='#'">인기도서 목록</div>
-         <div class="menu-item" onclick="location.href='/member/mypage.jsp'">MyPage</div>
+         <%if (session.getAttribute("member") != null) { %>
+         <div class="menu-item" onclick="location.href='/member/mypage/<%=member.getMember_id() %>'">MyPage</div>
+         <%} %>
          <div class="menu-item" onclick="location.href='#'">고객센터</div>
          <!-- nav menus end-->
       </nav>

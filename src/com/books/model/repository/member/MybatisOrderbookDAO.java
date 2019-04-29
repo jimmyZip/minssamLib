@@ -42,4 +42,8 @@ public class MybatisOrderbookDAO implements OrderbookDAO{
 		return sessionTemplate.delete("Orderbook.delete", orderbook_id);
 	}
 
+	public Orderbook check(Orderbook orderbook) {
+		return sessionTemplate.selectOne("Orderbook.check", orderbook);
+	}
+
 }

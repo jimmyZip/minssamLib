@@ -19,26 +19,30 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public List<Bookmark> selectByMember(int member_id) {
-		return sqlSessionTemplate.selectOne("Bookmark.selectByMember");
+		return sqlSessionTemplate.selectList("Bookmark.selectByMember", member_id);
 	}
 
 	public List<Bookmark> selectByIsbn(String isbn) {
-		return sqlSessionTemplate.selectList("Bookmark.selectByIsbn");
+		return sqlSessionTemplate.selectList("Bookmark.selectByIsbn", isbn);
 	}
 
 	public Bookmark select(int bookmark_id) {
-		return null;
+		return sqlSessionTemplate.selectOne("Bookmark.select", bookmark_id);
 	}
 
 	public int insert(Bookmark bookmark) {
-		return 0;
+		return sqlSessionTemplate.insert("Bookmark.insert", bookmark);
 	}
 
 	public int update(Bookmark bookmark) {
-		return 0;
+		return sqlSessionTemplate.update("Bookmark.update", bookmark);
 	}
 
 	public int delete(int bookmark_id) {
-		return 0;
+		return sqlSessionTemplate.delete("Bookmark.delete", bookmark_id);
+	}
+
+	public Bookmark check(Bookmark bookmark) {
+		return sqlSessionTemplate.selectOne("Bookmark.bookmarkCheck", bookmark);
 	}
 }

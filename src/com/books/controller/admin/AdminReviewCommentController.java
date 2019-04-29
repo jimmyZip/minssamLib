@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminReviewCommentController {
 	
-	@RequestMapping(value = "/admin/review_comment", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/review_comment/page", method = RequestMethod.GET)
 	public ModelAndView showReviewComment(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/admin_review_comment");
 		return mav;

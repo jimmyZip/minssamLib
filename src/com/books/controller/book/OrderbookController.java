@@ -23,8 +23,9 @@ public class OrderbookController {
 	@RequestMapping(value="/orderbook/insert/{isbn}", method=RequestMethod.GET)
 	@ResponseBody	
 	public String insert(HttpServletRequest request, @PathVariable("isbn") String isbn) {
+		Member member = (Member) request.getSession().getAttribute("member");
 		Orderbook orderbook = new Orderbook();
-		orderbook.setMember((Member) request.getSession().getAttribute("member"));
+		orderbook.setMember(member);
 		orderbook.setIsbn(isbn);
 		orderbookService.insert(orderbook);
 		return "{\"resultCode\":1, \"msg\":\"주문 도서 등록 성공\"}";

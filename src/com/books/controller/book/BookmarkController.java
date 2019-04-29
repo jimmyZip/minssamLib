@@ -19,17 +19,37 @@ import com.books.model.service.member.BookmarkService;
 public class BookmarkController {
 	@Autowired
 	BookmarkService bookmarkService;
-	
-	@RequestMapping(value="/bookmark/insert/{isbn}", method=RequestMethod.GET)
-	@ResponseBody	
+
+	@RequestMapping(value = "/bookmark/insert/{isbn}", method = RequestMethod.GET)
+	@ResponseBody
 	public String insert(HttpServletRequest request, @PathVariable("isbn") String isbn) {
+		Member member = (Member) request.getSession().getAttribute("member");
 		Bookmark bookmark = new Bookmark();
-		bookmark.setMember((Member) request.getSession().getAttribute("member"));
+		bookmark.setMember(member);
 		bookmark.setIsbn(isbn);
-		bookmarkService.insert(bookmark);
-		return "{\"resultCode\":1, \"msg\":\"북마크 등록 성공\"}";
+		Bookmark result = bookmarkService.check(bookmark);
+		if (result == null) { // 등록된 값 없으면 추가
+			bookmarkService.insert(bookmark);
+			return "{\"resultCode\":1, \"msg\":\"북마크 등록 성공\"}";
+		} else {
+			return "{\"resultCode\":0, \"msg\":\"이미 등록된 도서 입니다.\"}";
+		}
 	}
-	
+
+	@RequestMapping(value = "/bookmark/delete/{isbn}", method = RequestMethod.GET)
+	@ResponseBody
+	public String delete(HttpServletRequest request, @PathVariable("isbn") String isbn) {
+		Member member = (Member) request.getSession().getAttribute("member");
+		Bookmark bookmark = new Bookmark();
+		bookmark.setMember(member);
+		bookmark.setIsbn(isbn);
+		Bookmark result = bookmarkService.check(bookmark);
+
+		bookmarkService.delete(result.getBookmark_id());
+		return "{\"resultCode\":1, \"msg\":\"북마크 삭제 성공\"}";
+
+	}
+
 	@ExceptionHandler(RegistFailException.class)
 	@ResponseBody
 	public String insertFail(RegistFailException e) {

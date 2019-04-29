@@ -8,7 +8,6 @@
 	String searchWord = request.getAttribute("searchWord").toString();
 	String currentPage = request.getAttribute("currentPage").toString();
 	Pager pager = (Pager)request.getAttribute("pager");
-
 %>
 <!DOCTYPE html>
 <html>

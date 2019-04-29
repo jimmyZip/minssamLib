@@ -52,7 +52,7 @@ public class MypageController {
 	
 	// 어드민 페이지 이동 용도
 	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
-	public ModelAndView showMain(HttpServletRequest request) {
+	public ModelAndView adminMain(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		Member member = (Member) request.getSession().getAttribute("member");
 		request.getSession().setAttribute("auth", member.getAuth());

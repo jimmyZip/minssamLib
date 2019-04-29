@@ -43,6 +43,6 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public Bookmark check(Bookmark bookmark) {
-		return sqlSessionTemplate.selectOne("Bookmark.bookmarkCheck", bookmark);
+		return sqlSessionTemplate.selectOne("Bookmark.check", bookmark);
 	}
 }

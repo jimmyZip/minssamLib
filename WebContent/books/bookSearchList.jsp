@@ -60,13 +60,14 @@ function addOrderbook(isbn){
 				alertResultCode(result);
 			}else{ // 이미 추가된 파일
 				if(confirm(json.msg+"삭제하시겠습니까?")){
-					deleteBookmark(isbn);
+					deleteOrderbook(isbn);
 				}
 			}
 		}
 	});
 }
 
+// 주문도서목록 삭제하는 함수
 function deleteOrderbook(isbn){
 	$.ajax({
 		url:"/orderbook/delete/"+isbn,

@@ -324,18 +324,18 @@ form {
 			success : function(data) {
 				alert("받은거"+data);
 				if (data=="중복있음") {
-					alert("중복있는경우")
+					//alert("중복있는경우")
 					$("#submit").attr("disabled",true);
 					emailMsg.classList.remove("valid");
 					emailMsg.classList.add("invalid");
 				} else {
 					if (email.value.length >= 3 && email.value.length <= 100) {
-						alert("중복없고 글자수도맞음");
+						//alert("중복없고 글자수도맞음");
 						$("#submit").attr("disabled",false);
 						emailMsg.classList.remove("invalid");
 						emailMsg.classList.add("valid");
 					} else {
-						alert("중복없고 글자수안맞음");
+						//alert("중복없고 글자수안맞음");
 						$("#submit").attr("disabled",true);
 						emailMsg.classList.remove("valid");
 						emailMsg.classList.add("invalid");

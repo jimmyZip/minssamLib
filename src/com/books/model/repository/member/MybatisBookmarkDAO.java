@@ -19,7 +19,7 @@ public class MybatisBookmarkDAO implements BookmarkDAO{
 	}
 
 	public List<Bookmark> selectByMember(int member_id) {
-		return sqlSessionTemplate.selectOne("Bookmark.selectByMember", member_id);
+		return sqlSessionTemplate.selectList("Bookmark.selectByMember", member_id);
 	}
 
 	public List<Bookmark> selectByIsbn(String isbn) {

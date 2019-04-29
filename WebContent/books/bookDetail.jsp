@@ -80,25 +80,25 @@
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
 					<p class="writeBtn">
-						<a>리뷰 쓰기</a>
+						<a href="#">리뷰 쓰기</a>
 					</p>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
 						<!-- 리뷰 한 단위 시작 -->
 						<li class="reviewUnit">
 							<div class="reviewImg">
-								<img class="reviewThumb" src="/asset/images/review_img_samle.jpg" alt="리뷰 썸네일 이미지"/>
+								<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 이미지"/>
 							</div>
 							<div class="reviewTitStat">
 								<p class="reviewTitle">리뷰제목</p>
 								<div class="reviewStat">
 									<p class="ddabong">
 										<img src="/asset/images/like_on.png" alt="좋아요 이미지"/>
-										<i class="ddabongCnt"></i>
+										<i class="ddabongCnt">10</i>
 									</p>
 									<p class="commentOnReview">
 										<span>댓글</span>
-										<i class="commentCnt">건</i>
+										<i class="commentCnt">1건</i>
 									</p>
 								</div>
 								<p class="reviewContent">
@@ -110,46 +110,63 @@
 					</ul>
 					<!-- 리뷰 감싸는 영역 종료 -->
 				</div>
-				<button type="button">리뷰에 대한 댓글보기</button>
+				<button class="showReply" type="button">리뷰에 대한 댓글보기</button>
 				<!-- 이 책에 대한 리뷰에 달린 댓글 감싸는 영역 -->
 				<div class="reviewCommentWrap">
 					<h4>리뷰에 대한 댓글</h4>
 					<ul class="commentList">
 						<!-- 댓글 한 단위 -->
 						<li class="commentUnit">
-							<p class="commentContent">정말 띵작입니다. 강추강추</p>
-							<p class="replyListBtn">
-								<a href="#none" class="replyEdit"><span>수정하기</span></a>
-								<a href="#none" cass="replyDel"><span>삭제하기</span></a>
-							</p>
+							<div class="commentInfo">							
+								<p class="commentNum">No</p>
+								<p class="commentNick">닉네임</p>
+								<p class="commentContent">정말 띵작입니다. 강추강추</p>
+							</div>
+							<div class="replyListBtn">
+								<a href="#none" class="replyEdit">수정하기</a>
+								<a href="#none" cass="replyDel">삭제하기</a>
+							</div>
 						</li>
 						<!-- 댓글 한 단위 -->
 					</ul>
 					<div class="postCommentWrap">
 						<form name="comment-form">
-							<fieldset>
-								<p>
-									<input type="text" name="replycontent" placeholder="코멘트를 입력해주세요"/>
-								</p>
-							</fieldset>						
+							<p>
+								<input class="replycontent" type="text" name="replycontent" placeholder="코멘트를 입력해주세요"/>
+							</p>
 						</form>
-						<p>
-							<button type="button">코멘트 등록</button>
-						</p>
+						<button type="button">코멘트 등록</button>
 					</div>
+					<!--paging start-->
+				    <div class="page cl">
+				        <a href="#">prev</a>
+				        <a href="#" class="cnt">1</a>
+				        <a href="#">2</a>
+				        <a href="#">3</a>
+				        <a href="#">···</a>
+				        <a href="#">next</a>
+				    </div>
+			    <!-- paging end -->
 				</div>
 				<!-- 이 책에 대한 리뷰에 달린 댓글 감싸는 영역 -->
 			</section>
-			<!--paging start-->
-		    <div class="page cl">
-		        <a href="#">prev</a>
-		        <a href="#" class="cnt">1</a>
-		        <a href="#">2</a>
-		        <a href="#">3</a>
-		        <a href="#">···</a>
-		        <a href="#">next</a>
+		    <!-- googlemap area -->
+		    <div class="gmapAreaWrap">
+		    	<h3>Where this book is</h3>
+		    	<div class="gmapArea">
+		    		<h4>이 책을 보유한 도서관 위치보기</h4>
+		    		<section id="googleMap"></section>
+		    	</div>
 		    </div>
-		    <!-- paging end -->
+		    <!-- googlemap area end-->
+		    <!-- go buy thisbook area -->
+		    <div class="orderArea">
+		    	<h4>이 책을 구매하시려면</h4>
+		    	<p class="orderBtn">
+		    		<a href="#none">구매하러가기</a>
+		    	</p>
+		    </div>
+		    <!-- go buy thisbook area end-->
 		</div>
 	</div>
 	<!-- bookDetail end -->

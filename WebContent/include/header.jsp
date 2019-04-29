@@ -8,7 +8,6 @@
 
 // 검색 페이지로 이동
 function search(){
-<<<<<<< HEAD
 	var data = $("#bookSearch").val();
 	if(data == ""){
 		alert("검색어를 입력 해 주세요");
@@ -22,7 +21,7 @@ function searchKeyDown(){
 		//alert("엔터!!");
 		search();
 	} 
-=======
+
    var data = $("#bookSearch").val();
    if(data == ""){
       alert("검색어를 입력 해 주세요");
@@ -36,7 +35,7 @@ function searchKeyDown(){
       //alert("엔터!!");
       search();
    } 
->>>>>>> 1c1d12e42ed7b195cdcb2999f7565bc55a678463
+
 }
 
 </script>
@@ -52,30 +51,14 @@ function searchKeyDown(){
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >
-<<<<<<< HEAD
-      	 <!-- <form> -->
-=======
-          <!-- <form> -->
->>>>>>> 1c1d12e42ed7b195cdcb2999f7565bc55a678463
-            <!-- <fieldset> -->
-               <p class="search-input">
-                  <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
-               </p>
-               <p class="search-btn" onclick="search()">
-<<<<<<< HEAD
-					<button type="button">
-						<img src="/asset/images/search.png" alt="검색버튼 이미지"/>
-					</button>
-				</p>
-=======
-               <button type="button">
-                  <img src="/asset/images/search.png" alt="검색버튼 이미지"/>
-               </button>
-            </p>
->>>>>>> 1c1d12e42ed7b195cdcb2999f7565bc55a678463
-            <!-- </fieldset>  -->
-         <!-- </form> -->
-         
+            <p class="search-input">
+                <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
+             </p>
+             <p class="search-btn" onclick="search()">
+			<button type="button">
+				<img src="/asset/images/search.png" alt="검색버튼 이미지"/>
+			</button>
+			</p>
       </div>
       <!-- search box ends -->
       <!-- title-bar-con-menu -->

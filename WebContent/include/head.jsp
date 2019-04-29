@@ -30,5 +30,5 @@
 <script src="/asset/js/review_write.js" type="text/javascript"></script>
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 <!-- googleMap api source -->
-<script src="/asset/js/gmap.js" type="text/javascript"></script>
+<!-- <script src="/asset/js/gmap.js" type="text/javascript"></script> -->
 <script src="/asset/js/book_detail.js" type="text/javascript"></script>

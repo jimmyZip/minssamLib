@@ -1,4 +1,14 @@
+<%@page import="com.books.common.Pager"%>
+<%@page import="com.books.model.domain.book.Review"%>
+<%@page import="java.util.List"%>
+<%@page import="com.books.model.domain.member.Searchbook"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%!Pager pager = new Pager(); %>
+<%
+	Searchbook searchBook = (Searchbook)request.getAttribute("searchBookResult");
+	List<Review> reviewList = (List)request.getAttribute("reviewList");
+	pager.init(request, reviewList.size());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +40,10 @@
 						<dd class="descArea">
 							<p class="bTitle">책 제목</p>
 							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span>
+								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span>ISBN</span>
+							</p>
+							<p class="bInfo">
+								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span><%=searchBook.getIsbn() %></span>
 							</p>
 							<p class="bScore">
 								<span>평점</span>
@@ -43,7 +56,7 @@
 								</span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>
-									리뷰<i>(리뷰 갯수)&nbsp;건</i>
+									리뷰<i><%=reviewList.size() %>&nbsp;건</i>
 								</span>
 							</p>
 						</dd>
@@ -84,13 +97,20 @@
 					</p>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
+						<%
+							int num=pager.getNum();
+							int curPos = pager.getCurPos();
+						%>
+						<%for(int i=0;i<pager.getPageSize();i++){ %>
+						<%if(num<1) break; %>
+						<%Review review=reviewList.get(curPos++); %>
 						<!-- 리뷰 한 단위 시작 -->
 						<li class="reviewUnit">
 							<div class="reviewImg">
 								<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 이미지"/>
 							</div>
 							<div class="reviewTitStat">
-								<p class="reviewTitle">리뷰제목</p>
+								<p class="reviewTitle"><%=review.getTitle() %></p>
 								<div class="reviewStat">
 									<p class="ddabong">
 										<img src="/asset/images/like_on.png" alt="좋아요 이미지"/>
@@ -102,11 +122,12 @@
 									</p>
 								</div>
 								<p class="reviewContent">
-									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+									<%=review.getContent() %>
 								</p>
 							</div>
 						</li>
 						<!-- 리뷰 한 단위 종료 -->
+						<%} %>
 					</ul>
 					<!-- 리뷰 감싸는 영역 종료 -->
 				</div>
@@ -150,7 +171,7 @@
 				</div>
 				<!-- 이 책에 대한 리뷰에 달린 댓글 감싸는 영역 -->
 			</section>
-		    <!-- googlemap area -->
+		    <!-- googlemap area
 		    <div class="gmapAreaWrap">
 		    	<h3>Where this book is</h3>
 		    	<div class="gmapArea">
@@ -158,7 +179,7 @@
 		    		<section id="googleMap"></section>
 		    	</div>
 		    </div>
-		    <!-- googlemap area end-->
+		    -->
 		    <!-- go buy thisbook area -->
 		    <div class="orderArea">
 		    	<h4>이 책을 구매하시려면</h4>

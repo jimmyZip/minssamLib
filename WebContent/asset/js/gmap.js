@@ -1,6 +1,6 @@
 /**
  * 
- */
+ 
 
 var googleMap;
 var map;
@@ -51,3 +51,4 @@ function myMap(){
 	});
 }
 
+*/

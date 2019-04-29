@@ -59,7 +59,7 @@
 								</p>
 							</dd>
 						</dl>						
-						<textarea id="content" name="content"></textarea>
+						<textarea id="content" name="reviewContent"></textarea>
 						<div class="myReviewImg">
 							<p class="imgSelectZone">							
 								<label for="img">첨부할 이미지선택</label>

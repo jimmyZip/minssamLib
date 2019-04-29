@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="selectByIsbn" parameterType="String" resultMap="reviewMap">
-		<include refid="sql_select"/> where isbn=#{isbn}
+		<include refid="sql_select"/> where isbn=#{isbn} order by regdate desc
 	</select>
 	
 	<insert id="insert" parameterType="Review">

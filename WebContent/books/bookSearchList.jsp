@@ -87,6 +87,23 @@ function writerReview(isbn){
 	
 }
 
+// 세부 목록 보기
+function bookDetailView(isbn){
+	alert(isbn);
+	console.log(isbn);
+	// 검색 페이지 추가
+	<%if(session.getAttribute("member") != null){%> 
+		// 로그인 한 사용자만 동작
+		$.ajax({
+			url:"/book/search/insert?isbn="+isbn,
+			type:"get"
+		});
+	<%}%>
+
+	// 페이지 이동
+	location.href="/book/search/detail?isbn="+isbn;
+}
+
 // 결과 코드 alert 창으로 보여주는 코드
 function alertResultCode(json){
 	var json = JSON.parse(json);
@@ -136,7 +153,7 @@ function alertResultCode(json){
 						</dt>
 						<dd class="descArea">
 							<!-- detail 페이지로 넘어갈 링크 주소 필요!! -->
-							<a href="/asset/books/bookDetail.jsp?isbn=<%=book.getIsbn()%>" ><p class="bTitle"><%=book.getTitle() %></p></a>
+							<a href="javascript:bookDetailView(<%=book.getIsbn()%>)" ><p class="bTitle"><%=book.getTitle() %></p></a>
 							<p class="bInfo">
 								<span><%=book.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=book.getPubdate() %> </span>
 							</p>

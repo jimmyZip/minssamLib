@@ -23,11 +23,16 @@ public class SearchbookServiceImpl implements SearchbookService {
 	public List<Searchbook> selectByMember(int member_id) {
 		return searchbookDAO.selectByMember(member_id);
 	}
-
+	
+	/*
 	public List<Searchbook> selectByIsbn(String isbn) {
 		return searchbookDAO.selectByIsbn(isbn);
 	}
-
+	*/
+	public Searchbook selectByIsbn(String isbn) {
+		return searchbookDAO.selectByIsbn(isbn);
+	}
+	
 	public Searchbook select(int searchbook_id) {
 		return searchbookDAO.select(searchbook_id);
 	}
@@ -51,6 +56,10 @@ public class SearchbookServiceImpl implements SearchbookService {
 		if (result == 0) {
 			throw new DeleteFailException("검색한 도서 삭제 실패");
 		}
+	}
+
+	public Searchbook check(Searchbook searchbook) {
+		return searchbookDAO.check(searchbook);
 	}
 
 }

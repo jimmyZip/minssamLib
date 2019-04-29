@@ -4,7 +4,7 @@ $(document).ready(function(){
 function init(){
 	//editor
 	//editor사용
-	CKEDITOR.replace('content');
+	CKEDITOR.replace('.reviewContent');
 	$("input[type='button']").click(function(){
 		send();
 	});

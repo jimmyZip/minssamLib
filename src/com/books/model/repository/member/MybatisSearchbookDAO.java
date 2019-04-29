@@ -15,31 +15,41 @@ public class MybatisSearchbookDAO implements SearchbookDAO{
 	SqlSessionTemplate sessionTemplate;
 
 	public List<Searchbook> selectAll() {
-		return sessionTemplate.selectList("Searchbook.selectAll");
+		return sessionTemplate.selectList("SearchBook.selectAll");
 	}
 
 	public List<Searchbook> selectByMember(int member_id) {
-		return sessionTemplate.selectList("Searchbook.selectByMember", member_id);
+		return sessionTemplate.selectList("SearchBook.selectByMember", member_id);
 	}
-
+	
+	/*
 	public List<Searchbook> selectByIsbn(String isbn) {
-		return sessionTemplate.selectList("Searchbook.selectByIsbn", isbn);
+		return sessionTemplate.selectList("SearchBook.selectByIsbn", isbn);
 	}
-
+	*/
+	public Searchbook selectByIsbn(String isbn) {
+		return sessionTemplate.selectOne("SearchBook.selectByIsbn", isbn);
+	}
+	
 	public Searchbook select(int searchbook_id) {
-		return sessionTemplate.selectOne("Searchbook.select", searchbook_id);
+		return sessionTemplate.selectOne("SearchBook.select", searchbook_id);
 	}
 
 	public int insert(Searchbook searchbook) {
-		return sessionTemplate.insert("Searchbook.insert", searchbook);
+		return sessionTemplate.insert("SearchBook.insert", searchbook);
 	}
 
 	public int update(Searchbook searchbook) {
-		return sessionTemplate.update("Searchbook.update", searchbook);
+		return sessionTemplate.update("SearchBook.update", searchbook);
 	}
 
 	public int delete(int searchbook_id) {
-		return sessionTemplate.delete("Searchbook.delete", searchbook_id);
+		return sessionTemplate.delete("SearchBook.delete", searchbook_id);
 	}
+
+	public Searchbook check(Searchbook searchbook) {
+		return sessionTemplate.selectOne("SearchBook.check", searchbook);
+	}
+	
 
 }

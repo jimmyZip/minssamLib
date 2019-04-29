@@ -28,17 +28,16 @@ public class MypageController {
 	@Autowired
 	private Admin commonAdmin;
 	
-	Member member;
+	//Member member;
 	List markList;
 	
-	@RequestMapping(value="/member/mypage/{member_id}",method=RequestMethod.GET)
-	public ModelAndView markAll(HttpServletRequest request, @PathVariable("member_id") String member_id) {
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public ModelAndView markAll(HttpServletRequest request) {
 		//System.out.println("markAll 호출했다개");
-		member = (Member) request.getAttribute("member");
+		Member member = (Member) request.getSession().getAttribute("member");
 		//System.out.println(member+"받았다개");
-		
 		try {
-			markList = bookmarkService.selectByMember(Integer.parseInt(member_id));
+			markList = bookmarkService.selectByMember(member.getMember_id());
 			//System.out.println(markList.size()+"리스트랭스\n"+member_id);
 		} catch (NullPointerException e) {
 			e.printStackTrace();

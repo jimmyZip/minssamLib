@@ -30,7 +30,7 @@
 		<include refid="sql_select"/> where isbn = #{isbn}
 	</select>
 	
-	<select id="bookmarkCheck" parameterType="Bookmark" resultMap="bookmarkmap">
+	<select id="check" parameterType="Bookmark" resultMap="bookmarkmap">
 		<include refid="sql_select"/> where isbn = #{isbn} and member_id =#{member.member_id}
 	</select>
 	

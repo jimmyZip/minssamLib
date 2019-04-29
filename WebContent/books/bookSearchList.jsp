@@ -55,6 +55,23 @@ function addOrderbook(isbn){
 		url:"/orderbook/insert/"+isbn,
 		type:"get",
 		success:function(result){
+			var json = JSON.parse(result)
+			if(json.resultCode==1){ // 추가 성공
+				alertResultCode(result);
+			}else{ // 이미 추가된 파일
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteBookmark(isbn);
+				}
+			}
+		}
+	});
+}
+
+function deleteOrderbook(isbn){
+	$.ajax({
+		url:"/orderbook/delete/"+isbn,
+		type:"get",
+		success:function(result){
 			alertResultCode(result);
 		}
 	});

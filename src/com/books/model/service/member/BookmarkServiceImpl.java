@@ -56,7 +56,7 @@ public class BookmarkServiceImpl implements BookmarkService{
 		}
 	}
 
-	public Bookmark bookmarkCheck(Bookmark bookmark) {
-		return bookmarkDAO.bookmarkCheck(bookmark);
+	public Bookmark check(Bookmark bookmark) {
+		return bookmarkDAO.check(bookmark);
 	}
 }

@@ -12,4 +12,5 @@ public interface OrderbookDAO {
 	public int insert(Orderbook orderbook);
 	public int update(Orderbook orderbook);
 	public int delete(int orderbook_id);
+	public Orderbook check(Orderbook orderbook);
 }

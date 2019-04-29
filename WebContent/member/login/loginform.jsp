@@ -9,6 +9,7 @@ function requestLogin(){
       action:"/member/login"
    });
    $("form[name='login-form']").submit(); 
+   
 }
 </script>
 </head>

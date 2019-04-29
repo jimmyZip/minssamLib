@@ -51,7 +51,6 @@ function searchKeyDown(){
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >
-<<<<<<< HEAD
 	      <p class="search-input">
 	         <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
 	      </p>
@@ -60,16 +59,6 @@ function searchKeyDown(){
                 <img src="/asset/images/search.png" alt="검색버튼 이미지"/>
              </button>
           </p>
-=======
-            <p class="search-input">
-                <input type="text" name="test" id="bookSearch" placeholder="찾는 도서명 입력" onkeydown="searchKeyDown()"/>
-             </p>
-             <p class="search-btn" onclick="search()">
-			<button type="button">
-				<img src="/asset/images/search.png" alt="검색버튼 이미지"/>
-			</button>
-			</p>
->>>>>>> d9b831bd38bd5d1d38660874764835dbf9d8d3ba
       </div>
       <!-- search box ends -->
       <!-- title-bar-con-menu -->

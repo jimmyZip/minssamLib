@@ -27,7 +27,7 @@ public class BookmarkController {
 		Bookmark bookmark = new Bookmark();
 		bookmark.setMember(member);
 		bookmark.setIsbn(isbn);
-		Bookmark result = bookmarkService.bookmarkCheck(bookmark);
+		Bookmark result = bookmarkService.check(bookmark);
 		if (result == null) { // 등록된 값 없으면 추가
 			bookmarkService.insert(bookmark);
 			return "{\"resultCode\":1, \"msg\":\"북마크 등록 성공\"}";
@@ -43,7 +43,7 @@ public class BookmarkController {
 		Bookmark bookmark = new Bookmark();
 		bookmark.setMember(member);
 		bookmark.setIsbn(isbn);
-		Bookmark result = bookmarkService.bookmarkCheck(bookmark);
+		Bookmark result = bookmarkService.check(bookmark);
 
 		bookmarkService.delete(result.getBookmark_id());
 		return "{\"resultCode\":1, \"msg\":\"북마크 삭제 성공\"}";

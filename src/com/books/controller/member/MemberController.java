@@ -93,20 +93,22 @@ public class MemberController {
 	public String emailCheck(String email) {
 		//회원가입할때 중복을 체크하자
 		String result;
-		Member member = memberService.idCheck(email);
+		System.out.println("이메일:"+email);
+		Member member = memberService.emailCheck(email);
 		//System.out.println("멤버아이디"+member.getId());
 		if(member==null) {
 			result="중복없음";
-			System.out.println(result);
+			//System.out.println(result);
 		}else {
 			result="중복있음";
-			System.out.println(result);
+			//System.out.println(result);
 		}
 		//System.out.println("id="+id);
 		//System.out.println("member="+member);
-		System.out.println("보내는거"+result);
+		//System.out.println("보내는거"+result);
 		return result;
 	}	
+	
 	
 }
 

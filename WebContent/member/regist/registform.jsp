@@ -291,16 +291,17 @@ form {
 			success : function(data) {
 				alert(data);
 				if (data == "중복있음") {
-					//alert("if");
+					$("#submit").attr("disabled",true);
 					idMsg.classList.remove("valid");
 					idMsg.classList.add("invalid");
 				} else {
-					//alert("else");
+					
 					if (id.value.length >= 3 && id.value.length <= 20) {
+						$("#submit").attr("disabled",false);	
 						idMsg.classList.remove("invalid");
 						idMsg.classList.add("valid");
 					} else {
-
+						$("#submit").attr("disabled",true);
 						idMsg.classList.remove("valid");
 						idMsg.classList.add("invalid");
 					}
@@ -321,16 +322,21 @@ form {
 				email : email.value,
 			},
 			success : function(data) {
-				alert(data);
-				if (data == "중복없음") {
+				alert("받은거"+data);
+				if (data=="중복있음") {
+					//alert("중복있는경우")
+					$("#submit").attr("disabled",true);
 					emailMsg.classList.remove("valid");
 					emailMsg.classList.add("invalid");
 				} else {
-					if (id.value.length >= 3 && id.value.length <= 20) {
+					if (email.value.length >= 3 && email.value.length <= 100) {
+						//alert("중복없고 글자수도맞음");
+						$("#submit").attr("disabled",false);
 						emailMsg.classList.remove("invalid");
 						emailMsg.classList.add("valid");
 					} else {
-
+						//alert("중복없고 글자수안맞음");
+						$("#submit").attr("disabled",true);
 						emailMsg.classList.remove("valid");
 						emailMsg.classList.add("invalid");
 					}
@@ -412,11 +418,10 @@ form {
 				</div>
 			</div>
 			<div class="row">
-				<input type="submit" value="회원가입">
+				<input type="submit" id="submit" name="submit" value="회원가입">
 			</div>
 		</form>
 		<div class="msgContainer">
-
 			<div id="message">
 				<p id="idMsg" class="valid">
 					<b>✖ 형식에맞지않거나 존재하는 아이디입니다.</b>

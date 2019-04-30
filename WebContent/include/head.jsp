@@ -26,6 +26,7 @@
 <script src="/asset/js/common.js"></script>
 <script src="/asset/js/mypage.js"></script>
 <script src="/asset/js/sliding.js"></script>
+<script src="/asset/js/sliding.js"></script>
 <script src="/asset/js/login-modal.js" type="text/javascript"></script>
 <script src="/asset/js/review_write.js" type="text/javascript"></script>
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>

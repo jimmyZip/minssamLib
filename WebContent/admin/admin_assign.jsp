@@ -152,7 +152,6 @@ function viewList(json){
 		str += "</td>";
 		str += "</tr>";
 		console.log("생성문", str);
-		con.append(str);
 	}
 }
 

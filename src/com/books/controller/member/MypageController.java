@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.Pager;
 import com.books.common.member.Admin;
+import com.books.exception.AccountNotFoundException;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
 import com.books.model.service.member.MemberService;
@@ -29,25 +31,30 @@ public class MypageController {
 	@Autowired
 	private Admin commonAdmin;
 	
-	Pager pager;
 	Member member;
+	List userList;
 	List markList;
-	
+	Pager pager=new Pager();
+	//{currentPage}
+	//, @PathVariable("currentPage") String currentPage
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request) {
 		member = (Member) request.getSession().getAttribute("member");
 		
 		//String currentPage = (String)request.getAttribute("currentPaged");
-		
+		ModelAndView mav = new ModelAndView();
 		try {
-			markList = bookmarkService.selectByMember(member.getMember_id());
+			userList = bookmarkService.selectByMember(member.getMember_id());
+			//userList.size()
+			System.out.println(userList);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
+			mav.setViewName("member/login/error");
+			return mav;
 		}
 		
-		ModelAndView mav = new ModelAndView();
 		mav.setViewName("member/mypage");
-		mav.addObject("markList", markList);
+		mav.addObject("userList", userList);
 		return mav;
 	}
 	
@@ -64,7 +71,6 @@ public class MypageController {
 		}
 		return mav;		
 	}
-	
 }
 
 

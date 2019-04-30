@@ -32,6 +32,7 @@ public class BookSerachMapping {
 		List<Book> bookList = new ArrayList<Book>();
 		searchResult = searchResult.replaceAll("<b>", "");
 		searchResult = searchResult.replaceAll("</b>", "");
+		System.out.println("µé¾î¿Â °ª" + searchResult);
 		try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(searchResult);
 			JSONArray searchBookList = (JSONArray) jsonObject.get("items"); // items¿¡¼­ »Ì¾Æ¿È

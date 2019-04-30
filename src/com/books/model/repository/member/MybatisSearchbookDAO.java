@@ -22,13 +22,8 @@ public class MybatisSearchbookDAO implements SearchbookDAO{
 		return sessionTemplate.selectList("SearchBook.selectByMember", member_id);
 	}
 	
-	/*
 	public List<Searchbook> selectByIsbn(String isbn) {
 		return sessionTemplate.selectList("SearchBook.selectByIsbn", isbn);
-	}
-	*/
-	public Searchbook selectByIsbn(String isbn) {
-		return sessionTemplate.selectOne("SearchBook.selectByIsbn", isbn);
 	}
 	
 	public Searchbook select(int searchbook_id) {

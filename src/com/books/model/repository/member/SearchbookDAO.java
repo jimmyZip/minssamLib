@@ -7,8 +7,7 @@ import com.books.model.domain.member.Searchbook;
 public interface SearchbookDAO {
 	public List<Searchbook> selectAll();
 	public List<Searchbook> selectByMember(int member_id);
-	//public List<Searchbook> selectByIsbn(String isbn);
-	public Searchbook selectByIsbn(String isbn);
+	public List<Searchbook> selectByIsbn(String isbn);
 	public Searchbook select(int searchbook_id);
 	public int insert(Searchbook searchbook);
 	public int update(Searchbook searchbook);

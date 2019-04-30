@@ -1,6 +1,7 @@
+/*
+ * 마이페이지에서 SearchBook 조작 관련 컨트롤러 
+ */
 package com.books.controller.book;
-
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.search.BookSearch;
-import com.books.model.domain.book.Review;
 import com.books.model.domain.member.Member;
 import com.books.model.domain.member.Searchbook;
 import com.books.model.service.book.ReviewService;
@@ -37,17 +36,6 @@ public class BookSearchController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/book/search/detail",method=RequestMethod.GET)
-	public ModelAndView selectByIsbn(@RequestParam("isbn") String isbn) {
-		Searchbook searchBook = searchbookService.selectByIsbn(isbn);
-		List<Review> reviewList =reviewService.selectByIsbn(isbn);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("books/bookDetail");
-		mav.addObject("searchBookResult", searchBook);
-		mav.addObject("reviewList", reviewList);
-		return mav;
-	}
-	
 	@RequestMapping(value="/book/search/insert", method=RequestMethod.GET)
 	@ResponseBody
 	public void insertSearch(HttpServletRequest request, String isbn) {
@@ -60,5 +48,6 @@ public class BookSearchController {
 		}
 		searchbookService.insert(searchbook);
 	}
+	
 	
 }

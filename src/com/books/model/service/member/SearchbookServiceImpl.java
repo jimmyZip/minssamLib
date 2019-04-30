@@ -23,16 +23,11 @@ public class SearchbookServiceImpl implements SearchbookService {
 	public List<Searchbook> selectByMember(int member_id) {
 		return searchbookDAO.selectByMember(member_id);
 	}
-	
-	/*
+
 	public List<Searchbook> selectByIsbn(String isbn) {
 		return searchbookDAO.selectByIsbn(isbn);
 	}
-	*/
-	public Searchbook selectByIsbn(String isbn) {
-		return searchbookDAO.selectByIsbn(isbn);
-	}
-	
+
 	public Searchbook select(int searchbook_id) {
 		return searchbookDAO.select(searchbook_id);
 	}

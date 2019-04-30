@@ -47,7 +47,7 @@ function authDelete(auth_id){
 }
 
 // 수정
-function authModi(auth_id, obj){
+function authModi(auth_id){
 	/*
 	$.ajax({
 		url:"/admin/assign/"+auth_id,
@@ -61,7 +61,6 @@ function authModi(auth_id, obj){
 	});
 	*/
 	alert("auth_id");
-	alert(obj);
 	
 }
 
@@ -111,6 +110,7 @@ function viewList(json){
 			}
 			
 			str += "<td><button onClick='authDelete()' disabled='disabled'>삭제</button>"
+		
 		}else{
 			if(obj.admin_assign){
 				str += "<td><input type='checkbox' checked='checked'></td>";
@@ -148,9 +148,10 @@ function viewList(json){
 			
 			str += "<td><button onClick='authDelete("+obj.auth_id+")'>삭제</button>"
 		}
-		str += "<button onClick='authModi("+obj.auth_id+", this.> 수정</button>";
+		str += "<button onClick='authModi("+obj.auth_id+")'> 수정</button>";
 		str += "</td>";
 		str += "</tr>";
+		console.log("생성문", str);
 		con.append(str);
 	}
 }

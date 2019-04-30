@@ -54,6 +54,11 @@
 	<select id="emailCheck" parameterType="String" resultMap="membermap">
 		<include refid="sql_select"/> where email=#{email}
 	</select>
+	
+	<!-- 개인정보 수정할때 현재비밀번호가 맞아야 비밀번호를 변경할수있게해준다 -->
+	<select id="passCheck" parameterType="String" resultMap="membermap">
+		<include refid="sql_select"/> where pass=#{pass}
+	</select>
 
 </mapper>
 

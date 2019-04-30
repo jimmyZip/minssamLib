@@ -41,7 +41,7 @@ public class MemberController {
 	}
 	@RequestMapping(value="/member/edit",method=RequestMethod.POST)
 	public String edit(Member member) {
-		
+		member.setPass(security.textToHash(member.getPass()));
 		memberService.update(member);
 
 		return "redirect:/index.jsp";
@@ -109,6 +109,20 @@ public class MemberController {
 		return result;
 	}	
 	
+	@RequestMapping(value="/rest/member/passCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String passCheck(String pass) {
+		//회원가입할때 중복을 체크하자
+		String result;
+		pass = security.textToHash(pass);
+		Member member = memberService.passCheck(pass);
+		if(member==null) {
+			result="일치하지않음";
+		}else {
+			result="일치함";
+		}
+		return result;
+	}	
 	
 }
 

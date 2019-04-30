@@ -66,4 +66,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.emailCheck(email);
 	}
 
+	@Override
+	public Member passCheck(String pass) {
+		return memberDAO.passCheck(pass);
+	}
+
 }

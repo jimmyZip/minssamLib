@@ -12,6 +12,7 @@ public interface MemberDAO {
 	public Member select(int member_id);
 	public Member idCheck(String id);
 	public Member emailCheck(String email);
+	public Member passCheck(String pass);
 	public int insert(Member member);
 	public int update(Member member);
 	public int delete(int member_id);

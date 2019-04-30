@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%! Pager pager = new Pager(); %>
 <% 
 	//List<Bookmark> markList=(List)request.getAttribute("markList");
 	//pager.init(request, markList.size());

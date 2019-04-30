@@ -37,7 +37,7 @@ public class MypageController {
 	public ModelAndView markAll(HttpServletRequest request) {
 		member = (Member) request.getSession().getAttribute("member");
 		
-		String currentPage = (String)request.getAttribute("currentPaged");
+		//String currentPage = (String)request.getAttribute("currentPaged");
 		
 		try {
 			markList = bookmarkService.selectByMember(member.getMember_id());

@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.books.model.domain.book.Book;
 import com.books.model.service.book.BookCommentService;
-import com.books.model.service.book.BookCommentServiceImpl;
 import com.books.model.service.book.ReviewService;
-import com.books.model.service.book.ReviewServiceImpl;
 import com.books.model.service.book.ScoreService;
 
 @Component
@@ -49,9 +47,9 @@ public class BookSerachMapping {
 					book.setPubdate(jsonBook.get("pubdate").toString());
 					book.setDescription(jsonBook.get("description").toString());
 					String isbn;
-					try {
+					try {// isbn 하나 있을때 에러 처리
 						isbn = jsonBook.get("isbn").toString().split(" ")[1];
-					} catch (ArrayIndexOutOfBoundsException e) {// isbn 하나 있을때 에러 처리
+					} catch (ArrayIndexOutOfBoundsException e) {
 						isbn = jsonBook.get("isbn").toString();
 					}
 					

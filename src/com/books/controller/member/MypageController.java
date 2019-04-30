@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.books.common.Pager;
 import com.books.common.member.Admin;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
@@ -28,18 +29,18 @@ public class MypageController {
 	@Autowired
 	private Admin commonAdmin;
 	
+	Pager pager;
 	Member member;
 	List markList;
 	
-	@RequestMapping(value="/member/mypage/{member_id}",method=RequestMethod.GET)
-	public ModelAndView markAll(HttpServletRequest request, @PathVariable("member_id") String member_id) {
-		//System.out.println("markAll 호출했다개");
-		member = (Member) request.getAttribute("member");
-		//System.out.println(member+"받았다개");
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public ModelAndView markAll(HttpServletRequest request) {
+		member = (Member) request.getSession().getAttribute("member");
+		
+		String currentPage = (String)request.getAttribute("currentPaged");
 		
 		try {
-			markList = bookmarkService.selectByMember(Integer.parseInt(member_id));
-			//System.out.println(markList.size()+"리스트랭스\n"+member_id);
+			markList = bookmarkService.selectByMember(member.getMember_id());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

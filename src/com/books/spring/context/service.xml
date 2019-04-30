@@ -21,6 +21,7 @@
 		p:username="root"
 		p:password="">
 	</bean>
+	
 	<!-- transactionManager -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"	

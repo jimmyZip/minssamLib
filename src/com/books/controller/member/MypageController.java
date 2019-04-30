@@ -14,7 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.Pager;
 import com.books.common.member.Admin;
-import com.books.exception.AccountNotFoundException;
+import com.books.common.search.BookSerachMapping;
+import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
 import com.books.model.service.member.MemberService;
@@ -31,21 +32,24 @@ public class MypageController {
 	@Autowired
 	private Admin commonAdmin;
 	
-	Member member;
-	List userList;
-	List markList;
+	
+	//Member member;
 	Pager pager=new Pager();
 	//{currentPage}
 	//, @PathVariable("currentPage") String currentPage
-	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
-	public ModelAndView markAll(HttpServletRequest request) {
-		member = (Member) request.getSession().getAttribute("member");
+	@RequestMapping(value="/member/mypage/{currentPage}",method=RequestMethod.GET)
+	public ModelAndView markAll(HttpServletRequest request, @PathVariable("currentPage") String currentPage) {
+		List<Bookmark> userList;
+		List markList;
+		Member member = (Member) request.getSession().getAttribute("member");
 		
-		//String currentPage = (String)request.getAttribute("currentPaged");
 		ModelAndView mav = new ModelAndView();
 		try {
 			userList = bookmarkService.selectByMember(member.getMember_id());
-			//userList.size()
+			pager.init(request, userList.size());
+			if(userList.size()>0) {
+				
+			}
 			System.out.println(userList);
 		} catch (NullPointerException e) {
 			e.printStackTrace();

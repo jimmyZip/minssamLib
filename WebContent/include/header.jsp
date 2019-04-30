@@ -100,7 +100,7 @@ function searchKeyDown(){
          </div>
          <!-- nav menus -->
          <div class="menu-item"
-            onclick="location.href='/books/bookSearchList.jsp'">도서 검색</div>
+            onclick="location.href='/book/search/ /1'">도서 검색</div>
          <div class="menu-item"
             onclick="location.href='/review/reviewlist.jsp'">평가/리뷰
             게시판</div>

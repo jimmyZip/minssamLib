@@ -1,3 +1,4 @@
+<%@page import="com.books.model.domain.book.Book"%>
 <%@page import="com.books.common.Pager"%>
 <%@page import="com.books.model.domain.book.Review"%>
 <%@page import="java.util.List"%>
@@ -5,7 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%!Pager pager = new Pager(); %>
 <%
-	Searchbook searchBook = (Searchbook)request.getAttribute("searchBookResult");
+	List<Book> detailList = (List)request.getAttribute("detailList");
+	System.out.println(detailList.size());
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
 	pager.init(request, reviewList.size());
 %>
@@ -43,7 +45,7 @@
 								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span>ISBN</span>
 							</p>
 							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span><%=searchBook.getIsbn() %></span>
+								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span>ISBN</span>
 							</p>
 							<p class="bScore">
 								<span>평점</span>

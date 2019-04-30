@@ -32,8 +32,7 @@ public class AdminAssignController {
     // 전체 리스트 반환(json)
     @RequestMapping(value = "/admin/assign", method = RequestMethod.GET)
     @ResponseBody
-    public List showAuthList() {
-    	logger.trace("권한 리스트 반환");
+    public List<Auth> showAuthList() {
         return authService.selectAll();
     }
     
@@ -41,7 +40,6 @@ public class AdminAssignController {
     @RequestMapping(value="/admin/assign", method=RequestMethod.POST)
     @ResponseBody
     public String insertAuth(Auth auth) {
-    	logger.trace("권한 추가 ");
     	auth.setAuth_name("신규 추가");
     	authService.insert(auth);
     	return null;

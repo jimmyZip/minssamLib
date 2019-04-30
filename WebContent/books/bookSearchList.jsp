@@ -101,7 +101,7 @@ function bookDetailView(isbn){
 	<%}%>
 
 	// 페이지 이동
-	location.href="/book/search/detail?isbn="+isbn;
+	location.href="/book/search/detail/"+isbn;
 }
 
 // 결과 코드 alert 창으로 보여주는 코드

@@ -14,6 +14,8 @@ import com.books.common.Pager;
 import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
 import com.books.model.domain.book.Book;
+import com.books.model.domain.book.Review;
+import com.books.model.service.book.ReviewService;
 
 @Controller
 public class SearchController {
@@ -21,6 +23,9 @@ public class SearchController {
 	BookSerachMapping mapping;
 	@Autowired
 	BookSearch bookSearch;
+	@Autowired
+	ReviewService reviewService;
+	
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	Pager pager = new Pager();
 	
@@ -29,7 +34,7 @@ public class SearchController {
 		logger.trace("검색 단어 : " + searchWord);
 		
 		ModelAndView mav = new ModelAndView("books/bookSearchList");
-		List<Book> searchList = mapping.mapping((bookSearch.search(searchWord, 10, Integer.parseInt(currentPage)*10)));
+		List<Book> searchList = mapping.mapping((bookSearch.search(searchWord, 10, Integer.parseInt(currentPage)*10-9)));
 		if(searchList.size()>0){ // 페이징 처리
 			pager.searchInit(Integer.parseInt(currentPage), searchList.get(0).getTotal());
 		}else{	// 검색 결과 없으면 그냥 하나만 있는것처럼 간주
@@ -38,6 +43,17 @@ public class SearchController {
 		mav.addObject("searchList", searchList);
 		mav.addObject("searchWord", searchWord);
 		mav.addObject("pager", pager);
+		return mav;
+	}
+	@RequestMapping(value = "/book/search/detail/{isbn}", method = RequestMethod.GET)
+	public ModelAndView showDetail(@PathVariable("isbn") String isbn) {
+		logger.trace("isbn : " + isbn);
+		List<Book> detailList = mapping.mapping((bookSearch.search(isbn)));
+		List<Review> reviewList = reviewService.selectByIsbn(isbn);
+		ModelAndView mav = new ModelAndView("books/bookDetail");
+		mav.addObject("detailList", detailList);
+		mav.addObject("reviewList", reviewList);
+		
 		return mav;
 	}
 }

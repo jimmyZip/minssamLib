@@ -51,15 +51,15 @@ function searchKeyDown(){
          
       </div>
       <!-- search box ends -->
-      <!-- title-bar-con-menu -->
-      <div class="title-icon-wrapper">
       <%if(member!=null){ %>
       <%=member.getName() %>님 환영합니다!!
       <%} %>
-         <!-- <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
-         <span class="icon-cnt cart-cnt" id="cart_number">5</span> <i
-            class="fa heart dropdown" onClick="location.href='/payment/wish/'"></i>
-         <span class="icon-cnt heart-cnt" id="wish_number">2</span> -->
+      <!-- title-bar-con-menu -->
+      <div class="title-icon-wrapper">
+         <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
+         <span class="icon-cnt cart-cnt" id="cart_number">5</span>
+         <i class="fa heart dropdown" onClick="location.href='/payment/wish/'"></i>
+         <span class="icon-cnt heart-cnt" id="wish_number">2</span>
          <!-- login btn start -->
          <i class="far fa-user dropdown"></i>
          <div class="user-content">
@@ -107,7 +107,7 @@ function searchKeyDown(){
          <div class="menu-item"
             onclick="location.href='/review/reviewlist.jsp'">평가/리뷰
             게시판</div>
-         <div class="menu-item" onclick="location.href='#'">인기도서 목록</div>
+         <div class="menu-item" onclick="location.href='/book/popular'">인기도서 목록</div>
          <%if (session.getAttribute("member") != null) { %>
          <div class="menu-item" onclick="location.href='/member/mypage/{currentPage}'">MyPage</div>
          <%} %>

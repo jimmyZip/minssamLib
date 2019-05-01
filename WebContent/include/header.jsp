@@ -33,6 +33,11 @@ function searchKeyDown(){
       <h1 class="logo">
          <a href="/">min<span>ssam's</span><span>Library</span></a>
       </h1>
+      <h1>
+      <%if(member!=null){ %>
+      <%=member.getName() %>님 환영합니다
+      <%} %>
+      </h1>
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >

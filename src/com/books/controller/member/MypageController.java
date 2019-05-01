@@ -25,31 +25,25 @@ public class MypageController {
 
 	@Autowired
 	private BookmarkService bookmarkService;
-	
 	@Autowired 
 	private MemberService memberService;
-	
 	@Autowired
 	private Admin commonAdmin;
 	
-	
 	//Member member;
 	Pager pager=new Pager();
-	//{currentPage}
-	//, @PathVariable("currentPage") String currentPage
 	@RequestMapping(value="/member/mypage/{currentPage}",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request, @PathVariable("currentPage") String currentPage) {
-		List<Bookmark> userList;
+		List userList;
 		List markList;
 		Member member = (Member) request.getSession().getAttribute("member");
-		
 		ModelAndView mav = new ModelAndView();
 		try {
 			userList = bookmarkService.selectByMember(member.getMember_id());
-			pager.init(request, userList.size());
-			if(userList.size()>0) {
+			//pager.init(request, userList.size());
+			//if(userList.size()>0) {
 				
-			}
+			//}
 			System.out.println(userList);
 		} catch (NullPointerException e) {
 			e.printStackTrace();

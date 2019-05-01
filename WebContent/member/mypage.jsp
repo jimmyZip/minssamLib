@@ -5,7 +5,9 @@
 <% 
 	//List<Bookmark> markList=(List)request.getAttribute("markList");
 	//pager.init(request, markList.size());
-	
+	List<Bookmark> userList=(List)request.getAttribute("userList");
+	System.out.println(userList.size());
+	System.out.println(userList.get(0).getMember().getId());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -57,15 +59,19 @@
 				<%for(int i=0; i<pager.getPageSize();i++){ %>
 				<%if(num<1)break; %>
 				<%Bookmark bookmark=markList.get(curPos++); %> --%>
+				<%for(int i=0; i<userList.size();i++){ %>
 	       			<tr>
+	       			<% Bookmark mark=userList.get(i); %>
+	       			
                        <td>																							<!-- 멤버 id 참조해서  -->
                            <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div></a>
                        </td>
                        <td>곰돌이 푸</td>
                        <td></td>
-                       <td>regdate 받아와서 넣기</td>
+                       <td><%=mark.getBookmark_date() %></td>
                        <td><button onClick="#">삭제</button></td>
                 	</tr>
+                	<%} %>
                    <%-- <%} %> --%>
                    <tr>
                        <td>

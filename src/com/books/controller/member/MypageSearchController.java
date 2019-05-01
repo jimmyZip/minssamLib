@@ -27,27 +27,25 @@ public class MypageSearchController {
 	BookSearch bookSearch;
 	@Autowired
 	SearchbookService searchbookService;
-	Pager pager=new Pager();
-	ArrayList searchHistory;
+	Pager pager = new Pager();
 	
-	/*
-	 * @RequestMapping(value="/member/searchHistory",method=RequestMethod.GET)
-	 * public ModelAndView searchAll(HttpServletRequest request) { Member member=
-	 * (Member)request.getSession().getAttribute("member"); String currentPage =
-	 * (String)request.getAttribute("currentPage"); ModelAndView mav = new
-	 * ModelAndView("member/searchHistory"); try {
-	 * 
-	 * searchHistory=(ArrayList)
-	 * searchbookService.selectByMember(member.getMember_id()).;
-	 * 
-	 * 
-	 * if(searchHistory.size()>0) { //∆‰¿Ã¬° pager.init(Integer.parseInt(currentPage),
-	 * searchHistory.get(0).); } } catch (NullPointerException e) { ArrayList
-	 * searchHistory = new ArrayList(); e.printStackTrace(); }
-	 * 
-	 * mav.addObject("searchHistory",searchHistory);
-	 * 
-	 * return mav; }
-	 */
-	
+	@RequestMapping(value="/member/searchHistory",method=RequestMethod.GET)
+	public ModelAndView searchAll(HttpServletRequest request) { 
+		Member member=(Member)request.getSession().getAttribute("member"); 
+		ArrayList searchHistory;
+		//String currentPage =	(String)request.getAttribute("currentPage"); 
+		ModelAndView mav = new ModelAndView("member/searchHistory"); 
+		try {	 
+			searchHistory=(ArrayList) searchbookService.selectByMember(member.getMember_id());
+			
+		}catch (NullPointerException e) { 
+			mav.setViewName("member/login/error");
+			e.printStackTrace();
+			return mav;
+	}
+		
+		mav.setViewName("member/searchHistory");
+		mav.addObject("searchHistory",searchHistory);
+		return mav; 
+	}
 }

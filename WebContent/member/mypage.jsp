@@ -6,8 +6,8 @@
 	//List<Bookmark> markList=(List)request.getAttribute("markList");
 	//pager.init(request, markList.size());
 	List<Bookmark> userList=(List)request.getAttribute("userList");
-	System.out.println(userList.size());
-	System.out.println(userList.get(0).getMember().getId());
+	//System.out.println(userList.size());
+	//System.out.println(userList.get(0).getMember().getId());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {

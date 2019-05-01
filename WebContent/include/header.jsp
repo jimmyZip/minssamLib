@@ -33,11 +33,6 @@ function searchKeyDown(){
       <h1 class="logo">
          <a href="/">min<span>ssam's</span><span>Library</span></a>
       </h1>
-      <h1>
-      <%if(member!=null){ %>
-      <%=member.getName() %>님 환영합니다
-      <%} %>
-      </h1>
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >
@@ -58,10 +53,13 @@ function searchKeyDown(){
       <!-- search box ends -->
       <!-- title-bar-con-menu -->
       <div class="title-icon-wrapper">
-         <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
+      <%if(member!=null){ %>
+      <%=member.getName() %>님 환영합니다!!
+      <%} %>
+         <!-- <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
          <span class="icon-cnt cart-cnt" id="cart_number">5</span> <i
             class="fa heart dropdown" onClick="location.href='/payment/wish/'"></i>
-         <span class="icon-cnt heart-cnt" id="wish_number">2</span>
+         <span class="icon-cnt heart-cnt" id="wish_number">2</span> -->
          <!-- login btn start -->
          <i class="far fa-user dropdown"></i>
          <div class="user-content">
@@ -72,7 +70,7 @@ function searchKeyDown(){
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
                <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>
          <%}else{ %>
-               <li><a href="#" class="user-btn" id="login-bt">로그인</a></li>               
+               <li><a href="#" class="user-btn" id="login-bt">로그인&nbsp;/&nbsp;회원가입</a></li>               
          <%} %>
             </ul>
          </div>

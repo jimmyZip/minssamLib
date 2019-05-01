@@ -56,4 +56,9 @@ public class MybatisMemberDAO implements MemberDAO{
 
 	}
 
+	@Override
+	public Member passCheck(String pass) {
+		return sessionTemplate.selectOne("Member.passCheck",pass);
+	}
+
 }

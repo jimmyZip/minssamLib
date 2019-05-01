@@ -11,7 +11,7 @@
 	box-sizing: border-box;
 }
 
-input[type=text], p, b, textarea {
+input[type=text], textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;
@@ -32,7 +32,7 @@ label {
 	display: inline-block;
 }
 
-input[type=button] {
+input[type=submit] {
 	background-color: #4CAF50;
 	color: white;
 	padding: 12px 20px;
@@ -231,30 +231,31 @@ form {
 		}
 
 		name.onkeyup = function() {
-			// Validate length
-			if (name.value.length >= 3 && name.value.length <= 20) {
+			if (name.value.length <= 20) {
+				$("#submit").attr("disabled",false);
 				nameMsg.classList.remove("invalid");
 				nameMsg.classList.add("valid");
 			} else {
+				$("#submit").attr("disabled",true);
 				nameMsg.classList.remove("valid");
 				nameMsg.classList.add("invalid");
 			}
 		}
 
 		nickname.onkeyup = function() {
-			// Validate length
-			if (nickname.value.length >= 3 && nickname.value.length <= 20) {
+			if (nickname.value.length <= 20) {
+				$("#submit").attr("disabled",false);
 				nicknameMsg.classList.remove("invalid");
 				nicknameMsg.classList.add("valid");
 			} else {
+				$("#submit").attr("disabled",true);
 				nicknameMsg.classList.remove("valid");
 				nicknameMsg.classList.add("invalid");
 			}
 		}
 
 		email.onkeyup = function() {
-			// Validate length
-			if (email.value.length >= 3 && email.value.length <= 20) {
+			if (email.value.length <= 100) {
 				emailMsg.classList.remove("invalid");
 				emailMsg.classList.add("valid");
 			} else {
@@ -363,7 +364,7 @@ form {
 				</div>
 				<div class="col-60">
 					<input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"
-						onchange="idCheck()" pattern="[A-Za-z0-9]{3,20}" required>
+						onchange="idCheck()" pattern="[A-Za-z0-9]{3,20}" title="영문과숫자사용가능 3~20글자이내" required>
 				</div>
 			</div>
 			<div class="row">
@@ -442,13 +443,13 @@ form {
 
 			<div id="message">
 				<p id="nameMsg" class="valid">
-					<b>✖ 3글자에서 20글자사이로 입력해주세요</b>
+					<b>✖ 20자이내로 입력해주세요</b>
 				</p>
 			</div>
 
 			<div id="message">
 				<p id="nicknameMsg" class="valid">
-					<b>✖ 3글자에서 20글자사이로 입력해주세요</b>
+					<b>✖ 20자이내로 입력해주세요</b>
 				</p>
 			</div>
 

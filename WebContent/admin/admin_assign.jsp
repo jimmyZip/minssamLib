@@ -47,7 +47,16 @@ function authDelete(auth_id){
 }
 
 // 수정
-function authModi(auth_id){
+function authModi(auth_id, button){
+	var trTag = button.parentElement.parentElement; // tr 태그
+	var auth_id = trTag.childNodes[0].children[0].value;
+	var admin_assign = trTag.childNodes[1].children[0].checked;
+	var member_del = trTag.childNodes[2].children[0].checked;
+	var review_del = trTag.childNodes[3].children[0].checked;
+	var review_comment_del = trTag.childNodes[4].children[0].checked;
+	var book_comment_del = trTag.childNodes[5].children[0].checked;
+	console.log(auth_id, admin_assign, member_del, review_del, review_comment_del, book_comment_del); 
+
 	/*
 	$.ajax({
 		url:"/admin/assign/"+auth_id,
@@ -60,8 +69,6 @@ function authModi(auth_id){
 		}
 	});
 	*/
-	alert("auth_id");
-	
 }
 
 // 페이지 표시해주는 함수 
@@ -148,7 +155,7 @@ function viewList(json){
 			
 			str += "<td><button onClick='authDelete("+obj.auth_id+")'>삭제</button>"
 		}
-		str += "<button onClick='authModi("+obj.auth_id+")'> 수정</button>";
+		str += "<button onClick='authModi("+obj.auth_id+", this)'> 수정</button>";
 		str += "</td>";
 		str += "</tr>";
 		//console.log("생성문", str);

@@ -5,7 +5,9 @@
 <% 
 	//List<Bookmark> markList=(List)request.getAttribute("markList");
 	//pager.init(request, markList.size());
-	
+	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	//System.out.println(userBookmarkList.size());
+	//System.out.println(userList.get(0).getMember().getId());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -21,6 +23,17 @@
 <head>
 <%@include file="/include/head.jsp" %>
 <title>마이 페이지</title>
+<script>
+function fly(isbn){
+	alert("눌럿음");
+	location.href="/book/search/detail/"+isbn;
+	
+}
+
+function del(){
+	
+}
+</script>
 </head>
 <!-- head end -->
 <body>
@@ -52,30 +65,19 @@
 	               </tr>
 	           </thead>
 	           <tbody id="container">
-				<%-- <%int num=pager.getNum(); %>          
-				<%int curPos=pager.getCurPos(); %>
-				<%for(int i=0; i<pager.getPageSize();i++){ %>
-				<%if(num<1)break; %>
-				<%Bookmark bookmark=markList.get(curPos++); %> --%>
+				
+				<%for(int i=0; i<userBookmarkList.size();i++){ %>
+	       			<% Bookmark mark=userBookmarkList.get(i); %>
 	       			<tr>
                        <td>																							<!-- 멤버 id 참조해서  -->
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div></a>
+                           <a href="#"><div onClick="fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
                        </td>
-                       <td>곰돌이 푸</td>
+                       <td><%= mark.getBook().getTitle()%></td>
                        <td></td>
-                       <td>regdate 받아와서 넣기</td>
+                       <td><%=mark.getBookmark_date() %></td>
                        <td><button onClick="#">삭제</button></td>
                 	</tr>
-                   <%-- <%} %> --%>
-                   <tr>
-                       <td>
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/06426567.jpg');"></div></a>
-                       </td>
-                       <td>안아프니까 청춘이다</td>
-                       <td></td>
-                       <td>regdate 받아와서 넣기</td>
-                       <td><button onClick="#">삭제</button></td>
-                   </tr>
+                	<%} %>
  					
 	           </tbody>
 	       </table>

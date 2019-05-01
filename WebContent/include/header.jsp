@@ -53,21 +53,24 @@ function searchKeyDown(){
       <!-- search box ends -->
       <!-- title-bar-con-menu -->
       <div class="title-icon-wrapper">
-         <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
+      <%if(member!=null){ %>
+      <%=member.getName() %>님 환영합니다!!
+      <%} %>
+         <!-- <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
          <span class="icon-cnt cart-cnt" id="cart_number">5</span> <i
             class="fa heart dropdown" onClick="location.href='/payment/wish/'"></i>
-         <span class="icon-cnt heart-cnt" id="wish_number">2</span>
+         <span class="icon-cnt heart-cnt" id="wish_number">2</span> -->
          <!-- login btn start -->
          <i class="far fa-user dropdown"></i>
          <div class="user-content">
             <%if (session.getAttribute("member") != null) { %>
             <ul>
-               <li><a href="/member/mypage/" class="user-btn">마이페이지</a></li>
+               <li><a href="/member/mypage/{currentPage}" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
                <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>
          <%}else{ %>
-               <li><a href="#" class="user-btn" id="login-bt">로그인</a></li>               
+               <li><a href="#" class="user-btn" id="login-bt">로그인&nbsp;/&nbsp;회원가입</a></li>               
          <%} %>
             </ul>
          </div>
@@ -106,7 +109,7 @@ function searchKeyDown(){
             게시판</div>
          <div class="menu-item" onclick="location.href='#'">인기도서 목록</div>
          <%if (session.getAttribute("member") != null) { %>
-         <div class="menu-item" onclick="location.href='/member/mypage/'">MyPage</div>
+         <div class="menu-item" onclick="location.href='/member/mypage/{currentPage}'">MyPage</div>
          <%} %>
          <div class="menu-item" onclick="location.href='#'">고객센터</div>
          <!-- nav menus end-->

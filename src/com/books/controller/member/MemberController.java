@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.SecurityBean;
+import com.books.exception.EditFailException;
+import com.books.exception.LoginFailException;
 import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.MemberService;
+
 
 
 @Controller
@@ -34,29 +37,36 @@ public class MemberController {
 	public String regist(Member member) {
 		
 		member.setPass(security.textToHash(member.getPass()));
-		System.out.println(member.getPass());
+		//System.out.println(member.getPass());
 		memberService.insert(member);
 
 		return "redirect:/index.jsp";
 	}
 	@RequestMapping(value="/member/edit",method=RequestMethod.POST)
 	public String edit(Member member) {
-		
+		member.setPass(security.textToHash(member.getPass()));
 		memberService.update(member);
-
-		return "redirect:/index.jsp";
+		
+		return "member/edit/edit";
 	}
 	
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
 	public String login(Member member, HttpServletRequest request) {
-
+		
+		String viewName=null;
 		member.setPass(security.textToHash(member.getPass()));
 		Member obj = memberService.loginCheck(member);
 		// 세션에 담기!
 		
-		request.getSession().setAttribute("member", obj);
-		
-		return "redirect:/index.jsp";
+		if(obj==null) {
+			viewName="member/login/loginfail";
+		}else {
+			request.getSession().setAttribute("member", obj);
+
+			viewName="redirect:/index.jsp";
+			System.out.println("뷰네임"+viewName);
+		}
+		return viewName;
 	}
 	
 	@RequestMapping(value="/member/modify",method=RequestMethod.GET)
@@ -109,7 +119,41 @@ public class MemberController {
 		return result;
 	}	
 	
+	@RequestMapping(value="/rest/member/passCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String passCheck(String pass) {
+		//회원가입할때 중복을 체크하자
+		String result;
+		pass = security.textToHash(pass);
+		Member member = memberService.passCheck(pass);
+		if(member==null) {
+			result="일치하지않음";
+		}else {
+			result="일치함";
+		}
+		return result;
+	}	
 	
+	@ExceptionHandler(RegistFailException.class)
+	@ResponseBody
+	public String handleRegistFail(RegistFailException e) {
+		
+		return "{\"resultCode\":0,\"msg\":\""+e.getMessage()+"\"}";
+	}
+
+	@ExceptionHandler(LoginFailException.class)
+	@ResponseBody
+	public String handleLoginFail(LoginFailException e) {
+		
+		return "{\"resultCode\":0,\"msg\":\""+e.getMessage()+"\"}";
+	}
+	
+	@ExceptionHandler(EditFailException.class)
+	@ResponseBody
+	public String handleEditFail(EditFailException e) {
+		
+		return "{\"resultCode\":0,\"msg\":\""+e.getMessage()+"\"}";
+	}
 }
 
 

@@ -1,10 +1,21 @@
 package com.books.model.domain.member;
 
+import com.books.model.domain.book.Book;
+
 public class Bookmark {
+	private Book book;
 	private int bookmark_id;
 	private Member member;
 	private String isbn;
 	private String bookmark_date;
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 
 	public int getBookmark_id() {
 		return bookmark_id;

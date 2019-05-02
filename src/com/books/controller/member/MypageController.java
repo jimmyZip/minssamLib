@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.Pager;
@@ -39,13 +41,17 @@ public class MypageController {
 		List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
+		
+		JSONObject json=new JSONObject();
 		try {
 			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 			for(int i=0; i<userBookmarkList.size(); i++) {
 				String isbn = userBookmarkList.get(i).getIsbn();
 				//System.out.println(isbn);
 				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-				//System.out.println(userBookmarkList.size());
+				json.put("image", userBookmarkList.get(i).getBook().getImage());
+				json.put("title", userBookmarkList.get(i).getBook().getTitle());
+				json.put("bookmark_date", userBookmarkList.get(i).getBookmark_date());
 			}
 			//pager.init(request, userList.size());
 			//if(userList.size()>0) {
@@ -59,6 +65,7 @@ public class MypageController {
 		
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
+		mav.addObject("json",json);
 		return mav;
 	}
 	

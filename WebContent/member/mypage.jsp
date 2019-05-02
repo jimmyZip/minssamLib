@@ -24,15 +24,19 @@
 <%@include file="/include/head.jsp" %>
 <title>마이 페이지</title>
 <script>
-function fly(isbn){
-	alert("눌럿음");
-	location.href="/book/search/detail/"+isbn;
+$(function(){
 	
 }
 
 function del(){
 	
 }
+
+function fly(isbn){
+	alert(isbn);
+	location.href="/book/search/detail/"+isbn;
+}
+
 </script>
 </head>
 <!-- head end -->
@@ -64,7 +68,8 @@ function del(){
                        <th>비고</th>
 	               </tr>
 	           </thead>
-	           <tbody id="container">
+	           
+	           <tbody class="mypageContainer" id="container" name="del">
 				
 				<%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
@@ -75,7 +80,9 @@ function del(){
                        <td><%= mark.getBook().getTitle()%></td>
                        <td></td>
                        <td><%=mark.getBookmark_date() %></td>
-                       <td><button onClick="#">삭제</button></td>
+                       <td>
+                       		<button onClick="javascript:book_markDel()">삭제</button>
+                       </td>
                 	</tr>
                 	<%} %>
  					

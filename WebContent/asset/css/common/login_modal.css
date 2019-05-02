@@ -1,8 +1,9 @@
-Ôªø/*-----------------------------------
-Î™®Îã¨ ÌåùÏóÖ
+/*-----------------------------------
+∏¥ﬁ ∆Àæ˜
 -----------------------------------*/
 /* The Modal (background) */
 #full {
+	display:none;
 	position: fixed; /* Stay in place */
 	z-index: 10; /* Sit on top */
 	left: 0;
@@ -17,6 +18,7 @@
 
 /* Modal Content */
 #view {
+	display:none;
 	position:fixed;
 	width: 480px;
 	height:360px;
@@ -25,12 +27,12 @@
 	margin-left:-240px;
 	margin-top:-180px;
 	z-index:11;
-	background-color: #fff;	
+	background-color: #1bbc9b;	
 	margin-top: 100px;
 	border: 1px solid #888;
 	border-radius:8px;
 	text-align: center;
-	padding: 5%;
+	padding: 2%;
 }
 
 /*loaded login form##########################################################################*/
@@ -38,7 +40,6 @@
 .login_wrap {
    width:100%;
    height: 100%;
-   position: relative;
 }
 .login_wrap form {
    width: 100%;
@@ -46,70 +47,118 @@
 }
 fieldset {
    border: none;
-}
-legend {
-   display:inline-block !important;
-   font-size: 24px;
-   font-weight: bold;
-   padding-bottom: 10px;
-}
-.login_area {
-   width: 100%;
-   height: 150px;
-}
-.input_info {
-   width: 100%;
-   overflow: hidden;
-}
-.id_area, .pass_area {
-   width: 80%;
-   height: 40px;
-   float: left;
-}
-.login_area input {
-   display: block;
-   width: 99%;
-   height: 99%;
-   text-indent: 10px;
-}
-.id_area {
-}
-.login_btn {
-   width: 20%;
-   height: 80px;
-   padding-left: 0;
-   float: right;
-}
-.login_btn a {
-   display: block;
-   width: 99%;
-   height: 99%;
-   background-color: #FF681B;
-   color: #fff;
-   text-align: center;
-   line-height: 68px;
-   border: 1px solid #B95304;
-}
-.search_id_pw {
-   font-size: 12px;
-   text-align: right;
-   padding: 20px 0;
-}
-.search_id_pw a,.search_id_pw span{
-	display:inline-block !important;
-}
-.sign_up_area {
-   width: 99%;
-   height: 35px;
-   border: 1px solid #ccc;
-   line-height: 35px;
-   text-align: center;
-}
-.sign_up_area a {
-   display:block;
    width:100%;
    height:100%;
 }
+legend {
+   display:block;
+   width:100%;
+   height:20%;
+   font-size: 1.5rem;
+   padding-bottom: 10px;
+   color:#fff;
+   font-weight: 700;
+}
+.login_area {
+   width: 100%;
+   height:50%;
+   overflow:hidden;
+   margin:0;
+   padding:0;
+}
+.input_info,.login_btn{
+	float:left;
+	height:100%;
+}
+.login_area:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+.input_info {
+   width: 80%;
+   height:100%;
+   padding:0;
+   overflow:hidden;
+}
+#userid,#pass{
+	margin:0;
+	width:99%;
+	border:none;
+	background-color:#fff;
+	padding:1rem;
+	border-radius:3px !important;
+	margin-right:1%;
+}
+#userid{
+	margin-bottom:2rem;
+}
+.login_btn{
+	width:20%;
+	height:97%;
+	background-color:transparent;
+	border:2px solid #fff;
+	box-sizing:border-box;
+	border-radius:3px;
+}
+.login_btn a{
+	cursor:pointer;
+	display:block;
+	width:100%;
+	height:100%;
+	color:#fff;
+	line-height:140px;
+	font-weight:700;
+	font-size:1.3rem;
+	border-radius:3px;
+	transition:.3s all;
+}
+.login_btn:hover a,
+.login_btn a:focus{
+	background-color:#fff;
+	color:#223d4b;
+	outline:none;
+}
+
+.searchRegistArea{
+	width:100%;
+	height:30%;
+	overflow:hidden;
+}
+.search_id_pw{
+	width:100%;
+	height:30%;
+	text-align:right;
+}
+.search_id_pw a,
+.search_id_pw span{
+	display:inline !important;
+	color:#fff;
+	font-size:0.9rem;
+}
+.sign_up_area{
+	width:100%;
+	height:70%;
+}
+.sign_up_area a{
+	display:block;
+	width:100%;
+	height:100%;
+	line-height:60px;
+	border:2px solid #223d4b;
+	color:#223d4b;
+	coursor:pointer;
+	border-radius:3px;
+	font-weight:700;
+	font-size:1.5rem;
+	transition:.3s all;
+}
+.sign_up_area:hover a,
+.sign_up_area a:focus{
+	color:#fff;
+	background-color:#223d4b;
+}
+
 
 
 /*loaded login form##########################################################################*/

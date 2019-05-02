@@ -3,36 +3,36 @@
 -----------------------------------*/
 /* The Modal (background) */
 #full {
-	display:none;
-	position: fixed; /* Stay in place */
-	z-index: 10; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-	font-size: 0.8em;
-	text-align: center;
+   display:none;
+   position: fixed; /* Stay in place */
+   z-index: 10; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+   font-size: 0.8em;
+   text-align: center;
 }
 
 /* Modal Content */
 #view {
-	display:none;
-	position:fixed;
-	width: 480px;
-	height:360px;
-	left:50%;
-	top:20%;
-	margin-left:-240px;
-	margin-top:-180px;
-	z-index:11;
-	background-color: #1bbc9b;	
-	margin-top: 100px;
-	border: 1px solid #888;
-	border-radius:8px;
-	text-align: center;
-	padding: 2%;
+   display:none;
+   position:fixed;
+   width: 480px;
+   height:360px;
+   left:50%;
+   top:20%;
+   margin-left:-240px;
+   margin-top:-180px;
+   z-index:11;
+   background-color: #1bbc9b;   
+   margin-top: 100px;
+   border: 1px solid #888;
+   border-radius:8px;
+   text-align: center;
+   padding: 2%;
 }
 
 /*loaded login form##########################################################################*/
@@ -67,13 +67,13 @@ legend {
    padding:0;
 }
 .input_info,.login_btn{
-	float:left;
-	height:100%;
+   float:left;
+   height:100%;
 }
 .login_area:after{
-	content:'';
-	display:block;
-	clear:both;
+   content:'';
+   display:block;
+   clear:both;
 }
 .input_info {
    width: 80%;
@@ -82,91 +82,90 @@ legend {
    overflow:hidden;
 }
 #userid,#pass{
-	margin:0;
-	width:99%;
-	border:none;
-	background-color:#fff;
-	padding:1rem;
-	border-radius:3px !important;
-	margin-right:1%;
+   margin:0;
+   width:99%;
+   border:none;
+   background-color:#fff;
+   padding:1rem;
+   border-radius:3px !important;
+   margin-right:1%;
 }
 #userid{
-	margin-bottom:2rem;
+   margin-bottom:2rem;
 }
 .login_btn{
-	width:20%;
-	height:97%;
-	background-color:transparent;
-	border:2px solid #fff;
-	box-sizing:border-box;
-	border-radius:3px;
+   width:20%;
+   height:97%;
+   background-color:transparent;
+   border:2px solid #fff;
+   box-sizing:border-box;
+   border-radius:3px;
 }
 .login_btn a{
-	cursor:pointer;
-	display:block;
-	width:100%;
-	height:100%;
-	color:#fff;
-	line-height:140px;
-	font-weight:700;
-	font-size:1.3rem;
-	border-radius:3px;
-	transition:.3s all;
+   cursor:pointer;
+   display:block;
+   width:100%;
+   height:100%;
+   color:#fff;
+   line-height:140px;
+   font-weight:700;
+   font-size:1.3rem;
+   border-radius:3px;
+   transition:.3s all;
 }
 .login_btn:hover a,
 .login_btn a:focus{
-	background-color:#fff;
-	color:#223d4b;
-	outline:none;
+   background-color:#fff;
+   color:#223d4b;
+   outline:none;
 }
 
 .searchRegistArea{
-	width:100%;
-	height:30%;
-	overflow:hidden;
+   width:100%;
+   height:30%;
+   overflow:hidden;
 }
 .search_id_pw{
-	width:100%;
-	height:30%;
-	text-align:right;
+   width:100%;
+   height:30%;
+   text-align:right;
 }
 .search_id_pw a,
 .search_id_pw span{
-	display:inline !important;
-	color:#fff;
-	font-size:0.9rem;
+   display:inline !important;
+   color:#fff;
+   font-size:0.9rem;
 }
 .sign_up_area{
-	width:100%;
-	height:70%;
+   width:100%;
+   height:70%;
 }
 .sign_up_area a{
-	display:block;
-	width:100%;
-	height:100%;
-	line-height:60px;
-	border:2px solid #223d4b;
-	color:#223d4b;
-	coursor:pointer;
-	border-radius:3px;
-	font-weight:700;
-	font-size:1.5rem;
-	transition:.3s all;
+   display:block;
+   width:100%;
+   height:100%;
+   line-height:60px;
+   border:2px solid #223d4b;
+   color:#223d4b;
+   coursor:pointer;
+   border-radius:3px;
+   font-weight:700;
+   font-size:1.5rem;
+   transition:.3s all;
 }
 .sign_up_area:hover a,
 .sign_up_area a:focus{
-	color:#fff;
-	background-color:#223d4b;
+   color:#fff;
+   background-color:#223d4b;
 }
 
 
 
 /*loaded login form##########################################################################*/
 @media screen and (min-width: 768px) {
-	#full {font-size: 0.9em;}
-	#view {width: 500px;}
+   #full {font-size: 0.9em;}
+   #view {width: 500px;}
 }
-
 
 
 

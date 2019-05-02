@@ -12,9 +12,9 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     display: block;
-	margin: 0;
-	padding: 0;
-	border: 0;
+   margin: 0;
+   padding: 0;
+   border: 0;
 }
 
 * {margin: 0; padding: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
@@ -37,42 +37,42 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 .logo a {width: 70%; text-align: center; margin: 0 auto;}
 /*########searchArea##########*/
 .searchArea{
-	width:300px;
-	height:40px;
-	position:absolute;
-	right:200px;
-	overflow:hidden;
+   width:300px;
+   height:40px;
+   position:absolute;
+   right:200px;
+   overflow:hidden;
 }
 .searchArea form{
-	width:100%;
+   width:100%;
 }
 .searchArea form fieldset{
-	width:100%;
-	display:block;
-	overflow:hidden;
+   width:100%;
+   display:block;
+   overflow:hidden;
 }
 .searchArea form fieldset p{
-	float:left;
-	height:40px;
-	line-height:40px;
+   float:left;
+   height:40px;
+   line-height:40px;
 }
 .search-input{
-	margin-right:10px;
+   margin-right:10px;
 }
 .searchArea form fieldset:after{
-	content:'';
-	display:block;
-	clear:both;
+   content:'';
+   display:block;
+   clear:both;
 }
 /*search input*/
 #bookSearch{
-	display:inline-block;
-	width:200px;
-	height:40px;
-	text-indent:10px;
-	border:none;
-	border:1px solid #83C4CF;
-	outline:none;
+   display:inline-block;
+   width:200px;
+   height:40px;
+   text-indent:10px;
+   border:none;
+   border:1px solid #83C4CF;
+   outline:none;
 }
 /* #########################set placeholder color#########################*/
 ::-webkit-input-placeholder{color:#1bbc9b;}
@@ -81,23 +81,23 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 ::-moz-input-placeholder{color:#1bbc9b;}/*firefox 19+*/
 /* #########################set placeholder color#########################*/
 .search-btn{
-	width:40px;
-	height:40px;
-	line-height:40px;
-	overflow:hidden;
+   width:40px;
+   height:40px;
+   line-height:40px;
+   overflow:hidden;
 }
 .search-btn button{
-	display:inline-block;
-	width:100%;
-	height:100%;
-	overflow:hidden;
-	background-color:transparent;
-	border:none;
-	text-align:center;
+   display:inline-block;
+   width:100%;
+   height:100%;
+   overflow:hidden;
+   background-color:transparent;
+   border:none;
+   text-align:center;
 }
 .search-btn button img{
-	display:inline-block;
-	width:70%;
+   display:inline-block;
+   width:70%;
 }
 
 /*########searchArea##########*/
@@ -225,7 +225,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 }
 
 
-/*ë©”ì¸ë¹„ì£¼ì–¼ ì˜ì—­*/
+/*ë©”ì ¸ë¹„ì£¼ì–¼ ì˜ ì— */
 .visual_wrap {}
 .titleWrap {position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 5;}
 
@@ -233,7 +233,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 .visualTitle span {color: #FFF; font-size: 1.5em; font-weight: 700; line-height: 1em; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);}
 
 
-/*ê³µì§€ì‚¬í•­,ë¸”ë¡œê·¸ ì„¹ì…˜*/
+/*ê³µì§€ì‚¬í• ,ë¸”ë¡œê·¸ ì„¹ì…˜*/
 .notice-section {
 /*    display: none;*/
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#55c7d1+10,057583+90 */
@@ -344,35 +344,35 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 /*ì„œë¸Œ ê³µìš©*/
 .bg {padding: 2em 0.8em; color: #FFF; font-weight: 700; position: relative; overflow: hidden; font-weight: 300; font-size: 1.2em;  text-align: center; background: #000 right top no-repeat; -webkit-background-size: cover; background-size: cover;}
 .bg_popular { 
-	background-image: url('/asset/images/subpage_bg/bg_popular.png');
-	background-position: center center;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
+   background-image: url('/asset/images/subpage_bg/bg_popular.png');
+   background-position: center center;
+   background-repeat:no-repeat;
+   background-attachment:fixed;
 }
 .bg_blog { background-image: url('../images/bg_blog.jpg');}
 .bg_cs { background-image: url('../images/bg_cs.jpg'); background-position: right center;}
 .bg_bookList { 
-	background-image: url('../images/subpage_bg/book_search_result_bg.jpg'); 
-	background-position: right center;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
+   background-image: url('../images/subpage_bg/book_search_result_bg.jpg'); 
+   background-position: right center;
+   background-repeat:no-repeat;
+   background-attachment:fixed;
 }
 .bg_bookDetail{ 
-	background-image: url('../images/subpage_bg/reading_bg.jpg'); 
-	background-position: center bottom;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
+   background-image: url('../images/subpage_bg/reading_bg.jpg'); 
+   background-position: center bottom;
+   background-repeat:no-repeat;
+   background-attachment:fixed;
 }
 .bg_review{
-	background-image: url('../images/subpage_bg/review_bg.jpg'); 
-	background-position: right center;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
+   background-image: url('../images/subpage_bg/review_bg.jpg'); 
+   background-position: right center;
+   background-repeat:no-repeat;
+   background-attachment:fixed;
 }
 .bg_offline { background-image: url('../images/bg_offline.jpg');}
 .bg_basic {
-	background-image: url('../images/bg_basic.jpg');
-	background-attachment:fixed;
+   background-image: url('../images/bg_basic.jpg');
+   background-attachment:fixed;
 };
 .bg:before {display: block; content: ''; width: 120%; height: 100%; position: absolute; left: -10%; top: 0; -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
 box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
@@ -389,15 +389,15 @@ box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
 .page a:nth-last-of-type(2) {color: #666;}
 .page a.cnt {width: 30px; height: 30px; border-radius: 15px; background-color: #057583; color: #fff;}
 
-/*ì´ìš©ì•½ê´€ê³¼ ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨*/
+/*ì ´ìš©ì•½ê´€ê³¼ ê°œì ¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨*/
 .law-header {padding:3em; text-align:center;}
-.law-header h2 {margin-top: 0; padding: 0;}	
+.law-header h2 {margin-top: 0; padding: 0;}   
 .view-term {}
 .view-term h2 {display: block !important; margin-top: 2em;}
 .view-term h3 {display: block; margin: 1em 0 0.5em;}
 .mobile .view-term {font-size: 0.9em;}
 
-/*ê³µìš©í´ëž˜ìŠ¤*/
+/*ê³µìš©í ´ëž˜ìŠ¤*/
 .cl:after {display: block; content: ''; clear: both;}
 .wrap {width:95%; margin: 0 auto;}
 .wrap1000 {width:1000px; margin: 0 auto;}
@@ -418,141 +418,141 @@ box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
 
 /*########유저 메인페이지 리뷰왕, 최근리뷰내역 섹션################################################################################*/
 .announce-area-wrap{
-	width:100%;
-	background-color:#80C1CC;
-	overflow:hidden;
+   width:100%;
+   background-color:#80C1CC;
+   overflow:hidden;
 }
 .announce-area{
-	width:95%;
-	margin:0 auto;	
+   width:95%;
+   margin:0 auto;   
 }
 .announce-area .announce-wrap{
-	width:50%;
-	float:left;
-	padding:1%;
+   width:50%;
+   float:left;
+   padding:1%;
 }
 .announce-wrap section{
-	width:100%;
+   width:100%;
 }
 .announce-wrap section h3{
-	width:100%;
-	font-size: 1.5rem;
+   width:100%;
+   font-size: 1.5rem;
     padding: .5rem 0 .5rem;
     font-weight: 400;
     color:#fff;
     text-shadow:1px 1px 4px rgba(0,0,0,0.5);
 }
 .announce-wrap section h3:after{
-	content:'';
-	display:block;
-	width:100%;
-	height:3px;
-	background-color:#ededed;
-	transform:translateY(10px);
+   content:'';
+   display:block;
+   width:100%;
+   height:3px;
+   background-color:#ededed;
+   transform:translateY(10px);
 }
 
 /*#####monthly best reviewer 이 달의 리뷰왕 #####*/
 .best-reviewer-wrapper{
-	overflow:hidden;
+   overflow:hidden;
 }
 .best-reviewer-inner{
-	float:left;
-	width:50%;
-	padding:30px 0;
+   float:left;
+   width:50%;
+   padding:30px 0;
 }
 .champ-reviewer{
-	width:100%;
-	overflow:hidden;
-	background-color:#fff;
+   width:100%;
+   overflow:hidden;
+   background-color:#fff;
 }
 .champ-reviewer p{
-	float:left;
-	text-align:center;
+   float:left;
+   text-align:center;
 }
 .reviewer-img{
-	width:150px;
-	height:150px;
-	padding:5px;
-	line-height:10rem;
-	overflow:hidden;
-	background-image:url('/asset/images/profile/girl.png');
-	background-repeat:no-repeat;
-	background-size:90%;
-	background-position:center center;
-	position:relative;
+   width:150px;
+   height:150px;
+   padding:5px;
+   line-height:10rem;
+   overflow:hidden;
+   background-image:url('/asset/images/profile/girl.png');
+   background-repeat:no-repeat;
+   background-size:90%;
+   background-position:center center;
+   position:relative;
 }
 .reviewer-img img{
-	display:inline-block;
-	width:50px;
-	height:50px;
-	position:absolute;
-	left:0;
-	top:0;
+   display:inline-block;
+   width:50px;
+   height:50px;
+   position:absolute;
+   left:0;
+   top:0;
 }
 .best-reviewer-info{
-	width:180px;
-	height:150px;
-	line-height:2rem;
-	padding:10% 0;
+   width:180px;
+   height:150px;
+   line-height:2rem;
+   padding:10% 0;
 }
 .best-reviewer-info span{
-	font-weight:700;
+   font-weight:700;
 }
 
 /*ranker-reviewer table*/
 .ranker-reviewer table{
-	width:100%;
-	color:#fff;
-	text-align:center;
+   width:100%;
+   color:#fff;
+   text-align:center;
 }
 
 .table-head{
-	color:#BD2934;
+   color:#BD2934;
 }
 .table-head th{
-	padding:5px 0;
-	border-bottom:2px solid #fff;
+   padding:5px 0;
+   border-bottom:2px solid #fff;
 }
 .ranker-reviewer table td{
-	border-bottom:1px solid #ededed;
-	padding:12px 0;
+   border-bottom:1px solid #ededed;
+   padding:12px 0;
 }
 
 /*########recent-review###########*/
 .recent-review-inner{
-	width:100%;
-	padding:30px 0 20px;
+   width:100%;
+   padding:30px 0 20px;
 }
 .recent-review-inner li{
-	width:100%;
-	line-height:2rem;
-	overflow:hidden;
-	border-bottom:1px solid #ededed;
-	color:#fff;
+   width:100%;
+   line-height:2rem;
+   overflow:hidden;
+   border-bottom:1px solid #ededed;
+   color:#fff;
 }
 li.title-row{
-	border-bottom:3px solid #fff;
-	color:#BD2934;
-	font-weight:700;
+   border-bottom:3px solid #fff;
+   color:#BD2934;
+   font-weight:700;
 }
 .recent-review p{
-	float:left;
-	text-align:center;
+   float:left;
+   text-align:center;
 }
 .review-no{width:10%;}
 .review-title{width:60%;}
 .reviewer-info{width:30%;}
 
 .more-btn{
-	width:100%;
-	text-align:right;
+   width:100%;
+   text-align:right;
 }
 .more-btn a{
-	color:#fff;
-	font-weight:900;
-	transition:color .3s;
+   color:#fff;
+   font-weight:900;
+   transition:color .3s;
 }
 
 .more-btn a:hover{
-	color:red;
+   color:red;
 }

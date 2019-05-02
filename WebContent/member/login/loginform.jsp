@@ -11,6 +11,12 @@ function requestLogin(){
    $("form[name='login-form']").submit(); 
    
 }
+function enterkey() {
+    if (window.event.keyCode == 13) {
+         requestLogin();
+    }
+}
+
 </script>
 </head>
 <body>
@@ -21,13 +27,13 @@ function requestLogin(){
             <div class="login_area">
                <div class="input_info">
                   <div class="id_area">
-                     <input id="userid" type="text" name="id" placeholder="아이디를 입력하세요"/>
+                     <input id="userid" type="text" name="id" onkeyup="enterkey()" placeholder="아이디를 입력하세요"/>
                   </div>
                   <p class="login_btn">
-                     <a href="javascript:requestLogin()" title="로그인 버튼">로그인</a>
+                     <a href="javascript:requestLogin()"  onkeyup="enterkey()" title="로그인 버튼">로그인</a>
                   </p>
                   <div class="pass_area">
-                     <input id="pass" type="password" name="pass" placeholder="비밀번호를 입력해주세요"/> 
+                     <input id="pass" type="password" name="pass" onkeyup="enterkey()" placeholder="비밀번호를 입력해주세요"/> 
                   </div>   
                </div>
                <p class="search_id_pw">

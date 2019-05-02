@@ -24,7 +24,13 @@
 <%@include file="/include/head.jsp" %>
 <title>마이 페이지</title>
 <script>
+$(function(){
+	
+}
 
+function del(){
+	
+}
 
 function fly(isbn){
 	alert(isbn);
@@ -67,15 +73,15 @@ function fly(isbn){
 				
 				<%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
-	       			<tr class="mypageContainer">
-                       <td>																							
+	       			<tr>
+                       <td>																							<!-- 멤버 id 참조해서  -->
                            <a href="#"><div onClick="fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
                        </td>
                        <td><%= mark.getBook().getTitle()%></td>
-                       <td><input type="hidden" name="bookmark_id"/></td>
+                       <td></td>
                        <td><%=mark.getBookmark_date() %></td>
                        <td>
-                       		<button onClick="#<!-- javascript:book_markDel() -->">삭제</button>
+                       		<button onClick="javascript:book_markDel()">삭제</button>
                        </td>
                 	</tr>
                 	<%} %>

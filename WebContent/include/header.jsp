@@ -32,7 +32,10 @@ function searchKeyDown(){
       <!-- LOGO start -->
       <h1 class="logo">
          <a href="/">min<span>ssam's</span><span>Library</span></a>
-      </h1>
+      </h1>      
+      <%if(member!=null){ %>
+      <%=member.getName() %>님 환영합니다
+      <%} %>
       <!-- LOGO end -->
       <!-- search box -->
       <div class="searchArea" >
@@ -68,7 +71,7 @@ function searchKeyDown(){
                <li><a href="/member/mypage/{currentPage}" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
-               <li><a href="/member/login/logout.jsp" class="user-btn" id="loginout-bt">로그아웃</a></li>
+               <li><a href="/member/logout" class="user-btn" id="loginout-bt">로그아웃</a></li>
          <%}else{ %>
                <li><a href="#" class="user-btn" id="login-bt">로그인&nbsp;/&nbsp;회원가입</a></li>               
          <%} %>

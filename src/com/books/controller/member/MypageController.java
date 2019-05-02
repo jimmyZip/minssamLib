@@ -49,9 +49,13 @@ public class MypageController {
 				String isbn = userBookmarkList.get(i).getIsbn();
 				//System.out.println(isbn);
 				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-				json.put("image", userBookmarkList.get(i).getBook().getImage());
-				json.put("title", userBookmarkList.get(i).getBook().getTitle());
-				json.put("bookmark_date", userBookmarkList.get(i).getBookmark_date());
+				/*
+				 * json.put("bookmark_id", userBookmarkList.get(i).getBookmark_id());
+				 * json.put("isbn", userBookmarkList.get(i).getIsbn()); json.put("image",
+				 * userBookmarkList.get(i).getBook().getImage()); json.put("title",
+				 * userBookmarkList.get(i).getBook().getTitle()); json.put("bookmark_date",
+				 * userBookmarkList.get(i).getBookmark_date());
+				 */
 			}
 			//pager.init(request, userList.size());
 			//if(userList.size()>0) {
@@ -69,6 +73,15 @@ public class MypageController {
 		return mav;
 	}
 	
+	/*
+	 * @RequestMapping(value="/member/mypage/{currentPage}",
+	 * method=RequestMethod.DELETE)
+	 * 
+	 * @ResponseBody public String delete(@PathVariable("bookmark_id") int
+	 * bookmark_id) { bookmarkService.delete(bookmark_id);
+	 * 
+	 * return "{\"resultCode\":1,\"msg\":\"삭제성공\"}"; }
+	 */
 	// 어드민 페이지 이동 용도
 	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
 	public ModelAndView adminMain(HttpServletRequest request) {

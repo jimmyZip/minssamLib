@@ -24,12 +24,45 @@
 <%@include file="/include/head.jsp" %>
 <title>마이 페이지</title>
 <script>
+ $(function(){
+	getList();
+});
 
+function getList(){
+	$.ajax({
+		url:"/member/mypage",
+		type:"get",
+		success:function(result){
+			viewList(result);
+		}
+	});
+} 
+function bookmarkDelete(bookmark_id){
+	$.ajax({
+		url:"/member/mypage/"+bookmark_id,
+		type:"delete",
+		success:function(){
+			getList();
+		}
+	});
+}
 
 function fly(isbn){
 	alert(isbn);
 	location.href="/book/search/detail/"+isbn;
 }
+/* function del(mark_no){
+	if(!confirm("삭제하시겠습니까?")){
+		return null;
+	}
+	$.ajax({
+		url:"/member/mypage/"+bookmark_id,
+		type:"delete",
+		success:function(){
+			getList();
+		}
+	});
+} */
 
 </script>
 </head>
@@ -63,23 +96,22 @@ function fly(isbn){
 	               </tr>
 	           </thead>
 	           
-	           <tbody id="container" name="del">
-				
+	           <tbody id="container" name="del" class="mypageContainer">
 				<%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
-	       			<tr class="mypageContainer">
+	       			<tr>
                        <td>																							
                            <a href="#"><div onClick="fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
                        </td>
                        <td><%= mark.getBook().getTitle()%></td>
-                       <td><input type="hidden" name="bookmark_id"/></td>
+                       <td><input type="hidden" name="bookmark_id" value="<%=mark.getBookmark_id()%>"/></td>
                        <td><%=mark.getBookmark_date() %></td>
                        <td>
-                       		<button onClick="#<!-- javascript:book_markDel() -->">삭제</button>
+                       		<button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button>
                        </td>
                 	</tr>
                 	<%} %>
- 					
+ 					<!-- javascript:book_markDel() -->
 	           </tbody>
 	       </table>
 	   </div>

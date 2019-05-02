@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,6 @@ import com.books.common.Pager;
 import com.books.common.member.Admin;
 import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
-import com.books.model.domain.book.Book;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
@@ -33,11 +33,12 @@ public class MypageController {
 	private BookSearch bookSearch;
 	@Autowired
 	private Admin commonAdmin;
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	//Member member;
 	Pager pager=new Pager();
-	@RequestMapping(value="/member/mypage/{currentPage}",method=RequestMethod.GET)
-	public ModelAndView markAll(HttpServletRequest request, @PathVariable("currentPage") String currentPage) {
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public ModelAndView markAll(HttpServletRequest request) {
 		List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
@@ -69,19 +70,36 @@ public class MypageController {
 		
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
-		mav.addObject("json",json);
+		//mav.addObject("json",json);
 		return mav;
 	}
 	
+	@RequestMapping(value="/member/mypage/{bookmark_id}", method=RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {
+		bookmarkService.delete(bookmark_id);
+		return null;
+	}
+	
 	/*
-	 * @RequestMapping(value="/member/mypage/{currentPage}",
-	 * method=RequestMethod.DELETE)
-	 * 
-	 * @ResponseBody public String delete(@PathVariable("bookmark_id") int
+	 * @RequestMapping(value="/member/mypage/{currentPage}", method=RequestMethod.DELETE)
+	 * @ResponseBody public String deleteMark(@PathVariable("bookmark_id") int
 	 * bookmark_id) { bookmarkService.delete(bookmark_id);
 	 * 
 	 * return "{\"resultCode\":1,\"msg\":\"삭제성공\"}"; }
 	 */
+	/*
+	 * @RequestMapping(value="/member/mypage/{currentPage}",
+	 * method=RequestMethod.DELETE) public String deleteOne(HttpServletRequest
+	 * request, @PathVariable("currentPage") String currentPage) { ModelAndView
+	 * mav=new ModelAndView(); String markno=request.
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 */
+	
+	
 	// 어드민 페이지 이동 용도
 	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)
 	public ModelAndView adminMain(HttpServletRequest request) {

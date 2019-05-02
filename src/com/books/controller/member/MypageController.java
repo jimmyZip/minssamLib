@@ -52,8 +52,8 @@ public class MypageController {
 				
 			//}
 		} catch (NullPointerException e) {
-			e.printStackTrace();
 			mav.setViewName("member/login/error");
+			//e.printStackTrace();
 			return mav;
 		}
 		

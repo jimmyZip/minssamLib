@@ -172,30 +172,27 @@ input[type=submit] {
 
 			<form name="edit-form" action="/member/edit" method="post">
 				<input type="hidden" name="member_id"
-					value="<%=member.getMember_id()%>"> <input type="text"
-					name="id" value="<%=member.getId()%>" disabled><br> <input
-					type="password" name="nowpass" id="nowpass" 
-					placeholder="현재 비밀번호" onchange="passCheck()" required>
+					value="<%=member.getMember_id()%>"> 
+					<input type="text"name="id" value="<%=member.getId()%>" disabled><br>
+					<input type="password" name="nowpass" id="nowpass" placeholder="현재 비밀번호" onchange="passCheck()" required>
 				<p id="nowpassMsg" class="valid">
-					<b>✖ 현재 비밀번호와 일치하지 않습니다.
+					<b>✖ 현재 비밀번호와 일치하지 않습니다.</b>
 				</p>
-				</b><br> <input type="password" name="pass" id="pass" placeholder="변경할 비밀번호"
-					pattern="(?=.*\d)(?=.*[a-z]).{3,20}" title="영문 숫자 혼합 3~20글자"
-					required>
+				<input type="password" name="pass" id="pass" placeholder="변경할 비밀번호"
+					pattern="(?=.*\d)(?=.*[a-z]).{3,20}" title="영문 숫자 혼합 3~20글자" required>
 				<p id="passMsg" class="valid">
 					<b>✖ 영어숫자혼합 20글자이내.</b>
 				</p>
-				<br> <input type="password" name="repeatpass" id="repeatpass"
-					placeholder="비밀번호 확인" required>
+				<input type="password" name="repeatpass" id="repeatpass" placeholder="비밀번호 확인" required>
 				<p id="repeatpassMsg" class="valid">
 					<b>✖ 변경할 비밀번호와 일치하지 않습니다.</b>
 				</p>
-				<br> <input type="text" value="<%=member.getName()%>" disabled><br>
+				<input type="text" value="<%=member.getName()%>" disabled>
 				<input type="text" name="nickname"
-					value="<%=member.getNickname()%>" placeholder="변경할 닉네임" required><br>
+					value="<%=member.getNickname()%>" placeholder="변경할 닉네임" required>
 				<input type="text" name="email" value="<%=member.getEmail()%>"
-					placeholder="변경할 email" required><br> <input
-					type="submit" id="submit" name="submit" value="수정">
+					placeholder="변경할 email" required>
+				<input type="submit" id="submit" name="submit" value="수정">
 			</form>
 
 		</div>

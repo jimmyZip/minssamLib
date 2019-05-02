@@ -43,11 +43,16 @@ public class MemberController {
 		return "redirect:/index.jsp";
 	}
 	@RequestMapping(value="/member/edit",method=RequestMethod.POST)
-	public String edit(Member member) {
+	@ResponseBody
+	public String edit(Member member, HttpServletRequest request) {
 		member.setPass(security.textToHash(member.getPass()));
 		memberService.update(member);
-		
-		return "member/edit/edit";
+		StringBuilder sb = new StringBuilder();
+		sb.append("<script>");
+		sb.append("alert('정보가 수정되었습니다.');");
+		sb.append("location.href='/member/mypage/{currentPage}';");
+		sb.append("</script>");
+		return sb.toString();
 	}
 	
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)

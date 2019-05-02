@@ -54,9 +54,7 @@ function searchKeyDown(){
          
       </div>
       <!-- search box ends -->
-      <%if(member!=null){ %>
-      <%=member.getName() %>님 환영합니다!!
-      <%} %>
+
       <!-- title-bar-con-menu -->
       <div class="title-icon-wrapper">
          <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>

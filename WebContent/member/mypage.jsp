@@ -47,7 +47,7 @@ function bookmarkDelete(bookmark_id){
 function viewList(json){
 	var con=$("#container");
 	con.html("");//data delete
-/* 	for(var i=0; i<json.length;i++){
+ 	for(var i=0; i<json.length;i++){
 		var obj=json[i];
 		var str ="";
 		str+="<tr id=table_tr_>";
@@ -57,10 +57,10 @@ function viewList(json){
 		str+="<td>"+obj.bookmark_date+"</td>";
 		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
 		str+="</tr>";
-		//console.log("생성",str);
+		//console.log(str);
 		
 		con.append(str);
-	} */
+	} 
 }
 
 function fly(isbn){
@@ -114,7 +114,7 @@ function fly(isbn){
 	           </thead>
 	           
 	         <tbody id="container" class="mypageContainer">
-				<%for(int i=0; i<userBookmarkList.size();i++){ %>
+				<%-- <%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
 	       			<tr>
                        <td>																							
@@ -127,7 +127,7 @@ function fly(isbn){
                        		<button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button>
                        </td>
                 	</tr>
-                	<%} %>
+                	<%} %> --%>
  					<!-- javascript:book_markDel() -->
 	           </tbody>
 	       </table>

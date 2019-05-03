@@ -38,21 +38,21 @@ public class MypageController {
 	private Admin commonAdmin;
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	//Member member;
 	Pager pager=new Pager();
+	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request) {
 		List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
 		
-		JSONObject json=new JSONObject();
+		//JSONObject json=new JSONObject();
 		try {
 			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 			for(int i=0; i<userBookmarkList.size(); i++) {
 				String isbn = userBookmarkList.get(i).getIsbn();
 				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-				json=(JSONObject) userBookmarkList;
+				//json=(JSONObject) userBookmarkList;
 			}
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
@@ -60,7 +60,8 @@ public class MypageController {
 		}
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
-		mav.addObject("json",json);
+		System.out.println(mav);
+		//mav.addObject("json",json);
 		return mav;
 	}
 	

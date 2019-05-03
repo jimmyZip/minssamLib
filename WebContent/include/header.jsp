@@ -56,7 +56,7 @@ function searchKeyDown(){
          <div class="user-content">
             <%if (member != null) { %>
             <ul>
-               <li><a href="/member/mypage/{currentPage}" class="user-btn">마이페이지</a></li>
+               <li><a href="/member/mypage" class="user-btn">마이페이지</a></li>
                <li><a href="/payment/cart/" class="user-btn">장바구니</a></li>
                <li><a href="/mypage/wish/" class="user-btn">찜목록</a></li>
                <li><a href="/member/logout" class="user-btn" id="loginout-bt">로그아웃</a></li>
@@ -111,7 +111,7 @@ function searchKeyDown(){
             게시판</div>
          <div class="menu-item" onclick="location.href='/book/popular'">인기도서 목록</div>
          <%if (session.getAttribute("member") != null) { %>
-         <div class="menu-item" onclick="location.href='/member/mypage/{currentPage}'">MyPage</div>
+         <div class="menu-item" onclick="location.href='/member/mypage'">MyPage</div>
          <%} %>
          <div class="menu-item" onclick="location.href='#'">고객센터</div>
          <!-- nav menus end-->

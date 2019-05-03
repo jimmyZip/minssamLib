@@ -1,4 +1,4 @@
-$(function(){
+/*$(function(){
 	getList();
 	//alert("내가 먼저야");
 });
@@ -24,13 +24,11 @@ function renderList(json){
 		$(".mypageContainer").append("<td>"+obj.title+"</td>");
 		$(".mypageContainer").append("<td><input type='hidden' name='bookmark_id' value='"+obj.bookmark_id+"'/></td>");
 		$(".mypageContainer").append("<td>"+obj.bookmark_date+"</td>");
-		mark_id=obj.bookmark_id;
 	}
-	return mark_id;
+	alert("불러왔음");
 }
 
-function book_markDel(mark_id){
-
+function book_markDel(){
 	if(!confirm("삭제?")){
 		return;
 	}
@@ -51,9 +49,8 @@ function book_markDel(mark_id){
 		}
 	});
 
-
 }
-
+*/
 
 
 

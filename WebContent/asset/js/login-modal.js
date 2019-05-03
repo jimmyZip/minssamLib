@@ -28,6 +28,13 @@ function findId(){
 	//alert("찾기 클릭");
 }
 
+function resetPass(){
+	$("#view").empty();
+	$("#view").load("/member/edit/resetpassform.jsp");
+}
+
+
+
 
 
 

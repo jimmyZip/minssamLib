@@ -1,4 +1,10 @@
+<%@page import="com.books.model.domain.book.Book"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+	String isbn = (String)request.getAttribute("isbn");
+	List<Book> detailList = (List)request.getAttribute("detailList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +30,8 @@
 			<div class="write-form-wrap">
 				<div class="container">
 					<form enctype="multipart/form-data" name="review-write-form">
-						<input type="text" id="title" name="title" placeholder="제목입력" /><!-- 
-				   --><input type="text" id="writer" name="writer" readonly value="작성자 아이디님" />
+						<input type="text" id="title" name="title" placeholder="리뷰제목입력" /><!-- 
+				   --><input type="text" id="writer" name="writer" readonly value="<%=member.getId() %>(<%=member.getName() %>)님" />
 						<dl class="bookInfoArea">
 							<dt class="bookImg">
 								<img src="/asset/images/book_sample.jpg" alt="리뷰할 도서 이미지"/>
@@ -64,7 +70,8 @@
 							<p class="imgSelectZone">							
 								<label for="img">첨부할 이미지선택</label>
 								<!-- 실제 db에 들어갈 이미지 선택하는 input -->
-								<input type="file" id="img" name="img" multiple="multiple"/>
+								<!-- <input type="file" id="img" name="img" multiple="multiple"/> -->
+								<input type="file" id="img" name="img"/>
 							</p>
 							<!-- 리뷰 게시글에 등록할 목적으로 이미지를 선택했음을 보여주는 영역 -->
 							<div class="showImgZone">

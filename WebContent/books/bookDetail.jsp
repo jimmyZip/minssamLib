@@ -76,7 +76,7 @@
 							<dd class="btnArea">
 								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
 								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-								<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
 							</dd>
 						<%} %>
 					</dl>
@@ -95,7 +95,7 @@
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
 					<p class="writeBtn">
-						<a href="#">리뷰 쓰기</a>
+						<a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)">리뷰 쓰기</a>
 					</p>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">

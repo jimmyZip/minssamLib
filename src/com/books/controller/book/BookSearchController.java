@@ -48,6 +48,4 @@ public class BookSearchController {
 		}
 		searchbookService.insert(searchbook);
 	}
-	
-	
 }

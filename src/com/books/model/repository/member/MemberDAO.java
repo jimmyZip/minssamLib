@@ -17,4 +17,6 @@ public interface MemberDAO {
 	public int update(Member member);
 	public int delete(int member_id);
 	public Member loginCheck(Member member);
+	public Member findId(Member member);
+	public int resetPass(Member member);
 }

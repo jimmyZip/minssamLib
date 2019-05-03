@@ -61,4 +61,14 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.selectOne("Member.passCheck",pass);
 	}
 
+	@Override
+	public Member findId(Member member) {
+		return sessionTemplate.selectOne("Member.findId", member);
+	}
+
+	@Override
+	public int resetPass(Member member) {
+		return sessionTemplate.update("Member.resetPass",member);
+	}
+
 }

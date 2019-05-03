@@ -11,8 +11,16 @@
       $("form[name='login-form']").submit();
 
    }
+   
+   function enterkey() {
+       if (window.event.keyCode == 13) {
+			requestLogin();
+       }
+}
+
 </script>
 </head>
+
 <body>
    <div class="login_wrap">
       <form name="login-form">
@@ -21,7 +29,7 @@
             <div class="login_area">
                <div class="input_info">
                   <input id="userid" type="text" name="id" placeholder="아이디를 입력하세요" />
-                  <input id="pass" type="password" name="pass" placeholder="비밀번호를 입력해주세요" />
+                  <input id="pass" type="password" name="pass" placeholder="비밀번호를 입력해주세요" onkeyup="enterkey()"/>
                </div>
                <p class="login_btn">
                   <a href="javascript:requestLogin()" title="로그인 버튼">로그인</a>
@@ -29,8 +37,8 @@
             </div>
             <div class="searchRegistArea">
                <p class="search_id_pw">
-                  <a href="#" title="아이디 찾기">아이디 찾기</a><span>·</span><a href="#"
-                     title="비밀번호 재설정">비밀번호 재설정</a>
+                  <a href="javascript:findId()" title="아이디 찾기" id="findId">아이디 찾기</a><span>·</span>
+                  <a href="javascript:resetPass()" id="resetpass" title="비밀번호 재설정">비밀번호 재설정</a>
                </p>
                <p class="sign_up_area">
                   <a href="/member/regist/agree.jsp" title="회원가입 버튼">회원가입</a>

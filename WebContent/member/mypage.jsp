@@ -3,11 +3,7 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	//List<Bookmark> markList=(List)request.getAttribute("markList");
-	//pager.init(request, markList.size());
 	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
-	//System.out.println(userBookmarkList.size());
-	//System.out.println(userList.get(0).getMember().getId());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -36,7 +32,8 @@ function getList(){
 			viewList(result);
 		}
 	});
-} 
+}
+
 function bookmarkDelete(bookmark_id){
 	$.ajax({
 		url:"/member/mypage/"+bookmark_id,
@@ -47,10 +44,30 @@ function bookmarkDelete(bookmark_id){
 	});
 }
 
+function viewList(json){
+	var con=$("#container");
+	con.html("");//data delete
+/* 	for(var i=0; i<json.length;i++){
+		var obj=json[i];
+		var str ="";
+		str+="<tr id=table_tr_>";
+		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url("+obj.image+")'></div></a></td>";
+		str+="<td>"+obj.title+"</td>";
+		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
+		str+="<td>"+obj.bookmark_date+"</td>";
+		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
+		str+="</tr>";
+		//console.log("생성",str);
+		
+		con.append(str);
+	} */
+}
+
 function fly(isbn){
 	alert(isbn);
 	location.href="/book/search/detail/"+isbn;
 }
+
 /* function del(mark_no){
 	if(!confirm("삭제하시겠습니까?")){
 		return null;
@@ -96,7 +113,7 @@ function fly(isbn){
 	               </tr>
 	           </thead>
 	           
-	           <tbody id="container" name="del" class="mypageContainer">
+	         <tbody id="container" class="mypageContainer">
 				<%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
 	       			<tr>

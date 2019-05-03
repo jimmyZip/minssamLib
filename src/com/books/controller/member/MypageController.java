@@ -21,6 +21,7 @@ import com.books.common.search.BookSerachMapping;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
+import com.books.model.service.member.MemberService;
 
 @Controller
 public class MypageController {
@@ -31,6 +32,8 @@ public class MypageController {
 	private BookSerachMapping mapping;
 	@Autowired
 	private BookSearch bookSearch;
+	@Autowired
+	private MemberService memberService;
 	@Autowired
 	private Admin commonAdmin;
 	Logger logger = Logger.getLogger(this.getClass().getName());
@@ -48,31 +51,25 @@ public class MypageController {
 			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 			for(int i=0; i<userBookmarkList.size(); i++) {
 				String isbn = userBookmarkList.get(i).getIsbn();
-				//System.out.println(isbn);
 				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-				/*
-				 * json.put("bookmark_id", userBookmarkList.get(i).getBookmark_id());
-				 * json.put("isbn", userBookmarkList.get(i).getIsbn()); json.put("image",
-				 * userBookmarkList.get(i).getBook().getImage()); json.put("title",
-				 * userBookmarkList.get(i).getBook().getTitle()); json.put("bookmark_date",
-				 * userBookmarkList.get(i).getBookmark_date());
-				 */
+				json=(JSONObject) userBookmarkList;
 			}
-			//pager.init(request, userList.size());
-			//if(userList.size()>0) {
-				
-			//}
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
-			//e.printStackTrace();
 			return mav;
 		}
-		
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
-		//mav.addObject("json",json);
+		mav.addObject("json",json);
 		return mav;
 	}
+	
+	/*
+	 * @RequestMapping(value="/member/mypage")
+	 * 
+	 * @ResponseBody public List<Bookmark> showMarkList(){ return
+	 * bookmarkService.selectAll(); }
+	 */
 	
 	@RequestMapping(value="/member/mypage/{bookmark_id}", method=RequestMethod.DELETE)
 	@ResponseBody
@@ -81,23 +78,7 @@ public class MypageController {
 		return null;
 	}
 	
-	/*
-	 * @RequestMapping(value="/member/mypage/{currentPage}", method=RequestMethod.DELETE)
-	 * @ResponseBody public String deleteMark(@PathVariable("bookmark_id") int
-	 * bookmark_id) { bookmarkService.delete(bookmark_id);
-	 * 
-	 * return "{\"resultCode\":1,\"msg\":\"삭제성공\"}"; }
-	 */
-	/*
-	 * @RequestMapping(value="/member/mypage/{currentPage}",
-	 * method=RequestMethod.DELETE) public String deleteOne(HttpServletRequest
-	 * request, @PathVariable("currentPage") String currentPage) { ModelAndView
-	 * mav=new ModelAndView(); String markno=request.
-	 * 
-	 * return null;
-	 * 
-	 * }
-	 */
+	
 	
 	
 	// 어드민 페이지 이동 용도

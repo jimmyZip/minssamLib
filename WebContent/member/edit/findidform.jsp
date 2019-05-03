@@ -3,37 +3,25 @@
 <!DOCTYPE html>
 <head>
 <script>
-   function idFind() {
-      $("form[name='login-form']").attr({
-         method : "post",
-         action : "/member/findId"
-      });
-      $("form[name='login-form']").submit();
 
-   }
    
    function enterkey() {
        if (window.event.keyCode == 13) {
-			requestLogin();
+			idFind();
        }
 }
 
 	function idFind() {
-		//alert("idcheck");
 		$.ajax({
-			url : "/rest/member/idFind",
+			url : "/rest/member/findId",
 			type : "post",
 			data : {
-				name : name.value,
+				name : fname.value,
 				email : email.value
 			},
 			success : function(data) {
 				alert(data);
-				if (data == "찾음") {
-					
-				} else {
-
-				}
+				getId.value=data
 			},
 			error : function(data) {
 
@@ -50,7 +38,7 @@
             <legend>아이디 찾기</legend>
             <div class="login_area">
                <div class="input_info">
-                  <input id="name" type="text" name="name" placeholder="이름을 입력해주세요" />
+                  <input id="fname" type="text" name="fname" placeholder="이름을 입력해주세요" />
                   <input id="email" type="text" name="email" placeholder="이메일을 입력해주세요" onkeyup="enterkey()"/>
                </div>
                <p class="login_btn">
@@ -58,12 +46,12 @@
                </p>
             </div>
             <div class="searchRegistArea">
-               
-               <p></p>             
-               
-               <p class="sign_up_area">
-					
+               <p></p>
+               <p class="search_id_pw">
+				<a href="javascript:loginModalShow()" title="로그인" >로그인</a><span>·</span><a href="javascript:resetPass()"
+                     id="resetpass" title="비밀번호 재설정">비밀번호 재설정</a>
                </p>
+				<p><input type="text" value="" id="getId"/></p>
             </div>
          </fieldset>
       </form>

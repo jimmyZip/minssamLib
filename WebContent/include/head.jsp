@@ -23,13 +23,15 @@
 <link rel="stylesheet" type="text/css" href="/asset/css1/review_write.css"/>
 <link rel="stylesheet" type="text/css" href="/asset/css1/review_list.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="/asset/js/common.js"></script>
-<script src="/asset/js/mypage.js"></script>
-<script src="/asset/js/sliding.js"></script>
-<script src="/asset/js/sliding.js"></script>
+<script src="/asset/js/common.js" type="text/javascript"></script>
+<script src="/asset/js/mypage.js" type="text/javascript"></script>
+<script src="/asset/js/sliding.js" type="text/javascript"></script>
+<script src="/asset/js/sliding.js" type="text/javascript"></script>
 <script src="/asset/js/login-modal.js" type="text/javascript"></script>
 <script src="/asset/js/review_write.js" type="text/javascript"></script>
+<script src="/asset/js/book_markDel.js" type="text/javascript"></script>
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 <!-- googleMap api source -->
+
 <!-- <script src="/asset/js/gmap.js" type="text/javascript"></script> -->
 <script src="/asset/js/book_detail.js" type="text/javascript"></script>

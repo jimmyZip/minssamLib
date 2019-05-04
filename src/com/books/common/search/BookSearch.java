@@ -24,6 +24,7 @@ public class BookSearch {
 
 		return searchProcess(apiURL.toString());
 	}
+	
 
 	// 출력건수 지정
 	public String search(String query, int display) {
@@ -59,7 +60,17 @@ public class BookSearch {
 		}
 		return result;
 	}
-
+	
+	/*
+	public String searchByIsbn(String d_isbn) {
+		StringBuffer apiURL = new StringBuffer();
+		apiURL.append("https://openapi.naver.com/v1/search/book.json?");
+		apiURL.append("d_isbn=");
+		apiURL.append(d_isbn);
+		return searchProcess(apiURL.toString());
+	}
+	*/
+	
 	// 검색 프로세스 진행
 	private String searchProcess(String apiURL) {
 		//System.out.println(apiURL);

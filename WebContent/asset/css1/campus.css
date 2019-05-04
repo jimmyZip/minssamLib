@@ -55,6 +55,12 @@
 	color:#000;
 	padding-right:5px;
 }
+.schResultH3:after{
+	content:'_검색된 목록의 도서 제목을 누르면 상세보기로 이동합니다.';
+	color:#ccc;
+	padding-left:2rem;
+	font-size:0.8rem;
+}
 
 .book-list {
 	width: 100%;
@@ -105,6 +111,11 @@ dt.imgArea img {
 	font-weight: 700;
 	font-size: 1.5rem;
 	color: #000 !important;
+	transition:.3s all;
+}
+.bListTitle:hover,
+.descArea a:focus .bListTitle{
+	color:#bc1a6e !important;
 }
 
 .descArea p span,.descArea p i,.descArea p img,.descArea p span i{

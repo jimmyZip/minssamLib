@@ -43,11 +43,16 @@ public class MemberController {
 		return "redirect:/index.jsp";
 	}
 	@RequestMapping(value="/member/edit",method=RequestMethod.POST)
-	public String edit(Member member) {
+	@ResponseBody
+	public String edit(Member member, HttpServletRequest request) {
 		member.setPass(security.textToHash(member.getPass()));
 		memberService.update(member);
-		
-		return "member/edit/edit";
+		StringBuilder sb = new StringBuilder();
+		sb.append("<script>");
+		sb.append("alert('정보가 수정되었습니다.');");
+		sb.append("location.href='/member/mypage/{currentPage}';");
+		sb.append("</script>");
+		return sb.toString();
 	}
 	
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
@@ -57,24 +62,38 @@ public class MemberController {
 		member.setPass(security.textToHash(member.getPass()));
 		Member obj = memberService.loginCheck(member);
 		// 세션에 담기!
+		String prev = request.getHeader("referer");
+		
 		
 		if(obj==null) {
 			viewName="member/login/loginfail";
 		}else {
-			request.getSession().setAttribute("member", obj);
-
-			viewName="redirect:/index.jsp";
-			System.out.println("뷰네임"+viewName);
-		}
+			request.getSession().setAttribute("member", obj);			
+			viewName="redirect:"+prev;
+		}	
 		return viewName;
 	}
+	
+	@RequestMapping(value="/member/logout", method = RequestMethod.GET)
+	@ResponseBody
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		String prev = request.getHeader("referer");
+		StringBuilder sb = new StringBuilder();
+		sb.append("<script>");
+		sb.append("alert('로그아웃 되었습니다.');");
+		sb.append("location.href='"+prev+"';");
+		sb.append("</script>");
+		return sb.toString();
+	}
+	
 	
 	@RequestMapping(value="/member/modify",method=RequestMethod.GET)
 	public ModelAndView select(int member_id) {
 		System.out.println("넘어온 member_id:" + member_id);
 		Member member = memberService.select(member_id);
 		ModelAndView mav = new ModelAndView("member/detail");
-		mav.addObject("board",member);
+		mav.addObject("member",member);
 		return mav;
 	}
 	
@@ -133,6 +152,36 @@ public class MemberController {
 		}
 		return result;
 	}	
+	
+	@RequestMapping(value="/rest/member/findId", method = RequestMethod.POST)
+	@ResponseBody
+	public String findId(Member member) {
+		//회원가입할때 중복을 체크하자
+		String result;
+		Member obj = memberService.findId(member);
+		//System.out.println("멤버아이디"+member.getId());
+		if(obj!=null) {
+			result = obj.getId();
+		}else {
+			result="일치하는 아이디가 없습니다.";
+		}
+		System.out.println("보내는거"+result);
+		return result;
+	}
+	
+	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
+	@ResponseBody
+	public String resetPass(Member member) {
+
+		memberService.resetPass(member);
+		StringBuilder sb = new StringBuilder();
+		sb.append("<script>");
+		sb.append("alert('비밀번호가 변경되었습니다.');");
+		sb.append("location.href='/'");
+		sb.append("</script>");
+		return sb.toString();
+	}
+	
 	
 	@ExceptionHandler(RegistFailException.class)
 	@ResponseBody

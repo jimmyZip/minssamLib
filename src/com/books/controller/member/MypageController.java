@@ -4,16 +4,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.books.common.Pager;
 import com.books.common.member.Admin;
+import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
@@ -25,36 +28,59 @@ public class MypageController {
 
 	@Autowired
 	private BookmarkService bookmarkService;
-	@Autowired 
+	@Autowired
+	private BookSerachMapping mapping;
+	@Autowired
+	private BookSearch bookSearch;
+	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private Admin commonAdmin;
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	//Member member;
 	Pager pager=new Pager();
-	@RequestMapping(value="/member/mypage/{currentPage}",method=RequestMethod.GET)
-	public ModelAndView markAll(HttpServletRequest request, @PathVariable("currentPage") String currentPage) {
-		List userList;
-		List markList;
+	
+	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
+	public ModelAndView markAll(HttpServletRequest request) {
+		List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
+		
+		//JSONObject json=new JSONObject();
 		try {
-			userList = bookmarkService.selectByMember(member.getMember_id());
-			//pager.init(request, userList.size());
-			//if(userList.size()>0) {
-				
-			//}
-			System.out.println(userList);
+			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
+			for(int i=0; i<userBookmarkList.size(); i++) {
+				String isbn = userBookmarkList.get(i).getIsbn();
+				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+				//json=(JSONObject) userBookmarkList;
+			}
 		} catch (NullPointerException e) {
-			e.printStackTrace();
 			mav.setViewName("member/login/error");
 			return mav;
 		}
-		
 		mav.setViewName("member/mypage");
-		mav.addObject("userList", userList);
+		mav.addObject("userBookmarkList", userBookmarkList);
+		System.out.println(mav);
+		//mav.addObject("json",json);
 		return mav;
 	}
+	
+	/*
+	 * @RequestMapping(value="/member/mypage")
+	 * 
+	 * @ResponseBody public List<Bookmark> showMarkList(){ return
+	 * bookmarkService.selectAll(); }
+	 */
+	
+	@RequestMapping(value="/member/mypage/{bookmark_id}", method=RequestMethod.DELETE)
+	@ResponseBody
+	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {
+		bookmarkService.delete(bookmark_id);
+		return null;
+	}
+	
+	
+	
 	
 	// 어드민 페이지 이동 용도
 	@RequestMapping(value = "/admin/main", method = RequestMethod.GET)

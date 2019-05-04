@@ -3,7 +3,11 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
+	//List<Bookmark> markList=(List)request.getAttribute("markList");
+	//pager.init(request, markList.size());
 	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	//System.out.println(userBookmarkList.size());
+	//System.out.println(userList.get(0).getMember().getId());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -20,66 +24,18 @@
 <%@include file="/include/head.jsp" %>
 <title>마이 페이지</title>
 <script>
- $(function(){
-	getList();
-});
-
-function getList(){
-	$.ajax({
-		url:"/member/mypage",
-		type:"get",
-		success:function(result){
-			viewList(result);
-		}
-	});
+$(function(){
+	
 }
 
-function bookmarkDelete(bookmark_id){
-	$.ajax({
-		url:"/member/mypage/"+bookmark_id,
-		type:"delete",
-		success:function(){
-			getList();
-		}
-	});
-}
-
-function viewList(json){
-	var con=$("#container");
-	con.html("");//data delete
- 	for(var i=0; i<json.length;i++){
-		var obj=json[i];
-		var str ="";
-		str+="<tr id=table_tr_>";
-		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url("+obj.image+")'></div></a></td>";
-		str+="<td>"+obj.title+"</td>";
-		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
-		str+="<td>"+obj.bookmark_date+"</td>";
-		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
-		str+="</tr>";
-		//console.log(str);
-		
-		con.append(str);
-	} 
+function del(){
+	
 }
 
 function fly(isbn){
 	alert(isbn);
 	location.href="/book/search/detail/"+isbn;
 }
-
-/* function del(mark_no){
-	if(!confirm("삭제하시겠습니까?")){
-		return null;
-	}
-	$.ajax({
-		url:"/member/mypage/"+bookmark_id,
-		type:"delete",
-		success:function(){
-			getList();
-		}
-	});
-} */
 
 </script>
 </head>
@@ -113,22 +69,23 @@ function fly(isbn){
 	               </tr>
 	           </thead>
 	           
-	         <tbody id="container" class="mypageContainer">
-				<%-- <%for(int i=0; i<userBookmarkList.size();i++){ %>
+	           <tbody id="container" name="del">
+				
+				<%for(int i=0; i<userBookmarkList.size();i++){ %>
 	       			<% Bookmark mark=userBookmarkList.get(i); %>
 	       			<tr>
-                       <td>																							
+                       <td>																							<!-- 멤버 id 참조해서  -->
                            <a href="#"><div onClick="fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
                        </td>
                        <td><%= mark.getBook().getTitle()%></td>
-                       <td><input type="hidden" name="bookmark_id" value="<%=mark.getBookmark_id()%>"/></td>
+                       <td></td>
                        <td><%=mark.getBookmark_date() %></td>
                        <td>
-                       		<button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button>
+                       		<button onClick="javascript:book_markDel()">삭제</button>
                        </td>
                 	</tr>
-                	<%} %> --%>
- 					<!-- javascript:book_markDel() -->
+                	<%} %>
+ 					
 	           </tbody>
 	       </table>
 	   </div>

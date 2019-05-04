@@ -8,6 +8,7 @@
 <%
 	List<Book> detailList = (List)request.getAttribute("detailList");
 	System.out.println(detailList.size());
+	System.out.println(detailList.get(0).getLink());
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
 	pager.init(request, reviewList.size());
 %>
@@ -28,24 +29,25 @@
 		</div>
 	</div>
 	<!-- bookDetail start -->
+	<%Book bookDetail = detailList.get(0); %>
 	<div class="wrap main cl">
 		<div class="content-section list-section campus-section">
 			<h2 style="display: block !important;">도서 상세정보</h2>
 			<div class="book-result-wrap">
-				<h3><span>0000</span>상세정보</h3>
+				<h3><span><%=bookDetail.getTitle() %></span>상세정보</h3>
 				<!-- 도서 검색결과 1건 단위 -->
 				<div class="book-list">
 					<dl class="book-list-inner">
 						<dt class="imgArea">
-							<img src="/asset/images/book_sample_2.jpg" alt="도서 이미지">
+							<img src="<%=bookDetail.getImage() %>" alt="도서 이미지">
 						</dt>
 						<dd class="descArea">
-							<p class="bTitle">책 제목</p>
+							<p class="bTitle"><%=bookDetail.getTitle() %></p>
 							<p class="bInfo">
 								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span>ISBN</span>
 							</p>
 							<p class="bInfo">
-								<span>출판사</span><i class="divider">&nbsp;|&nbsp;</i><span>출판일</span><i class="divider">&nbsp;|&nbsp;</i><span>ISBN</span>
+								<span><%=bookDetail.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=bookDetail.getPubdate() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=bookDetail.getIsbn() %></span>
 							</p>
 							<p class="bScore">
 								<span>평점</span>
@@ -74,7 +76,7 @@
 							<dd class="btnArea">
 								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
 								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
-								<p><a href="#none" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
 							</dd>
 						<%} %>
 					</dl>
@@ -85,9 +87,7 @@
 				<h3>책 소개</h3>
 				<article class="introInner">
 					<h4>이 책으로 말할 것 같으면~</h4>
-					<p>
-						『이것이 자바다』는 15년 이상 자바 언어를 교육해온 자바 전문강사의 노하우를 아낌 없이 담아낸 자바 입문서이다. 자바 입문자를 배려한 친절한 설명과 배려로 1장에 풀인원 설치 방법을 제공하여 쉽게 학습환경을 구축할 수 있다. 또한 중급 개발자로 나아가기 위한 람다식(14장), JavaFX(17장), NIO(18~19장) 수록되어 있으며 각 챕터마다 확인문제 제공. 풀이와 답은 인터넷 강의에서 친절한 해설을 통해 알려준다.
-					</p>
+					<p><%=bookDetail.getDescription() %></p>
 				</article>
 			</section>
 			<section class="reviewAreaWrap">
@@ -95,7 +95,7 @@
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
 					<p class="writeBtn">
-						<a href="#">리뷰 쓰기</a>
+						<a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)">리뷰 쓰기</a>
 					</p>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
@@ -186,7 +186,7 @@
 		    <div class="orderArea">
 		    	<h4>이 책을 구매하시려면</h4>
 		    	<p class="orderBtn">
-		    		<a href="#none">구매하러가기</a>
+		    		<a href="<%=bookDetail.getLink()%>" title="초록창에서 구매정보 보러 가기" target="_blank">뇌입어에서 구매정보 보러 가기</a>
 		    	</p>
 		    </div>
 		    <!-- go buy thisbook area end-->

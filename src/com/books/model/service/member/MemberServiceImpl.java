@@ -71,4 +71,17 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.passCheck(pass);
 	}
 
+	@Override
+	public Member findId(Member member) {
+		return memberDAO.findId(member);
+	}
+
+	@Override
+	public void resetPass(Member member) {
+		int result = memberDAO.resetPass(member);
+		if (result == 0) {
+			throw new EditFailException("수정에 실패하였습니다");
+		}
+	}
+
 }

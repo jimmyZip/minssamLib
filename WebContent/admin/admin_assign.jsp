@@ -163,7 +163,7 @@ function viewList(json){
 		str += "<button onClick='authModi("+obj.auth_id+", this)'> 수정</button>";
 		str += "</td>";
 		str += "</tr>";
-		//console.log("생성문", str);
+		console.log("생성문", str);
 		con.append(str);
 	}
 }

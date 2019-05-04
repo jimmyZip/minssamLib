@@ -84,7 +84,7 @@ function viewReview(isbn){
 
 // 리뷰 작성
 function writerReview(isbn){
-	
+	location.href="/book/reviews/"+isbn;
 }
 
 // 세부 목록 보기
@@ -128,7 +128,7 @@ function alertResultCode(json){
 		<div class="content-section list-section campus-section">
 			<h2 style="display: block !important;">도서 목록</h2>
 			<div class="book-result-wrap">
-				<h3><span><%=searchWord %></span>검색결과</h3>
+				<h3 class="schResultH3"><span><%=searchWord %></span>검색결과</h3>
 				<%if(searchList.size()==0){ %>
 					<h4>검색 결과가 없습니다.</h4>
 				<%} %> 
@@ -153,7 +153,7 @@ function alertResultCode(json){
 						</dt>
 						<dd class="descArea">
 							<!-- detail 페이지로 넘어갈 링크 주소 필요!! -->
-							<a href="javascript:bookDetailView(<%=book.getIsbn()%>)" ><p class="bTitle"><%=book.getTitle() %></p></a>
+							<a href="javascript:bookDetailView(<%=book.getIsbn()%>)" ><p class="bTitle bListTitle"><%=book.getTitle() %></p></a>
 							<p class="bInfo">
 								<span><%=book.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=book.getPubdate() %> </span>
 							</p>

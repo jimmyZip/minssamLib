@@ -57,7 +57,7 @@ function updateAuth(member_id. button){
 }
 </script>
 <style>
-a{
+.page_href{
 	display: unset;
 }
 </style>
@@ -129,18 +129,18 @@ a{
            		   <tr>
 						<td colspan="9">
 							<%if(pager.getFirstPage()-1>0){ %>
-								<a href="/admin/member/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
+								<a class="page_href" href="/admin/member/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
 							<%}else{ %>
-								<a href="javascript:alert('첫페이지 입니다.')">[prev]</a>
+								<a class="page_href" href="javascript:alert('첫페이지 입니다.')">[prev]</a>
 							<%} %> 
 							<%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
 								<%if(i>pager.getTotalPage()) break; %>
-								<a href="/admin/member/page?currentPage=<%=i%>">[<%=i %>]</a>
+								<a class="page_href" href="/admin/member/page?currentPage=<%=i%>">[<%=i %>]</a>
 							<%} %>
 							<%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
-								<a href="/admin/member/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
+								<a class="page_href" href="/admin/member/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
 							<%}else{ %>
-								<a href="javascript:alert('마지막 페이지입니다.')">[next]</a>
+								<a class="page_href" href="javascript:alert('마지막 페이지입니다.')">[next]</a>
 							<%} %>
 						</td>
 					</tr>

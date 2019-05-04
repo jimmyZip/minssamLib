@@ -2,8 +2,13 @@ package com.books.model.service.member;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.books.exception.DeleteFailException;
@@ -19,6 +24,10 @@ public class MemberServiceImpl implements MemberService {
 	@Qualifier("mybatisMemberDAO")
 	private MemberDAO memberDAO;
 
+	@Autowired
+	private JavaMailSender javaMailSender;
+
+	
 	public List<Member> selectAll() {
 		return memberDAO.selectAll();
 	}
@@ -84,4 +93,33 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public Member infoCheck(Member member) {
+		return memberDAO.infoCheck(member);
+	}
+
+	@Override
+	public boolean send(String subject, String text, String from, String to) {
+        MimeMessage message = javaMailSender.createMimeMessage();
+ 
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setSubject(subject);
+            helper.setText(text, true);
+            helper.setFrom(from);
+            helper.setTo(to);
+ 
+ 
+            javaMailSender.send(message);
+            return true;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+	}
+
+
+	
+	
 }

@@ -19,4 +19,5 @@ public interface MemberDAO {
 	public Member loginCheck(Member member);
 	public Member findId(Member member);
 	public int resetPass(Member member);
+	public Member infoCheck(Member member);
 }

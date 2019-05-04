@@ -71,4 +71,9 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.update("Member.resetPass",member);
 	}
 
+	@Override
+	public Member infoCheck(Member member) {
+		return sessionTemplate.selectOne("Member.infoCheck", member);
+	}
+
 }

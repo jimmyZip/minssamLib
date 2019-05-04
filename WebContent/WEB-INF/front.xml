@@ -41,4 +41,7 @@
 	<!-- annotation 기반 aspect빈등록 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <bean id="annotationMemberSessionAspect" class="com.books.aop.AnnotationMemberSessionAspect"/>
+    	
+
+   
 </beans>

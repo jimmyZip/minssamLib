@@ -64,10 +64,14 @@
 		<include refid="sql_select"/> where name=#{name} and email=#{email}
 	</select>
 
+	<select id="infoCheck" parameterType="Member" resultMap="membermap">
+		<include refid="sql_select"/> where id=#{id} and email=#{email}
+	</select>
+
 	<update id="resetPass" parameterType="Member">
 		update member set pass=#{pass} where id=#{id} and email=#{email}
 	</update>
-
+	
 </mapper>
 
 

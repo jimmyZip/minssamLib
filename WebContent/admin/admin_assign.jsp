@@ -57,18 +57,23 @@ function authModi(auth_id, button){
 	var book_comment_del = trTag.childNodes[5].children[0].checked;
 	console.log(auth_id, admin_assign, member_del, review_del, review_comment_del, book_comment_del); 
 
-	/*
 	$.ajax({
 		url:"/admin/assign/"+auth_id,
 		type:"post",
 		data:{
-			_method:"PUT"
+			_method:"PUT",
+			auth_id:auth_id,
+			admin_assign:admin_assign,
+			member_del:member_del,
+			review_del:review_del,
+			review_comment_del:review_comment_del,
+			book_comment_del:book_comment_del
 		},
 		success:function(){
 			getList();
 		}
 	});
-	*/
+	
 }
 
 // 페이지 표시해주는 함수 

@@ -17,4 +17,5 @@ public interface MemberService {
 	public void delete(int member_id);
 	public Member findId(Member member);
 	public void resetPass(Member member);
+	public void updateAuth(Member member);
 }

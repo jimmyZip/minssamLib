@@ -33,10 +33,7 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	public void update(Auth auth) {
-		int result = 0;
-		if (auth.getAuth_id() > 2) { // 기본 두개는 수정 불가
-			result = authDAO.update(auth);
-		}
+		int result = authDAO.update(auth);
 
 		if (result == 0) {
 			throw new EditFailException("권한 수정 실패");
@@ -44,10 +41,8 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	public void delete(int auth_id) {
-		int result = 0;
-		if (auth_id > 2) { // 기본 두개는 삭제 불가
-			result = authDAO.delete(auth_id);
-		}
+		int result = authDAO.delete(auth_id);
+
 		if (result == 0) {
 			throw new DeleteFailException("권한 삭제 실패");
 		}

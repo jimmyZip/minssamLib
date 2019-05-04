@@ -44,10 +44,11 @@ public class AdminAssignController {
     }
     
     // 수정
-    @RequestMapping(value = "/admin/assign", method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin/assign/{auth_id}", method = RequestMethod.PUT)
+    @ResponseBody
     public String updateAuth(Auth auth) {
-    	authService.insert(auth);
-    	return null;
+    	authService.update(auth);
+    	return "{\"resultCode\":1, \"msg\":\"권한 수정 성공\"}";
     }
     
     // 삭제
@@ -55,6 +56,6 @@ public class AdminAssignController {
     @ResponseBody
     public String deleteAuth(@PathVariable("auth_id") int auth_id) {
     	authService.delete(auth_id);
-    	return null;
+    	return "{\"resultCode\":1, \"msg\":\"권한 삭제 성공\"}";
     }
 }

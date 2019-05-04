@@ -36,11 +36,15 @@ function authAdd(){
 
 // 삭제
 function authDelete(auth_id){
-	//alert("삭제 : " + auth_id);
+	if(!confirm("삭제하시겠습니까?")){
+		return
+	}
+	
 	$.ajax({
 		url:"/admin/assign/"+auth_id,
-		type:"delete",
-		success:function(){
+		type:"DELETE",
+		success:function(result){
+			showMsg(result);
 			getList();
 		}
 	});
@@ -48,28 +52,44 @@ function authDelete(auth_id){
 
 // 수정
 function authModi(auth_id, button){
+	if(!confirm("수정 하시겠습니까?")){
+		return
+	}
+	
 	var trTag = button.parentElement.parentElement; // tr 태그
-	var auth_id = trTag.childNodes[0].children[0].value;
+	var auth_name = trTag.childNodes[0].children[0].value;
 	var admin_assign = trTag.childNodes[1].children[0].checked;
 	var member_del = trTag.childNodes[2].children[0].checked;
 	var review_del = trTag.childNodes[3].children[0].checked;
 	var review_comment_del = trTag.childNodes[4].children[0].checked;
 	var book_comment_del = trTag.childNodes[5].children[0].checked;
-	console.log(auth_id, admin_assign, member_del, review_del, review_comment_del, book_comment_del); 
 
-	/*
 	$.ajax({
 		url:"/admin/assign/"+auth_id,
 		type:"post",
 		data:{
-			_method:"PUT"
+			_method:"PUT",
+			auth_id:auth_id,
+			auth_name:auth_name,
+			admin_assign:admin_assign,
+			member_del:member_del,
+			review_del:review_del,
+			review_comment_del:review_comment_del,
+			book_comment_del:book_comment_del
 		},
-		success:function(){
+		success:function(result){
+			showMsg(result);
 			getList();
 		}
 	});
-	*/
+	
 }
+
+function showMsg(json){
+	var msg = JSON.parse(json);
+	alert(msg.msg);
+}
+
 
 // 페이지 표시해주는 함수 
 function viewList(json){

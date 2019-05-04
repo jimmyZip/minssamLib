@@ -23,7 +23,7 @@
 	<update id="update" parameterType="Auth">
 		update auth 
 		set auth_name=#{auth_name}, admin_assign=#{admin_assign}, member_del=#{member_del}, 
-		review_del=#{member_del}, review_comment_del=#{review_comment_del}, book_comment_del=#{book_commemt_del}
+		review_del=#{review_del}, review_comment_del=#{review_comment_del}, book_comment_del=#{book_comment_del}
 		where auth_id = #{auth_id}
 	</update>
 	

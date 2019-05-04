@@ -60,19 +60,22 @@ public class MypageController {
 		}
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
-		System.out.println(mav);
+		System.out.println("작동1");
 		//mav.addObject("json",json);
 		return mav;
 	}
 	
-	/*
-	 * @RequestMapping(value="/member/mypage")
-	 * 
-	 * @ResponseBody public List<Bookmark> showMarkList(){ return
-	 * bookmarkService.selectAll(); }
-	 */
+	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Bookmark> bookMarkList(int member_id){
+		
+		System.out.println("작동2");
+		return bookmarkService.selectByMember(member_id);
+	}
 	
-	@RequestMapping(value="/member/mypage/{bookmark_id}", method=RequestMethod.DELETE)
+	
+	
+	@RequestMapping(value="/member/mypage/bookmark/{bookmark_id}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {
 		bookmarkService.delete(bookmark_id);
@@ -96,8 +99,5 @@ public class MypageController {
 		return mav;		
 	}
 }
-
-
-
 
 

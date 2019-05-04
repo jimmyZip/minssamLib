@@ -3,7 +3,7 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {

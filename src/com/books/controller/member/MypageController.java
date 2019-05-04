@@ -59,7 +59,7 @@ public class MypageController {
 			return mav;
 		}
 		mav.setViewName("member/mypage");
-		mav.addObject("userBookmarkList", userBookmarkList);
+		//mav.addObject("userBookmarkList", userBookmarkList);
 		System.out.println("작동1");
 		//mav.addObject("json",json);
 		return mav;
@@ -67,9 +67,10 @@ public class MypageController {
 	
 	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
 	@ResponseBody
-	public List<Bookmark> bookMarkList(int member_id){
+	public List<Bookmark> bookMarkList(HttpServletRequest request){
+		Member member = (Member) request.getSession().getAttribute("member");
 		System.out.println("작동2");
-		return bookmarkService.selectByMember(member_id);
+		return bookmarkService.selectByMember(member.getMember_id());
 	}
 	
 	

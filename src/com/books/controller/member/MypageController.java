@@ -68,7 +68,6 @@ public class MypageController {
 	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
 	@ResponseBody
 	public List<Bookmark> bookMarkList(int member_id){
-		
 		System.out.println("¿€µø2");
 		return bookmarkService.selectByMember(member_id);
 	}

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,7 +60,7 @@ public class MypageController {
 			return mav;
 		}
 		mav.setViewName("member/mypage");
-		//mav.addObject("userBookmarkList", userBookmarkList);
+		mav.addObject("userBookmarkList", userBookmarkList);
 		System.out.println("작동1");
 		//mav.addObject("json",json);
 		return mav;
@@ -68,7 +69,7 @@ public class MypageController {
 	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
 	@ResponseBody
 	public List<Bookmark> bookMarkList(HttpServletRequest request){
-		Member member = (Member) request.getSession().getAttribute("member");
+		Member member = (Member)request.getSession().getAttribute("member");
 		System.out.println("작동2");
 		return bookmarkService.selectByMember(member.getMember_id());
 	}

@@ -66,21 +66,25 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.emailCheck(email);
 	}
 
-	@Override
 	public Member passCheck(String pass) {
 		return memberDAO.passCheck(pass);
 	}
-
-	@Override
+	
 	public Member findId(Member member) {
 		return memberDAO.findId(member);
 	}
 
-	@Override
 	public void resetPass(Member member) {
 		int result = memberDAO.resetPass(member);
 		if (result == 0) {
 			throw new EditFailException("수정에 실패하였습니다");
+		}
+	}
+
+	public void updateAuth(Member member) {
+		int result = memberDAO.updateAuth(member);
+		if (result == 0) {
+			throw new EditFailException("권한 수정에 실패하였습니다");
 		}
 	}
 

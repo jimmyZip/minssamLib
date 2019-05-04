@@ -11,21 +11,12 @@
 <!-- head start -->
 <head>
 <%@include file="/include/head.jsp" %>
-<script>
-$(function(){
-	getList();
-});
-
-function getList(){
-	$.ajax({
-		url:"/admin/assign",
-		type:"get",
-		success:function(result){
-			viewList(result);
-		}
-	});
+<style>
+.page_href{
+	display: unset;
 }
-
+</style>
+<script>
 function deleteMember(member_id){
 	if(!confirm("삭제 하시겠습니까?")){
 		return
@@ -35,32 +26,24 @@ function deleteMember(member_id){
 		url:"/admin/member/"+member_id,
 		type:"delete",
 		success:function(){
-			getList();
+			location.reload(true);
 		}
 	})
 }
 
-function updateAuth(member_id. button){
-	//var trTag = button.parentElement.parentElement; // tr 태그
-	//var auth_id = trTag.childNodes[0].children[0].value;
+function updateAuth(member_id, button){
+	var trTag = button.parentElement.parentElement; // tr 태그
+	var auth_id = trTag.childNodes[15].children[0].value;
 	$.ajax({
-		url:"/admin/member",
-		type:"post",
-		data:{
-			member_id:member_id,
-			auth_id:auth_id
-		},
+		url:"/admin/member/"+member_id+"/"+auth_id,
+		type:"put",
 		success:function(){
-			getList();
+			location.reload(true);
 		}
 	});
+	
 }
 </script>
-<style>
-.page_href{
-	display: unset;
-}
-</style>
 <title>관리자용 페이지 - 멤버 관리</title>
 </head>
 <!-- head end -->
@@ -121,8 +104,8 @@ function updateAuth(member_id. button){
 	           				</select>
 	           			</td>
 	           			<td>
-	           				<button onClick='updateAuth(<%=mem.getMember_id()%>, this)'>권한수정</button>
-	           				<button onClick='deleteMember(<%=mem.getMember_id()%>)'>탈퇴</button>
+	           				<button onClick="updateAuth('<%=mem.getMember_id()%>', this)">권한수정</button>
+	           				<button onClick="deleteMember('<%=mem.getMember_id()%>')">탈퇴</button>
 	           			</td>
            			</tr>
            		<%} %>

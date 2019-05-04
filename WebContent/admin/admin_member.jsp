@@ -27,6 +27,10 @@ function getList(){
 }
 
 function deleteMember(member_id){
+	if(!confirm("삭제 하시겠습니까?")){
+		return
+	}
+	
 	$.ajax({
 		url:"/admin/member/"+member_id,
 		type:"delete",
@@ -36,7 +40,7 @@ function deleteMember(member_id){
 	})
 }
 
-function updateAuth(member_id){
+function updateAuth(member_id. button){
 	//var trTag = button.parentElement.parentElement; // tr 태그
 	//var auth_id = trTag.childNodes[0].children[0].value;
 	$.ajax({
@@ -52,6 +56,11 @@ function updateAuth(member_id){
 	});
 }
 </script>
+<style>
+a{
+	display: unset;
+}
+</style>
 <title>관리자용 페이지 - 멤버 관리</title>
 </head>
 <!-- head end -->
@@ -90,44 +99,56 @@ function updateAuth(member_id){
 				<% int num = pager.getNum();%>
            		<% int curPos = pager.getCurPos(); %>
            		<%for(int i=0; i<pager.getPageSize(); i++){ %>
-           			<%if(num<1); break; %>
-           			<%Member mem = memberList.get(i); %>
+           			<%if(num<1) break; %>
+           			<%Member mem = memberList.get(curPos++); %>
            			<tr>
 	           			<td><%=num-- %></td>
 	           			<td><%=mem.getId() %></td>
 	           			<td><%=mem.getName() %></td>
 	           			<td><%=mem.getNickname()%></td>
 	           			<td><%=mem.getEmail() %></td>
-	           			<td><%=mem.getRegdate() %></td>
+	           			<td><%=mem.getRegdate().substring(0,10) %></td>
 	           			<td><%=mem.getLastlogin() %></td>
 	           			<td>
-	           				<select>
+	           				<select name="auth">
 	           					<%for(int j=0; j<authList.size(); j++){ %>
-	           						<option><%=authList.get(i).getAuth_name() %></option>
+	           					<%Auth memAuth = authList.get(j);%>
+	           						<option 
+	           						value="<%=memAuth.getAuth_id()%>" 
+	           						<%if(mem.getAuth().getAuth_id()==memAuth.getAuth_id()){ %>selected <%} %>>
+	           						<%=memAuth.getAuth_name() %></option>
 	           					<%} %>
 	           				</select>
 	           			</td>
 	           			<td>
-	           				<button onClick='updateAuth(<%=mem.getMember_id()%>)'>권한수정</button>
+	           				<button onClick='updateAuth(<%=mem.getMember_id()%>, this)'>권한수정</button>
 	           				<button onClick='deleteMember(<%=mem.getMember_id()%>)'>탈퇴</button>
 	           			</td>
            			</tr>
            		<%} %>
            		   <tr>
 						<td colspan="9">
-							[prev] 
+							<%if(pager.getFirstPage()-1>0){ %>
+								<a href="/admin/member/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
+							<%}else{ %>
+								<a href="javascript:alert('첫페이지 입니다.')">[prev]</a>
+							<%} %> 
 							<%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
 								<%if(i>pager.getTotalPage()) break; %>
-								[<%=i %>]
+								<a href="/admin/member/page?currentPage=<%=i%>">[<%=i %>]</a>
 							<%} %>
-							[next]
-							
+							<%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
+								<a href="/admin/member/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
+							<%}else{ %>
+								<a href="javascript:alert('마지막 페이지입니다.')">[next]</a>
+							<%} %>
 						</td>
 					</tr>
 	           </tbody>
 	       </table>
+	       
 	   </div>
-	
+
 	</div>
 	
 	<!-- footer start -->

@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="selectByMember" parameterType="int" resultMap="bookmarkmap">
-		<include refid="sql_select"/> where member_id=#{Member.member_id}
+		<include refid="sql_select"/> where member_id=#{member_id}
 	</select>
 	
 	<select id="selectByIsbn" parameterType="String" resultMap="bookmarkmap">

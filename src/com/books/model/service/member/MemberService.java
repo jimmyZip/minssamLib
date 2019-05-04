@@ -19,4 +19,5 @@ public interface MemberService {
 	public void resetPass(Member member);
 	public Member infoCheck(Member member);
 	public boolean send(String subject, String text, String from, String to);
+	public void updateAuth(Member member);
 }

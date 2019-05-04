@@ -3,7 +3,7 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -26,7 +26,7 @@
 
 function getList(){
 	$.ajax({
-		url:"/member/mypage",
+		url:"/member/mypage/bookmark",
 		type:"get",
 		success:function(result){
 			viewList(result);
@@ -36,7 +36,7 @@ function getList(){
 
 function bookmarkDelete(bookmark_id){
 	$.ajax({
-		url:"/member/mypage/"+bookmark_id,
+		url:"/member/mypage/bookmark/"+bookmark_id,
 		type:"delete",
 		success:function(){
 			getList();

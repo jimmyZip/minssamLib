@@ -75,5 +75,9 @@ public class MybatisMemberDAO implements MemberDAO{
 	public Member infoCheck(Member member) {
 		return sessionTemplate.selectOne("Member.infoCheck", member);
 	}
+	
+	public int updateAuth(Member member) {
+		return sessionTemplate.update("Member.updateAuth", member);
+	}
 
 }

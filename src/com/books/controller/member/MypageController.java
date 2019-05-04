@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,19 +61,22 @@ public class MypageController {
 		}
 		mav.setViewName("member/mypage");
 		mav.addObject("userBookmarkList", userBookmarkList);
-		System.out.println(mav);
+		System.out.println("작동1");
 		//mav.addObject("json",json);
 		return mav;
 	}
 	
-	/*
-	 * @RequestMapping(value="/member/mypage")
-	 * 
-	 * @ResponseBody public List<Bookmark> showMarkList(){ return
-	 * bookmarkService.selectAll(); }
-	 */
+	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
+	@ResponseBody
+	public List<Bookmark> bookMarkList(HttpServletRequest request){
+		Member member = (Member)request.getSession().getAttribute("member");
+		System.out.println("작동2");
+		return bookmarkService.selectByMember(member.getMember_id());
+	}
 	
-	@RequestMapping(value="/member/mypage/{bookmark_id}", method=RequestMethod.DELETE)
+	
+	
+	@RequestMapping(value="/member/mypage/bookmark/{bookmark_id}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {
 		bookmarkService.delete(bookmark_id);
@@ -96,8 +100,5 @@ public class MypageController {
 		return mav;		
 	}
 }
-
-
-
 
 

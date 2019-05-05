@@ -192,7 +192,8 @@ public class MemberController {
         int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
         String joinCode = String.valueOf(ran);
         session.setAttribute("joinCode", joinCode);
- 
+        session.setAttribute("email", obj.getEmail());
+        session.setAttribute("id", obj.getId());
         String subject = "회원가입 인증 코드 발급 안내 입니다.";
         StringBuilder sb = new StringBuilder();
         sb.append("귀하의 인증 코드는 " + joinCode + " 입니다.");
@@ -208,7 +209,7 @@ public class MemberController {
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPass(Member member) {
-
+		member.setPass(security.textToHash(member.getPass()));
 		memberService.resetPass(member);
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");

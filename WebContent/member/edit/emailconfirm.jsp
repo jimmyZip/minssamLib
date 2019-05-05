@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-	String joinCode = (String)request.getAttribute("joinCode");
 
-%>
 <!DOCTYPE html>
 <head>
 <script>
@@ -50,7 +47,8 @@
 	}
 
 	function ok(){
-		alert("동작함"+joinCode);
+		var joinCode =  "<%=(String)session.getAttribute("joinCode")%>";
+		//alert("동작함"+joinCode);
 		if(joinCode==confirmNumber.value){
 			goResetPass()
 		}else{

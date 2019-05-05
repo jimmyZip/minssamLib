@@ -2,8 +2,13 @@ package com.books.model.service.member;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.books.exception.DeleteFailException;
@@ -19,6 +24,10 @@ public class MemberServiceImpl implements MemberService {
 	@Qualifier("mybatisMemberDAO")
 	private MemberDAO memberDAO;
 
+	@Autowired
+	private JavaMailSender javaMailSender;
+
+	
 	public List<Member> selectAll() {
 		return memberDAO.selectAll();
 	}
@@ -66,21 +75,52 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.emailCheck(email);
 	}
 
-	@Override
 	public Member passCheck(String pass) {
 		return memberDAO.passCheck(pass);
 	}
-
-	@Override
+	
 	public Member findId(Member member) {
 		return memberDAO.findId(member);
 	}
 
-	@Override
 	public void resetPass(Member member) {
 		int result = memberDAO.resetPass(member);
 		if (result == 0) {
 			throw new EditFailException("수정에 실패하였습니다");
+		}
+	}
+
+	@Override
+	public Member infoCheck(Member member) {
+		return memberDAO.infoCheck(member);
+	}
+
+	@Override
+	public boolean send(String subject, String text, String from, String to) {
+        MimeMessage message = javaMailSender.createMimeMessage();
+ 
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setSubject(subject);
+            helper.setText(text, true);
+            helper.setFrom(from);
+            helper.setTo(to);
+ 
+ 
+            javaMailSender.send(message);
+            return true;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+	}
+
+	
+	public void updateAuth(Member member) {
+		int result = memberDAO.updateAuth(member);
+		if (result == 0) {
+			throw new EditFailException("권한 수정에 실패하였습니다");
 		}
 	}
 

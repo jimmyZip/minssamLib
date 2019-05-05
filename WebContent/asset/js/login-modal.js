@@ -1,3 +1,4 @@
+
 /*modal popup related with login*/
 $(function(){
    $("#full,#view").hide();
@@ -30,7 +31,15 @@ function findId(){
 
 function resetPass(){
 	$("#view").empty();
-	$("#view").load("/member/edit/resetpassform.jsp");
+	$("#view").load("/member/edit/emailconfirm.jsp");
+}
+
+
+function goResetPass(){
+
+		$("#view").empty();
+		$("#view").load("/member/edit/resetpass.jsp");
+
 }
 
 

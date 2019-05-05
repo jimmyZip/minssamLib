@@ -45,7 +45,10 @@
 	<update id="update" parameterType="Member">
 		update member set pass=#{pass},nickname=#{nickname},email=#{email} where member_id=#{member_id}
 	</update>
-
+	
+	<update id="updateAuth" parameterType="Member">
+		update member set auth_id=#{auth.auth_id} where member_id=#{member_id}
+	</update>
 	<!-- 회원가입할때 아이디하고 이메일 중복 확인해주는거-->
 	<select id="idCheck" parameterType="String" resultMap="membermap">
 		<include refid="sql_select"/> where id=#{id}
@@ -64,9 +67,17 @@
 		<include refid="sql_select"/> where name=#{name} and email=#{email}
 	</select>
 
+	<select id="infoCheck" parameterType="Member" resultMap="membermap">
+		<include refid="sql_select"/> where id=#{id} and email=#{email}
+	</select>
+
 	<update id="resetPass" parameterType="Member">
 		update member set pass=#{pass} where id=#{id} and email=#{email}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from member where member_id = #{member_id}
+	</delete>
 
 </mapper>
 

@@ -5,8 +5,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,6 +69,7 @@ public class MemberController {
 		
 		if(obj==null) {
 			viewName="member/login/loginfail";
+			
 		}else {
 			request.getSession().setAttribute("member", obj);			
 			viewName="redirect:"+prev;
@@ -169,10 +172,44 @@ public class MemberController {
 		return result;
 	}
 	
+	@RequestMapping(value="/rest/member/infoCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public Member infoCheck(Member member) {
+
+		Member obj = memberService.findId(member);
+
+		return obj;
+	}
+	
+
+
+	@RequestMapping(value = "/rest/member/sendMail", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public boolean sendMail(HttpSession session,Member member) {
+		 
+		Member obj = memberService.infoCheck(member);
+		
+        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        String joinCode = String.valueOf(ran);
+        session.setAttribute("joinCode", joinCode);
+        session.setAttribute("email", obj.getEmail());
+        session.setAttribute("id", obj.getId());
+        String subject = "회원가입 인증 코드 발급 안내 입니다.";
+        StringBuilder sb = new StringBuilder();
+        sb.append("귀하의 인증 코드는 " + joinCode + " 입니다.");
+	    /** 메일 전송
+	     * subject 제목
+	     * text 내용
+	     * from 보내는 메일 주소
+	     * to 받는 메일 주소
+	     **/
+        return memberService.send(subject, sb.toString(), "dosn1011@gmail.com", member.getEmail());
+    }
+
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPass(Member member) {
-
+		member.setPass(security.textToHash(member.getPass()));
 		memberService.resetPass(member);
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");

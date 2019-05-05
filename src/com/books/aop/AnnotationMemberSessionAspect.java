@@ -22,6 +22,7 @@ public class AnnotationMemberSessionAspect {
 	String[] exceptList= {
 		"/member/login",
 		"/member/contact",//고객센터
+		
 	};
 	
 	//공통 로직코드

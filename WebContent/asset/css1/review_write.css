@@ -27,6 +27,7 @@ form[name=review-write-form]{
 	width:14%;
 }
 .bookImg img{
+	display:block;
 	height:100%;
 }
 .bookDesc{
@@ -43,6 +44,10 @@ form[name=review-write-form]{
 	width:100%;
 	padding:10px 0;
 	margin-bottom:1rem;
+}
+.bookDesc p b,
+.bookDesc p span{
+	display:inline-block !important;
 }
 .bookScore{
 	width:26%;

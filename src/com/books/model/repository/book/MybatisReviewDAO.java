@@ -31,6 +31,8 @@ public class MybatisReviewDAO implements ReviewDAO{
 	}
 
 	public int insert(Review review) {
+		System.out.println("마바 리뷰dao 등록메서드 호출");
+		System.out.println("마바 리뷰 dao에서 확인한 isbn :: "+review.getIsbn());
 		return sessionTemplate.insert("Review.insert", review);
 	}
 

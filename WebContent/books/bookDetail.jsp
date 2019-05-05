@@ -7,8 +7,8 @@
 <%!Pager pager = new Pager(); %>
 <%
 	List<Book> detailList = (List)request.getAttribute("detailList");
-	System.out.println(detailList.size());
-	System.out.println(detailList.get(0).getLink());
+	//System.out.println(detailList.size());
+	//System.out.println(detailList.get(0).getLink());
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
 	pager.init(request, reviewList.size());
 %>

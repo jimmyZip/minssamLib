@@ -43,17 +43,17 @@ public class MypageController {
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request) {
-		List<Bookmark> userBookmarkList;
+		//List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
 		
 		//JSONObject json=new JSONObject();
 		try {
 			
-			  userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
-			 // for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
-			 // userBookmarkList.get(i).getIsbn();
-			 // userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
+			 // userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
+			  //for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
+			  //userBookmarkList.get(i).getIsbn();
+			  //userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
 			  //json=(JSONObject) userBookmarkList; 
 			  //}
 			 
@@ -78,10 +78,12 @@ public class MypageController {
 		for(int i=0; i<userBookmarkList.size(); i++) {
 			String isbn = userBookmarkList.get(i).getIsbn();
 			userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+			
 			//img=userBookmarkList.get(i).getBook().getImage();
 		}
 		System.out.println("ÀÛµ¿2");
 		//System.out.println(bookmarkService.selectByMember(member.getMember_id()));
+		//return bookmarkService.selectByMember(member.getMember_id());
 		return userBookmarkList;
 		
 	}

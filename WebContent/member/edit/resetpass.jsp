@@ -22,7 +22,7 @@
 				pass : newpass.value
 			},
 			success : function(data) {
-				alert(data);
+				alert("비밀번호가 변경되었습니다.");
 				
 			},
 			error : function(data) {

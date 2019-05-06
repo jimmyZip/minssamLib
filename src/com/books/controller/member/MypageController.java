@@ -19,6 +19,7 @@ import com.books.common.Pager;
 import com.books.common.member.Admin;
 import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
+import com.books.model.domain.book.Book;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
@@ -34,9 +35,8 @@ public class MypageController {
 	@Autowired
 	private BookSearch bookSearch;
 	@Autowired
-	private MemberService memberService;
-	@Autowired
 	private Admin commonAdmin;
+	
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	Pager pager=new Pager();
@@ -49,18 +49,20 @@ public class MypageController {
 		
 		//JSONObject json=new JSONObject();
 		try {
-			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
-			for(int i=0; i<userBookmarkList.size(); i++) {
-				String isbn = userBookmarkList.get(i).getIsbn();
-				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-				//json=(JSONObject) userBookmarkList;
-			}
+			
+			  userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
+			 // for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
+			 // userBookmarkList.get(i).getIsbn();
+			 // userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
+			  //json=(JSONObject) userBookmarkList; 
+			  //}
+			 
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
 			return mav;
 		}
 		mav.setViewName("member/mypage");
-		mav.addObject("userBookmarkList", userBookmarkList);
+		//mav.addObject("userBookmarkList", userBookmarkList);
 		System.out.println("작동1");
 		//mav.addObject("json",json);
 		return mav;
@@ -70,8 +72,18 @@ public class MypageController {
 	@ResponseBody
 	public List<Bookmark> bookMarkList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
+		List<Bookmark> userBookmarkList;
+		String img;
+		userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
+		for(int i=0; i<userBookmarkList.size(); i++) {
+			String isbn = userBookmarkList.get(i).getIsbn();
+			userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+			//img=userBookmarkList.get(i).getBook().getImage();
+		}
 		System.out.println("작동2");
-		return bookmarkService.selectByMember(member.getMember_id());
+		//System.out.println(bookmarkService.selectByMember(member.getMember_id()));
+		return userBookmarkList;
+		
 	}
 	
 	

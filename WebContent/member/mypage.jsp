@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
 	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	System.out.println(userBookmarkList.get(0).getBook().getImage());
 	//System.out.println(userBookmarkList.get(0).getBook().getImage());
 %>
 <%-- <%
@@ -22,7 +23,6 @@
 <title>마이 페이지</title>
 <script>
  $(function(){
-	 book.getImage();
 	getList();
 });
 
@@ -54,7 +54,7 @@ function viewList(json){
 		var obj=json[i];
 		var str ="";
 		str+="<tr id=table_tr>";
-		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url('"+userBookmarkList.getBook().getImage()+"')'></div></a></td>";
+		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url('"+obj.image+"')'></div></a></td>";
 		str+="<td>"+obj.title+"</td>";
 		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
 		str+="<td>"+obj.bookmark_date+"</td>";

@@ -1,6 +1,9 @@
 package com.books.controller.admin;
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +23,7 @@ public class AdminAssignController {
 	
 	// 페이지 이동
     @RequestMapping(value = "/admin/assign/page", method = RequestMethod.GET)
-    public ModelAndView showAuth() {
+    public ModelAndView showAuth(HttpServletRequest request) {
     	logger.trace("권한 관리 페이지로 이동");
         ModelAndView mav = new ModelAndView("admin/admin_assign");
         mav.addObject("authList", authService.selectAll());
@@ -30,7 +33,7 @@ public class AdminAssignController {
     // 전체 리스트 반환(json)
     @RequestMapping(value = "/admin/assign", method = RequestMethod.GET)
     @ResponseBody
-    public List<Auth> showAuthList() {
+    public List<Auth> showAuthList(HttpServletRequest request) {
         return authService.selectAll();
     }
     

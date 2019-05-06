@@ -21,8 +21,5 @@
 	<%if(auth.isReview_comment_del()) {%>
 		<li><a href="#" onClick="location.href='/admin/review_comment/page'">리뷰 코멘트 관리</a></li>
 	<%} %>
-	<%if(auth.isBook_comment_del()) {%>
-		<li><a href="#" onClick="location.href='/admin/book_comment/page'">도서 코멘트 관리</a></li>
-	<%} %>
 </ol>	    
 </div>

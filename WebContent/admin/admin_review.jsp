@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
-	List<Review> reviewList = (List)request.getAttribute("reivewList");
+	List<Review> reviewList = (List)request.getAttribute("reviewList");
 	Pager pager = (Pager)request.getAttribute("pager");
 %>
 <!DOCTYPE html>

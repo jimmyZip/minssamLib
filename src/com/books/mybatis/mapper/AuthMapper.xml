@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Auth">
 	<sql id="sql_select">
-		select auth_id, auth_name, admin_assign, member_del, review_del, review_comment_del, book_comment_del from auth
+		select auth_id, auth_name, admin_assign, member_del, review_del, review_comment_del from auth
 	</sql>
 
 	<select id="selectAll" resultType="Auth">
@@ -16,14 +16,14 @@
 	</select>
 	
 	<insert id="insert" parameterType="Auth">
-		insert into auth(auth_name, admin_assign, member_del, review_del, review_comment_del, book_comment_del) 
-		values(#{auth_name}, #{admin_assign}, #{member_del}, #{review_del}, #{review_comment_del}, #{book_comment_del})
+		insert into auth(auth_name, admin_assign, member_del, review_del, review_comment_del) 
+		values(#{auth_name}, #{admin_assign}, #{member_del}, #{review_del}, #{review_comment_del})
 	</insert>
 	
 	<update id="update" parameterType="Auth">
 		update auth 
 		set auth_name=#{auth_name}, admin_assign=#{admin_assign}, member_del=#{member_del}, 
-		review_del=#{review_del}, review_comment_del=#{review_comment_del}, book_comment_del=#{book_comment_del}
+		review_del=#{review_del}, review_comment_del=#{review_comment_del}
 		where auth_id = #{auth_id}
 	</update>
 	

@@ -19,7 +19,7 @@
 		p:driverClassName="org.mariadb.jdbc.Driver"
 		p:url="jdbc:mariadb://localhost:3306/books"
 		p:username="root"
-		p:password="root">
+		p:password="">
 	</bean>
 	
 	<!-- transactionManager -->

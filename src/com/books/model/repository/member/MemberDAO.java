@@ -21,4 +21,5 @@ public interface MemberDAO {
 	public int resetPass(Member member);
 	public Member infoCheck(Member member);
 	public int updateAuth(Member member);
+	public int lastLogin(Member member);
 }

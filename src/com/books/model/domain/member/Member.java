@@ -1,5 +1,8 @@
 package com.books.model.domain.member;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 public class Member {
 	private int member_id;
 	private Auth auth;
@@ -9,7 +12,7 @@ public class Member {
 	private String name;
 	private String email;
 	private String regdate;
-	private String lastlogin;
+	private Date lastlogin;
 
 	public int getMember_id() {
 		return member_id;
@@ -75,12 +78,14 @@ public class Member {
 		this.regdate = regdate;
 	}
 
-	public String getLastlogin() {
+	public Date getLastlogin() {
 		return lastlogin;
 	}
 
-	public void setLastlogin(String lastlogin) {
+	public void setLastlogin(Date lastlogin) {
 		this.lastlogin = lastlogin;
 	}
+
+
 
 }

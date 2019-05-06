@@ -20,4 +20,5 @@ public interface MemberService {
 	public Member infoCheck(Member member);
 	public boolean send(String subject, String text, String from, String to);
 	public void updateAuth(Member member);
+	public void lastLogin(Member member);
 }

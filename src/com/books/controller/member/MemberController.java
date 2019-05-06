@@ -2,6 +2,9 @@ package com.books.controller.member;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,13 +68,17 @@ public class MemberController {
 		Member obj = memberService.loginCheck(member);
 		// 세션에 담기!
 		String prev = request.getHeader("referer");
-		
+		Date d = new Date();
+		java.sql.Date sqlDate = new java.sql.Date(d.getTime());
 		
 		if(obj==null) {
 			viewName="member/login/loginfail";
 			
 		}else {
-			request.getSession().setAttribute("member", obj);			
+			request.getSession().setAttribute("member", obj);
+			
+			member.setLastlogin(sqlDate);
+			memberService.lastLogin(member);
 			viewName="redirect:"+prev;
 		}	
 		return viewName;

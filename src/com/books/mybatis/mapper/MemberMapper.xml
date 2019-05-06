@@ -79,6 +79,10 @@
 		delete from member where member_id = #{member_id}
 	</delete>
 
+	<update id="lastLogin" parameterType="Member">
+		update member set lastlogin=#{lastlogin} where id=#{id}
+	</update>
+	
 </mapper>
 
 

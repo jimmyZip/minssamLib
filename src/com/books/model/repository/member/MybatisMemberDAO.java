@@ -80,4 +80,9 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.update("Member.updateAuth", member);
 	}
 
+	@Override
+	public int lastLogin(Member member) {
+		return sessionTemplate.update("Member.lastLogin",member);
+	}
+
 }

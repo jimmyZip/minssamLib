@@ -35,8 +35,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="Review">
-		insert into review(member_id, isbn, title, content, regdate, modidate, img) 
-		values(#{member.member_id}, #{isbn}, #{title}, #{content}, #{regdate}, #{modidate}, #{img})
+		insert into review(member_id,isbn, title, content, regdate, modidate, img) 
+		values(#{member.member_id},#{isbn}, #{title}, #{content}, #{regdate}, #{modidate}, #{img})
 	</insert>
 	
 	<update id="update" parameterType="Review">
@@ -47,8 +47,4 @@
 	<delete id="delete" parameterType="int">
 		delete from review where review_id=#{review_id}
 	</delete>
-	
-	
-
-
 </mapper>

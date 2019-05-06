@@ -8,15 +8,7 @@ function init(){
 	//editor 사용
 	CKEDITOR.replace('content');
 	$($("input[type='button']")[2]).click(function(){
-		alert("리뷰등록요청");
-		//send();
-	});
-	
-	//리뷰어가 책에 대해 매긴 평점 카운트
-	$($(".starImg").find("img")).click(function(event){
-		var i=$(this).index();
-		//var clicked=false;
-		scoring(i);
+		send();
 	});
 	
 	//업로드 대기 이미지 등록
@@ -29,27 +21,6 @@ function init(){
 		chkAll();
 	});
 
-}
-
-
-//책의 평점 계산
-function scoring(i){
-	//몇 번째 별을 클릭했는지 찾기
-	console.log(i+"번째 녀석을 클릭");
-	//i번째 녀석까지 별을 채워진 별로 반전
-	for(var a=0;a<=4;a++){
-		$($(".starImg").find("img")[a]).attr('src','/asset/images/star_empty.png');
-	}	
-	for(var a=0;a<=i;a++){
-		$($(".starImg").find("img")[a]).attr('src','/asset/images/star_filled.png');
-	}	
-	//별 갯수만큼 스코어 부여
-	var score = 0;
-	score=i+1;
-	console.log("리뷰어가 이 책에 매긴 점수 : "+score+"점");
-	$(".reviewScore").text(score);
-	$("input[type=hidden]").val(score);
-	console.log("hidden에 담은 스코어밸류"+$("input[type=hidden]").val());
 }
 
 //업로드 대기 이미지 동적 생성
@@ -81,10 +52,10 @@ function imgRegistCancel(){
 
 //form 전송
 function send(){
-	var form=$("form");
-	form.attr({
-		"method":"post",
-		"action":"/review/write"
+	alert("작성한 리뷰를 등록합니다.");
+	$("form[name='review-write-form']").attr({
+		method:"post",
+		action:"/review/write"
 	});
-	form.submit();
+	$("form[name='review-write-form']").submit();
 }

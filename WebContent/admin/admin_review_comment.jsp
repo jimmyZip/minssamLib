@@ -11,33 +11,28 @@
 <!-- head start -->
 <head>
 <%@include file="/include/head.jsp" %>
+<style>
+.page_href{
+	display: unset;
+}
+</style>
 <script>
-$(function(){
-	getList();
-});
-
-function getList(){
-	$.ajax({
-		url:"/admin/review_comment",
-		type:"get",
-		success:function(result){
-			viewList(result);
-		}
-	});
-}
-
-function viewList(json){
+function commentDelete(comment_id){
+	if(!confirm("삭제 하시겠습니까?")){
+		return
+	}
 	
-}
-
-function commentDelete(review_id){
 	$.ajax({
-		url:"/admin/review/"+review_id,
+		url:"/admin/review_comment/"+comment_id,
 		type:"delete",
-		success:function(){
-			getList();
+		success:function(result){
+			var json = JSON.parse(result);
+			if(json.resultCode == 0){
+				alert(json.msg);
+			}
+			location.reload(true);
 		}
-	});
+	})
 }
 </script>
 <title>관리자용 페이지 - 리뷰 코멘트 관리</title>
@@ -75,7 +70,7 @@ function commentDelete(review_id){
            		   <% int num = pager.getNum();%>
            		   <% int curPos = pager.getCurPos(); %>
            		   <%for(int i=0; i<pager.getPageSize(); i++){ %>
-           		   <%if(num<1); break; %>
+           		   <%if(num<1) break; %>
            		   <%ReviewComment comment = reviewCommentList.get(curPos++); %>
            		   <tr>
 					   <td><%=num-- %></td>
@@ -88,13 +83,20 @@ function commentDelete(review_id){
                    <%} %>
                    <tr>
 						<td colspan="6">
-							[prev] 
+							<%if(pager.getFirstPage()-1>0){ %>
+								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
+							<%}else{ %>
+								<a class="page_href" href="javascript:alert('첫페이지 입니다.')">[prev]</a>
+							<%} %> 
 							<%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
 								<%if(i>pager.getTotalPage()) break; %>
-								[<%=i %>]
+								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=i%>">[<%=i %>]</a>
 							<%} %>
-							[next]
-							
+							<%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
+								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
+							<%}else{ %>
+								<a class="page_href" href="javascript:alert('마지막 페이지입니다.')">[next]</a>
+							<%} %>
 						</td>
 					</tr>
 	           </tbody>

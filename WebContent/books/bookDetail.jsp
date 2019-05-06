@@ -7,10 +7,12 @@
 <%!Pager pager = new Pager(); %>
 <%
 	List<Book> detailList = (List)request.getAttribute("detailList");
-	System.out.println(detailList.size());
-	System.out.println(detailList.get(0).getLink());
+	//System.out.println(detailList.size());
+	//System.out.println(detailList.get(0).getLink());
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
-	pager.init(request, reviewList.size());
+	//if(reviewList.size()>0){		
+		//pager.init(request, reviewList.size());
+	//}
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +37,7 @@
 			<h2 style="display: block !important;">도서 상세정보</h2>
 			<div class="book-result-wrap">
 				<h3><span><%=bookDetail.getTitle() %></span>상세정보</h3>
-				<!-- 도서 검색결과 1건 단위 -->
+				<!-- 도서 검색결과 1건 단위, 관련 css문서는 campus.css -->
 				<div class="book-list">
 					<dl class="book-list-inner">
 						<dt class="imgArea">
@@ -49,8 +51,16 @@
 							<p class="bInfo">
 								<span><%=bookDetail.getPublisher() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=bookDetail.getPubdate() %></span><i class="divider">&nbsp;|&nbsp;</i><span><%=bookDetail.getIsbn() %></span>
 							</p>
-							<p class="bScore">
+							<div class="bScore">
 								<span>평점</span>
+								<i id="scoreTooltip">?</i>
+								<!-- 평점계산 안내 tooltip --> 
+								<p class="tooltipText">
+									회원님들께서 도서 상세페이지에서 매긴 별점의 합을
+									별점부여에 참여하신 회원 수로 나누어
+									평점을 계산하고 정수단위 갯수의 별을 표시합니다.
+								</p>
+								
 								<span class="repuStar">									
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
@@ -62,7 +72,7 @@
 								<span>
 									리뷰<i><%=reviewList.size() %>&nbsp;건</i>
 								</span>
-							</p>
+							</div>
 						</dd>
 						<!-- 로그인 안되어있을대 처리 -->
 						<%if(session.getAttribute("member") == null){ %>
@@ -85,35 +95,75 @@
 			</div>
 			<section class="bookIntro">
 				<h3>책 소개</h3>
+				<a href="#none" id="bookIntro"></a>
 				<article class="introInner">
 					<h4>이 책으로 말할 것 같으면~</h4>
 					<p><%=bookDetail.getDescription() %></p>
 				</article>
 			</section>
+			<section class="bookScore">
+				<h3>이 책에 대한 점수를 매겨주세요</h3>
+				<article class="scoreInner">
+					<h4>제 점수는요~?</h4>
+					<p class="starImg">
+						<img src="/asset/images/star_empty.png" alt="별점 이미지"/>
+						<img src="/asset/images/star_empty.png" alt="별점 이미지"/>
+						<img src="/asset/images/star_empty.png" alt="별점 이미지"/>
+						<img src="/asset/images/star_empty.png" alt="별점 이미지"/>
+						<img src="/asset/images/star_empty.png" alt="별점 이미지"/>
+					</p>
+					<p class="scoringArea">							
+						<i class="reviewScore">0</i><span>&nbsp;점</span>
+					</p>
+					<form name="score-form">
+						<input type="hidden" name="isbn" value="<%=bookDetail.getIsbn()%>"/>
+						<input type="hidden" name="score" value=""/>
+					</form>
+					<button class="updateAvgScore" onclick="registScore()">내 점수를 평점에 반영하기</button>
+				</article>
+			</section>
 			<section class="reviewAreaWrap">
+				<%--
+					int num=pager.getNum();
+					int curPos = pager.getCurPos();
+				--%>
+				<%--for(int i=0;i<pager.getPageSize();i++){ --%>
+				<%--if(num<1) break; --%>
+				<%--Review review=reviewList.get(curPos++); --%>
+				<!-- 리뷰 한 단위 시작 -->
 				<h3>Review</h3>
+				
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
-					<p class="writeBtn">
-						<a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)">리뷰 쓰기</a>
-					</p>
+					<%Review review = new Review(); %>
+					<%if(reviewList.size()==0) {%>
+					<ul class="reviewInnerWrap">
+						<!-- 리뷰 한 단위 시작 -->
+						<li class="reviewUnit emptyReviewUnit">
+							아직 이 책에 대해 작성된 회원님들의 리뷰가 없습니다.
+						</li>
+						<!-- 리뷰 한 단위 종료 -->
+					</ul>
+					<%} else{%>
+					<%for(int i=0;i<reviewList.size();i++){ %>
+					<%review = reviewList.get(i);%>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
-						<%
-							int num=pager.getNum();
-							int curPos = pager.getCurPos();
-						%>
-						<%for(int i=0;i<pager.getPageSize();i++){ %>
-						<%if(num<1) break; %>
-						<%Review review=reviewList.get(curPos++); %>
-						<!-- 리뷰 한 단위 시작 -->
 						<li class="reviewUnit">
 							<div class="reviewImg">
-								<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 이미지"/>
+								<%if(review.getImg()==null){ %>
+									<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 디폴트 이미지"/>
+								<%}else{ %>
+									<img class="reviewThumb" src="<%=review.getImg() %>" alt="리뷰 등록자가 등록한 리뷰 썸네일 이미지"/>
+								<%} %>
 							</div>
 							<div class="reviewTitStat">
 								<p class="reviewTitle"><%=review.getTitle() %></p>
 								<div class="reviewStat">
+									<p class="reviewWriter">
+										<span>작성자</span>
+										<i class="writerInfo"><%=review.getMember().getId() %>&nbsp;(<%=review.getMember().getNickname() %>)</i>
+									</p>
 									<p class="ddabong">
 										<img src="/asset/images/like_on.png" alt="좋아요 이미지"/>
 										<i class="ddabongCnt">10</i>
@@ -123,17 +173,14 @@
 										<i class="commentCnt">1건</i>
 									</p>
 								</div>
-								<p class="reviewContent">
-									<%=review.getContent() %>
-								</p>
+								<div class="reviewText"><%=review.getContent() %></div>
 							</div>
 						</li>
 						<!-- 리뷰 한 단위 종료 -->
-						<%} %>
 					</ul>
 					<!-- 리뷰 감싸는 영역 종료 -->
 				</div>
-				<button class="showReply" type="button">리뷰에 대한 댓글보기</button>
+				<button class="showReply" type="button">이 리뷰에 대한 댓글보기</button>
 				<!-- 이 책에 대한 리뷰에 달린 댓글 감싸는 영역 -->
 				<div class="reviewCommentWrap">
 					<h4>리뷰에 대한 댓글</h4>
@@ -172,6 +219,8 @@
 			    <!-- paging end -->
 				</div>
 				<!-- 이 책에 대한 리뷰에 달린 댓글 감싸는 영역 -->
+			<%} %>
+			<%} %>
 			</section>
 		    <!-- googlemap area
 		    <div class="gmapAreaWrap">

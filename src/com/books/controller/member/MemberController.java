@@ -109,14 +109,14 @@ public class MemberController {
 		//System.out.println("멤버아이디"+member.getId());
 		if(member==null) {
 			result="중복없음";
-			System.out.println(result);
+			//System.out.println(result);
 		}else {
 			result="중복있음";
-			System.out.println(result);
+			//System.out.println(result);
 		}
 		//System.out.println("id="+id);
 		//System.out.println("member="+member);
-		System.out.println("보내는거"+result);
+		//System.out.println("보내는거"+result);
 		return result;
 	}
 	
@@ -168,7 +168,7 @@ public class MemberController {
 		}else {
 			result="일치하는 아이디가 없습니다.";
 		}
-		System.out.println("보내는거"+result);
+		//System.out.println("보내는거"+result);
 		return result;
 	}
 	
@@ -192,8 +192,9 @@ public class MemberController {
         int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
         String joinCode = String.valueOf(ran);
         session.setAttribute("joinCode", joinCode);
- 
-        String subject = "회원가입 인증 코드 발급 안내 입니다.";
+        session.setAttribute("email", obj.getEmail());
+        session.setAttribute("id", obj.getId());
+        String subject = "비밀번호 재발급을 위한 인증 코드 발급 안내 입니다.";
         StringBuilder sb = new StringBuilder();
         sb.append("귀하의 인증 코드는 " + joinCode + " 입니다.");
 	    /** 메일 전송
@@ -208,7 +209,7 @@ public class MemberController {
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPass(Member member) {
-
+		member.setPass(security.textToHash(member.getPass()));
 		memberService.resetPass(member);
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");

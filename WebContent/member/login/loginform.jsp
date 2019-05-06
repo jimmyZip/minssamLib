@@ -28,7 +28,7 @@
             <legend>회원 로그인</legend>
             <div class="login_area">
                <div class="input_info">
-                  <input id="userid" type="text" name="id" placeholder="아이디를 입력하세요" />
+                  <input id="userid" type="text" name="id" placeholder="아이디를 입력하세요" autofocus/>
                   <input id="pass" type="password" name="pass" placeholder="비밀번호를 입력해주세요" onkeyup="enterkey()"/>
                </div>
                <p class="login_btn">

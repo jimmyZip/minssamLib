@@ -17,7 +17,7 @@
 	</sql>
 
 	<select id="selectAll" resultMap="reviewCommentMap">
-		<include refid="sql_select"/> order by bookComment_id desc
+		<include refid="sql_select"/> order by reviewComment_id desc
 	</select>
 	
 	<select id="select" parameterType="int" resultMap="reviewCommentMap">
@@ -25,11 +25,11 @@
 	</select>
 	
 	<select id="selectByMember" parameterType="int" resultMap="reviewCommentMap">
-		<include refid="sql_select"/> where member_id=#{member_id} order by bookComment_id desc
+		<include refid="sql_select"/> where member_id=#{member_id} order by reviewComment_id desc
 	</select>
 	
 	<select id="selectByReview" parameterType="int" resultMap="reviewCommentMap">
-		<include refid="sql_select"/> where review_id=#{review_id} order by bookComment_id desc
+		<include refid="sql_select"/> where review_id=#{review_id} order by reviewComment_id desc
 	</select>
 	
 	<insert id="insert" parameterType="ReviewComment">

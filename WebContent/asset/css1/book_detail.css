@@ -1,16 +1,20 @@
 @charset "utf-8";
 /*########책 소개 section.bookIntro##########*/
-.bookIntro{
+.bookIntro,
+.bookScore,
+.reviewAreaWrap{
 	width:98%;
 	margin:0 1%;
 }
 .introInner{
 	width:100%;
 }
-.introInner h3,.reviewAreaWrap h3{
+.introInner h3,
+.reviewAreaWrap h3{
 	width:100%;
 }
 .introInner h4,
+.scoreInner h4,
 .reviewArea h4,
 .reviewCommentWrap h4,
 .gmapArea h4,
@@ -28,12 +32,35 @@
 	font-size:1.2rem;
 	word-wrap: break-word;
 }
-
-/*########리뷰 section.reviewAreaWrap##########*/
-.reviewAreaWrap{
-	width:98%;
-	margin:0 1%;
+/*########점수주기 section.bookScore##########*/
+.scoreInner{
+	width:100%;
 }
+.starImg{
+	width:23%;
+	overflow:hidden;
+	margin:20px auto;
+	text-align:center;
+}
+.starImg img{
+	display:inline-block;
+	float:left;
+	width:20%;
+	padding:4px;
+}
+.scoringArea{
+	width:100%;
+	text-align:center;
+}
+.reviewScore,.scoringArea span{
+	display:inline-block;
+	font-size:1.5rem;
+	font-style:normal;
+}
+.reviewScore{
+	font-weight:700;
+}
+/*########리뷰 section.reviewAreaWrap##########*/
 .reviewArea{
 	width:100%;
 }
@@ -43,7 +70,9 @@
 	line-height:40px;
 	margin-left:90%;
 	margin-top:10px;
+	margin-bottom:10px;
 }
+
 .writeBtn a{
 	display:inline-block;
 	width:100%;
@@ -51,6 +80,13 @@
 	color:#1bbc9b;
 	border:1px solid #1bbc9b;
 	font-weight:700;
+	border-radius:3px;
+	transition:.3s all;
+}
+.writeBtn:hover a,
+.writeBtn a:focus{
+	color:red;
+	background-color:#1bbc9b;
 }
 .reviewInnerWrap{
 	width:100%;
@@ -59,42 +95,49 @@
 	width:100%;
 	overflow:hidden;
 }
+.emptyReviewUnit{
+	text-align:center;
+	color:#aaa;
+	line-height:3rem;
+}
 .reviewImg,.reviewTitStat{
 	float:left;
 }
 .reviewImg{
-	width:30%;
+	width:20%;
 }
 .reviewImg .reviewThumb{
 	width:100%;
 }
 .reviewTitStat{
-	width:70%;
+	width:80%;
 	padding-left:1%;
 	overflow:hidden;
 }
 .reviewTitle,.reviewStat{
 	float:left;
 }
-.reviewContent{
-	float:right;
-}
 .reviewTitle{
-	width:85%;
+	width:70%;
 	height:80px;
 	line-height:80px;
 	font-size:1.5rem;
 	font-weight:700;
 }
 .reviewStat{
-	width:15%;
+	width:30%;
 	height:80px;
 	line-height:80px;
 	overflow:hidden;
 }
-.ddabong,.commentOnReview{
+.reviewWriter,.ddabong,.commentOnReview{
 	float:left;
-	width:50%;
+}
+.reviewWriter{
+	width:60%;
+}
+.ddabong,.commentOnReview{
+	width:20%;
 }
 .ddabong img{
 	display:inline-block;
@@ -103,7 +146,7 @@
 	line-height:50px;
 	vertical-align:middle;
 }
-.ddabongCnt,.commentCnt{
+.writerInfo,.ddabongCnt,.commentCnt{
 	display:inline-block;
 	height:100%;
 	line-height:50px;
@@ -112,9 +155,14 @@
 	font-weight:700;
 	color:red;
 }
-.commentOnReview span{
-	display:inline-block;
+.writerInfo{
+	color:dodgerblue;
 }
+.reviewWriter span,.commentOnReview span{
+	display:inline-block;
+	vertical-align:middle;
+}
+
 .reviewStat:after{
 	content:'';
 	display:block;
@@ -126,8 +174,8 @@
 	display:block;
 	clear:both;
 }
-.reviewContent{
-	color:dodgerblue;
+.reviewText{
+	color:#0f0f0f;
 	line-height:2rem;
 	word-wrap:word-break;
 }
@@ -282,7 +330,7 @@
 	transition:.3s all;
 }
 .orderBtn:hover a,
-.orderBtn:focus a{
+.orderBtn a:focus{
 	color:#fff;
 	background-color:#1bbc9b;
 }

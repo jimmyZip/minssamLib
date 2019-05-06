@@ -121,4 +121,5 @@ function searchKeyDown(){
 </header>
 <!-- login modal -->
 <div id="full"></div>
+<div id="full2"></div>
 <div id="view"></div>

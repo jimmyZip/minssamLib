@@ -1,3 +1,4 @@
+<%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
@@ -7,21 +8,22 @@
    
    function enterkey() {
        if (window.event.keyCode == 13) {
-			idFind();
+			passChange();
        }
 	}
 
-	function idFind() {
+	function passChange() {
 		$.ajax({
-			url : "/rest/member/findId",
+			url : "/rest/member/resetPass",
 			type : "post",
 			data : {
-				name : fname.value,
-				email : email.value
+				id :     "<%=(String)session.getAttribute("id")%>",
+				email :   "<%=(String)session.getAttribute("email")%>",
+				pass : newpass.value
 			},
 			success : function(data) {
-				alert(data);
-				getId.value=data
+				alert("비밀번호가 변경되었습니다.");
+				
 			},
 			error : function(data) {
 
@@ -42,16 +44,12 @@
                   <input id="repeatnewpass" type="password" name="repeatnewpass" placeholder="비밀번호를 확인해주세요" onkeyup="enterkey()"/>
                </div>
                <p class="login_btn">
-                  <a href="javascript:idFind()" title="찾기 버튼">찾기</a>
+                  <a href="javascript:passChange()" title="변경하기">변경하기</a>
                </p>
             </div>
             <div class="searchRegistArea">
                <p></p>
-               <p class="search_id_pw">
-				<a href="javascript:loginModalShow()" title="로그인" >로그인</a><span>·</span><a href="javascript:resetPass()"
-                     id="resetpass" title="비밀번호 재설정">비밀번호 재설정</a>
-               </p>
-				<p><input type="text" value="" id="getId"/></p>
+
             </div>
          </fieldset>
       </form>

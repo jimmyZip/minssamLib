@@ -16,7 +16,6 @@ import com.books.model.repository.member.BookmarkDAO;
 public class BookmarkServiceImpl implements BookmarkService{
 	
 	@Autowired
-	@Qualifier("mybatisBookmarkDAO")
 	BookmarkDAO bookmarkDAO;
 	
 	public List<Bookmark> selectAll() {

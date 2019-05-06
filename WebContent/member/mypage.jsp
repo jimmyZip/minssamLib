@@ -3,7 +3,9 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	System.out.println(userBookmarkList.get(0).getBook().getImage());
+	//System.out.println(userBookmarkList.get(0).getBook().getImage());
 %>
 <%-- <%
 	if (session.getAttribute("member") != null) {
@@ -30,6 +32,7 @@ function getList(){
 		type:"get",
 		success:function(result){
 			viewList(result);
+			console.log(result);
 		}
 	});
 }
@@ -50,15 +53,15 @@ function viewList(json){
  	for(var i=0; i<json.length;i++){
 		var obj=json[i];
 		var str ="";
-		str+="<tr id=table_tr_>";
-		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url("+obj.image+")'></div></a></td>";
+		str+="<tr id=table_tr>";
+		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url('"+obj.image+"')'></div></a></td>";
 		str+="<td>"+obj.title+"</td>";
 		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
 		str+="<td>"+obj.bookmark_date+"</td>";
 		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
 		str+="</tr>";
 		//console.log(str);
-		
+		//console.log(obj.bookmark_id.title);
 		con.append(str);
 	} 
 }

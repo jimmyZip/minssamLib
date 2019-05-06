@@ -124,4 +124,12 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	@Override
+	public void lastLogin(Member member) {
+			int result = memberDAO.lastLogin(member);
+			if(result==0) {
+				throw new EditFailException("마지막 로그인기록이 남지않았습니다.");
+			}
+	}
+
 }

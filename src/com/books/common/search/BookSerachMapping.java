@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.books.model.domain.book.Book;
-import com.books.model.service.book.BookCommentService;
 import com.books.model.service.book.ReviewService;
 import com.books.model.service.book.ScoreService;
 
@@ -19,8 +18,6 @@ import com.books.model.service.book.ScoreService;
 public class BookSerachMapping {
 	@Autowired
 	ReviewService reviewService;
-	@Autowired
-	BookCommentService bookCommentService;
 	@Autowired
 	ScoreService scoreService;
 		
@@ -55,7 +52,6 @@ public class BookSerachMapping {
 					
 					book.setIsbn(isbn);
 					book.setReview(reviewService.selectByIsbn(isbn));
-					book.setBookComment(bookCommentService.selectByIsbn(isbn));
 					book.setScore(scoreService.selectByIsbn(isbn));
 					book.setStart(Integer.parseInt(jsonObject.get("start").toString()));
 					book.setTotal(Integer.parseInt(jsonObject.get("total").toString()));

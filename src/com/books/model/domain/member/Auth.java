@@ -7,7 +7,6 @@ public class Auth {
 	private boolean member_del;
 	private boolean review_del;
 	private boolean review_comment_del;
-	private boolean book_comment_del;
 
 	public int getAuth_id() {
 		return auth_id;
@@ -57,12 +56,5 @@ public class Auth {
 		this.review_comment_del = review_comment_del;
 	}
 
-	public boolean isBook_comment_del() {
-		return book_comment_del;
-	}
-
-	public void setBook_comment_del(boolean book_comment_del) {
-		this.book_comment_del = book_comment_del;
-	}
 
 }

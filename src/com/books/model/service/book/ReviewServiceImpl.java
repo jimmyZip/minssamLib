@@ -35,7 +35,6 @@ public class ReviewServiceImpl implements ReviewService {
 	public void insert(Review review) throws RegistFailException {
 		System.out.println("리뷰서비스impl 등록메서드 요청");
 		System.out.println("리뷰서비스impl 에서 확인한 isbn :: "+review.getIsbn());
-		System.out.println("리뷰서비스impl 에서 확인한 score :: "+review.getScore());
 		int result = reviewDAO.insert(review);
 		if (result == 0) {
 			throw new RegistFailException("리뷰 등록 실패");

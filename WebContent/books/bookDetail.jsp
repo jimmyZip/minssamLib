@@ -54,13 +54,6 @@
 							<div class="bScore">
 								<span>평점</span>
 								<i id="scoreTooltip">?</i>
-								<!-- 평점계산 안내 tooltip --> 
-								<p class="tooltipText">
-									회원님들께서 도서 상세페이지에서 매긴 별점의 합을
-									별점부여에 참여하신 회원 수로 나누어
-									평점을 계산하고 정수단위 갯수의 별을 표시합니다.
-								</p>
-								
 								<span class="repuStar">									
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
 									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
@@ -72,6 +65,10 @@
 								<span>
 									리뷰<i><%=reviewList.size() %>&nbsp;건</i>
 								</span>
+								<!-- 평점계산 안내 tooltip --> 
+								<p class="tooltipText">
+									회원님들께서 도서 상세페이지에서 매긴 별점의 합을 별점부여에 참여하신 회원 수로 나누어 평점을 계산하고 정수단위 갯수의 별을 표시합니다.
+								</p>
 							</div>
 						</dd>
 						<!-- 로그인 안되어있을대 처리 -->
@@ -117,9 +114,10 @@
 					</p>
 					<form name="score-form">
 						<input type="hidden" name="isbn" value="<%=bookDetail.getIsbn()%>"/>
+						<input type="hidden" name="member.member_id" value="<%=member.getMember_id()%>"/>
 						<input type="hidden" name="score" value=""/>
 					</form>
-					<button class="updateAvgScore" onclick="registScore()">내 점수를 평점에 반영하기</button>
+					<button class="updateAvgScore" onClick="registScore()">내 점수를 평점에 반영하기</button>
 				</article>
 			</section>
 			<section class="reviewAreaWrap">
@@ -132,7 +130,6 @@
 				<%--Review review=reviewList.get(curPos++); --%>
 				<!-- 리뷰 한 단위 시작 -->
 				<h3>Review</h3>
-				
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
 					<%Review review = new Review(); %>

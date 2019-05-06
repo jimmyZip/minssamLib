@@ -40,7 +40,6 @@
 	margin: 0 1%;
 	display: block;
 	background-color: #fff;
-	position: relative;
 }
 .book-result-wrap{
 	color:#777;
@@ -124,34 +123,24 @@ dt.imgArea img {
 .descArea p span,
 .descArea p i,
 .descArea p img,
-.descArea p span i,
-.descArea div span,
-.descArea div i{
+.descArea p span i{
 	display:inline-block !important;
-	vertical-align:center;
+	vertical-align:middle;
 	font-style:normal;
 	padding:0 3px;
 }
-.bScore #scoreTooltip{
-	margin:0;padding:0;
-	width:20px;
-	height:20px;
-	line-height:20px;
-	border-radius:10px;
-	color:#fff;
-	text-align:center;
-	background-color:#546596;
-	position:relative;
+.bScore{
+	width:100%;
+	overflow:hidden;
 }
-.bScore .tooltipText{
+.bScore span,
+.bScore #scoreTooltip,
+#scoreTooltip,
+.repuStar,
+.divider,
+.bScore span i{
 	display:inline-block !important;
-	width:300px !important;
-	height:80px;
-	line-height:25px;
-	background-color:dodgerblue;
-	color:#fff !important;
-	font-size:0.8rem;
-	position:absolute;
+	font-style:normal;
 }
 .bScore .repuStar{
 	display:inline-block !important;
@@ -159,8 +148,9 @@ dt.imgArea img {
 	line-height:24px;	
 }
 .repuStar img{
+	display:inline-block !important;
 	height:24px;
-	vertical-align:bottom;
+	vertical-align:middle;
 	font-weight:900;
 }
 .divider{
@@ -169,6 +159,37 @@ dt.imgArea img {
 	font-weight:700;
 }
 
+/* tooltip 관련*/
+.bScore #scoreTooltip{
+	display:inline-block;
+	margin:0;padding:0;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	border-radius:10px;
+	color:#fff;
+	text-align:center;
+	background-color:#546596;
+	cursor:pointer;
+	font-style:normal;
+	transition:.3s all;
+}
+.bScore #scoreTooltip:hover{
+	color:red;
+}
+.bScore .tooltipText{
+	width:300px !important;
+	height:80px;
+	position:absolute;
+	line-height:25px;
+	padding:5px;
+	background-color:dodgerblue;
+	color:#fff !important;
+	font-size:0.75rem;
+	word-wrap:break-word;
+	border-radius:3px;
+}
+/*#################################*/
 .campus-section .view-content img {
 	width: 100%;
 }

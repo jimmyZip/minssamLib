@@ -50,14 +50,13 @@ public class ReviewController {
 	}
 	//리뷰 1건 등록
 	@RequestMapping(value="/review/write",method=RequestMethod.POST)
-	public String insert(Review review,Member member,Score score) {
+	public String insert(Review review) {
 		//System.out.println("리뷰를 작성하는 멤버"+member.getMember_id());
-		//review.setMember(member);
-		//review.setScore(score);
 		reviewService.insert(review);
 		//http://localhost:8080/book/search/detail/9788932030050, 여기로 다시 가야함
 		//return "redirect:/books/bookDetail.jsp";
-		return "/book/search/detail/{isbn}";
+		String isbn = review.getIsbn();
+		return "redirect:/book/search/detail/"+isbn;
 	}
 	
 	//리뷰 목록보기요청

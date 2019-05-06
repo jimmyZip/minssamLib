@@ -38,7 +38,7 @@
 					<form enctype="multipart/form-data" name="review-write-form">
 						<input type="hidden" name="member.member_id" value="<%=member.getMember_id()%>"/>
 						<input type="hidden" name="isbn" value="<%=review.getIsbn() %>"/>
-						<input type="hidden" name="score.score"/>
+						<!-- <input type="hidden" name="score.score"/> -->
 						<input type="text" id="title" name="title" placeholder="리뷰제목입력" /><!-- 
 				   --><input type="text" id="writer" name="writer" readonly value="<%=member.getId() %>(<%=member.getName() %>)님" />
 						<dl class="bookInfoArea">
@@ -64,6 +64,7 @@
 									<span><%=bookInfo.getPubdate() %></span>
 								</p>
 							</dd>
+							<!-- 
 							<dd class="bookScore">
 								<b>제 점수는요?</b>
 								<p class="starImg">
@@ -77,13 +78,12 @@
 									<i class="reviewScore">0</i><span>&nbsp;점</span>
 								</p>
 							</dd>
+							 -->
 						</dl>						
-						<textarea id="content" name="reviewContent"></textarea>
+						<textarea id="content" name="content"></textarea>
 						<div class="myReviewImg">
 							<p class="imgSelectZone">							
 								<label for="img">첨부할 이미지선택</label>
-								<!-- 실제 db에 들어갈 이미지 선택하는 input -->
-								<!-- <input type="file" id="img" name="img" multiple="multiple"/> -->
 								<input type="file" id="img" name="myImg"/>
 							</p>
 							<!-- 리뷰 게시글에 등록할 목적으로 이미지를 선택했음을 보여주는 영역 -->

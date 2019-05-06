@@ -1,7 +1,8 @@
 /*---------------------------------------------------------------
-해상도 관련 공통 처리 
+해상도 관련 공통 처리 , 로그인관련 메뉴버튼 토글
 ---------------------------------------------------------------*/
 $(document).ready(function(){
+	$(".user-content,#full2").hide();
 	//해상도
 	var screenW = $(window).outerWidth();
 	//console.log(screenW);
@@ -27,10 +28,25 @@ $(document).ready(function(){
         $(".main-menu").toggle();
         $("#wrapper").toggle();
     });
-
+    
+    //로그인을 위해 사람모양 누르면
     $(".dropdown").click(function(){
-        $(".user-content").toggle();
-    });    
+    	//user-content보여주기
+    	showUserContent();
+    });
+    
+   //user-content보여주되, 모달식으로 감추는 효과 추가
+    //사람모양 토글효과, user-content 아닌 부분 눌러도 hide, 로그인 등 버튼 눌러도 user-content hide
+    function showUserContent(){       
+    	$(".user-content,#full2").show();
+    	$("#full2").click(function(){
+    		$("#full2,.user-content").hide();
+    	});
+    	$(".user-btn").click(function(){
+    		$("#full2,.user-content").hide();
+    	});
+    }
+	
 });
 
 

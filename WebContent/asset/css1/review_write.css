@@ -49,10 +49,12 @@ form[name=review-write-form]{
 .bookDesc p span{
 	display:inline-block !important;
 }
+/*
 .bookScore{
 	width:26%;
 	padding:2% 1%;
 }
+
 .bookScore b{
 	display:inline-block;
 	width:100%;
@@ -85,6 +87,7 @@ form[name=review-write-form]{
 .reviewScore{
 	font-weight:700;
 }
+*/
 input[type=text],input[type=file], select, textarea {
 	width: 100%;
 	padding: 12px;

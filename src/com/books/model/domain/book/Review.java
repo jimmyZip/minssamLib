@@ -8,7 +8,6 @@ import com.books.model.domain.member.Member;
 public class Review {
 	private int review_id;
 	private Member member;
-	private Score score;
 	private String isbn;
 	private String title;
 	private String content;
@@ -16,6 +15,8 @@ public class Review {
 	private String modidate;
 	private String img;
 	private MultipartFile myImg;
+	
+	//getter and setter
 	public int getReview_id() {
 		return review_id;
 	}
@@ -27,12 +28,6 @@ public class Review {
 	}
 	public void setMember(Member member) {
 		this.member = member;
-	}
-	public Score getScore() {
-		return score;
-	}
-	public void setScore(Score score) {
-		this.score = score;
 	}
 	public String getIsbn() {
 		return isbn;
@@ -75,6 +70,5 @@ public class Review {
 	}
 	public void setMyImg(MultipartFile myImg) {
 		this.myImg = myImg;
-	}
-	
+	}	
 }

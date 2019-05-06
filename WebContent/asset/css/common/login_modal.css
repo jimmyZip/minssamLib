@@ -15,6 +15,17 @@
    font-size: 0.8em;
    text-align: center;
 }
+#full2 {
+   display:none;
+   position: fixed; /* Stay in place */
+   z-index: 10; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: transparent;
+}
 
 /* Modal Content */
 #view {

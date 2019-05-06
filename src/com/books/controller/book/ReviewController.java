@@ -16,7 +16,9 @@ import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
 import com.books.model.domain.book.Book;
 import com.books.model.domain.book.Review;
+import com.books.model.domain.book.Score;
 import com.books.model.domain.member.Member;
+import com.books.model.domain.member.Searchbook;
 import com.books.model.service.book.ReviewService;
 
 @Controller
@@ -38,6 +40,7 @@ public class ReviewController {
 	//}
 	@RequestMapping(value="/book/reviews/{isbn}",method=RequestMethod.GET)
 	public ModelAndView insertPage(HttpServletRequest request,@PathVariable("isbn") String isbn) {
+		System.out.println("리뷰 작성페이지로 이동 요청, isbn은"+isbn);
 		List<Book> detailList = mapping.mapping((bookSearch.search(isbn)));	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("review/review_write");
@@ -47,10 +50,14 @@ public class ReviewController {
 	}
 	//리뷰 1건 등록
 	@RequestMapping(value="/review/write",method=RequestMethod.POST)
-	public String insert(Review review) {
-		System.out.println("리뷰 컨트롤러 등록 요청메서드 작동");
+	public String insert(Review review,Member member,Score score) {
+		//System.out.println("리뷰를 작성하는 멤버"+member.getMember_id());
+		//review.setMember(member);
+		//review.setScore(score);
 		reviewService.insert(review);
-		return "redirect:/review/list";
+		//http://localhost:8080/book/search/detail/9788932030050, 여기로 다시 가야함
+		//return "redirect:/books/bookDetail.jsp";
+		return "/book/search/detail/{isbn}";
 	}
 	
 	//리뷰 목록보기요청

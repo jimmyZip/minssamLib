@@ -8,8 +8,7 @@ function init(){
 	//editor 사용
 	CKEDITOR.replace('content');
 	$($("input[type='button']")[2]).click(function(){
-		alert("리뷰등록요청");
-		//send();
+		send();
 	});
 	
 	//리뷰어가 책에 대해 매긴 평점 카운트
@@ -48,8 +47,8 @@ function scoring(i){
 	score=i+1;
 	console.log("리뷰어가 이 책에 매긴 점수 : "+score+"점");
 	$(".reviewScore").text(score);
-	$("input[type=hidden]").val(score);
-	console.log("hidden에 담은 스코어밸류"+$("input[type=hidden]").val());
+	$("input[name='score.score']").val(score);
+	console.log("hidden 타입 score에 담은 스코어밸류"+$("input[name='score']").val());
 }
 
 //업로드 대기 이미지 동적 생성
@@ -81,10 +80,10 @@ function imgRegistCancel(){
 
 //form 전송
 function send(){
-	var form=$("form");
-	form.attr({
-		"method":"post",
-		"action":"/review/write"
+	alert("작성한 리뷰를 등록합니다.");
+	$("form[name='review-write-form']").attr({
+		method:"post",
+		action:"/review/write"
 	});
-	form.submit();
+	$("form[name='review-write-form']").submit();
 }

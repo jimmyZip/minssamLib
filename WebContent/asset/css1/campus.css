@@ -112,6 +112,9 @@ dt.imgArea img {
 	font-size: 1.5rem;
 	color: #000 !important;
 	transition:.3s all;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 }
 .bListTitle:hover,
 .descArea a:focus .bListTitle{

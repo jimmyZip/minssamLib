@@ -18,7 +18,7 @@
 	
 	<!-- default-handler기능 정상화 :: 안쓰면 static source(asset등) 못찾음 -->
 	<mvc:default-servlet-handler/>
-
+	
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean
@@ -41,7 +41,8 @@
 	<!-- annotation 기반 aspect빈등록 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <bean id="annotationMemberSessionAspect" class="com.books.aop.AnnotationMemberSessionAspect"/>
-    	
-
-   
+    
+    <!-- bean configuration for file upload -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
 </beans>

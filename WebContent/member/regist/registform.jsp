@@ -323,7 +323,7 @@ form {
 				email : email.value,
 			},
 			success : function(data) {
-				alert("받은거"+data);
+				//alert("받은거"+data);
 				if (data=="중복있음") {
 					//alert("중복있는경우")
 					$("#submit").attr("disabled",true);

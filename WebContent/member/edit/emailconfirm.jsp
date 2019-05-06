@@ -46,13 +46,13 @@
 		});
 	}
 
-	function ok(){
+	function numberCheck(){
 		var joinCode =  "<%=(String)session.getAttribute("joinCode")%>";
 		//alert("동작함"+joinCode);
 		if(joinCode==confirmNumber.value){
 			goResetPass()
 		}else{
-			alert(joinCode);
+			alert("인증번호가 틀렸습니다.");
 		}
 	}
 	
@@ -75,7 +75,7 @@
             </div>
             <div class="searchRegistArea">
                <input type="text" id="confirmNumber" name="confirmNumber" placeholder="인증번호를 입력해주세요">
-            	<input type="button" onclick="ok();" value="인증번호확인">
+            	<input type="button" onclick="numberCheck();" value="인증번호확인">
             </div>
          </fieldset>
       </form>

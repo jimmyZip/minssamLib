@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.books.model.domain.book.BookComment" alias="BookComment"/>
 		<typeAlias type="com.books.model.domain.book.Ddabong" alias="Ddabong"/>
 		<typeAlias type="com.books.model.domain.book.Review" alias="Review"/>
 		<typeAlias type="com.books.model.domain.book.ReviewComment" alias="ReviewComment"/>
@@ -17,7 +16,6 @@
 	</typeAliases>
 	<mappers>
     	<mapper resource="com/books/mybatis/mapper/AuthMapper.xml"/>
-    	<mapper resource="com/books/mybatis/mapper/BookCommentMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/BookmarkMapper.xml"/>
     	<mapper resource="com/books/mybatis/mapper/DdabongMapper.xml"/>
 		<mapper resource="com/books/mybatis/mapper/MemberMapper.xml"/>

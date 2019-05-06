@@ -12,7 +12,6 @@ public class Book {
 	private String isbn; // isbn
 	private String description; // 설명
 	private List<Review> review; // 리뷰
-	private List<BookComment> bookComment; // 댓글
 	private List<Score> score;// 점수
 	private int start; // 시작 위치
 	private int total; // 전체 개수
@@ -87,14 +86,6 @@ public class Book {
 
 	public void setReview(List<Review> review) {
 		this.review = review;
-	}
-
-	public List<BookComment> getBookComment() {
-		return bookComment;
-	}
-
-	public void setBookComment(List<BookComment> bookComment) {
-		this.bookComment = bookComment;
 	}
 
 	public List<Score> getScore() {

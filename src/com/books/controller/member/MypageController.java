@@ -19,6 +19,7 @@ import com.books.common.Pager;
 import com.books.common.member.Admin;
 import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
+import com.books.model.domain.book.Book;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
@@ -71,6 +72,7 @@ public class MypageController {
 	public List<Bookmark> bookMarkList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		System.out.println("¿€µø2");
+		
 		return bookmarkService.selectByMember(member.getMember_id());
 	}
 	

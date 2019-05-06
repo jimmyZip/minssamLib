@@ -25,7 +25,11 @@ function deleteMember(member_id){
 	$.ajax({
 		url:"/admin/member/"+member_id,
 		type:"delete",
-		success:function(){
+		success:function(result){
+			var json = JSON.parse(result);
+			if(json.resultCode == 0){
+				alert(json.msg);
+			}
 			location.reload(true);
 		}
 	})

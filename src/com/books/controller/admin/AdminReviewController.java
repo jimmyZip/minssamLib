@@ -28,7 +28,18 @@ public class AdminReviewController {
     @RequestMapping(value = "/admin/review/page", method = RequestMethod.GET)
     public ModelAndView showReview(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("admin/admin_review");
-        List<Review> reviewList = reviewService.selectAll();
+        List<Review> reviewList = null;
+        if(request.getParameter("search") != null) {
+        	String searchWord = request.getParameter("search");
+        	if(searchWord.equals("")) {
+        		reviewList = reviewService.selectAll();
+        	}else {
+        		reviewList = reviewService.search(searchWord);
+        	}
+        }else {
+        	reviewList = reviewService.selectAll();
+        }
+        
         pager.init(request, reviewList.size());
         
         mav.addObject("reviewList", reviewList);

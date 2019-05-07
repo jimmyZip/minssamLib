@@ -12,4 +12,5 @@ public interface ReviewDAO {
 	public int insert(Review review);
 	public int update(Review review);
 	public int delete(int review_id);
+	public List<Review> search(String searchWord);
 }

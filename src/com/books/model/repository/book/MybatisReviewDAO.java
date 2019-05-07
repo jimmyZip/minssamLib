@@ -44,4 +44,8 @@ public class MybatisReviewDAO implements ReviewDAO{
 		return sessionTemplate.delete("Review.delete", review_id);
 	}
 
+	public List<Review> search(String searchWord) {
+		return sessionTemplate.selectList("Review.search", searchWord);
+	}
+
 }

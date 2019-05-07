@@ -81,11 +81,18 @@ public class MypageController {
 			
 			//img=userBookmarkList.get(i).getBook().getImage();
 		}
+		
 		System.out.println("¿€µø2");
 		//System.out.println(bookmarkService.selectByMember(member.getMember_id()));
 		//return bookmarkService.selectByMember(member.getMember_id());
-		return userBookmarkList;
+		try {
+			
+		}catch (NullPointerException e) {
+			
+			return null;
+		}
 		
+		return userBookmarkList;
 	}
 	
 	

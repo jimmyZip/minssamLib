@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%!Admin admin = new Admin();%>
 <% 
-	Member member2=(Member)session.getAttribute("member");
+	//Member member2=(Member)session.getAttribute("member");
 	Auth auth = ((Member) session.getAttribute("member")).getAuth();
 	boolean isAdmin = admin.adminCheck(auth);
 %>

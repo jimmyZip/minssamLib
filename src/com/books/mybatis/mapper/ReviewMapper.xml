@@ -47,4 +47,11 @@
 	<delete id="delete" parameterType="int">
 		delete from review where review_id=#{review_id}
 	</delete>
+	
+	<select id="search" parameterType="String" resultMap="reviewMap">
+		select r.review_id, r.member_id, r.isbn, r.title, r.content, r.regdate, r.modidate, r.img 
+		from review r, member m
+		where ((m.id like CONCAT('%',#{searchWord},'%') OR m.nickname like CONCAT('%',#{searchWord},'%') OR m.name like CONCAT('%',#{searchWord},'%')) AND m.member_id = r.member_id ) 
+		OR ((r.title like CONCAT('%',#{searchWord},'%') OR r.content like CONCAT('%',#{searchWord},'%')) AND m.member_id = r.member_id )
+	</select>
 </mapper>

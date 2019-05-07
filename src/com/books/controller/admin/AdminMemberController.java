@@ -25,38 +25,50 @@ import com.books.model.service.member.MemberService;
 public class AdminMemberController {
 	@Autowired
 	MemberService memberService;
-	
+
 	@Autowired
 	AuthService authService;
-	
+
 	Pager pager = new Pager();
-	
+
 	@RequestMapping(value = "/admin/member/page", method = RequestMethod.GET)
 	public ModelAndView showMember(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("admin/admin_member");
-		List<Member> memberList = memberService.selectAll();
+		List<Member> memberList = null;
+		// search 파라미터 있는지 확인
+		if (request.getParameter("search") != null) {
+			String searchWord = request.getParameter("search");
+			if(searchWord.equals("")) { // 검색어 있는지 확인. 없으면 전부 출력
+				memberList = memberService.selectAll();
+			}else {
+				memberList = memberService.search(searchWord);
+			}
+		} else {
+			memberList = memberService.selectAll();
+		}
+
 		List<Auth> authList = authService.selectAll();
 		pager.init(request, memberList.size());
-		
+
 		mav.addObject("memberList", memberList);
 		mav.addObject("pager", pager);
 		mav.addObject("authList", authList);
 		return mav;
 	}
-	
-	@RequestMapping(value="/admin/member/{member_id}", method = RequestMethod.DELETE)
+
+	@RequestMapping(value = "/admin/member/{member_id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteMember(@PathVariable("member_id") int member_id) {
 		memberService.delete(member_id);
-		
+
 		StringBuffer sb = new StringBuffer();
 		sb.append("{");
 		sb.append("\"resultCode\":1");
 		sb.append("}");
 		return sb.toString();
 	}
-	
-	@RequestMapping(value="/admin/member/{member_id}/{auth_id}", method = RequestMethod.PUT)
+
+	@RequestMapping(value = "/admin/member/{member_id}/{auth_id}", method = RequestMethod.PUT)
 	@ResponseBody
 	public String updateAuthMember(@PathVariable("member_id") int member_id, @PathVariable("auth_id") int auth_id) {
 		Member member = new Member();
@@ -64,35 +76,35 @@ public class AdminMemberController {
 		member.setMember_id(member_id);
 		member.getAuth().setAuth_id(auth_id);
 		memberService.updateAuth(member);
-		
+
 		StringBuffer sb = new StringBuffer();
 		sb.append("{");
 		sb.append("\"resultCode\":1");
 		sb.append("}");
 		return sb.toString();
 	}
-	
+
 	@ExceptionHandler(DeleteFailException.class)
 	@ResponseBody
 	public String deleteFail(DeleteFailException e) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("{");
 		sb.append("\"resultCode\":0,");
-		sb.append("\"msg\":\""+e.getMessage()+"\"");
+		sb.append("\"msg\":\"" + e.getMessage() + "\"");
 		sb.append("}");
-		
+
 		return sb.toString();
 	}
-	
+
 	@ExceptionHandler(EditFailException.class)
 	@ResponseBody
 	public String updateFail(EditFailException e) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("{");
 		sb.append("\"resultCode\":0,");
-		sb.append("\"msg\":\""+e.getMessage()+"\"");
+		sb.append("\"msg\":\"" + e.getMessage() + "\"");
 		sb.append("}");
-		
+
 		return sb.toString();
 	}
 }

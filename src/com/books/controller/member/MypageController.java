@@ -49,7 +49,9 @@ public class MypageController {
 			 * userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(
 			 * 0)); }
 			 */
-			 
+			System.out.println("µø");
+			System.out.println(userBookmarkList.get(0).getBookmark_id());
+			System.out.println("¿€"); 
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
 			return mav;

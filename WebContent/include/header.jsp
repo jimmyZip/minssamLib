@@ -1,5 +1,7 @@
+<%@page import="com.books.common.member.Admin"%>
 <%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%! Admin chkAdmin = new Admin();%>
 <%
    Member member = (Member)session.getAttribute("member");
 %>
@@ -112,7 +114,12 @@ function searchKeyDown(){
          <div class="menu-item" onclick="location.href='/book/popular'">인기도서 목록</div>
          <%if (session.getAttribute("member") != null) { %>
          <div class="menu-item" onclick="location.href='/member/mypage'">MyPage</div>
+         	<!-- admin 체크해서 Admin이면 표시 -->
+	         <%if (chkAdmin.adminCheck(((Member) session.getAttribute("member")).getAuth())) { %>
+	         	<div class="menu-item" onclick="location.href='/admin/main'">관리자 페이지</div>
+	         <%} %>
          <%} %>
+         
          <div class="menu-item" onclick="location.href='#'">고객센터</div>
          <!-- nav menus end-->
       </nav>

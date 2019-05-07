@@ -21,4 +21,5 @@ public interface MemberService {
 	public boolean send(String subject, String text, String from, String to);
 	public void updateAuth(Member member);
 	public void lastLogin(Member member);
+	public List<Member> search(String searchWord);
 }

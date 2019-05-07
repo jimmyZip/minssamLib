@@ -83,6 +83,13 @@
 		update member set lastlogin=#{lastlogin} where id=#{id}
 	</update>
 	
+	<select id="search" parameterType="String" resultMap="membermap" >
+		<include refid="sql_select"/> where id like CONCAT('%',#{searchWord},'%') or 
+		name like CONCAT('%',#{searchWord},'%') or 
+		nickname like CONCAT('%',#{searchWord},'%') or 
+		email like CONCAT('%',#{searchWord},'%')
+	</select>
+	
 </mapper>
 
 

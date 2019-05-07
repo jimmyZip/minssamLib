@@ -38,7 +38,7 @@
 		insert into review(member_id,isbn, title, content, regdate, modidate, img) 
 		values(#{member.member_id},#{isbn}, #{title}, #{content}, #{regdate}, #{modidate}, #{img})
 	</insert>
-	
+	<!-- 테스트!! -->
 	<update id="update" parameterType="Review">
 		update review set isbn=#{isbn}, title=#{title}, content=#{content}, modidate=#{modidate}
 		where review_id=#{review_id} 

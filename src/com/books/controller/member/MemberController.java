@@ -88,11 +88,10 @@ public class MemberController {
 	@ResponseBody
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
-		String prev = request.getHeader("referer");
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");
 		sb.append("alert('로그아웃 되었습니다.');");
-		sb.append("location.href='"+prev+"';");
+		sb.append("location.href='/'");
 		sb.append("</script>");
 		return sb.toString();
 	}

@@ -3,18 +3,12 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
 	//System.out.println(userBookmarkList.get(0).getBook().getImage());
 	//System.out.println(userBookmarkList.get(0).getBook().getImage());
+
 %>
-<%-- <%
-	if (session.getAttribute("member") != null) {
-		System.out.print("세션있음");
-	} else {
-		System.out.print("세션없음");
-	}
-//조장님 이 부분도 include로 빼야 하나요
-%> --%>
+
 <!DOCTYPE html>
 <html>
 <!-- head start -->

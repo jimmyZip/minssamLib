@@ -98,15 +98,6 @@ public class MypageController {
 		}
 		return mav;		
 	}
-	
-	/*
-	 * @ExceptionHandler(NullPointException.class) public ModelAndView
-	 * err(HttpServletRequest request, Exception ex) { ModelAndView mav= new
-	 * ModelAndView(); mav.addObject("exception",ex); mav.addObject("url",
-	 * request.getRequestURL()); mav.setViewName("member/login/error"); return mav;
-	 * }
-	 */
-	
 }
 
 

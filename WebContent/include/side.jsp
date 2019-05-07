@@ -18,7 +18,7 @@
 	<li><a href="#" onClick="location.href='/member/bookHistory.jsp'">구매한 책</a></li>
 	<li><a href="#" onClick="location.href='/member/review.jsp'">리뷰 내역</a></li>
 	<li><a href="#" onClick="location.href='/member/comment.jsp'">코멘트 내역</a></li>
-	<%if(isAdmin) {%>
+	<%if(isAdmin) {%> 
 	<li><a href="#" onClick="location.href='/admin/main'">관리자 페이지</a></li>
 	<%} %>
 	<li><a href="#" onClick="location.href='/member/modify.jsp'">개인정보 수정</a></li>

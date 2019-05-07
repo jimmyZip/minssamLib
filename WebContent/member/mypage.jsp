@@ -3,18 +3,12 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
-	System.out.println(userBookmarkList.get(0).getBook().getImage());
+	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
 	//System.out.println(userBookmarkList.get(0).getBook().getImage());
+	//System.out.println(userBookmarkList.get(0).getBook().getImage());
+
 %>
-<%-- <%
-	if (session.getAttribute("member") != null) {
-		System.out.print("세션있음");
-	} else {
-		System.out.print("세션없음");
-	}
-//조장님 이 부분도 include로 빼야 하나요
-%> --%>
+
 <!DOCTYPE html>
 <html>
 <!-- head start -->
@@ -52,16 +46,18 @@ function viewList(json){
 	con.html("");//data delete
  	for(var i=0; i<json.length;i++){
 		var obj=json[i];
+		//var img=obj.book.image;
 		var str ="";
 		str+="<tr id=table_tr>";
-		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style='background-image:url('"+obj.image+"')'></div></a></td>";
-		str+="<td>"+obj.title+"</td>";
+		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
+		str+="<td>"+obj.book.title+"</td>";
 		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
 		str+="<td>"+obj.bookmark_date+"</td>";
 		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
 		str+="</tr>";
 		//console.log(str);
 		//console.log(obj.bookmark_id.title);
+		console.log(obj.book.image);
 		con.append(str);
 	} 
 }

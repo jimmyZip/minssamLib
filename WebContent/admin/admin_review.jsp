@@ -34,6 +34,21 @@ function deleteReview(review_id){
 		}
 	})
 }
+
+function memberSearch(){
+	   var data = $("#reviewSearch").val();
+	   if(data == ""){
+		   location.href = '/admin/review/page';
+	   }else{
+	      location.href = '/admin/review/page?currentPage=1&search='+data;
+	   }   
+	}
+
+function memberSearchKey(){
+if(event.keyCode == 13){
+	   memberSearch();
+} 
+}
 </script>
 <title>관리자용 페이지 - 리뷰관리</title>
 </head>
@@ -55,6 +70,11 @@ function deleteReview(review_id){
 	<!-- 사이드 메뉴 include -->
 	<%@include file="/include/adminSide.jsp" %>
 	   <div class="list-section">
+	   <%if(request.getParameter("search")==null){ %>
+	   		<input type="text" placeholder="검색어 입력" id="reviewSearch" onkeydown="memberSearchKey()"/>
+	   	<%}else{ %>
+	   		<input type="text" placeholder="검색어 입력" id="reviewSearch" onkeydown="memberSearchKey()" value="<%=request.getParameter("search")%>"/>
+	   	<%} %>
 	       <table class="table_basic my_lecture_list">
 	           <thead>
 	               <tr>
@@ -86,16 +106,28 @@ function deleteReview(review_id){
 						<tr>
 							<td colspan="7">
 								<%if(pager.getFirstPage()-1>0){ %>
-									<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
+									<%if(request.getParameter("search")==null){ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
+									<%} else{ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getFirstPage()-1%>&search=<%=request.getParameter("search")%>">[prev]</a>
+									<%} %>
 								<%}else{ %>
 									<a class="page_href" href="javascript:alert('첫페이지 입니다.')">[prev]</a>
 								<%} %> 
 								<%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
 									<%if(i>pager.getTotalPage()) break; %>
-									<a class="page_href" href="/admin/review/page?currentPage=<%=i%>">[<%=i %>]</a>
+									<%if(request.getParameter("search")==null){ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=i%>">[<%=i %>]</a>
+									<%}else{ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=i%>&search=<%=request.getParameter("search")%>">[<%=i %>]</a>
+									<%} %>
 								<%} %>
 								<%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
-									<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
+									<%if(request.getParameter("search")==null){ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
+									<%} else{ %>
+										<a class="page_href" href="/admin/review/page?currentPage=<%=pager.getLastPage()+1%>&search=<%=request.getParameter("search")%>">[next]</a>
+									<%} %>
 								<%}else{ %>
 									<a class="page_href" href="javascript:alert('마지막 페이지입니다.')">[next]</a>
 								<%} %>

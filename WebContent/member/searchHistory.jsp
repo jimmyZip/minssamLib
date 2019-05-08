@@ -34,18 +34,10 @@
         <div class="list-section payment-section">
 	       <h2>결제 내역</h2>
 	       <div class="payment-content">
-	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
+	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/06426567.jpg');"><div class="payment-list">
                         <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
-                        <span class="fl linebar">190,000원</span>
-                        <span class="fl">결제일 : 2018-12-01 현재 접속한 유저정보에서 구매책에서 regdate 받기</span>
-                        <span class="br red">결제완료</span>
-                   </div>
-               </a>
-	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
-                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
-                        <span class="fl linebar">190,000원</span>
-                        <span class="fl">결제일 : 2018-12-01</span>
-                        <span class="br red">결제완료</span>
+                        <span class="fl linebar">검색날짜</span>
+                        <span class="fl">줄거리</span>
                    </div>
                </a>
 	       </div>

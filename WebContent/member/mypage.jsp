@@ -4,9 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
 	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
-	//System.out.println(userBookmarkList.get(0).getBook().getImage());
-	//System.out.println(userBookmarkList.get(0).getBook().getImage());
-
 %>
 
 <!DOCTYPE html>

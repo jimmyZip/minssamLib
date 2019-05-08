@@ -1,6 +1,8 @@
+<%@page import="com.books.model.domain.member.JoinCode"%>
 <%@page import="com.books.model.domain.member.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+
 <!DOCTYPE html>
 <head>
 <script>
@@ -17,8 +19,9 @@
 			url : "/rest/member/resetPass",
 			type : "post",
 			data : {
-				id :     "<%=(String)session.getAttribute("id")%>",
-				email :   "<%=(String)session.getAttribute("email")%>",
+				
+				id :"<%=(String)session.getAttribute("id")%>",
+				email :"<%=(String)session.getAttribute("email")%>",
 				pass : newpass.value
 			},
 			success : function(data) {

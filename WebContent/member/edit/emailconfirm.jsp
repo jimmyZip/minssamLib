@@ -1,3 +1,4 @@
+<%@page import="com.books.model.domain.member.JoinCode"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -14,11 +15,13 @@
 				email : uemail.value
 			},
 			success : function(result) {	
-				if(result!=null){
+				if(result=="아이디 찾음"){
+					alert(result);
 					sendMail();
 					alert("메일이 전송되었습니다.");
 				}else{
-					alert("일치하는 정보가 없습니다.");
+					alert(result);
+					
 				}
 			},
 			error : function(result) {
@@ -46,14 +49,27 @@
 		});
 	}
 
-	function numberCheck(){
-		var joinCode =  "<%=(String)session.getAttribute("joinCode")%>";
-		//alert("동작함"+joinCode);
-		if(joinCode==confirmNumber.value){
-			goResetPass()
-		}else{
-			alert("인증번호가 틀렸습니다.");
-		}
+	function codeCheck(){
+		$.ajax({
+			url : "/rest/member/codeCheck",
+			type : "post",
+			data : {
+				id : uid.value,
+				email : uemail.value,
+				num : confirmNumber.value
+			},
+			success : function(data) {	
+				if(data=="일치함"){
+					goResetPass();
+				}
+				
+			},
+			error : function(data) {
+
+			}
+
+		});
+
 	}
 	
 </script>
@@ -75,7 +91,7 @@
             </div>
             <div class="searchRegistArea">
                <input type="text" id="confirmNumber" name="confirmNumber" placeholder="인증번호를 입력해주세요">
-            	<input type="button" onclick="numberCheck();" value="인증번호확인">
+            	<input type="button" onclick="codeCheck();" value="인증번호확인">
             </div>
          </fieldset>
       </form>

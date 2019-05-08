@@ -3,10 +3,13 @@ package com.books.apitest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.books.model.domain.book.Book;
+@Component
 public class MyHandler extends DefaultHandler{
 	//커서 위치 잡기::현재 실행부 위치를 알기 위함
 	private boolean no;
@@ -14,15 +17,23 @@ public class MyHandler extends DefaultHandler{
 	private boolean bookname;
 	private boolean isbn13;
 	private boolean loan_count;
+	private boolean bookImageURL;
 	
 	//dto를 구성하고 그 dto를 제너릭 타입으로 갖는 리스트 선언
 	private List<PopularBookTest> popularBookList;
+	
+
 	//preparing empty dto
 	PopularBookTest pb;
 	
 	public List<PopularBookTest> getPopularBookList(){
 		return popularBookList;
 	}
+	public void setPopularBookList(List<PopularBookTest> popularBookList) {
+		this.popularBookList = popularBookList;
+	}
+	
+	
 	@Override
 	public void startDocument() throws SAXException {
 		System.out.println("=================인기도서 문서의 시작================");
@@ -44,6 +55,8 @@ public class MyHandler extends DefaultHandler{
 			isbn13=true;
 		}else if(tag.equals("loan_count")) {
 			loan_count=true;
+		}else if(tag.equals("bookImageURL")) {
+			bookImageURL=true;
 		}
 	}
 	
@@ -57,18 +70,27 @@ public class MyHandler extends DefaultHandler{
 		if(no) {
 			System.out.println("character메서드의 no 조건문에서"+content);
 			pb.setNo(Integer.parseInt(content));
+			System.out.println("책번호"+pb.getNo());
 		}else if(ranking) {
 			System.out.println("character메서드의 ranking 조건문에서"+content);
 			pb.setRanking(content);
+			System.out.println("책순위"+pb.getRanking());
 		}else if(bookname) {
 			System.out.println("character메서드의 bookname 조건문에서"+content);
 			pb.setBookname(content);
+			System.out.println("책제목"+pb.getBookname());
 		}else if(isbn13) {
 			System.out.println("character메서드의 isbn13 조건문에서"+content);
-			pb.setBookname(content);			
+			pb.setIsbn13(content);	
+			System.out.println("책코드"+pb.getBookname());
 		}else if(loan_count) {
 			System.out.println("character메서드의 loan_count 조건문에서"+content);
-			pb.setLoan_count(content);						
+			pb.setLoan_count(content);
+			System.out.println("책대출수"+pb.getLoan_count());
+		}else if(bookImageURL) {
+			System.out.println("character메서드의 bookImageURL 조건문에서"+content);
+			pb.setBookImageURL(content);
+			System.out.println("책이미지url"+pb.getBookImageURL());
 		}
 	}
 	
@@ -81,6 +103,7 @@ public class MyHandler extends DefaultHandler{
 		if(tag.equals("no")) {
 			no=false;
 			popularBookList.add(pb);
+			
 		}
 		if(tag.equals("ranking")) {
 			ranking=false;
@@ -100,8 +123,8 @@ public class MyHandler extends DefaultHandler{
 	public void endDocument() throws SAXException {
 		System.out.println("================문서의 끝입니다.=====================");
 		
-		//for(int i=0;i<popularBookList.size();i++) {
-		//	System.out.println("최종 결과 : "+popularBookList.size());
-		//}
+		for(int i=0;i<popularBookList.size();i++) {
+			System.out.println("최종 결과 : "+popularBookList.size());
+		}
 	}
 }

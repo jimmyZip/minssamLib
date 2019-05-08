@@ -230,7 +230,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 }
 
 
-/*ë©”ì ¸ë¹„ì£¼ì–¼ ì˜ ì— */
+/*visual_wrap */
 .visual_wrap {}
 .titleWrap {position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 5;}
 
@@ -238,7 +238,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 .visualTitle span {color: #FFF; font-size: 1.5em; font-weight: 700; line-height: 1em; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);}
 
 
-/*ê³µì§€ì‚¬í• ,ë¸”ë¡œê·¸ ì„¹ì…˜*/
+/*notice-section*/
 .notice-section {
 /*    display: none;*/
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#55c7d1+10,057583+90 */
@@ -255,11 +255,11 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
 .notice-type>span {display: none;}
 .notice-title {width: 90%; float: left; white-space: nowrap; text-overflow:ellipsis; overflow: hidden;}
 
-/*ê°•ì¢Œë¦¬ìŠ¤íŠ¸ ì„¹ì…˜*/
+/*course-section*/
 .courses-section {background-color: #F8F8F8; padding-bottom: 3em;}
 .section-title {display: block; width: 95%; padding-left: 1%;}
 .section-title h2 {margin-bottom: 0;}
-.course-wrapper {
+.course-wrapper,.popular-wrapper {
     width: 98%;
     margin: 0.8em 1%;
     display: flex;
@@ -267,7 +267,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
     background-color: #fff;
     position: relative;
 }
-.course-wrapper>a {
+.course-wrapper>a,.popular-wrapper>a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -279,7 +279,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
     
 }
 
-.course-info-box {
+.course-info-box,.popular-info-box {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -287,7 +287,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.2); padding: 10px 0; z-index: 2;}
     font-size: 0.9em;
     
 }
-.course-info-wrapper {
+.course-info-wrapper,.popular-info-wrapper {
     padding: 0.3em 0;
 }
 .course-info-wrapper span:nth-of-type(1) {
@@ -385,8 +385,8 @@ box-shadow: inset 0 0 2px rgba(0,0,0,0.3);}
 .bg h2 {text-shadow: 1px 1px 1px rgba(0,0,0,0.5); padding: 0;}
 .bg span {font-size: 0.9em; font-weight: 400;}
 .mobile .bg span {width: 70%; margin: 0 auto;}
-.main .courses-section {background-color: #fff;}
-.main .course-wrapper {border: 1px solid #EEE;}
+.main .courses-section,.main .popular-section {background-color: #fff;}
+.main .course-wrapper,.main .popular-wrapper {border: 1px solid #EEE;}
 .page {width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center; font-size: 0.8em; line-height: 30px; text-align: center; margin: 30px 0;}
 .page a {margin: 5px;}
 .page a:first-of-type {color: #057583;}

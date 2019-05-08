@@ -25,6 +25,7 @@ import com.books.common.SecurityBean;
 import com.books.exception.EditFailException;
 import com.books.exception.LoginFailException;
 import com.books.exception.RegistFailException;
+import com.books.model.domain.member.JoinCode;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.MemberService;
 
@@ -91,7 +92,8 @@ public class MemberController {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");
 		sb.append("alert('로그아웃 되었습니다.');");
-		sb.append("location.href='/'");
+		sb.append("location.href='/';");
+
 		sb.append("</script>");
 		return sb.toString();
 	}
@@ -180,11 +182,16 @@ public class MemberController {
 	
 	@RequestMapping(value="/rest/member/infoCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public Member infoCheck(Member member) {
-
-		Member obj = memberService.findId(member);
-
-		return obj;
+	public String infoCheck(Member member) {
+		String result;
+		Member obj = memberService.infoCheck(member);
+		if(obj!=null) {
+			result="아이디 찾음";
+		}else {
+			result="일치하는거 없음";
+		}
+		System.out.println("infocheck"+result);
+		return result;
 	}
 	
 
@@ -192,17 +199,21 @@ public class MemberController {
 	@RequestMapping(value = "/rest/member/sendMail", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public boolean sendMail(HttpSession session,Member member) {
-		 
+		JoinCode joinCode= new JoinCode(); 
 		Member obj = memberService.infoCheck(member);
 		
-        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
-        String joinCode = String.valueOf(ran);
+        int ran = new Random().nextInt(100000) + 10000; 
+        String num = String.valueOf(ran);
+        System.out.println(obj);
+        System.out.println(joinCode);
+        joinCode.setId(obj.getId());
+        joinCode.setNum(num);
+        joinCode.setEmail(obj.getEmail());
         session.setAttribute("joinCode", joinCode);
-        session.setAttribute("email", obj.getEmail());
-        session.setAttribute("id", obj.getId());
+        
         String subject = "비밀번호 재발급을 위한 인증 코드 발급 안내 입니다.";
         StringBuilder sb = new StringBuilder();
-        sb.append("귀하의 인증 코드는 " + joinCode + " 입니다.");
+        sb.append("귀하의 인증 코드는 " + num + " 입니다.");
 	    /** 메일 전송
 	     * subject 제목
 	     * text 내용
@@ -211,6 +222,28 @@ public class MemberController {
 	     **/
         return memberService.send(subject, sb.toString(), "dosn1011@gmail.com", member.getEmail());
     }
+	
+	@RequestMapping(value="/rest/member/codeCheck",method=RequestMethod.POST)
+	@ResponseBody
+	public String codeCheck(HttpServletRequest request, JoinCode clientCode) {
+		String result=null;
+		JoinCode sendedCode =(JoinCode) request.getSession().getAttribute("joinCode"); //번호발송시그 정보를 담은 객체
+		System.out.println("페이지에서 보낸거"+clientCode.getNum());
+		System.out.println("세션에 있던거"+sendedCode.getNum());
+		//사용자가 넘겨준 아이디와 발급받은 인증번호를 현재 세션에 들어있는 값과 비교 
+		if( clientCode.getId().equals(sendedCode.getId())) {
+			//번호 끄집어 내기 
+			if(clientCode.getNum().equals(sendedCode.getNum())) {
+				
+				request.setAttribute("id", clientCode.getId());
+				request.setAttribute("email", clientCode.getEmail());
+				result="일치함";
+			}		
+		}
+		
+		
+		return result;
+	}
 
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody

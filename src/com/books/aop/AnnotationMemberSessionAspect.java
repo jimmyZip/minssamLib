@@ -22,6 +22,7 @@ public class AnnotationMemberSessionAspect {
 	String[] exceptList= {
 		"/member/login",
 		"/member/contact",//∞Ì∞¥ºæ≈Õ
+		"rest/member/codeCheck"
 		
 	};
 	

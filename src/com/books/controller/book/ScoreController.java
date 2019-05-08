@@ -22,27 +22,10 @@ public class ScoreController {
 	//bookDetail에서 도서의 평점 표시
 	@RequestMapping(value="/book/scores",method=RequestMethod.GET)
 	@ResponseBody
-	public String showAvgScoreByIsbn(@RequestParam("isbn") String isbn) {
+	public List<Score> showAvgScoreByIsbn(@RequestParam("isbn") String isbn) {
 		System.out.println("bookDetail에서 해당도서 평점 보기 요청");
 		System.out.println("넘겨받은 isbn : "+isbn);
-		List<Score> scoreList = scoreService.selectByIsbn(isbn);
-		StringBuilder sb = new StringBuilder();
-		
-		//구글 라이브러리(google json simple)로 표현해서 문자열 취급하지 않고 표현
-		JSONObject json = new JSONObject();
-		JSONArray jsonArray = new JSONArray();
-		for(int i=0;i<scoreList.size();i++) {
-			Score score = scoreList.get(i);
-			JSONObject obj = new JSONObject();//dto와 1:1대응하는 obj
-			obj.put("score_id", score.getScore_id());
-			obj.put("isbn", score.getIsbn());
-			obj.put("member_id",score.getMember().getMember_id());
-			obj.put("score", score.getScore());
-			obj.put("regdate", score.getRegdate());
-			jsonArray.add(obj);
-		}
-		json.put("scoreList", jsonArray);
-		return json.toString();
+		return scoreService.selectByIsbn(isbn);
 	}
 	
 	//bookDetail에서 유저의 평점 등록

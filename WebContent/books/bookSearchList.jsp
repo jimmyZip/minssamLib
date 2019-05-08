@@ -79,7 +79,16 @@ function deleteOrderbook(isbn){
 
 // 리뷰 목록 보기
 function viewReview(isbn){
+	<%if(session.getAttribute("member") != null){%> 
+		// 로그인 한 사용자만 동작
+		$.ajax({
+			url:"/book/search/insert?isbn="+isbn,
+			type:"get"
+		});
+	<%}%>
 	
+	// 페이지 이동
+	location.href="/book/search/detail/"+isbn;
 }
 
 // 리뷰 작성
@@ -89,8 +98,8 @@ function writerReview(isbn){
 
 // 세부 목록 보기
 function bookDetailView(isbn){
-	alert(isbn);
-	console.log(isbn);
+	//alert(isbn);
+	//console.log(isbn);
 	// 검색 페이지 추가
 	<%if(session.getAttribute("member") != null){%> 
 		// 로그인 한 사용자만 동작

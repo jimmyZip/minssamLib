@@ -74,6 +74,10 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.update("Member.lastLogin",member);
 	}
 
+	public Member selectById(String id) {
+		return sessionTemplate.selectOne("Member.selectById",id);
+	}
+	
 	public List<Member> search(String searchWord) {
 		return sessionTemplate.selectList("Member.search", searchWord);
 	}

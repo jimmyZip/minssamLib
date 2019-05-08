@@ -8,53 +8,48 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
 </head>
 <body>
-    
-<script>
-
-</script>
-        <div class="title-bar wrap cl">
-            <div class="menu-btn">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div id="wrapper"></div>
-
-        <%@ include file="/include/header.jsp" %>
-
-    
-     <div class="bg_basic lecture-cart-header">
+	
+    <!-- header start -->
+	<%@include file="/include/header.jsp"%>
+	<!-- header end -->
+	<!-- page visual -->
+    <div class="bg_basic lecture-cart-header">
 	    <div class="wrap">
-	        <h2 class="red">최근 검색내역</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
+	        <h2 class="red">북마크</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
 	    </div>
     </div>
-     <div class="wrap main cl mypage">
-     <%@include file="/include/side.jsp" %>
-	   <!--category-section-->
+	<!-- blog list start -->
+	
+	<div class="wrap main cl mypage">
+	<!-- 사이드 메뉴 include -->
+	<%@include file="/include/side.jsp" %>
 	   
-        <div class="list-section payment-section">
-	       <h2>결제 내역</h2>
-	       <div class="payment-content">
-	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
-                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
-                        <span class="fl linebar">190,000원</span>
-                        <span class="fl">결제일 : 2018-12-01 현재 접속한 유저정보에서 구매책에서 regdate 받기</span>
-                        <span class="br red">결제완료</span>
-                   </div>
-               </a>
-	           <a href="/mypage/payment/1" title="자세히 보기" style="background-image:url('/upload/1547218972925.jpg');"><div class="payment-list">
-                        <span class="ellipsis"><strong>Java 스탠다드 프로그래밍</strong></span>
-                        <span class="fl linebar">190,000원</span>
-                        <span class="fl">결제일 : 2018-12-01</span>
-                        <span class="br red">결제완료</span>
-                   </div>
-               </a>
-	       </div>
-	       
-	    </div>
-	    <!-- payment list end -->
-    </div>
+	   <div class="list-section">
+	       <table class="table_basic my_lecture_list">
+	           <thead>
+	               <tr>
+                       <th>이미지</th>
+                       <th>책 제목</th>
+                       <th></th>
+                       <th>날짜</th>
+                       <th>비고</th>
+	               </tr>
+	           </thead>
+	           
+	         <tbody id="container" class="mypageContainer">
 
-<%@include file="/include/footer.jsp" %>
+	           </tbody>
+	       </table>
+	   </div>
+	
+	</div>
+	
+	
+	
+	<!-- footer start -->
+	<%@include file="/include/footer.jsp" %>
+
+	<!-- footer end -->
 
 </body>
 </html>

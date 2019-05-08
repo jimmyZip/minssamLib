@@ -131,6 +131,11 @@ public class MemberServiceImpl implements MemberService {
 			}
 	}
 
+	@Override
+	public Member selectById(String id) {
+		return memberDAO.selectById(id);
+	}
+	
 	public List<Member> search(String searchWord) {
 		return memberDAO.search(searchWord);
 	}

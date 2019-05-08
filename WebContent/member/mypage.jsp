@@ -4,9 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
 	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
-	//System.out.println(userBookmarkList.get(0).getBook().getImage());
-	//System.out.println(userBookmarkList.get(0).getBook().getImage());
-
 %>
 
 <!DOCTYPE html>
@@ -46,38 +43,23 @@ function viewList(json){
 	con.html("");//data delete
  	for(var i=0; i<json.length;i++){
 		var obj=json[i];
-		//var img=obj.book.image;
+		//                                                                        'fly("+obj.isbn+")'   
 		var str ="";
 		str+="<tr id=table_tr>";
-		str+="<td><a href='#'><div onClick='fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
+		str+="<td><a href='#'><div onClick='javascript:fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
 		str+="<td>"+obj.book.title+"</td>";
 		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
 		str+="<td>"+obj.bookmark_date+"</td>";
 		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
 		str+="</tr>";
-		//console.log(str);
-		//console.log(obj.bookmark_id.title);
 		console.log(obj.book.image);
 		con.append(str);
 	} 
 }
 
-function fly(isbn){
+/* function fly(isbn){
 	alert(isbn);
 	location.href="/book/search/detail/"+isbn;
-}
-
-/* function del(mark_no){
-	if(!confirm("삭제하시겠습니까?")){
-		return null;
-	}
-	$.ajax({
-		url:"/member/mypage/"+bookmark_id,
-		type:"delete",
-		success:function(){
-			getList();
-		}
-	});
 } */
 
 </script>

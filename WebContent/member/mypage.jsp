@@ -3,7 +3,8 @@
 <%@page import="com.books.common.Pager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <% 
-	//List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	List<Bookmark> userBookmarkList=(List)request.getAttribute("userBookmarkList");
+	Pager pager = (Pager) request.getAttribute("pager");
 %>
 
 <!DOCTYPE html>
@@ -94,23 +95,22 @@ function viewList(json){
 	               </tr>
 	           </thead>
 	           
-	         <tbody id="container" class="mypageContainer">
-				<%-- <%for(int i=0; i<userBookmarkList.size();i++){ %>
-	       			<% Bookmark mark=userBookmarkList.get(i); %>
-	       			<tr>
-                       <td>																							
-                           <a href="#"><div onClick="fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
-                       </td>
-                       <td><%= mark.getBook().getTitle()%></td>
-                       <td><input type="hidden" name="bookmark_id" value="<%=mark.getBookmark_id()%>"/></td>
-                       <td><%=mark.getBookmark_date() %></td>
-                       <td>
-                       		<button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button>
-                       </td>
-                	</tr>
-                	<%} %> --%>
- 					<!-- javascript:book_markDel() -->
-	           </tbody>
+	        	<tbody id="container" class="mypageContainer">
+			<%-- 	 <% int num=pager.getNum(); %>
+				 <% int curPos=pager.getCurPos(); %>
+				 <% for(int i=0; i<pager.getPageSize(); i++){ %>
+					 <% if(num<1) break; %>
+					 <% Bookmark mark = userBookmarkList.get(curPos++); %>
+					 <tr>
+						<td><%=num-- %></td>				 
+						<td><%=mark.getBookmark_id() %></td>				 
+						<td><%= %></td>				 
+						<td><%= %></td>				 
+						<td><%= %></td>				 
+						<td><%= %></td>				 
+					 </tr>
+				 <% }%> --%>
+	       		</tbody>
 	       </table>
 	   </div>
 	

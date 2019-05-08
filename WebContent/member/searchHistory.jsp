@@ -3,9 +3,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>검색 내역</title>
 <%@include file="/include/head.jsp" %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+<title>검색 내역</title>
+<script>
+ $(function(){
+	getList();
+});
+
+function getList(){
+	$.ajax({
+		url:"/member/mypage/searchHistory",
+		type:"get",
+		success:function(result){
+			viewList(result);
+			console.log(result);
+		}
+	});
+}
+
+function bookmarkDelete(bookmark_id){
+	$.ajax({
+		url:"/member/mypage/searchHistory/"+searchbook_id,
+		type:"delete",
+		success:function(){
+			getList();
+		}
+	});
+}
+
+function viewList(json){
+	var con=$("#container");
+	con.html("");//data delete
+ 	for(var i=0; i<json.length;i++){
+		var obj=json[i];
+		//                                                                        'fly("+obj.isbn+")'   
+		var str ="";
+		str+="<tr id=table_tr>";
+		str+="<td><a href='#'><div onClick='javascript:fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
+		str+="<td>"+obj.book.title+"</td>";
+		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
+		str+="<td>"+obj.bookmark_date+"</td>";
+		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
+		str+="</tr>";
+		console.log(obj.book.image);
+		con.append(str);
+	} 
+}
+</script>
 </head>
 <body>
 	
@@ -37,8 +81,9 @@
 	           </thead>
 	           
 	         <tbody id="container" class="mypageContainer">
-
-	           </tbody>
+	         
+				
+	         </tbody>
 	       </table>
 	   </div>
 	

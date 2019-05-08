@@ -14,3 +14,21 @@
     color: #369;
     font-size: 1.1em;
 }
+.popular-wrapper>a:after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.3s;
+    -webkit-background-size: 20%;
+    background-size: 20%;
+    background: rgba(5,117,131,0) none center center no-repeat;
+}
+.popular-wrapper>a:hover:after {
+    background: rgba(163,202,209,0.5) url('/asset/images/info.png') center center no-repeat !important;
+    -webkit-background-size: 20%;
+    background-size: 20%;
+}

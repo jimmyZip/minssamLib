@@ -206,7 +206,7 @@
         background-size: 20%;
         background: rgba(5,117,131,0) none center center no-repeat;
     }
-    .course-wrapper>a:hover:after,.popular-wrapper>a:hover:after {
+    .course-wrapper>a:hover:after{
         background: rgba(5,117,131,0.9) url('/asset/images/info.png') center center no-repeat !important;
         -webkit-background-size: 20%;
         background-size: 20%;

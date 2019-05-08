@@ -35,4 +35,4 @@
 <!-- googleMap api source -->
 
 <!-- <script src="/asset/js/gmap.js" type="text/javascript"></script> -->
-<script src="/asset/js/book_detail.js" type="text/javascript"></script>
+

@@ -10,6 +10,23 @@
 <head>
 <%@include file="/include/head.jsp"%>
 <title>Popular books searched by api</title>
+<script type="text/javascript">
+	//세부 목록 보기
+	function bookDetailView(isbn){
+		console.log(isbn);
+		// 검색 페이지 추가
+		<%if(session.getAttribute("member") != null){%> 
+			// 로그인 한 사용자만 동작
+			$.ajax({
+				url:"/book/search/insert?isbn="+isbn,
+				type:"get"
+			});
+		<%}%>
+	
+		// 페이지 이동
+		location.href="/book/search/detail/"+isbn;
+	}
+</script>
 </head>
 <body>
     <!-- header start -->
@@ -49,7 +66,7 @@
                 <%popBook = popBookList.get(i); %>
                 <!-- popBook unit start -->
                 <div class="popular-wrapper">
-                    <a href="#none" title="자세히 보기" style="background-image:url('<%=popBook.getBookImageURL()%>');">도서 이미지</a>
+                    <a href="javascript:bookDetailView(<%=popBook.getIsbn13()%>)" title="자세히 보기" style="background-image:url('<%=popBook.getBookImageURL()%>');">도서 이미지</a>
                     <div class="popular-info-box">
                         <div class="popular-info-wrapper">
                             <span><%=popBook.getRanking() %>위</span>

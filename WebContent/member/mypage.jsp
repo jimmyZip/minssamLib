@@ -110,6 +110,8 @@ function viewList(json){
 						<td><%= %></td>				 
 					 </tr>
 				 <% }%> --%>
+				 
+				 
 	       		</tbody>
 	       </table>
 	   </div>

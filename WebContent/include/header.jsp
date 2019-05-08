@@ -119,8 +119,7 @@ function searchKeyDown(){
 	         	<div class="menu-item" onclick="location.href='/admin/main'">관리자 페이지</div>
 	         <%} %>
          <%} %>
-         
-         <div class="menu-item" onclick="location.href='#'">고객센터</div>
+
          <!-- nav menus end-->
       </nav>
    </div>

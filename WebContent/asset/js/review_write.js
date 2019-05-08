@@ -7,6 +7,7 @@ $(document).ready(function(){
 function init(){
 	//editor 사용
 	CKEDITOR.replace('content');
+	
 	$($("input[type='button']")[2]).click(function(){
 		send();
 	});

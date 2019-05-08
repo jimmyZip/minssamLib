@@ -24,14 +24,14 @@ form[name=review-write-form]{
 	float:left;
 }
 .bookImg{
-	width:14%;
+	width:15%;
 }
 .bookImg img{
 	display:block;
-	height:100%;
+	width:100%;
 }
 .bookDesc{
-	width:60%;
+	width:85%;
 	padding-left:3%;
 	overflow:hidden;
 }

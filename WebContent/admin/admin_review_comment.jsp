@@ -1,11 +1,5 @@
-<%@page import="com.books.common.Pager"%>
-<%@page import="com.books.model.domain.book.ReviewComment"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%
-	List<ReviewComment> reviewCommentList = (List)request.getAttribute("reviewCommentList");
-	Pager pager = (Pager)request.getAttribute("pager");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <!-- head start -->
@@ -67,36 +61,44 @@ function commentDelete(comment_id){
 	               </tr>
 	           </thead>
 	           <tbody id="container">
-           		   <% int num = pager.getNum();%>
-           		   <% int curPos = pager.getCurPos(); %>
-           		   <%for(int i=0; i<pager.getPageSize(); i++){ %>
-           		   <%if(num<1) break; %>
-           		   <%ReviewComment comment = reviewCommentList.get(curPos++); %>
-           		   <tr>
-					   <td><%=num-- %></td>
-	                   <td><%=comment.getReview().getTitle() %></td>
-	                   <td><%=comment.getContent() %></td>
-	                   <td><%=comment.getMember().getNickname() %>(<%=comment.getMember().getId() %>)</td>
-	                   <td><%=comment.getRegdate() %></td>
-	                   <td><button onClick='commentDelete(<%=comment.getReviewComment_id()%>)'>삭제</button></td>
-	               </tr>
-                   <%} %>
+	           	<c:set var="num" value="${pager.num}"/>
+	           	<c:set var="curPos" value="${pager.curPos}"/>
+	           		
+	           		<c:forEach var="comment" items="${reviewCommentList}" begin="${pager.curPos}" end="${pager.curPos+pager.pageSize-1}">
+	           		   <tr>
+						   <td>${num}</td>
+		                   <td>${comment.review.title}</td>
+		                   <td>${comment.content}</td>
+		                   <td>${comment.member.nickname}(${comment.member.id})</td>
+		                   <td>${comment.regdate}</td>
+		                   <td><button onClick='commentDelete(${comment.reviewComment_id})'>삭제</button></td>
+		               </tr>
+		               <c:set var="num" value="${num-1}"/>
+                   </c:forEach>
                    <tr>
 						<td colspan="6">
-							<%if(pager.getFirstPage()-1>0){ %>
-								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=pager.getFirstPage()-1%>">[prev]</a>
-							<%}else{ %>
+							<!-- 이전 블럭 -->
+							<c:if test="${pager.firstPage-1>0} }">
+								<a class="page_href" href="/admin/review_comment/page?currentPage=${pager.firstPage-1}">[prev]</a>
+							</c:if>
+							<c:if test="${pager.firstPage-1<=0}">
 								<a class="page_href" href="javascript:alert('첫페이지 입니다.')">[prev]</a>
-							<%} %> 
-							<%for(int i=pager.getFirstPage(); i<=pager.getLastPage(); i++){ %>
-								<%if(i>pager.getTotalPage()) break; %>
-								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=i%>">[<%=i %>]</a>
-							<%} %>
-							<%if(pager.getLastPage()+1<pager.getTotalPage()) {%>
-								<a class="page_href" href="/admin/review_comment/page?currentPage=<%=pager.getLastPage()+1%>">[next]</a>
-							<%}else{ %>
+							</c:if>
+							
+							<!-- 페이지 표시 -->
+							<c:forEach var="i" begin="${pager.firstPage}" end="${pager.lastPage}">
+								<c:if test="${i<=pager.totalPage}">
+									<a class="page_href" href="/admin/review_comment/page?currentPage=${i}">[${i}]</a>
+								</c:if>
+							</c:forEach>
+							
+							<!-- 다음 블럭 -->
+							<c:if test="${pager.lastPage+1<pager.totalPage}">
+								<a class="page_href" href="/admin/review_comment/page?currentPage=${pager.lastPage+1}">[next]</a>
+							</c:if>
+							<c:if test="${pager.lastPage+1>=pager.totalPage }">
 								<a class="page_href" href="javascript:alert('마지막 페이지입니다.')">[next]</a>
-							<%} %>
+							</c:if>
 						</td>
 					</tr>
 	           </tbody>

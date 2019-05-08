@@ -16,7 +16,7 @@
 			},
 			success : function(result) {	
 				if(result=="아이디 찾음"){
-					alert(result);
+					//alert(result);
 					sendMail();
 					alert("메일이 전송되었습니다.");
 				}else{

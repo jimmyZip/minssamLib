@@ -19,6 +19,7 @@
 <head>
 <%@include file="/include/head.jsp"%>
 <title>Book Detail Info</title>
+<script src="/asset/js/book_detail.js" type="text/javascript"></script>
 </head>
 <body>
 	<!-- header start -->

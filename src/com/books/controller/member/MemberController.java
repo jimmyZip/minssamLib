@@ -188,7 +188,7 @@ public class MemberController {
 		if(obj!=null) {
 			result="아이디 찾음";
 		}else {
-			result="일치하는거 없음";
+			result="일치하는 정보가 없습니다";
 		}
 		System.out.println("infocheck"+result);
 		return result;
@@ -225,7 +225,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/rest/member/codeCheck",method=RequestMethod.POST)
 	@ResponseBody
-	public String codeCheck(HttpServletRequest request, JoinCode clientCode) {
+	public String codeCheck(HttpServletRequest request, HttpSession session,JoinCode clientCode) {
 		String result=null;
 		JoinCode sendedCode =(JoinCode) request.getSession().getAttribute("joinCode"); //번호발송시그 정보를 담은 객체
 		System.out.println("페이지에서 보낸거"+clientCode.getNum());
@@ -235,8 +235,8 @@ public class MemberController {
 			//번호 끄집어 내기 
 			if(clientCode.getNum().equals(sendedCode.getNum())) {
 				
-				request.setAttribute("id", clientCode.getId());
-				request.setAttribute("email", clientCode.getEmail());
+				session.setAttribute("id", clientCode.getId());
+				session.setAttribute("email", clientCode.getEmail());
 				result="일치함";
 			}		
 		}
@@ -248,6 +248,9 @@ public class MemberController {
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPass(Member member) {
+		System.out.println(member.getId()+"아이디");
+		System.out.println(member.getEmail()+"이메일");
+		System.out.println(member.getPass()+"비밀번호");
 		member.setPass(security.textToHash(member.getPass()));
 		memberService.resetPass(member);
 		StringBuilder sb = new StringBuilder();

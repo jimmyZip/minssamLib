@@ -83,6 +83,9 @@
 		update member set lastlogin=#{lastlogin} where id=#{id}
 	</update>
 	
+	<select id="selectById" parameterType="Member">
+		<include refid="sql_select"/> where id=#{id}
+	</select>
 </mapper>
 
 

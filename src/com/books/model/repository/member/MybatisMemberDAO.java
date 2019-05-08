@@ -85,4 +85,9 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.update("Member.lastLogin",member);
 	}
 
+	@Override
+	public Member selectById(String id) {
+		return sessionTemplate.selectOne("Member.selectById",id);
+	}
+
 }

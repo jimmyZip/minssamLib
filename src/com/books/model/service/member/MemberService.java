@@ -8,6 +8,7 @@ public interface MemberService {
 	public List<Member> selectAll();
 	public List<Member> selectByAuth(int auth_id);
 	public Member select(int member_id);
+	public Member selectById(String id);
 	public Member loginCheck(Member member);
 	public Member idCheck(String id);
 	public Member emailCheck(String email);

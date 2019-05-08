@@ -39,39 +39,29 @@ public class MybatisMemberDAO implements MemberDAO{
 	}
 
 	public Member loginCheck(Member member) {
-		
 		return sessionTemplate.selectOne("Member.loginCheck", member);
-	
 	}
 
 	public Member idCheck(String id) {
-		
 		return sessionTemplate.selectOne("Member.idCheck", id);
-	
 	}
 
 	public Member emailCheck(String email) {
-		
 		return sessionTemplate.selectOne("Member.emailCheck", email);
-
 	}
 
-	@Override
 	public Member passCheck(String pass) {
 		return sessionTemplate.selectOne("Member.passCheck",pass);
 	}
 
-	@Override
 	public Member findId(Member member) {
 		return sessionTemplate.selectOne("Member.findId", member);
 	}
 
-	@Override
 	public int resetPass(Member member) {
 		return sessionTemplate.update("Member.resetPass",member);
 	}
 
-	@Override
 	public Member infoCheck(Member member) {
 		return sessionTemplate.selectOne("Member.infoCheck", member);
 	}
@@ -80,14 +70,16 @@ public class MybatisMemberDAO implements MemberDAO{
 		return sessionTemplate.update("Member.updateAuth", member);
 	}
 
-	@Override
 	public int lastLogin(Member member) {
 		return sessionTemplate.update("Member.lastLogin",member);
 	}
 
-	@Override
 	public Member selectById(String id) {
 		return sessionTemplate.selectOne("Member.selectById",id);
+	}
+	
+	public List<Member> search(String searchWord) {
+		return sessionTemplate.selectList("Member.search", searchWord);
 	}
 
 }

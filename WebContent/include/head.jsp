@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/asset/css1/viewport.css">
 <link rel="stylesheet" type="text/css" href="/asset/css1/review_write.css"/>
 <link rel="stylesheet" type="text/css" href="/asset/css1/review_list.css"/>
+<link rel="stylesheet" type="text/css" href="/asset/css1/popbook.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="/asset/js/common.js" type="text/javascript"></script>
 <script src="/asset/js/mypage.js" type="text/javascript"></script>

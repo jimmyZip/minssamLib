@@ -54,4 +54,8 @@ public class ReviewServiceImpl implements ReviewService {
 			throw new DeleteFailException("리뷰 삭제 실패");
 		}
 	}
+
+	public List<Review> search(String searchWord) {
+		return reviewDAO.search(searchWord);
+	}
 }

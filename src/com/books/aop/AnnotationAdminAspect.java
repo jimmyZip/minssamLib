@@ -31,7 +31,7 @@ public class AnnotationAdminAspect {
 
 	@Around("checkAssign()")
 	public ModelAndView assignCheck(ProceedingJoinPoint joinPoint) throws Throwable {
-		ModelAndView mav = new ModelAndView("/");
+		ModelAndView mav = null;
 		HttpServletRequest request = null;
 
 		Object[] objArray = joinPoint.getArgs();
@@ -42,9 +42,15 @@ public class AnnotationAdminAspect {
 			}
 		}
 		Member member = (Member) request.getSession().getAttribute("member");
-		Auth auth = member.getAuth();
-		if (auth.isAdmin_assign()) {
-			mav = (ModelAndView) joinPoint.proceed();
+		if (member != null) {
+			Auth auth = member.getAuth();
+			if (auth.isAdmin_assign()) {
+				mav = (ModelAndView) joinPoint.proceed();
+			} else {
+				mav = new ModelAndView(getIndex());
+			}
+		} else {
+			mav = new ModelAndView(getIndex());
 		}
 
 		return mav;
@@ -52,7 +58,7 @@ public class AnnotationAdminAspect {
 
 	@Around("checkMember()")
 	public ModelAndView memberCheck(ProceedingJoinPoint joinPoint) throws Throwable {
-		ModelAndView mav = new ModelAndView("/");
+		ModelAndView mav = null;
 		HttpServletRequest request = null;
 
 		Object[] objArray = joinPoint.getArgs();
@@ -63,9 +69,15 @@ public class AnnotationAdminAspect {
 			}
 		}
 		Member member = (Member) request.getSession().getAttribute("member");
-		Auth auth = member.getAuth();
-		if (auth.isMember_del()) {
-			mav = (ModelAndView) joinPoint.proceed();
+		if (member != null) {
+			Auth auth = member.getAuth();
+			if (auth.isMember_del()) {
+				mav = (ModelAndView) joinPoint.proceed();
+			} else {
+				mav = new ModelAndView(getIndex());
+			}
+		} else {
+			mav = new ModelAndView(getIndex());
 		}
 
 		return mav;
@@ -73,7 +85,7 @@ public class AnnotationAdminAspect {
 
 	@Around("checkReview()")
 	public ModelAndView reviewCheck(ProceedingJoinPoint joinPoint) throws Throwable {
-		ModelAndView mav = new ModelAndView("/");
+		ModelAndView mav = null;
 		HttpServletRequest request = null;
 
 		Object[] objArray = joinPoint.getArgs();
@@ -84,9 +96,15 @@ public class AnnotationAdminAspect {
 			}
 		}
 		Member member = (Member) request.getSession().getAttribute("member");
-		Auth auth = member.getAuth();
-		if (auth.isReview_del()) {
-			mav = (ModelAndView) joinPoint.proceed();
+		if (member != null) {
+			Auth auth = member.getAuth();
+			if (auth.isReview_del()) {
+				mav = (ModelAndView) joinPoint.proceed();
+			} else {
+				mav = new ModelAndView(getIndex());
+			}
+		} else {
+			mav = new ModelAndView(getIndex());
 		}
 
 		return mav;
@@ -94,7 +112,7 @@ public class AnnotationAdminAspect {
 
 	@Around("checkComment()")
 	public ModelAndView commentCheck(ProceedingJoinPoint joinPoint) throws Throwable {
-		ModelAndView mav = new ModelAndView("/");
+		ModelAndView mav = null;
 		HttpServletRequest request = null;
 
 		Object[] objArray = joinPoint.getArgs();
@@ -105,12 +123,22 @@ public class AnnotationAdminAspect {
 			}
 		}
 		Member member = (Member) request.getSession().getAttribute("member");
-		Auth auth = member.getAuth();
-		if (auth.isReview_comment_del()) {
-			mav = (ModelAndView) joinPoint.proceed();
+		if (member != null) {
+			Auth auth = member.getAuth();
+			if (auth.isReview_comment_del()) {
+				mav = (ModelAndView) joinPoint.proceed();
+			} else {
+				mav = new ModelAndView(getIndex());
+			}
+		} else {
+			mav = new ModelAndView(getIndex());
 		}
 
 		return mav;
+	}
+	
+	private String getIndex() {
+		return "admin/login_error";
 	}
 
 }

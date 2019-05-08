@@ -23,4 +23,5 @@ public interface MemberDAO {
 	public int updateAuth(Member member);
 	public int lastLogin(Member member);
 	public Member selectById(String id);
+	public List<Member> search(String searchWord);
 }

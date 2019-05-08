@@ -12,4 +12,5 @@ public interface ReviewService {
 	public void insert(Review review);
 	public void update(Review review);
 	public void delete(int review_id);
+	public List<Review> search(String searchWord);
 }

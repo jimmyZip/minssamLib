@@ -124,7 +124,6 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-	@Override
 	public void lastLogin(Member member) {
 			int result = memberDAO.lastLogin(member);
 			if(result==0) {
@@ -135,6 +134,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member selectById(String id) {
 		return memberDAO.selectById(id);
+	}
+	
+	public List<Member> search(String searchWord) {
+		return memberDAO.search(searchWord);
 	}
 
 }

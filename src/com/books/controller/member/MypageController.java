@@ -5,25 +5,20 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.books.common.Pager;
 import com.books.common.member.Admin;
 import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
-import com.books.model.domain.book.Book;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
-import com.books.model.service.member.MemberService;
 
 @Controller
 public class MypageController {
@@ -43,61 +38,53 @@ public class MypageController {
 	
 	@RequestMapping(value="/member/mypage",method=RequestMethod.GET)
 	public ModelAndView markAll(HttpServletRequest request) {
-		//List<Bookmark> userBookmarkList;
+		List<Bookmark> userBookmarkList;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
-		
-		//JSONObject json=new JSONObject();
 		try {
 			
-			 // userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
-			  //for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
-			  //userBookmarkList.get(i).getIsbn();
-			  //userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
-			  //json=(JSONObject) userBookmarkList; 
-			  //}
-			 
+			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
+			 /* for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
+			 * userBookmarkList.get(i).getIsbn();
+			 * userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(
+			 * 0)); }
+			 */
+			System.out.println("동");
+			System.out.println(userBookmarkList.get(0).getBookmark_id());
+			System.out.println("작"); 
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
 			return mav;
 		}
 		mav.setViewName("member/mypage");
-		//mav.addObject("userBookmarkList", userBookmarkList);
 		System.out.println("작동1");
-		//mav.addObject("json",json);
 		return mav;
 	}
 	
+	//bookmark 비동기로 리스트 표현
 	@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
 	@ResponseBody
 	public List<Bookmark> bookMarkList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Bookmark> userBookmarkList;
-		String img;
 		userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 		for(int i=0; i<userBookmarkList.size(); i++) {
 			String isbn = userBookmarkList.get(i).getIsbn();
 			userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-			
-			//img=userBookmarkList.get(i).getBook().getImage();
 		}
-		System.out.println("작동2");
-		//System.out.println(bookmarkService.selectByMember(member.getMember_id()));
-		//return bookmarkService.selectByMember(member.getMember_id());
-		return userBookmarkList;
 		
+		System.out.println("작동2");
+		return userBookmarkList;
 	}
-	
 	
 	
 	@RequestMapping(value="/member/mypage/bookmark/{bookmark_id}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {
 		bookmarkService.delete(bookmark_id);
+		
 		return null;
 	}
-	
-	
 	
 	
 	// 어드민 페이지 이동 용도

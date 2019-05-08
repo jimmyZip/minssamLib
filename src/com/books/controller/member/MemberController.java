@@ -93,6 +93,7 @@ public class MemberController {
 		sb.append("<script>");
 		sb.append("alert('로그아웃 되었습니다.');");
 		sb.append("location.href='/';");
+
 		sb.append("</script>");
 		return sb.toString();
 	}

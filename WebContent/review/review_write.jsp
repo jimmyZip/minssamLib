@@ -8,13 +8,13 @@
 	Review review = new Review();
 	review.setIsbn(isbn);
 	System.out.println("review에 주입한 isbn :: "+review.getIsbn());
-
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <%@include file="/include/head.jsp"%>
 <title>book review write form</title>
+<script src="/asset/js/review_write.js" type="text/javascript"></script>
 </head>
 <body>
 	<!-- header start -->

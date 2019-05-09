@@ -7,8 +7,6 @@
 <%!Pager pager = new Pager(); %>
 <%
 	List<Book> detailList = (List)request.getAttribute("detailList");
-	//System.out.println(detailList.size());
-	//System.out.println(detailList.get(0).getLink());
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
 	//if(reviewList.size()>0){		
 		//pager.init(request, reviewList.size());
@@ -78,6 +76,7 @@
 								<p><a href="javascript:loginFailAlert()" title="북마크 추가">북마크 추가</a></p>
 								<p><a href="javascript:loginFailAlert()" title="구매한 도서 추가">구매한 도서 추가</a></p>
 								<p><a href="javascript:loginFailAlert()" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:loginFailAlert()" title="검색목록으로">검색목록으로</a></p>
 							</dd>
 						<!-- 로그인 되어 있을때 처리 -->
 						<%}else {%>
@@ -85,6 +84,7 @@
 								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
 								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
 								<p><a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
+								<p><a href="javascript:goSearchList()" title="검색목록으로">검색목록으로</a></p>
 							</dd>
 						<%} %>
 					</dl>
@@ -173,6 +173,10 @@
 								</div>
 								<div class="reviewText"><%=review.getContent() %></div>
 							</div>
+							<div class="reviewBtn">
+								<button class="editRv" onclick="">리뷰 수정</button>
+								<button class="delRv" onclick="delReview(<%=review.getReview_id()%>)">리뷰 삭제</button>
+							</div>
 						</li>
 						<!-- 리뷰 한 단위 종료 -->
 					</ul>
@@ -220,15 +224,6 @@
 			<%} %>
 			<%} %>
 			</section>
-		    <!-- googlemap area
-		    <div class="gmapAreaWrap">
-		    	<h3>Where this book is</h3>
-		    	<div class="gmapArea">
-		    		<h4>이 책을 보유한 도서관 위치보기</h4>
-		    		<section id="googleMap"></section>
-		    	</div>
-		    </div>
-		    -->
 		    <!-- go buy thisbook area -->
 		    <div class="orderArea">
 		    	<h4>이 책을 구매하시려면</h4>

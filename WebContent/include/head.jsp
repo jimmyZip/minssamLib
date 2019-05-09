@@ -29,7 +29,6 @@
 <script src="/asset/js/sliding.js" type="text/javascript"></script>
 <script src="/asset/js/sliding.js" type="text/javascript"></script>
 <script src="/asset/js/login-modal.js" type="text/javascript"></script>
-<script src="/asset/js/review_write.js" type="text/javascript"></script>
 <script src="/asset/js/searchISBN.js" type="text/javascript"></script>
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 <!-- googleMap api source -->

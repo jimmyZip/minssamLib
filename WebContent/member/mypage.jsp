@@ -109,7 +109,18 @@ function viewList(json){
 						<td><%= %></td>				 
 						<td><%= %></td>				 
 					 </tr>
-				 <% }%> --%>
+				 <% }%> 
+				 	<%for(int i=0; i<userBookmarkList.size(); i++){%>
+				 		<td>
+				 			<a href="#"><div onClick="javascript:fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
+				 		</td>
+				 		<td>	<%=mark.getBook().getTitle()%></td>
+				 		<td><input type="hidden" name="bookmark_id" value="<%=mark.getBookmark_id()%>"/></td>
+				 		<td><%=mark.getBookmark_date()%></td>
+				 		<td><button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button></td>
+				 <%}%>
+				 
+				 --%>
 	       		</tbody>
 	       		<table id="container_page">
 	       			<td colspan='5'><a href="#">[이전]</a></td>

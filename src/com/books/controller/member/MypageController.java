@@ -46,10 +46,10 @@ public class MypageController {
 		try {
 			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 			//pager.init(request, userBookmarkList.size());
-			 /* for(int i=0; i<userBookmarkList.size(); i++) { String isbn =
-			 * userBookmarkList.get(i).getIsbn();
-			 * userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(
-			 * 0)); }
+		/* for(int i=0; i<userBookmarkList.size(); i++) { 
+			 * 		String isbn = userBookmarkList.get(i).getIsbn();
+			 *	 	userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
+			 * }
 			 */
 			//System.out.println("µø");
 			//System.out.println(userBookmarkList.get(0).getBookmark_id());
@@ -71,7 +71,7 @@ public class MypageController {
 	public List<Bookmark> bookMarkList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Bookmark> userBookmarkList;
-		//pager.getCurrentPage();
+		pager.getCurrentPage();
 		userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 		List<Bookmark> pageBookmarkList = new ArrayList();
 		pager.init(request, userBookmarkList.size());
@@ -88,7 +88,6 @@ public class MypageController {
 			String isbn = pageBookmarkList.get(i).getIsbn();
 			pageBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		}
-		
 		
 		System.out.println("¿€µø2");
 		return pageBookmarkList;

@@ -53,8 +53,8 @@ function viewList(json){
 		str+="<td>"+obj.bookmark_date+"</td>";
 		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
 		str+="</tr>";
-		console.log(obj.book.image);
 		con.append(str);
+		//console.log(obj.book.image);
 	} 
 }
 
@@ -111,6 +111,11 @@ function viewList(json){
 					 </tr>
 				 <% }%> --%>
 	       		</tbody>
+	       		<table id="container_page">
+	       			<td colspan='5'><a href="#">[이전]</a></td>
+	       			<td><a href="#"></a></td>
+	       			<td><a href="#">[다음]</a></td>
+	       		</table>
 	       </table>
 	   </div>
 	

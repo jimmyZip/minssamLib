@@ -9,3 +9,11 @@
 
 # 검색 페이지
 <img src="https://postfiles.pstatic.net/MjAxOTA1MDlfMjAg/MDAxNTU3Mzc1NjcxMjQ3._bjLhVF9UGC2FWbu86HB9C8tcbmgL9VulFqcakhlKSUg.pNat0w6E7lv8xPWhU7Sszv0TpgLpu2TUHIl4G5Kal4Qg.PNG.younggu1545/1.PNG?type=w966"/>
+<ul>
+  <li>네이버 API 사용하여 검색 페이지 처리 진행</li>
+  <li>JSON으로 결과 받아와, jsonParser를 사용하여 DTO로 변환하여 사용</li>
+</ul>
+
+<img src="https://postfiles.pstatic.net/MjAxOTA1MDlfMjcz/MDAxNTU3Mzc3MzA0OTM1.nd1HaR6p8yLrbl6IifIXvR7Y3gQZSpFH_l5WsLWueKgg.tWD_zB3jQvDT2B6nyZWgblLRUeFijD4uG2lLBDKEK8Ag.PNG.younggu1545/1.PNG?type=w966" width="30%"/>
+
+<img src="https://postfiles.pstatic.net/MjAxOTA1MDlfMTA5/MDAxNTU3Mzc3MzA0OTQx.ac-WKyn-hmXZbhNv5T5kEwYiRWfBszaQXtUvGxQVGlUg.TCWgZKeGmOxHnbIHh56YTTY4Q4FUStRR7wnU-3kjAEUg.PNG.younggu1545/2.PNG?type=w966" width="30%"/>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8GmK2KV7ucWbyxkBMD9E3LJxb_Kp2K8c&callback=myMap"></script>
 <link rel="icon" href="/asset/images/favicon.png">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" >

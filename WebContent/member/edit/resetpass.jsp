@@ -25,7 +25,12 @@
 				pass : newpass.value
 			},
 			success : function(data) {
-				alert("비밀번호가 변경되었습니다.");
+				if(data=="비밀번호가 변경되었습니다"){
+					alert(data);
+					modalClose();
+				}else{
+					alert(data);
+				}
 				
 			},
 			error : function(data) {
@@ -35,6 +40,23 @@
 		});
 	}
 </script>
+<style>
+
+	.input_info{
+		width:80%;
+	}
+	.input_info input{
+		margin: 0;
+	    width: 99%;
+	    border: none;
+	    background-color: #fff;
+	    padding: 1rem;
+	    border-radius: 3px !important;
+	    margin-right: 1%;
+	    margin-bottom: 16px;
+	}
+	
+</style>
 </head>
 <body>
    <div class="find_wrap">

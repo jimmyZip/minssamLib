@@ -20,7 +20,7 @@
 				email : email.value
 			},
 			success : function(data) {
-				alert(data);
+				//alert(data);
 				getId.value=data
 			},
 			error : function(data) {
@@ -51,7 +51,7 @@
 				<a href="javascript:loginModalShow()" title="로그인" >로그인</a><span>·</span><a href="javascript:resetPass()"
                      id="resetpass" title="비밀번호 재설정">비밀번호 재설정</a>
                </p>
-				<p><input type="text" value="" id="getId"/></p>
+				<p><input type="text" value="" id="getId" disabled="disabled"/></p>
             </div>
          </fieldset>
       </form>

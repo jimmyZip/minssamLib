@@ -17,8 +17,12 @@ function loginModalShow(){
    $("#view").load("/member/login/loginform.jsp");
    $("#view,#full").show();
    $("#full").click(function(){      
-      $("#full,#view").hide();
+      modalClose();
    });
+}
+
+function modalClose(){
+	$("#full,#view").hide();
 }
 
 function findId(){

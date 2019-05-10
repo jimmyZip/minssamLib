@@ -248,17 +248,22 @@ public class MemberController {
 	@RequestMapping(value="/rest/member/resetPass",method=RequestMethod.POST)
 	@ResponseBody
 	public String resetPass(Member member) {
-		System.out.println(member.getId()+"아이디");
-		System.out.println(member.getEmail()+"이메일");
-		System.out.println(member.getPass()+"비밀번호");
+		//System.out.println(member.getId()+"아이디");
+		//System.out.println(member.getEmail()+"이메일");
+		//System.out.println(member.getPass()+"비밀번호");
 		member.setPass(security.textToHash(member.getPass()));
-		memberService.resetPass(member);
-		StringBuilder sb = new StringBuilder();
-		sb.append("<script>");
-		sb.append("alert('비밀번호가 변경되었습니다.');");
-		sb.append("location.href='/'");
-		sb.append("</script>");
-		return sb.toString();
+		String result=null;
+		int num=0;
+		
+		num=memberService.resetPass(member);
+		
+		if(num==1) {
+			result="비밀번호가 변경되었습니다";
+		}else {
+			result="입력정보를 확인해주세요";
+		}
+			
+		return result;
 	}
 	
 	

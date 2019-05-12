@@ -24,11 +24,11 @@ import com.books.model.service.member.SearchbookService;
 public class MypageSearchController {
 
 	@Autowired
-	BookSerachMapping mapping;
+	private BookSerachMapping mapping;
 	@Autowired
-	BookSearch bookSearch;
+	private BookSearch bookSearch;
 	@Autowired
-	SearchbookService searchbookService;
+	private SearchbookService searchbookService;
 	Pager pager = new Pager();
 	
 	@RequestMapping(value="/member/searchHistory",method=RequestMethod.GET)
@@ -52,7 +52,7 @@ public class MypageSearchController {
 	}
 	
 	@RequestMapping(value="/member/mypage/searchHistory", method=RequestMethod.GET)
-	@ResponseBody																			// @PathVariable("currentPage") int currentPage
+	@ResponseBody																			// @PathVariable(currentPage") int currentPage
 	public List<Searchbook> searchList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Searchbook> bookSearchList;

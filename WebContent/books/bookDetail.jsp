@@ -26,9 +26,9 @@ function addOrderbook(isbn){
 		type:"get",
 		success:function(result){
 			var json = JSON.parse(result)
-				alert("주문도서 등록성공");
 			if(json.resultCode==1){ // 추가 성공
 				alertResultCode(result);
+				alert("주문도서 등록성공");
 			}else{ // 이미 추가된 파일
 				if(confirm(json.msg+"삭제하시겠습니까?")){
 					deleteOrderbook(isbn);
@@ -153,6 +153,7 @@ function addOrderbook(isbn){
 				<h3>Review</h3>
 				<div class="reviewArea">
 					<h4>이 책에 대한 독자 회원님들의 평가</h4>
+					<%Review review = new Review(); %>
 					<%if(reviewList.size()==0) {%>
 					<ul class="reviewInnerWrap">
 						<!-- 리뷰 한 단위 시작 -->
@@ -163,26 +164,23 @@ function addOrderbook(isbn){
 					</ul>
 					<%} else{%>
 					<%for(int i=0;i<reviewList.size();i++){ %>
-					<%--
-						review = reviewList.get(i);
-						System.out.println("bookDetail의 reviewList.get(i)담은 review :: "+review);
-					--%>
+					<%review = reviewList.get(i);%>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
 						<li class="reviewUnit">
 							<div class="reviewImg">
-								<%if(reviewList.get(i).getImg().equals("")){ %>
+								<%if(review.getImg()==null){ %>
 									<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 디폴트 이미지"/>
 								<%}else{ %>
-									<img class="reviewThumb" src="/upload/<%=reviewList.get(i).getImg() %>" alt="리뷰 등록자가 등록한 리뷰 썸네일 이미지"/>
+									<img class="reviewThumb" src="<%=review.getImg() %>" alt="리뷰 등록자가 등록한 리뷰 썸네일 이미지"/>
 								<%} %>
 							</div>
 							<div class="reviewTitStat">
-								<p class="reviewTitle"><%=reviewList.get(i).getTitle() %></p>
+								<p class="reviewTitle"><%=review.getTitle() %></p>
 								<div class="reviewStat">
 									<p class="reviewWriter">
 										<span>작성자</span>
-										<i class="writerInfo"><%=reviewList.get(i).getMember().getId() %>&nbsp;(<%=reviewList.get(i).getMember().getNickname() %>)</i>
+										<i class="writerInfo"><%=review.getMember().getId() %>&nbsp;(<%=review.getMember().getNickname() %>)</i>
 									</p>
 									<p class="ddabong">
 										<img src="/asset/images/like_on.png" alt="좋아요 이미지"/>
@@ -193,11 +191,11 @@ function addOrderbook(isbn){
 										<i class="commentCnt">1건</i>
 									</p>
 								</div>
-								<div class="reviewText"><%=reviewList.get(i).getContent() %></div>
+								<div class="reviewText"><%=review.getContent() %></div>
 							</div>
 							<div class="reviewBtn">
-								<button class="editRv" onclick="goEditReview(<%=reviewList.get(i).getReview_id() %>)">리뷰 수정</button>
-								<button class="delRv" onclick="delReview(<%=reviewList.get(i).getReview_id()%>)">리뷰 삭제</button>
+								<button class="editRv" onclick="">리뷰 수정</button>
+								<button class="delRv" onclick="delReview(<%=review.getReview_id()%>)">리뷰 삭제</button>
 							</div>
 						</li>
 						<!-- 리뷰 한 단위 종료 -->

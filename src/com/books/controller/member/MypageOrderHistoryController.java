@@ -30,7 +30,7 @@ public class MypageOrderHistoryController {
 	private BookSearch bookSearch;
 	@Autowired
 	private OrderbookService orderbookService;
-	Pager pager=new Pager();
+	//Pager pager=new Pager();
 	@RequestMapping(value="/member/bookOrderHistory",method=RequestMethod.GET)
 	public ModelAndView orderAll(HttpServletRequest request) {
 		Member member= (Member)request.getSession().getAttribute("member");
@@ -54,26 +54,25 @@ public class MypageOrderHistoryController {
 	public List<Orderbook> searchList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Orderbook> orderBookList;
-		pager.getCurrentPage();
+		//pager.getCurrentPage();
 		orderBookList = orderbookService.selectByMember(member.getMember_id());
 		List<Orderbook> orderList = new ArrayList();
-		pager.init(request, orderBookList.size());
+		//pager.init(request, orderBookList.size());
 		
-		int curPos = pager.getCurPos();
-		int num = pager.getNum();
-		for(int i=0; i<pager.getPageSize(); i++) {
-			if(num<1) break;
-			orderList.add(orderBookList.get(curPos++));
-			num--;	
-		}
-		
-		for(int i=0; i<orderList.size(); i++) {
-			String isbn = orderList.get(i).getIsbn();
-			orderList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+//		int curPos = pager.getCurPos();
+//		int num = pager.getNum();
+//		for(int i=0; i<pager.getPageSize(); i++) {
+//			if(num<1) break;
+//			orderList.add(orderBookList.get(curPos++));
+//			num--;	
+//		}
+		for(int i=0; i<orderBookList.size(); i++) {
+			String isbn = orderBookList.get(i).getIsbn();
+			orderBookList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		}//setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		
 		System.out.println("ÀÛµ¿2");
-		return orderList;
+		return orderBookList;
 	}
 	
 	@RequestMapping(value="/member/mypage/bookOrderHistory/{orderbook_id}", method=RequestMethod.DELETE)

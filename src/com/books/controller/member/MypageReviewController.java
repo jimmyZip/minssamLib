@@ -63,20 +63,20 @@ public class MypageReviewController {
 		List<Review> reviewsList = new ArrayList();
 		pager.init(request, reviewAllList.size());
 		
-		int curPos = pager.getCurPos();
-		int num = pager.getNum();
-		for(int i=0; i<pager.getPageSize(); i++) {
-			if(num<1) break;
-			reviewsList.add(reviewAllList.get(curPos++));
-			num--;	
-		}
+		//int curPos = pager.getCurPos();
+		//int num = pager.getNum();
+//		for(int i=0; i<pager.getPageSize(); i++) {
+//			if(num<1) break;
+//			reviewsList.add(reviewAllList.get(curPos++));
+//			num--;	
+//		}
 		
-		for(int i=0; i<reviewsList.size(); i++) {
-			String isbn = reviewsList.get(i).getIsbn();//searchList.get(i).getIsbn();
-			reviewsList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));//setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+		for(int i=0; i<reviewAllList.size(); i++) {
+			String isbn = reviewAllList.get(i).getIsbn();//searchList.get(i).getIsbn();
+			reviewAllList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));//setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		}
 		System.out.println("ÀÛµ¿2");
-		return reviewsList;
+		return reviewAllList;
 	}
 	@RequestMapping(value="/member/mypage/review/{review_id}", method=RequestMethod.DELETE)
 	@ResponseBody

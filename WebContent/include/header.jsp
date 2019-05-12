@@ -49,10 +49,6 @@ function searchKeyDown(){
       <!-- search box ends -->
       <!-- title-bar-con-menu -->
       <div class="title-icon-wrapper">
-         <i class="fa cart dropdown" onClick="location.href='/payment/cart/'"></i>
-         <span class="icon-cnt cart-cnt" id="cart_number">5</span>
-         <i class="fa heart dropdown" onClick="location.href='/payment/wish/'"></i>
-         <span class="icon-cnt heart-cnt" id="wish_number">2</span>
          <!-- login btn start -->
          <i class="far fa-user dropdown"></i>
          <div class="user-content">

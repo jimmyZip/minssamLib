@@ -91,7 +91,7 @@ function showMsg(json){
 }
 
 
-// 페이지 표시해주는 함수 
+// 페이지에 내용 표시
 function viewList(json){
 	var con = $("#container");
 	con.html(""); // 데이터 삭제

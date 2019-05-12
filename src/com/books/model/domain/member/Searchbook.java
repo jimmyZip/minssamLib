@@ -1,8 +1,19 @@
 package com.books.model.domain.member;
 
+import com.books.model.domain.book.Book;
+
 public class Searchbook {
 	private int searchbook_id;
 	private Member member;
+	private Book book;
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
 	private String isbn;
 	private String searchdate;
 

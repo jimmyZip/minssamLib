@@ -21,7 +21,7 @@ function getList(){
 	});
 }
 
-function bookmarkDelete(bookmark_id){
+function bookSearchDelete(searchbook_id){
 	$.ajax({
 		url:"/member/mypage/searchHistory/"+searchbook_id,
 		type:"delete",
@@ -41,9 +41,9 @@ function viewList(json){
 		str+="<tr id=table_tr>";
 		str+="<td><a href='#'><div onClick='javascript:fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
 		str+="<td>"+obj.book.title+"</td>";
-		str+="<td><input type='hidden' value="+obj.bookmark_id+"></td>";
-		str+="<td>"+obj.bookmark_date+"</td>";
-		str+="<td><button onClick='bookmarkDelete("+obj.bookmark_id+")'>삭제</button></td>";
+		str+="<td><input type='hidden' value="+obj.searchbook_id+"></td>";
+		str+="<td>"+obj.searchdate+"</td>";
+		str+="<td><button onClick='bookSearchDelete("+obj.searchbook_id+")'>삭제</button></td>";
 		str+="</tr>";
 		console.log(obj.book.image);
 		con.append(str);

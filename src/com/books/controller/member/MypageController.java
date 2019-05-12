@@ -43,7 +43,6 @@ public class MypageController {
 		List<Bookmark> userBookmarkList=null;
 		Member member = (Member) request.getSession().getAttribute("member");
 		ModelAndView mav = new ModelAndView();
-		//List<Bookmark> pageBookmarkList = new ArrayList();
 		try {
 			userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
 			for(int i=0; i<userBookmarkList.size(); i++) { 
@@ -51,19 +50,7 @@ public class MypageController {
 				userBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0)); 
 			}
 		 pager.init(request, userBookmarkList.size());
-		 
-	/*
-			for(int i=0; i<pager.getPageSize(); i++) {
-				if(num<1) break;
-				pageBookmarkList.add(userBookmarkList.get(curPos++));
-				num--;	
-			}
-			for(int i=0; i<pageBookmarkList.size(); i++) {
-				String isbn = pageBookmarkList.get(i).getIsbn();
-				pageBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-			}
-			*/
-			
+	 			
 		} catch (NullPointerException e) {
 			mav.setViewName("member/login/error");
 			return mav;
@@ -72,39 +59,9 @@ public class MypageController {
 		mav.addObject("userBookmarkList",userBookmarkList );
 		mav.addObject("pager",pager);
 		mav.setViewName("member/mypage");
-		System.out.println("작동1");
 		return mav;
 	}
-	
-	//bookmark 비동기로 리스트 표현	너무 노가다라 페이징처리에서 그만둠 	{currentPage}
-	/*@RequestMapping(value="/member/mypage/bookmark", method=RequestMethod.GET)
-	@ResponseBody																			// @PathVariable("currentPage") int currentPage
-	public List<Bookmark> bookMarkList(HttpServletRequest request){
-		Member member = (Member)request.getSession().getAttribute("member");
-		List<Bookmark> userBookmarkList;
-		pager.getCurrentPage();
-		userBookmarkList = bookmarkService.selectByMember(member.getMember_id());
-		List<Bookmark> pageBookmarkList = new ArrayList();
-		pager.init(request, userBookmarkList.size());
-		
-		int curPos = pager.getCurPos();
-		int num = pager.getNum();
-		for(int i=0; i<pager.getPageSize(); i++) {
-			if(num<1) break;
-			pageBookmarkList.add(userBookmarkList.get(curPos++));
-			num--;	
-		}
-		
-		for(int i=0; i<pageBookmarkList.size(); i++) {
-			String isbn = pageBookmarkList.get(i).getIsbn();
-			pageBookmarkList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
-		}
-		
-		System.out.println("작동2");
-		return pageBookmarkList;
-	}*/
-	
-	
+
 	@RequestMapping(value="/member/mypage/bookmark/{bookmark_id}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public String deleteBookmark(@PathVariable("bookmark_id") int bookmark_id) {

@@ -100,7 +100,6 @@ function bookmarkDelete(bookmark_id){
 	           </thead>
 	         
 	        	<tbody id="container" class="mypageContainer">
-
  				 	<% int num = pager.getNum(); %>
  				 	<% int curPos = pager.getCurPos(); %>
  				 	<%for(int i=0; i<pager.getPageSize(); i++){%>
@@ -108,16 +107,16 @@ function bookmarkDelete(bookmark_id){
  				 		<%Bookmark mark=userBookmarkList.get(curPos++);%>
 	 				 	<tr>
 					 		<td>
-					 			<a href="#"><div onClick="javascript:fly(<%=userBookmarkList.get(i).getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=userBookmarkList.get(i).getBook().getImage()%>');"></div></a>
+					 			<a href="#"><div onClick="javascript:fly(<%=mark.getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=mark.getBook().getImage()%>');"></div></a>
 					 		</td>
-					 		<td>	<%=userBookmarkList.get(i).getBook().getTitle()%></td>
-					 		<td><input type="hidden" name="bookmark_id" value="<%=userBookmarkList.get(i).getBookmark_id()%>"/></td>
-					 		<td><%=userBookmarkList.get(i).getBookmark_date()%></td>
-					 		<td><button onClick="bookmarkDelete(<%=userBookmarkList.get(i).getBookmark_id()%>)">삭제</button></td>
+					 		<td><%=mark.getBook().getTitle()%></td>
+					 		<td><input type="hidden" name="bookmark_id" value="<%=mark.getBookmark_id()%>"/></td>
+					 		<td><%=mark.getBookmark_date()%></td>
+					 		<td><button onClick="bookmarkDelete(<%=mark.getBookmark_id()%>)">삭제</button></td>
 					 	</tr>
 				 <%}%>
 		       		<tr>
-		       			<td colspan='9'>
+		       			<td colspan='5'>
 		       				<%if(pager.getFirstPage()-1>0){ %>
 		       					<a class="page_href" href="/member/mypage?currentPage=<%=pager.getFirstPage()-1%>">[이전]</a>
 		       				<%}else{ %>

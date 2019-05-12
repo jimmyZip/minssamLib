@@ -101,7 +101,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/modify",method=RequestMethod.GET)
 	public ModelAndView select(int member_id) {
-		System.out.println("넘어온 member_id:" + member_id);
+		//System.out.println("넘어온 member_id:" + member_id);
 		Member member = memberService.select(member_id);
 		ModelAndView mav = new ModelAndView("member/detail");
 		mav.addObject("member",member);
@@ -133,7 +133,7 @@ public class MemberController {
 	public String emailCheck(String email) {
 		//회원가입할때 중복을 체크하자
 		String result;
-		System.out.println("이메일:"+email);
+		//System.out.println("이메일:"+email);
 		Member member = memberService.emailCheck(email);
 		//System.out.println("멤버아이디"+member.getId());
 		if(member==null) {
@@ -228,8 +228,8 @@ public class MemberController {
 	public String codeCheck(HttpServletRequest request, HttpSession session,JoinCode clientCode) {
 		String result=null;
 		JoinCode sendedCode =(JoinCode) request.getSession().getAttribute("joinCode"); //번호발송시그 정보를 담은 객체
-		System.out.println("페이지에서 보낸거"+clientCode.getNum());
-		System.out.println("세션에 있던거"+sendedCode.getNum());
+		//System.out.println("페이지에서 보낸거"+clientCode.getNum());
+		//System.out.println("세션에 있던거"+sendedCode.getNum());
 		//사용자가 넘겨준 아이디와 발급받은 인증번호를 현재 세션에 들어있는 값과 비교 
 		if( clientCode.getId().equals(sendedCode.getId())) {
 			//번호 끄집어 내기 

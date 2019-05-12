@@ -36,7 +36,7 @@ public class MypageSearchController {
 		Member member=(Member)request.getSession().getAttribute("member"); 
 		ArrayList searchHistory;
 		//String currentPage =	(String)request.getAttribute("currentPage"); 
-		ModelAndView mav = new ModelAndView("member/searchHistory"); 
+		ModelAndView mav = new ModelAndView();
 		try {	 
 			searchHistory=(ArrayList) searchbookService.selectByMember(member.getMember_id());
 			

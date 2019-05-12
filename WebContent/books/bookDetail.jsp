@@ -18,6 +18,26 @@
 <%@include file="/include/head.jsp"%>
 <title>Book Detail Info</title>
 <script src="/asset/js/book_detail.js" type="text/javascript"></script>
+<script>
+//주문도서목록 추가 함수
+function addOrderbook(isbn){
+	$.ajax({
+		url:"/orderbook/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			var json = JSON.parse(result)
+				alert("주문도서 등록성공");
+			if(json.resultCode==1){ // 추가 성공
+				alertResultCode(result);
+			}else{ // 이미 추가된 파일
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteOrderbook(isbn);
+				}
+			}
+		}
+	});
+}
+</script>
 </head>
 <body>
 	<!-- header start -->
@@ -82,7 +102,7 @@
 						<%}else {%>
 							<dd class="btnArea">
 								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-								<p><a href="#none" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="#" onClick="addOrderbook('<%=bookDetail.getIsbn() %>')" title="구매한 도서 추가">구매한 도서 추가</a></p>
 								<p><a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
 								<p><a href="javascript:goSearchList()" title="검색목록으로">검색목록으로</a></p>
 							</dd>

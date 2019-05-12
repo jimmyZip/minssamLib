@@ -59,7 +59,7 @@ function viewList(json){
 	<!-- page visual -->
     <div class="bg_basic lecture-cart-header">
 	    <div class="wrap">
-	        <h2 class="red">북마크</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
+	        <h2 class="red">최근검색내역</h2> <!-- common.css .red 밑에 .white 추가해서 변경했음 -->
 	    </div>
     </div>
 	<!-- blog list start -->
@@ -75,7 +75,7 @@ function viewList(json){
                        <th>이미지</th>
                        <th>책 제목</th>
                        <th></th>
-                       <th>날짜</th>
+                       <th>검색 날짜</th>
                        <th>비고</th>
 	               </tr>
 	           </thead>

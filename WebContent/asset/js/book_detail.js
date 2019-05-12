@@ -161,3 +161,4 @@ function renderAvgStar(json){
 		$($(".repuStar").find("img")[j]).attr('src','/asset/images/star_filled.png');
 	}
 }
+

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <%@include file="/include/head.jsp" %>
-<title>검색 내역</title>
+<title>결제 내역</title>
 <script>
  $(function(){
 	getList();
@@ -12,7 +12,7 @@
 
 function getList(){
 	$.ajax({
-		url:"/member/mypage/searchHistory",
+		url:"/member/mypage/bookOrderHistory",
 		type:"get",
 		success:function(result){
 			viewList(result);
@@ -21,9 +21,9 @@ function getList(){
 	});
 }
 
-function bookSearchDelete(searchbook_id){
+function bookSearchDelete(orderbook_id){
 	$.ajax({
-		url:"/member/mypage/searchHistory/"+searchbook_id,
+		url:"/member/mypage/bookOrderHistory/"+orderbook_id,
 		type:"delete",
 		success:function(){
 			getList();
@@ -41,18 +41,18 @@ function viewList(json){
 		str+="<tr id=table_tr>";
 		str+="<td><a href='#'><div onClick='javascript:fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
 		str+="<td>"+obj.book.title+"</td>";
-		str+="<td><input type='hidden' value="+obj.searchbook_id+"></td>";
-		str+="<td>"+obj.searchdate+"</td>";
-		str+="<td><button onClick='bookSearchDelete("+obj.searchbook_id+")'>삭제</button></td>";
+		str+="<td><input type='hidden' value="+obj.orderbook_id+"></td>";
+		str+="<td>"+obj.orderdate+"</td>";
+		str+="<td><button onClick='bookSearchDelete("+obj.orderbook_id+")'>삭제</button></td>";
 		str+="</tr>";
-		console.log(obj.book.image);
+		//console.log(obj.book.image);
 		con.append(str);
 	} 
 }
 </script>
 </head>
 <body>
-	
+ 	
     <!-- header start -->
 	<%@include file="/include/header.jsp"%>
 	<!-- header end -->
@@ -75,7 +75,7 @@ function viewList(json){
                        <th>이미지</th>
                        <th>책 제목</th>
                        <th></th>
-                       <th>검색 날짜</th>
+                       <th>구매 날짜</th>
                        <th>비고</th>
 	               </tr>
 	           </thead>
@@ -86,15 +86,8 @@ function viewList(json){
 	         </tbody>
 	       </table>
 	   </div>
-	
 	</div>
-	
-	
-	
-	<!-- footer start -->
-	<%@include file="/include/footer.jsp" %>
-
 	<!-- footer end -->
-
+	<%@include file="/include/footer.jsp" %>
 </body>
 </html>

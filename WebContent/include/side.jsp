@@ -15,7 +15,7 @@
 	<li><a href="#" onClick="location.href='/member/mypage'">북마크</a></li>
 	<li><a href="#" onClick="location.href='/member/searchHistory'">최근 검색 내역</a></li>
 <!-- 	<li><a href="javascript:getMyWish()">찜한 강좌 최근 검색 내역</a></li> -->
-	<li><a href="#" onClick="location.href='/member/bookHistory.jsp'">구매한 책</a></li>
+	<li><a href="#" onClick="location.href='/member/bookOrderHistory'">구매한 책</a></li>
 	<li><a href="#" onClick="location.href='/member/review.jsp'">리뷰 내역</a></li>
 	<li><a href="#" onClick="location.href='/member/comment.jsp'">코멘트 내역</a></li>
 	<%if(isAdmin) {%> 

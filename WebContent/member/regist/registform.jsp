@@ -290,7 +290,7 @@ form {
 				id : id.value,
 			},
 			success : function(data) {
-				alert(data);
+				//alert(data);
 				if (data == "중복있음") {
 					$("#submit").attr("disabled",true);
 					idMsg.classList.remove("valid");

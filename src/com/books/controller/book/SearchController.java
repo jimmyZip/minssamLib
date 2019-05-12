@@ -48,11 +48,19 @@ public class SearchController {
 		mav.addObject("pager", pager);
 		return mav;
 	}
+	
+	//bookDetail가기
 	@RequestMapping(value = "/book/search/detail/{isbn}", method = RequestMethod.GET)
 	public ModelAndView showDetail(@PathVariable("isbn") String isbn) {
+		logger.trace("SearchController에서 bookDetail이동 요청");
 		logger.trace("isbn : " + isbn);
 		List<Book> detailList = mapping.mapping((bookSearch.search(isbn)));
 		List<Review> reviewList = reviewService.selectByIsbn(isbn);
+		logger.info("reviewList길이 :: "+reviewList.size());
+		for(int i=0;i<reviewList.size();i++) {			
+			logger.info("reviewList에 담긴 img :: "+reviewList.get(i).getImg());
+			logger.info("reviewList에 담긴 myImg :: "+reviewList.get(i).getMyImg());
+		}
 		ModelAndView mav = new ModelAndView("books/bookDetail");
 		mav.addObject("detailList", detailList);
 		mav.addObject("reviewList", reviewList);

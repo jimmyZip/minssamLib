@@ -1,12 +1,16 @@
 var flag=true;
 $(document).ready(function(){
+	//getReviewList(isbn);
 	getAvgScore();
+	
 	//도서상세정보 자동 포커스 이동
 	$("#bookIntro").focus();
 	//툴팁 텍스트 가려놓기
 	$(".tooltipText").hide();
+	
 	//댓글영역 toggle
 	$(".reviewCommentWrap").hide();
+	
 	//댓글 펼쳐보기 관련 이벤트 함수호출
 	$(".showReply").click(function(event){
 		var s=$(this).index();
@@ -26,7 +30,7 @@ $(document).ready(function(){
 	$("#scoreTooltip").mouseover(function(){
 		$(".tooltipText").fadeIn(500).css({
 			"left":$("#scoreTooltip").offset().left+$("#scoreTooltip").width()+10+"px",
-			"top":$("#scoreTooltip").offset().top-30+"px"			
+			"top":$("#scoreTooltip").offset().top-50+"px"			
 		});
 	}).mouseout(function(){
 		$(".tooltipText").fadeOut(400);
@@ -36,11 +40,11 @@ $(document).ready(function(){
 //해당 댓글 toggle
 function showAndHide(s){
 	alert(s);
-	$($(".reviewCommentWrap")[s-1]).toggle(200,"linear",function(){
+	$($(".reviewCommentWrap")[s]).toggle(200,"linear",function(){
 		if(flag==false){
-			$($(".showReply")[s-1]).text("이 리뷰에 대한 댓글접기");
+			$($(".showReply")[s]).text("이 리뷰에 대한 댓글접기");
 		}else{
-			$($(".showReply")[s-1]).text("이 리뷰에 대한 댓글보기");
+			$($(".showReply")[s]).text("이 리뷰에 대한 댓글보기");
 		}
 	});
 }
@@ -160,4 +164,45 @@ function renderAvgStar(json){
 	for(var j=0;j<=avgScore;j++){
 		$($(".repuStar").find("img")[j]).attr('src','/asset/images/star_filled.png');
 	}
+}
+
+//검색목록으로 돌아가기 back to bookSearchList
+function goSearchList(){
+	alert("이 책의 검색목록으로 돌아갑니다.");
+	//location.href="/book/search/{title}/"+1;
+	//뒤로가기 히스토리가 있다면 뒤로 가기
+	if(document.referrer){		
+		history.back();
+	}else{//만약 history없다면 인덱스로 가기
+		location.href='/';
+	}
+}
+
+
+//리뷰 삭제
+function delReview(review_id){
+	if(!confirm("정말 리뷰를 삭제하시겠습니까?")){
+		return;
+	}
+	$.ajax({
+		url:"/review/delete/"+review_id,
+		type:"delete",
+		success:function(result){
+			console.log("리뷰삭제요청 result :: "+result);
+			var json = JSON.parse(result);
+			if(json.result==1){
+				alert("리뷰가 삭제됩니다.");
+				location.reload();
+			}
+		}
+	});
+}
+
+//리뷰수정
+function goEditReview(review_id){
+	//리뷰 수정 페이지로 이동
+	if(!confirm("정말 리뷰를 수정하시겠습니까?")){
+		return;
+	}
+	location.href="/book/reviews/update/"+review_id;
 }

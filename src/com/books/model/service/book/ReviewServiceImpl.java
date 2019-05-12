@@ -2,6 +2,7 @@ package com.books.model.service.book;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import com.books.model.repository.book.ReviewDAO;
 public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	ReviewDAO reviewDAO;
+	
+	Logger logger = Logger.getLogger(this.getClass().getName());
 
 	public List<Review> selectAll() {
 		return reviewDAO.selectAll();
@@ -42,6 +45,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	public void update(Review review) throws EditFailException {
+		logger.info("reviewServiceImpl에서의 리뷰 업데이트 요청");
 		int result = reviewDAO.update(review);
 		if (result == 0) {
 			throw new EditFailException("리뷰 수정 실패");

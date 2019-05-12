@@ -70,5 +70,8 @@ public class Review {
 	}
 	public void setMyImg(MultipartFile myImg) {
 		this.myImg = myImg;
-	}	
+	}
+	
+	
+		
 }

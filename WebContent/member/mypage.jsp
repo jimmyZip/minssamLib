@@ -104,11 +104,12 @@ function bookmarkDelete(bookmark_id){
  				 	<% int num = pager.getNum(); %>
  				 	<% int curPos = pager.getCurPos(); %>
  				 	<%for(int i=0; i<pager.getPageSize(); i++){%>
- 				 		<%if(num<1)break; num--;%>
+ 				 		<%if(num<1)break; %><!-- num--; -->
  				 		<%Bookmark mark=userBookmarkList.get(curPos++);%>
 	 				 	<tr>
 					 		<td>
 					 			<a href="#"><div onClick="javascript:fly(<%=userBookmarkList.get(i).getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=userBookmarkList.get(i).getBook().getImage()%>');"></div></a>
+ 						 		<%=curPos%>
 					 		</td>
 					 		<td>	<%=userBookmarkList.get(i).getBook().getTitle()%></td>
 					 		<td><input type="hidden" name="bookmark_id" value="<%=userBookmarkList.get(i).getBookmark_id()%>"/></td>

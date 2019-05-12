@@ -216,7 +216,7 @@ function addOrderbook(isbn){
 							</div>
 							<div class="replyListBtn">
 								<a href="#none" class="replyEdit">수정하기</a>
-								<a href="#none" cass="replyDel">삭제하기</a>
+								<a href="#none" class="replyDel">삭제하기</a>
 							</div>
 						</li>
 						<!-- 댓글 한 단위 -->

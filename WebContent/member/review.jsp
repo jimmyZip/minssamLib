@@ -5,6 +5,7 @@
 <head>
 <%@include file="/include/head.jsp" %>
 <title>리뷰 내역</title>
+<script src="/asset/js/book_detail.js" type="text/javascript"></script>
 <script>
 $(function(){
 	getList();
@@ -43,13 +44,15 @@ function viewList(json){
 		str+="<td>"+obj.title+"</td>";
 		str+="<td><input type='hidden' value="+obj.review_id+"></td>";
 		str+="<td>"+obj.regdate+"</td>";
-		str+="<td><button onClick='bookSearchDelete("+obj.review_id+")'>삭제</button></td>";
+		str+="<td><button onClick='bookSearchDelete("+obj.review_id+")'>삭제</button> <button onClick='javascript:goEditReview("+obj.review_id+")'>수정</button</td>";
 		str+="</tr>";
 		console.log(obj);
 		console.log(obj.img);
 		con.append(str);
 	} 
 }
+
+
 </script>
 </head>
 <!-- head end -->

@@ -24,7 +24,7 @@ function updateReview(){
 			isbn:$($("form[name='review-update-form']").find("input[name='isbn']")).val(),
 			title:$($("form[name='review-update-form']").find("input[name='title']")).val(),
 			content:$($("form[name='review-update-form']").find("textarea")).val(),
-			review_id:$($("form[name='review-update-form']").find("input[name='member_id']")).val()
+			review_id:$($("form[name='review-update-form']").find("input[name='review_id']")).val()
 		},
 		success:function(result){
 			var json = JSON.parse(result);

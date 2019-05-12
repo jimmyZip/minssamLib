@@ -20,10 +20,10 @@ public class PopularBookController {
 	
 	@RequestMapping(value="/book/popular",method=RequestMethod.GET)
 	public ModelAndView searchResult() {
-		System.out.println("popularBookController 결과 호출");
+		//System.out.println("popularBookController 결과 호출");
 		List<PopularBookTest> apiSearchResult = testParser.getMyHandler().getPopularBookList();
 
-		System.out.println(apiSearchResult.size());
+		//System.out.println(apiSearchResult.size());
 		/*
 		for(int i=0;i<apiSearchResult.size();i++) {
 			System.out.println(" ▶ "+i+"번째 No : "+apiSearchResult.get(i).getNo());

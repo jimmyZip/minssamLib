@@ -22,8 +22,8 @@ public class SecurityBean {
 			for(int i=0;i<data.length;i++) {
 				sb.append(Integer.toString((data[i]&0xff)+0x100,16).substring(1));
 			}
-			System.out.println("생성된암호의 길이는: "+sb.toString().length());
-			System.out.println("만들어진 암호는: "+sb.toString());
+			//System.out.println("생성된암호의 길이는: "+sb.toString().length());
+			//System.out.println("만들어진 암호는: "+sb.toString());
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}

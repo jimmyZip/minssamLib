@@ -109,7 +109,7 @@ function bookmarkDelete(bookmark_id){
 	 				 	<tr>
 					 		<td>
 					 			<a href="#"><div onClick="javascript:fly(<%=userBookmarkList.get(i).getBook().getIsbn() %>)" class="my-lecture-img" style="background-image:url('<%=userBookmarkList.get(i).getBook().getImage()%>');"></div></a>
- 						 		<%=curPos%>
+ 						 		<%-- <%=curPos%> --%>
 					 		</td>
 					 		<td>	<%=userBookmarkList.get(i).getBook().getTitle()%></td>
 					 		<td><input type="hidden" name="bookmark_id" value="<%=userBookmarkList.get(i).getBookmark_id()%>"/></td>

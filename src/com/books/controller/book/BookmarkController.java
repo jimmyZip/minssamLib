@@ -15,6 +15,7 @@ import com.books.exception.RegistFailException;
 import com.books.model.domain.member.Bookmark;
 import com.books.model.domain.member.Member;
 import com.books.model.service.member.BookmarkService;
+import com.sun.media.jfxmedia.logging.Logger;
 
 @Controller
 public class BookmarkController {
@@ -24,6 +25,7 @@ public class BookmarkController {
 	@RequestMapping(value = "/bookmark/insert/{isbn}", method = RequestMethod.GET)
 	@ResponseBody
 	public String insert(HttpServletRequest request, @PathVariable("isbn") String isbn) {
+		System.out.println("bookmarkController에서 찍은 insert 메서드");
 		Member member = (Member) request.getSession().getAttribute("member");
 		Bookmark bookmark = new Bookmark();
 		bookmark.setMember(member);

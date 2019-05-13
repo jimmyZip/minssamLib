@@ -37,14 +37,18 @@ $(document).ready(function(){
 });
 ////////////////////////////////////////////////////////////////////////////
 //북마크 등록
+//addBookmark(<%=bookDetail.getIsbn() %>)
 function addBookmark(isbn){
+	console.log("북마크 등록 js 메서드, 넘기는 매개값은 "+isbn);
 	$.ajax({
 		url:"/bookmark/insert/"+isbn,
 		type:"get",
 		success:function(result){
 			var json = JSON.parse(result);
+			console.log("북마크 등록 js메서드에서 찍은 result"+json.resultCode);
 			if(json.resultCode==1){
-				alertResultCode(result);
+				//alertResultCode(result);
+				alert(json.resultCode);
 			}else{ // 이미 추가된 북마크 목록
 				if(confirm(json.msg+"삭제하시겠습니까?")){
 					deleteOrderbook(isbn);

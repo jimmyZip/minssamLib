@@ -52,7 +52,7 @@ public class MypageController {
 		 pager.init(request, userBookmarkList.size());
 	 			
 		} catch (Exception e) {
-			mav.setViewName("member/login/error");
+			mav.setViewName("member/login/error2");
 			return mav;
 		}
 		

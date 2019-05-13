@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 function init(){
 	//editor
-	CKEDITOR.replace('content');
+	//CKEDITOR.replace('content');
 	
 	$($("input[type='button']")[0]).click(function(){
 		updateReview();
@@ -24,14 +24,14 @@ function updateReview(){
 			isbn:$($("form[name='review-update-form']").find("input[name='isbn']")).val(),
 			title:$($("form[name='review-update-form']").find("input[name='title']")).val(),
 			content:$($("form[name='review-update-form']").find("textarea")).val(),
-			review_id:$($("form[name='review-update-form']").find("input[name='member_id']")).val()
+			review_id:$($("form[name='review-update-form']").find("input[name='review_id']")).val()
 		},
 		success:function(result){
 			var json = JSON.parse(result);
 			if(json.result==1){				
 				alert("리뷰 수정에 성공했습니다.");
 			}else{
-				alert("리뷰 수정에 실패했습니다.");
+				alert("본인 작성 글이 아니거나 수정에 오류가 발생했습니다.");
 			}
 		}
 	});

@@ -1,6 +1,5 @@
 var flag=true;
 $(document).ready(function(){
-	//getReviewList(isbn);
 	getAvgScore();
 	
 	//도서상세정보 자동 포커스 이동
@@ -37,6 +36,44 @@ $(document).ready(function(){
 	});
 });
 ////////////////////////////////////////////////////////////////////////////
+//북마크 등록
+function addBookmark(isbn){
+	$.ajax({
+		url:"/bookmark/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			var json = JSON.parse(result);
+			if(json.resultCode==1){
+				alertResultCode(result);
+			}else{ // 이미 추가된 북마크 목록
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteOrderbook(isbn);
+				}
+			}
+		}
+	});
+}
+
+//주문도서목록 추가 함수
+//by Minsu Kim,thanks :)
+function addOrderbook(isbn){
+	$.ajax({
+		url:"/orderbook/insert/"+isbn,
+		type:"get",
+		success:function(result){
+			var json = JSON.parse(result);
+			alert("주문도서 등록성공");
+			if(json.resultCode==1){ // 추가 성공
+				alertResultCode(result);
+			}else{ // 이미 추가된 목록
+				if(confirm(json.msg+"삭제하시겠습니까?")){
+					deleteOrderbook(isbn);
+				}
+			}
+		}
+	});
+}
+
 //해당 댓글 toggle
 function showAndHide(s){
 	alert(s);
@@ -71,7 +108,7 @@ function scoring(i){
 
 //리뷰쓰기 이동
 function goWriteRv(isbn){
-	location.href="/book/reviews/"+isbn;
+	location.href="/book/reviews/write/"+isbn;
 }
 
 //유저가 매긴 책 점수 평점에 반영시키기 비동기
@@ -83,7 +120,7 @@ function registScore(){
 		type:"post",
 		data:{
 			isbn : $("input[name='isbn']").val(),
-			member_id : $("input[name='member.member_id']").val(),
+			//member_id : $("input[name='member.member_id']").val(),
 			score : $("input[name='score']").val()
 		},
 		success:function(result){
@@ -93,7 +130,10 @@ function registScore(){
 			if(json.result==1){
 				//updateAvgScore();
 				console.log("책에 대한 내 점수 등록 결과 : "+json.result);
-				updateAvgScore(json.result);
+				console.log($("input[name='member.member_id']").val());
+				alert("이 책에 "+$("input[name='score']").val()+"점을 부여하셨습니다.");
+				//목록갱신
+				getAvgScore();
 			}else{
 				alert("내 점수 등록 오류");
 			}
@@ -112,38 +152,10 @@ function getAvgScore(){
 		},
 		success:function(result){
 			console.log("getAvgScore 목록요청결과 : "+result);
-			renderAvgStar(JSON.parse(result));
+			renderAvgStar(result);
 		},
 		error:function(result){
 			//alert("실패결과"+result);
-		}
-	});
-}
-
-//비동기 평점 update
-function updateAvgScore(json){
-	console.log("updateAvgScore호출");
-	$.ajax({
-		url:"/book/scores",
-		type:"put",
-		data:{
-			isbn : $("input[name='isbn']").val(),
-			member_id : $("input[name='member.member_id']").val(),
-			score : json.score
-		},
-		success:function(result){
-			console.log("평점 update result : "+result);
-			var obj = JSON.parse(result);
-			if(obj.result==1){
-				renderAvgStar();
-				//renderAvgStar(JSON.parse(result));
-			}else{
-				alert("평점 업데이트 실패");
-			}
-			
-		},
-		error:function(result){
-			alert("실패결과 "+result);
 		}
 	});
 }
@@ -152,18 +164,39 @@ function updateAvgScore(json){
 //class="repuStar"에 <img src="/asset/images/star_filled.png" alt="별점 이미지_filled">동적 출력
 function renderAvgStar(json){
 	console.log("renderAvgStar호출");
+	console.log("renderAvgStar함수에서 찍어본 매개변수 : "+json);
+	$(".repuStar").html("");//별 초기화
+	for(var a=0;a<5;a++){
+		$(".repuStar").append("<img src=\"/asset/images/star_empty.png\" alt=\"별점 빈 이미지\"/>");
+	}
+	var result = JSON.parse(json);
+	console.log("파싱한 결과 : "+result);
 	var total=0;
 	var avgScore=0;
-	for (var i = 0; i < json.scoreList.length; i++) {
-		var obj = json.scoreList[i];
+	for (var i = 0; i < result.scoreList.length; i++) {
+		var obj = result.scoreList[i];
 		var jumsu = obj.score;
+		console.log("이 책에 부여된 유저의 점수 : "+jumsu);
 		total+=jumsu;
 	}
-	avgScore=parseInt(total/json.scoreList.length);
+	console.log("이 책에 부여된 유저의 점수 합계 : "+total);
+	avgScore=parseInt(total/result.scoreList.length);
 	console.log("이 책의 계산된 평점은 : "+avgScore);
-	for(var j=0;j<=avgScore;j++){
-		$($(".repuStar").find("img")[j]).attr('src','/asset/images/star_filled.png');
+	if(avgScore>0){
+		for(var j=0;j<avgScore;j++){
+			$($(".repuStar").find("img")[j]).attr('src','/asset/images/star_filled.png');
+		}
 	}
+	/*
+	if(avgScore>0){
+		for(var j=0;j<avgScore;j++){
+			$(".repuStar").append("<img src=\"/asset/images/star_filled.png\" alt=\"별점 채워진 이미지\"/>");
+		}
+		for(var k=0;k<5-avgScore;k++){
+			$(".repuStar").append("<img src=\"/asset/images/star_empty.png\" alt=\"별점 빈 이미지\"/>");
+		}
+	}	
+	*/
 }
 
 //검색목록으로 돌아가기 back to bookSearchList
@@ -172,7 +205,7 @@ function goSearchList(){
 	//location.href="/book/search/{title}/"+1;
 	//뒤로가기 히스토리가 있다면 뒤로 가기
 	if(document.referrer){		
-		history.back();
+		history.back();//불완전한 부분. 한 페이지에서 새로고침 하면 목록으로 안가고 직전 페이지 부름
 	}else{//만약 history없다면 인덱스로 가기
 		location.href='/';
 	}
@@ -191,8 +224,10 @@ function delReview(review_id){
 			console.log("리뷰삭제요청 result :: "+result);
 			var json = JSON.parse(result);
 			if(json.result==1){
-				alert("리뷰가 삭제됩니다.");
+				alert("리뷰가 삭제되었습니다.");
 				location.reload();
+			}else{
+				alert("본인 작성 글이 아닙니다.");
 			}
 		}
 	});

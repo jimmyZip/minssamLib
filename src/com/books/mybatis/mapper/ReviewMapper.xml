@@ -22,6 +22,10 @@
 		<include refid="sql_select"/> order by review_id desc
 	</select>
 	
+	<select id="selectAllWithLimit" resultMap="reviewMap">
+		<include refid="sql_select"/> order by review_id desc limit 3
+	</select>
+	
 	<select id="select" parameterType="int" resultMap="reviewMap">
 		<include refid="sql_select"/> where review_id=#{review_id}
 	</select>
@@ -41,7 +45,7 @@
 
 	<update id="update" parameterType="Review">
 		update review set isbn=#{isbn}, title=#{title}, content=#{content}, modidate=#{modidate}
-		where review_id=#{review_id} 
+		where review_id=#{review_id}
 	</update>
 	
 	<delete id="delete" parameterType="int">

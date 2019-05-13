@@ -172,7 +172,6 @@ function memberSearchKey(){
 	
 	<!-- footer start -->
 	<%@include file="/include/footer.jsp" %>
-
 	<!-- footer end -->
 
 </body>

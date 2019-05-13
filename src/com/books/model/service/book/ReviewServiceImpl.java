@@ -22,6 +22,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Review> selectAll() {
 		return reviewDAO.selectAll();
 	}
+	public List<Review> selectAllWithLimit() {
+		return reviewDAO.selectAllWithLimit();
+	}
 
 	public List<Review> selectByMember(int member_id) {
 		return reviewDAO.selectByMember(member_id);

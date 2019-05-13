@@ -18,26 +18,6 @@
 <%@include file="/include/head.jsp"%>
 <title>Book Detail Info</title>
 <script src="/asset/js/book_detail.js" type="text/javascript"></script>
-<script>
-//주문도서목록 추가 함수
-function addOrderbook(isbn){
-	$.ajax({
-		url:"/orderbook/insert/"+isbn,
-		type:"get",
-		success:function(result){
-			var json = JSON.parse(result)
-				alert("주문도서 등록성공");
-			if(json.resultCode==1){ // 추가 성공
-				alertResultCode(result);
-			}else{ // 이미 추가된 파일
-				if(confirm(json.msg+"삭제하시겠습니까?")){
-					deleteOrderbook(isbn);
-				}
-			}
-		}
-	});
-}
-</script>
 </head>
 <body>
 	<!-- header start -->
@@ -73,13 +53,7 @@ function addOrderbook(isbn){
 							<div class="bScore">
 								<span>평점</span>
 								<i id="scoreTooltip">?</i>
-								<span class="repuStar">									
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지 _filled">
-									<img src="/asset/images/star_filled.png" alt="별점 이미지_filled">
-									<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
-								</span>
+								<span class="repuStar"></span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>
 									리뷰<i><%=reviewList.size() %>&nbsp;건</i>
@@ -101,8 +75,8 @@ function addOrderbook(isbn){
 						<!-- 로그인 되어 있을때 처리 -->
 						<%}else {%>
 							<dd class="btnArea">
-								<p><a href="#none" title="북마크 추가">북마크 추가</a></p>
-								<p><a href="#" onClick="addOrderbook('<%=bookDetail.getIsbn() %>')" title="구매한 도서 추가">구매한 도서 추가</a></p>
+								<p><a href="#none" onClick="addBookmark(<%=bookDetail.getIsbn() %>)" title="북마크 추가">북마크 추가</a></p>
+								<p><a href="#none" onClick="addOrderbook(<%=bookDetail.getIsbn() %>)" title="구매한 도서 추가">구매한 도서 추가</a></p>
 								<p><a href="javascript:goWriteRv(<%=bookDetail.getIsbn() %>)" title="리뷰 쓰기">리뷰 쓰기</a></p>
 								<p><a href="javascript:goSearchList()" title="검색목록으로">검색목록으로</a></p>
 							</dd>
@@ -250,7 +224,7 @@ function addOrderbook(isbn){
 		    <div class="orderArea">
 		    	<h4>이 책을 구매하시려면</h4>
 		    	<p class="orderBtn">
-		    		<a href="<%=bookDetail.getLink()%>" title="초록창에서 구매정보 보러 가기" target="_blank">뇌입어에서 구매정보 보러 가기</a>
+		    		<a href="<%=bookDetail.getLink()%>" title="초록창에서 구매정보 보러 가기" target="_blank">초록포털에서 구매정보 보러 가기</a>
 		    	</p>
 		    </div>
 		    <!-- go buy thisbook area end-->

@@ -5,10 +5,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
 	List<Book> searchList = (List)request.getAttribute("searchList");
+	String isbn = searchList.get(0).getIsbn();
 	String searchWord = request.getAttribute("searchWord").toString();
 	String currentPage = request.getAttribute("currentPage").toString();
 	Pager pager = (Pager)request.getAttribute("pager");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,9 @@
 function loginFailAlert(){
 	alert("로그인이 필요한 서비스 입니다.");
 }
-
+$(function(){
+	var isbn = "<%=isbn%>";
+});
 // 북마크 추가하는 함수
 function addBookmark(isbn){
 	$.ajax({
@@ -91,7 +95,7 @@ function viewReview(isbn){
 	location.href="/book/search/detail/"+isbn;
 }
 
-// 리뷰 작성
+// 리뷰 작성하러가기
 function writerReview(isbn){
 	location.href="/book/reviews/"+isbn;
 }
@@ -177,8 +181,8 @@ function alertResultCode(json){
 											<!-- 아니면 빈 이미지 표시 -->
 											<img src="/asset/images/star_empty.png" alt="별점 이미지_empty">
 										<%} %>
-									<%} %>							
-
+									<%} %>
+									<i><%=(double)avgScore %>점</i>							
 								</span>
 								<i class="divider">&nbsp;|&nbsp;</i>
 								<span>

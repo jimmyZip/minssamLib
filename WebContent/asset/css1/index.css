@@ -1,0 +1,22 @@
+.recent-review-title .title-row p span{color:#BD2934;}
+.recent-review-inner {
+	width: 100%;
+	padding-bottom: 20px;
+}
+.recent-review-inner .recent-review{
+	width:100%;
+	background-color:transparent;
+	color:#fff;
+	overflow:hidden;
+}
+.recent-review-inner .recent-review p{
+	float:left;
+}
+.recent-review-inner .recent-review p.review-no{width:5%;}
+.recent-review-inner .recent-review p.review-title{width:45%;}
+.recent-review-inner .recent-review p.reviewer-info{width:30%;}
+.recent-review-inner .recent-review p.rv-regdate{width:20%;}
+.recent-review-inner .recent-review p.review-no span{display:inline-block !important;color:#fff}
+.recent-review-inner .recent-review p.review-title span.ellipsis{display:inline-block !important;color:#fff}
+.recent-review-inner .recent-review p.reviewer-info span.reviewer-id{display:inline-block !important;color:#fff}
+.recent-review-inner .recent-review p.rv-regdate span.review-regdate{display:inline-block !important;color:#fff}

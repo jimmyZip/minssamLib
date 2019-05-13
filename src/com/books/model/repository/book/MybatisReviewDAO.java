@@ -17,6 +17,9 @@ public class MybatisReviewDAO implements ReviewDAO{
 	public List<Review> selectAll() {
 		return sessionTemplate.selectList("Review.selectAll");
 	}
+	public List<Review> selectAllWithLimit() {
+		return sessionTemplate.selectList("Review.selectAllWithLimit");
+	}
 
 	public List<Review> selectByMember(int member_id) {
 		return sessionTemplate.selectList("Review.selectByMember", member_id);

@@ -10,6 +10,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,7 +52,7 @@ public class ReviewController {
 	Pager pager=new Pager();
 
 	//리뷰 쓰기 페이지로 이동
-	@RequestMapping(value="/book/reviews/{isbn}",method=RequestMethod.GET)
+	@RequestMapping(value="/book/reviews/write/{isbn}",method=RequestMethod.GET)
 	public ModelAndView insertPage(HttpServletRequest request,@PathVariable("isbn") String isbn) {
 		System.out.println("리뷰 작성페이지로 이동 요청, isbn은"+isbn);
 		List<Book> detailList = mapping.mapping((bookSearch.search(isbn)));	
@@ -75,6 +77,51 @@ public class ReviewController {
 		mav.addObject("thisReview",thisReview);
 		return mav;
 	}
+	
+	//리뷰 전체 보기
+	@RequestMapping(value="/book/reviews",method=RequestMethod.GET)
+	public ModelAndView selectAll() {
+		List<Review> allReviewList = reviewService.selectAll();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("review/list");
+		mav.addObject("allReviewList",allReviewList);
+		return mav;
+	}
+	
+	//index에서 클릭한 최근리뷰 상세보기
+	@RequestMapping(value="/book/reviews/{isbn}",method=RequestMethod.GET)
+	public ModelAndView select(@PathVariable("isbn") String isbn) {
+		List<Review> pickReviewList = reviewService.selectByIsbn(isbn);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("review/detail");
+		mav.addObject("allReviewList",pickReviewList);
+		return mav;
+	}
+	
+	//리뷰 전체 중 최근3건 가져오기
+	@RequestMapping(value="/book/review/summary",method=RequestMethod.GET)
+	@ResponseBody
+	public String selectAllReview() {
+		List<Review> reviewLimitList = reviewService.selectAllWithLimit();
+		JSONObject json = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		for(int i=0;i<reviewLimitList.size();i++) {
+			Review review = reviewLimitList.get(i);
+			JSONObject obj = new JSONObject();
+			obj.put("review_id", review.getReview_id());
+			obj.put("id", review.getMember().getId());
+			obj.put("isbn", review.getIsbn());
+			obj.put("title", review.getTitle());
+			obj.put("content", review.getContent());
+			obj.put("regdate", review.getRegdate());
+			obj.put("modidate", review.getModidate());
+			obj.put("img", review.getImg());
+			jsonArray.add(obj);
+		}
+		json.put("reviewLimitList", jsonArray);
+		return json.toString();
+	}
+	
 	//리뷰 1건 등록
 	@RequestMapping(value="/review/write",method=RequestMethod.POST)
 	public String insert(Review review,HttpServletRequest request) {
@@ -117,26 +164,43 @@ public class ReviewController {
 	//리뷰 삭제
 	@RequestMapping(value="/review/delete/{review_id}",method=RequestMethod.DELETE)
 	@ResponseBody
-	public String deleteReview(@PathVariable("review_id") int review_id) {
-		reviewService.delete(review_id);
+	public String deleteReview(HttpServletRequest request, @PathVariable("review_id") int review_id) {
 		logger.info("리뷰 삭제요청");
+		Member member = (Member)request.getSession().getAttribute("member");
+		int membersMember_id = member.getMember_id();
+		Review receivedReview = reviewService.select(review_id);
+		int compareMember_id = receivedReview.getMember().getMember_id();
+		if(membersMember_id==compareMember_id) {//본인글 여부 확인			
+			reviewService.delete(review_id);//맞으면 삭제
+		}else {
+			return "{\"result\":0,\"msg\":\"본인 작성 글이 아닙니다.\"}";
+		}
 		return "{\"result\":1,\"msg\":\"삭제성공\"}";
 	}
 	
 	//리뷰 수정
 	@RequestMapping(value="/review/update",method=RequestMethod.POST)
 	@ResponseBody
-	public String editReview(Review review) {
+	public String editReview(HttpServletRequest request,Review review) {
+		logger.info("리뷰 수정요청");
+		Member member = (Member)request.getSession().getAttribute("member");
+		int membersMember_id = member.getMember_id();
+		int compareMember_id = review.getMember().getMember_id();
 		Date d = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String transD = transFormat.format(d);
-		review.setModidate(transD);
-		logger.info("리뷰 수정요청");
-		reviewService.update(review);
 		StringBuffer sb = new StringBuffer();
-		sb.append("{");
-		sb.append("\"result\":1");
-		sb.append("}");
+		if(membersMember_id==compareMember_id) {//본인글 여부 확인			
+			review.setModidate(transD);
+			reviewService.update(review);//맞으면 수정
+			sb.append("{");
+			sb.append("\"result\":1");
+			sb.append("}");
+		}else {
+			sb.append("<script>");
+			sb.append("alert('본인 작성 글이 아닙니다.');");
+			sb.append("</script>");
+		}
 		return sb.toString();
 	}
 	

@@ -158,6 +158,24 @@
     .swiper-button-next, .swiper-button-prev {display: block;}
     .titleWrap {padding-top: 140px; }
     .visualTitle {width: 500px; padding: 50px; background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.4); font-size: 1.3em; text-align: left; margin-left: 50px;}
+    .visualTitle strong{
+    	color:#1bbc9b;
+    	display:inline;
+    	position:relative;
+    }
+    .visualTitle strong:hover:after{
+    	content:"민쌤!! 감사합니다. (feat.dodgerblue)";
+    	color:dodgerblue;
+    	opacity:.7;
+    	display:inline-block;
+    	width:700px;
+    	height:30px;
+    	line-height:30px;
+    	font-size:1.6rem;
+    	position:absolute;
+    	left:0;
+    	top:30px;
+    }
     .visualTitle:before {display: block; content: ''; position: absolute; right: 50px; top: 50px; width: 70px; height: 70px; background: url('../images/studying.svg') 0 0 no-repeat; -webkit-background-size: contain; background-size: contain;}
     .notice-wrapper {width: 50%; float: left;}
     .notice-type {text-indent: 0; color: #fff; width: 30%; font-weight: 500;}

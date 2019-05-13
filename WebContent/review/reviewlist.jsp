@@ -11,35 +11,36 @@
 	<!-- header end -->
 	<div class="bg bg_review">
 		<div class="wrap">
-			<span class="red shadow">민쌤의 서재 리뷰 페이지입니다.</span>
+			<span class="red shadow">민쌤의 서재 리뷰 게시판입니다.</span>
 			<h2>Book Review</h2>
 		</div>
 	</div>
 	<!-- book review list start -->
 	<div class="wrap main cl">
-		<div class="content-section list-section campus-section">
+		<div class="content-section list-section review-section">
 			<h2 style="display: block !important;">민쌤의 서재 도서 Review</h2>
-			<div class="campus-wrap">
-				<div class="campus-list">
+			<ul class="review-list-wrap">
+				<li class="review-list">
 					<a href="/campus/detail.jsp" class="cl"> 
 						<img src="/asset/images/campus_sample.jpg" alt="캠퍼스 이미지">
-						<span>bookname</span>
-						<span></span>
+						<p class="review-info">
+							<span class="bookTit">책제목</span>
+							<span class="reviewTit">리뷰제목</span>
+						</p>
+						<div class="reaction-area">
+						
+						</div>
+						<p class="like-reaction">
+							<img src="" alt="좋아요"/>
+							<i class="likeCnt"></i>
+						</p>
+						<p>
+							<span>댓글</span>
+							<i class="rplCnt">건</i>
+						</p>
 					</a>
-				</div>
-				<div class="campus-list">
-					<a href="/campus/detail.jsp" class="cl">
-						<img src="/asset/images/campus_sample.jpg" alt="캠퍼스 이미지">
-						<span>블록체인	3기 열공 모습</span>
-					</a>
-				</div>
-				<div class="campus-list">
-					<a href="/campus/detail.jsp" class="cl"> <img
-						src="/asset/images/campus_sample.jpg" alt="캠퍼스 이미지"> <span>블록체인
-							3기 열공 모습</span>
-					</a>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<!-- 캠퍼스 Story list end -->

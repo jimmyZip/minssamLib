@@ -24,11 +24,11 @@ import com.books.model.service.member.SearchbookService;
 public class MypageSearchController {
 
 	@Autowired
-	BookSerachMapping mapping;
+	private BookSerachMapping mapping;
 	@Autowired
-	BookSearch bookSearch;
+	private BookSearch bookSearch;
 	@Autowired
-	SearchbookService searchbookService;
+	private SearchbookService searchbookService;
 	Pager pager = new Pager();
 	
 	@RequestMapping(value="/member/searchHistory",method=RequestMethod.GET)
@@ -52,30 +52,30 @@ public class MypageSearchController {
 	}
 	
 	@RequestMapping(value="/member/mypage/searchHistory", method=RequestMethod.GET)
-	@ResponseBody																			// @PathVariable("currentPage") int currentPage
+	@ResponseBody																			// @PathVariable(currentPage") int currentPage
 	public List<Searchbook> searchList(HttpServletRequest request){
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Searchbook> bookSearchList;
-		pager.getCurrentPage();
+		//pager.getCurrentPage();
 		bookSearchList = searchbookService.selectByMember(member.getMember_id());
-		List<Searchbook> searchList = new ArrayList();
-		pager.init(request, bookSearchList.size());
+		//List<Searchbook> searchList = new ArrayList();
+		//pager.init(request, bookSearchList.size());
 		
-		int curPos = pager.getCurPos();
-		int num = pager.getNum();
-		for(int i=0; i<pager.getPageSize(); i++) {
-			if(num<1) break;
-			searchList.add(bookSearchList.get(curPos++));
-			num--;	
-		}
+//		int curPos = pager.getCurPos();
+//		int num = pager.getNum();
+//		for(int i=0; i<pager.getPageSize(); i++) {
+//			if(num<1) break;
+//			searchList.add(bookSearchList.get(curPos++));
+//			num--;	
+//		}
 		
-		for(int i=0; i<searchList.size(); i++) {
-			String isbn = searchList.get(i).getIsbn();
-			searchList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
+		for(int i=0; i<bookSearchList.size(); i++) {
+			String isbn = bookSearchList.get(i).getIsbn();
+			bookSearchList.get(i).setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		}//setBook(mapping.mapping(bookSearch.search(isbn)).get(0));
 		
 		System.out.println("ÀÛµ¿2");
-		return searchList;
+		return bookSearchList;
 	}
 	
 	@RequestMapping(value="/member/mypage/searchHistory/{searchbook_id}", method=RequestMethod.DELETE)

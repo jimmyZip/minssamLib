@@ -45,7 +45,7 @@ function viewList(json){
 		str+="<td>"+obj.orderdate+"</td>";
 		str+="<td><button onClick='bookSearchDelete("+obj.orderbook_id+")'>삭제</button></td>";
 		str+="</tr>";
-		//console.log(obj.book.image);
+		console.log(obj);
 		con.append(str);
 	} 
 }
@@ -82,7 +82,6 @@ function viewList(json){
 	           
 	         <tbody id="container" class="mypageContainer">
 	         
-				
 	         </tbody>
 	       </table>
 	   </div>

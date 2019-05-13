@@ -5,6 +5,55 @@
 <head>
 <%@include file="/include/head.jsp" %>
 <title>리뷰 내역</title>
+<script src="/asset/js/book_detail.js" type="text/javascript"></script>
+<script>
+$(function(){
+	getList();
+});
+
+function getList(){
+	$.ajax({
+		url:"/member/mypage/review",
+		type:"get",
+		success:function(result){
+			viewList(result);
+			//console.log(result);
+		}
+	});
+}
+
+function bookSearchDelete(review_id){
+	$.ajax({
+		url:"/member/mypage/review/"+review_id,
+		type:"delete",
+		success:function(){
+			getList();
+		}
+	});
+}
+
+function viewList(json){
+	var con=$("#container");
+	con.html("");//data delete
+ 	for(var i=0; i<json.length;i++){
+		var obj=json[i];
+		//                                                                        'fly("+obj.isbn+")'   
+		var str ="";
+		str+="<tr id=table_tr>";
+		str+="<td><a href='#'><div onClick='javascript:fly("+obj.isbn+")' class='my-lecture-img' style=\"background-image:url("+obj.book.image+")\"></div></a></td>";
+		str+="<td>"+obj.title+"</td>";
+		str+="<td><input type='hidden' value="+obj.review_id+"></td>";
+		str+="<td>"+obj.regdate+"</td>";
+		str+="<td><button onClick='bookSearchDelete("+obj.review_id+")'>삭제</button> <button onClick='javascript:goEditReview("+obj.review_id+")'>수정</button</td>";
+		str+="</tr>";
+		console.log(obj);
+		console.log(obj.img);
+		con.append(str);
+	} 
+}
+
+
+</script>
 </head>
 <!-- head end -->
 <body>
@@ -36,26 +85,6 @@
 	           </thead>
 	           <tbody id="container">
 					           
-	       			<tr>
-                       <td>
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/13394898.jpg');"></div></a>
-                       </td>
-                       <td>곰돌이 푸</td>
-                       <td></td>
-                       <td>regdate 받아와서 넣기</td>
-                       <td><button onClick="#">수정</button><button onClick="#">삭제</button></td>
-                	</tr>
-                   
-                   
-                   <tr>
-                       <td>
-                           <a href="#"><div class="my-lecture-img" style="background-image:url('/upload/06426567.jpg');"></div></a>
-                       </td>
-                       <td>안아프니까 청춘이다</td>
-                       <td></td>
-                       <td>regdate 받아와서 넣기</td>
-                       <td><button onClick="#">수정</button><button onClick="#">삭제</button></td>
-                   </tr>
  					
 	           </tbody>
 	       </table>

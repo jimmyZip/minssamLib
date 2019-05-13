@@ -8,6 +8,7 @@ import com.books.model.domain.member.Member;
 public class Review {
 	private int review_id;
 	private Member member;
+	private Book book;
 	private String isbn;
 	private String title;
 	private String content;
@@ -16,6 +17,12 @@ public class Review {
 	private String img;
 	private MultipartFile myImg;
 	
+	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
+	}
 	//getter and setter
 	public int getReview_id() {
 		return review_id;

@@ -38,7 +38,6 @@
 						<input type="hidden" name="member.member_id" value="<%=member.getMember_id()%>"/>
 						<input type="hidden" name="review_id" value="<%=thisReview.getReview_id()%>"/>						
 						<input type="hidden" name="isbn" value="<%=thisReview.getIsbn() %>"/>
-						<!-- <input type="hidden" name="score.score"/> -->
 						<input type="text" id="title" name="title" value="<%=thisReview.getTitle() %>"/><!-- 
 				   --><input type="text" id="writer" name="writer" readonly value="<%=member.getId() %>(<%=member.getName() %>)님" />
 						<dl class="bookInfoArea">

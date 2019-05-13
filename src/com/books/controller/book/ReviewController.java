@@ -182,10 +182,11 @@ public class ReviewController {
 	@RequestMapping(value="/review/update",method=RequestMethod.POST)
 	@ResponseBody
 	public String editReview(HttpServletRequest request,Review review) {
-		logger.info("리뷰 수정요청");
+		logger.info("리뷰 수정요청 + 받아온 리뷰 : "+review);
 		Member member = (Member)request.getSession().getAttribute("member");
 		int membersMember_id = member.getMember_id();
 		int compareMember_id = review.getMember().getMember_id();
+		logger.info("review로부터 넘어온 member_id"+compareMember_id);
 		Date d = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String transD = transFormat.format(d);

@@ -182,26 +182,25 @@ public class ReviewController {
 	@RequestMapping(value="/review/update",method=RequestMethod.POST)
 	@ResponseBody
 	public String editReview(HttpServletRequest request,Review review) {
-		logger.info("리뷰 수정요청 + 받아온 리뷰 : "+review);
+		logger.info("리뷰 수정요청");
 		Member member = (Member)request.getSession().getAttribute("member");
 		int membersMember_id = member.getMember_id();
-		int compareMember_id = review.getMember().getMember_id();
-		logger.info("review로부터 넘어온 member_id"+compareMember_id);
+		//int compareMember_id = review.getMember().getMember_id();
 		Date d = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String transD = transFormat.format(d);
 		StringBuffer sb = new StringBuffer();
-		if(membersMember_id==compareMember_id) {//본인글 여부 확인			
+		//if(membersMember_id==compareMember_id) {//본인글 여부 확인			
 			review.setModidate(transD);
 			reviewService.update(review);//맞으면 수정
 			sb.append("{");
 			sb.append("\"result\":1");
 			sb.append("}");
-		}else {
-			sb.append("<script>");
-			sb.append("alert('본인 작성 글이 아닙니다.');");
-			sb.append("</script>");
-		}
+//		}else {
+//			sb.append("<script>");
+//			sb.append("alert('본인 작성 글이 아닙니다.');");
+//			sb.append("</script>");
+//		}
 		return sb.toString();
 	}
 	

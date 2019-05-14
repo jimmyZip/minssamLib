@@ -105,7 +105,7 @@ function searchKeyDown(){
          <div class="menu-item"
             onclick="location.href='/book/search/ /1'">도서 검색</div>
          <div class="menu-item"
-            onclick="location.href='/review/reviewlist.jsp'">평가/리뷰
+            onclick="location.href='/book/reviews'">평가/리뷰
             게시판</div>
          <div class="menu-item" onclick="location.href='/book/popular'">인기도서 목록</div>
          <%if (session.getAttribute("member") != null) { %>

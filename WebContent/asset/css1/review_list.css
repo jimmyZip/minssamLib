@@ -1,1 +1,128 @@
 @charset "utf-8";
+.wrap{
+	width:95%;
+	margin:0 auto;
+}
+.list-section,.review-section{
+	width:100% !important;
+}
+.review-section h2{}
+
+/*review list 출력되는 영역 컨테이너 시작*/
+.review-list-wrap{
+	width:100%;
+	overflow:hidden;
+}
+/*review 1단위 표현 li태그*/
+.review-list{
+	float:left;
+	width:20%;
+	margin-bottom:1.5rem;
+	padding:0.5%;
+	overflow:hidden;
+}
+.rv-inner{
+	width:100%;
+	display:block;
+	overflow:hidden;
+	box-sizing:border-box;
+	border:1px solid #ededed;
+}
+.rv-inner:hover .reviewTit,
+.rv-inner:focus .reviewTit{
+	color:red;
+}
+.review-img{
+	width:100%;
+	height:163px;
+	overflow:hidden;
+	background-color:rgba(60,104,120,0.3);
+}
+/*책제목, 리뷰제목 감싼 영역*/
+.review-info{
+	width:100%;
+	padding:1%;
+	overflow:hidden;
+	box-sizing:border-box;
+	border-top:1px solid #ccc;
+}
+/*책제목*/
+.bookTit{
+	width:100%;
+	padding:1%;
+	font-weight:700;
+	font-size:0.8rem;
+	color:#777;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+/*리뷰제목*/
+.reviewTit{
+	width:100%;
+	padding:1%;
+	line-height:2rem;
+	color:dodgerblue;
+	font-size:1.2rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	transition:.3s all;
+}
+/*reaction-area :: 좋아요,댓글수 감싸는 영역*/
+.reaction-area{
+	width:100%;
+	padding:1%;
+	overflow:hidden;
+}
+.reaction-area p{
+	height:40px;
+	padding:5px 0;
+	float:left;
+	overflow:hidden;
+}
+.like-reaction{width:30%;}
+.rpl-reaction{width:70%;}
+
+/*좋아요*/
+.like-reaction img{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	vertical-align:top;
+}
+.likeCnt{
+	display:inline-block !important;
+	vertical-align:middle;
+	font-style:normal;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	color:red;
+}
+/*댓글수*/
+.rpl-reaction span,.rpl-reaction .rplCnt{
+	display:inline-block !important;
+	vertical-align:middle;
+	height:30px;
+	line-height:30px;
+	color:#223d4b;
+}
+.rplCnt{
+	font-style:normal;
+	color:red;
+	padding-left:10px;
+}
+
+.reaction-area:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+/*리뷰 단위li들 ul에서 float 끊어주기 처리*/
+.review-list-wrap:after{
+	content:'';
+	display:block;
+	clear:both;
+}

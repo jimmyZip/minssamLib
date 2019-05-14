@@ -1,8 +1,9 @@
 /*
- * 책 검색할 때 사용하는 컨트롤러
+* 책 검색할 때 사용하는 컨트롤러
  * */
 package com.books.controller.book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -18,6 +19,8 @@ import com.books.common.search.BookSearch;
 import com.books.common.search.BookSerachMapping;
 import com.books.model.domain.book.Book;
 import com.books.model.domain.book.Review;
+import com.books.model.domain.book.ReviewComment;
+import com.books.model.service.book.ReviewCommentService;
 import com.books.model.service.book.ReviewService;
 
 @Controller
@@ -28,6 +31,8 @@ public class SearchController {
 	BookSearch bookSearch;
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	ReviewCommentService reviewCommentService;
 	
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	Pager pager = new Pager();
@@ -53,17 +58,18 @@ public class SearchController {
 	@RequestMapping(value = "/book/search/detail/{isbn}", method = RequestMethod.GET)
 	public ModelAndView showDetail(@PathVariable("isbn") String isbn) {
 		logger.trace("SearchController에서 bookDetail이동 요청");
-		logger.trace("isbn : " + isbn);
 		List<Book> detailList = mapping.mapping((bookSearch.search(isbn)));
 		List<Review> reviewList = reviewService.selectByIsbn(isbn);
-		logger.info("reviewList길이 :: "+reviewList.size());
-		for(int i=0;i<reviewList.size();i++) {			
-			logger.info("reviewList에 담긴 img :: "+reviewList.get(i).getImg());
-			logger.info("reviewList에 담긴 myImg :: "+reviewList.get(i).getMyImg());
+		ArrayList reviewId = new ArrayList();
+		List<ReviewComment> rcList=null;
+		for(int i=0;i<reviewList.size();i++) {
+			reviewId.add(reviewList.get(i).getReview_id());
+			rcList = (List)reviewCommentService.selectByReview((int)reviewId.get(i));
 		}
 		ModelAndView mav = new ModelAndView("books/bookDetail");
 		mav.addObject("detailList", detailList);
 		mav.addObject("reviewList", reviewList);
+		mav.addObject("rcList", rcList);
 		
 		return mav;
 	}

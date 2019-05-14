@@ -12,10 +12,15 @@ $(document).ready(function(){
 	
 	//댓글 펼쳐보기 관련 이벤트 함수호출
 	$(".showReply").click(function(event){
-		var s=$(this).index();
-		alert(s+"번째 쇼리플버튼 클릭");
-		showAndHide(s);
-		flag=!flag;
+		flag=true;
+		$(this).next().toggle(200,"linear",function(){
+			if(flag==false){
+				$(this).text("이 리뷰에 대한 댓글 접기");
+			}else{
+				$(this).text("이 리뷰에 대한 댓글 보기");
+			}
+			flag=!flag;
+		}.bind(this));
 	});
 	
 	//리뷰어가 책에 대해 매긴 점수 카운트
@@ -74,18 +79,6 @@ function addOrderbook(isbn){
 					deleteOrderbook(isbn);
 				}
 			}
-		}
-	});
-}
-
-//해당 댓글 toggle
-function showAndHide(s){
-	alert(s);
-	$($(".reviewCommentWrap")[s]).toggle(200,"linear",function(){
-		if(flag==false){
-			$($(".showReply")[s]).text("이 리뷰에 대한 댓글접기");
-		}else{
-			$($(".showReply")[s]).text("이 리뷰에 대한 댓글보기");
 		}
 	});
 }
@@ -244,4 +237,24 @@ function goEditReview(review_id){
 		return;
 	}
 	location.href="/book/reviews/update/"+review_id;
+}
+
+//댓글등록
+function sendRpl(review_id){
+	$.ajax({
+		url:"/review/comment/"+review_id,
+		type:"post",
+		data:{
+			content:$($("form[name='comment-form']").find("p").find("input[name='content']")).val()
+		},
+		success:function(result){
+			var json = JSON.parse(result);
+			if(json.result==1){
+				alert("댓글등록 성공");
+				location.reload();
+			}else{
+				alert("댓글등록 실패");
+			}
+		}
+	});
 }

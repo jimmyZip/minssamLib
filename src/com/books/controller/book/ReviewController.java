@@ -80,11 +80,18 @@ public class ReviewController {
 	
 	//리뷰 전체 보기
 	@RequestMapping(value="/book/reviews",method=RequestMethod.GET)
-	public ModelAndView selectAll() {
+	public ModelAndView selectAll(HttpServletRequest request) {
 		List<Review> allReviewList = reviewService.selectAll();
+		for(int i=0;i<allReviewList.size();i++) {
+			List<Book> searchList = mapping.mapping(bookSearch.search(allReviewList.get(i).getIsbn()));
+			Book book = searchList.get(0);
+			allReviewList.get(i).setBook(book);
+		}
+		pager.init(request, allReviewList.size());
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("review/list");
+		mav.setViewName("review/reviewlist");
 		mav.addObject("allReviewList",allReviewList);
+		mav.addObject("pager",pager);
 		return mav;
 	}
 	
@@ -94,7 +101,7 @@ public class ReviewController {
 		List<Review> pickReviewList = reviewService.selectByIsbn(isbn);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("review/detail");
-		mav.addObject("allReviewList",pickReviewList);
+		mav.addObject("pickReviewList",pickReviewList);
 		return mav;
 	}
 	

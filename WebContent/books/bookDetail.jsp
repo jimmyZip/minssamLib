@@ -1,3 +1,4 @@
+<%@page import="com.books.model.domain.book.ReviewComment"%>
 <%@page import="com.books.model.domain.book.Book"%>
 <%@page import="com.books.common.Pager"%>
 <%@page import="com.books.model.domain.book.Review"%>
@@ -8,6 +9,7 @@
 <%
 	List<Book> detailList = (List)request.getAttribute("detailList");
 	List<Review> reviewList = (List)request.getAttribute("reviewList");
+	List<ReviewComment> rcList = (List)request.getAttribute("rcList");
 	//if(reviewList.size()>0){		
 		//pager.init(request, reviewList.size());
 	//}
@@ -137,26 +139,23 @@
 					</ul>
 					<%} else{%>
 					<%for(int i=0;i<reviewList.size();i++){ %>
-					<%--
-						review = reviewList.get(i);
-						System.out.println("bookDetail의 reviewList.get(i)담은 review :: "+review);
-					--%>
+					<%Review review = reviewList.get(i); %>
 					<!-- 리뷰 감싸는 영역 -->
 					<ul class="reviewInnerWrap">
 						<li class="reviewUnit">
 							<div class="reviewImg">
-								<%if(reviewList.get(i).getImg().equals("")){ %>
+								<%if(review.getImg().equals("")){ %>
 									<img class="reviewThumb" src="/asset/images/review_img_sample.jpg" alt="리뷰 썸네일 디폴트 이미지"/>
 								<%}else{ %>
 									<img class="reviewThumb" src="/upload/<%=reviewList.get(i).getImg() %>" alt="리뷰 등록자가 등록한 리뷰 썸네일 이미지"/>
 								<%} %>
 							</div>
 							<div class="reviewTitStat">
-								<p class="reviewTitle"><%=reviewList.get(i).getTitle() %></p>
+								<p class="reviewTitle"><%=review.getTitle() %></p>
 								<div class="reviewStat">
 									<p class="reviewWriter">
 										<span>작성자</span>
-										<i class="writerInfo"><%=reviewList.get(i).getMember().getId() %>&nbsp;(<%=reviewList.get(i).getMember().getNickname() %>)</i>
+										<i class="writerInfo"><%=review.getMember().getId() %>&nbsp;(<%=reviewList.get(i).getMember().getNickname() %>)</i>
 									</p>
 									<p class="ddabong">
 										<img src="/asset/images/like_on.png" alt="좋아요 이미지"/>
@@ -164,10 +163,10 @@
 									</p>
 									<p class="commentOnReview">
 										<span>댓글</span>
-										<i class="commentCnt">1건</i>
+										<i class="commentCnt"><%=rcList.size() %>건</i>
 									</p>
 								</div>
-								<div class="reviewText"><%=reviewList.get(i).getContent() %></div>
+								<div class="reviewText"><%=review.getContent() %></div>
 							</div>
 							<div class="reviewBtn">
 								<button class="editRv" onclick="goEditReview(<%=reviewList.get(i).getReview_id() %>)">리뷰 수정</button>
@@ -183,27 +182,38 @@
 				<div class="reviewCommentWrap">
 					<h4>리뷰에 대한 댓글</h4>
 					<ul class="commentList">
-						<!-- 댓글 한 단위 -->
-						<li class="commentUnit">
-							<div class="commentInfo">							
-								<p class="commentNum">No</p>
-								<p class="commentNick">닉네임</p>
-								<p class="commentContent">정말 띵작입니다. 강추강추</p>
-							</div>
-							<div class="replyListBtn">
-								<a href="#none" class="replyEdit">수정하기</a>
-								<a href="#none" cass="replyDel">삭제하기</a>
-							</div>
-						</li>
-						<!-- 댓글 한 단위 -->
+						<%if(rcList.size()>0) {%>
+							<%for(int j=0;j<rcList.size();j++){ %>
+							<%ReviewComment rcComment = rcList.get(j); %>
+							<!-- 댓글 한 단위 -->
+							<li class="commentUnit">
+								<div class="commentInfo">							
+									<p class="commentNum">No</p>
+									<!-- <p class="commentNick">닉네임</p> -->
+									<p class="commentNick"><%=rcComment.getMember().getNickname() %></p>
+									<!-- <p class="commentContent">정말 띵작입니다. 강추강추</p> -->
+									<p class="commentContent"><%=rcComment.getContent() %></p>
+								</div>
+								<div class="replyListBtn">
+									<a href="#none" class="replyEdit">수정하기</a>
+									<a href="#none" cass="replyDel">삭제하기</a>
+								</div>
+							</li>
+							<!-- 댓글 한 단위 -->
+							<%} %>
+						<%}else{ %>
+							<li class="commentUnit">
+								아직 작성된 댓글이 없습니다.
+							</li>
+						<%} %>
 					</ul>
 					<div class="postCommentWrap">
 						<form name="comment-form">
 							<p>
-								<input class="replycontent" type="text" name="replycontent" placeholder="코멘트를 입력해주세요"/>
+								<input class="replycontent" type="text" name="content" placeholder="코멘트를 입력해주세요"/>
 							</p>
 						</form>
-						<button type="button">코멘트 등록</button>
+						<button type="button" onClick="sendRpl(<%=review.getReview_id()%>)">코멘트 등록</button>
 					</div>
 					<!--paging start-->
 				    <div class="page cl">
